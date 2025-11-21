@@ -52,6 +52,7 @@
 #    - id: ZombieOutbreak # Floofstation - no
     - id: LoneOpsSpawn
     #- id: WizardSpawn # DeltaV - Disabled until overhauled
+    #TODO When Slasher is Ready - id: SlasherSpawn # Goobstation - The Slasher
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
 

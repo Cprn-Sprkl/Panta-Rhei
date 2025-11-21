@@ -15,3 +15,15 @@
     roleType: SoloAntagonist
     subtype: role-subtype-devil
   - type: DevilRole
+
+# Slasher
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSlasher
+  name: Slasher Role
+  components:
+  - type: MindRole
+    antagPrototype: Slasher
+    exclusiveAntag: true
+    roleType: SoloAntagonist
+    subtype: role-subtype-slasher

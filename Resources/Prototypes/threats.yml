@@ -19,3 +19,9 @@
   id: Colossus
   announcement: terror-colossus
   rule: ColossusSpawn # DeltaV end
+
+# TODO When Slasher is ready
+#- type: ninjaHackingThreat
+#  id: Slasher
+#  announcement: terror-slasher
+#  rule: SlasherSpawn
