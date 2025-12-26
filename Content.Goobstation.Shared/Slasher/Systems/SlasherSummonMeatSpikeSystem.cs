@@ -1,10 +1,12 @@
 using Content.Goobstation.Shared.Slasher.Components;
 using Content.Goobstation.Shared.Slasher.Events;
 using Content.Shared.Actions;
+using Content.Shared.Actions;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 
+namespace Content.Goobstation.Shared.Slasher.Systems;
 namespace Content.Goobstation.Shared.Slasher.Systems;
 
 /// <summary>
@@ -12,6 +14,7 @@ namespace Content.Goobstation.Shared.Slasher.Systems;
 /// </summary>
 public sealed class SlasherSummonMeatSpikeSystem : EntitySystem
 {
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;

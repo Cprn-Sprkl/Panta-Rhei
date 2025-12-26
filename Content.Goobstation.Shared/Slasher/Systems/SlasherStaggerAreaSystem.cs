@@ -5,6 +5,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -70,6 +71,7 @@ public sealed class SlasherStaggerAreaSystem : EntitySystem
                 _popup.PopupEntity(Loc.GetString("slasher-staggerarea-victim"), targetUid, targetUid, PopupType.MediumCaution);
         }
 
+        _audio.PlayPredicted(comp.StaggerSound, uid, uid);
         _audio.PlayPredicted(comp.StaggerSound, uid, uid);
 
         // Show popup to the slasher only
