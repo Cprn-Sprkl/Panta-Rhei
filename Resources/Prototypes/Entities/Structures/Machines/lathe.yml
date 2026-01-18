@@ -164,6 +164,8 @@
     # Floofstation section
     - CollarsAutolatheFloofstation
     # Floofstation section end
+    # Den section
+    - 
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
