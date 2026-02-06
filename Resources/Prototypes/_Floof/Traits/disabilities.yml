@@ -39,6 +39,6 @@
     - Chitinid # Ants got weight.
   conflicts:
     - Lightweight
-  functions:
+  effects:
   - !type:ModifyFixtureEffect
     factor: 1.4 # Lets try the opposite of lightweight, yeah?
