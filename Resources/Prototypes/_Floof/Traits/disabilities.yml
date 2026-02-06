@@ -27,7 +27,7 @@
   description: trait-weightheavy-desc
   category: Disabilities
   cost: -2 # Has pros and cons, not sure
-  requirements:
+  conditions:
   - !type:HasCompCondition
     component: BorgChassis
     invert: true
