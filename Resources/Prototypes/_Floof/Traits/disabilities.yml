@@ -17,7 +17,7 @@
     invert: true
   effects:
   - !type:ModifyFixtureEffect
-    factor: 0.6 # still not as light as felinids due to different fixture size
+    factor: 0.7746 # Square root of 0.6 as this modifies the radius
   conflicts:
     - Heavyweight
 
