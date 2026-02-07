@@ -41,4 +41,4 @@
     - Lightweight
   effects:
   - !type:ModifyFixtureEffect
-    factor: 1.4 # Lets try the opposite of lightweight, yeah?
+    factor: 1.1832 # Square root of 1.4 as this affects the radius, opposite of lightweight.
