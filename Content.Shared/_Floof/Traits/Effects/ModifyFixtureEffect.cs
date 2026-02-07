@@ -4,12 +4,12 @@ using Content.Shared._Floof.HeightAdjust;
 namespace Content.Shared._Floof.Traits.Effects;
 
 /// <summary>
-/// Effect that modifies a fixture of an entity.
+/// Effect that modifies the radii of an entity's fixtures.
 /// </summary>
 public sealed partial class ModifyFixtureEffect : BaseTraitEffect
 {
     /// <summary>
-    /// The amount to modify the fixture by.
+    /// The factor to multiply all fixture radii by.
     /// </summary>
     [DataField(required: true)]
     public float Factor = 1f;
