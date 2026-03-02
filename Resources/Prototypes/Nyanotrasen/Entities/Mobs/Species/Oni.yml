@@ -44,6 +44,14 @@
         - MobLayer
   - type: Stamina
     critThreshold: 115
+  - type: LanguageKnowledge # Floofstation
+    speaks:
+    - TauCetiBasic
+    - Nekomimetic
+    understands:
+    - TauCetiBasic
+    - Nekomimetic
+    naturalLanguage: Nekomimetic
 
 - type: entity
   save: false

@@ -61,6 +61,14 @@
       Male: MaleFelinid
       Female: FemaleFelinid
       Unsexed: MaleFelinid
+  - type: LanguageKnowledge # Floofstation
+    speaks:
+    - TauCetiBasic
+    - Nekomimetic
+    understands:
+    - TauCetiBasic
+    - Nekomimetic
+    naturalLanguage: Nekomimetic
   - type: ItemCougher
     item: Hairball
     action: ActionHairball
