@@ -37,7 +37,7 @@
     filters:
     # Euphoria - Make random teach objective targets opt in only
     - !type:MarkedMindFilter
-      objtype: Teach
+      objType: Teach
 
 - type: entity
   parent: [ BaseNinjaObjective, BaseKillObjective ]
@@ -58,12 +58,11 @@
         - CommandStaff
     # Euphoria - Make RR objective targets opt in only
     - !type:MarkedMindFilter
-      objtype: Remove
+      objType: Remove
     - !type:TargetObjectiveMindFilter
       blacklist:
         components:
         - TargetObjectiveImmune
-
   - type: KillPersonCondition
     requireDead: true
 

@@ -7,7 +7,7 @@ namespace Content.Shared.Mind.Filters;
 /// </summary>
 public sealed partial class MarkedMindFilter : MindFilter
 {
-    [DataField("objtype", required: true)]
+    [DataField(required: true)]
     public ObjectiveTypes ObjType = new();
 
     protected override bool ShouldRemove(Entity<MindComponent> ent, EntityUid? exclude, IEntityManager entMan, SharedMindSystem mindSys)
@@ -20,7 +20,7 @@ public sealed partial class MarkedMindFilter : MindFilter
         if (mcomp.TargetType.HasFlag(ObjType))
             return false;
 
-        //Excludes any edge cases
+        //Any mind that gets here does not have the objective type Marked and is removed
         return true;
     }
 }

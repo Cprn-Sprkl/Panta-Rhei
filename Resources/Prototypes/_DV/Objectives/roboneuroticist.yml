@@ -52,7 +52,7 @@
         - CommandStaff
     # Euphoria - Make RR objective targets opt in only
     - !type:MarkedMindFilter
-      objtype: Remove
+      objType: Remove
     - !type:TargetObjectiveMindFilter
       blacklist:
         components:

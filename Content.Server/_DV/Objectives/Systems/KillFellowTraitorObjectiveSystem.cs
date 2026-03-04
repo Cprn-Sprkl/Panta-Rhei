@@ -58,8 +58,8 @@ public sealed class KillFellowTraitorObjectiveSystem : EntitySystem
                     break;
                 }
             }
-            // Euphoria - RR targetting by opt in only
-            if (TryComp<MarkedComponent>(traitor.Mind.CurrentEntity, out var mcomp))
+            // Euphoria | Handle Marked target filtering
+            if (valid == true && TryComp<MarkedComponent>(traitor.Mind.CurrentEntity, out var mcomp))
             {
                 if (mcomp == null)
                 {
@@ -67,7 +67,7 @@ public sealed class KillFellowTraitorObjectiveSystem : EntitySystem
                 }
                 else
                 {
-                    if (!mcomp.TargetType.HasFlag(ObjectiveTypes.Remove))
+                    if (!mcomp.TargetType.HasFlag(comp.TargetType))
                         valid = false;
                 }
 

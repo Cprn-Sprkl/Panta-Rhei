@@ -7,7 +7,7 @@ namespace Content.Shared._Floof.Traits.Components;
 [RegisterComponent]
 public sealed partial class MarkedComponent : Component
 {
-    [DataField("TargetType"), ViewVariables]
+    [DataField]
     public ObjectiveTypes TargetType;
 }
 

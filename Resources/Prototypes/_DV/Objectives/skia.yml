@@ -22,7 +22,7 @@
     filters:
     # Euphoria - Make RR objective targets opt in only
     - !type:MarkedMindFilter
-      objtype: Remove
+      objType: Remove
     # Can't have multiple objectives to kill the same person.
     - !type:TargetObjectiveMindFilter
       blacklist:
