@@ -46,8 +46,8 @@
     title: objective-condition-teach-person-title
   - type: PickRandomPerson
     filters:
-    - !type:InDepartmentCondition
-      department: Security
+    - !type:DepartmentMindFilter
+      dept: Security
     # Can't have multiple objectives to kill the same person.
     - !type:TargetObjectiveMindFilter
       blacklist:
