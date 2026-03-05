@@ -7,13 +7,13 @@
         - to: diasecHud
           steps:
             - tag: HudDiagnostic
-              name: diagnostic hud
+              name: construction-graph-tag-diaghud
               icon:
                 sprite: Clothing/Eyes/Hud/diag.rsi
                 state: icon
               doAfter: 5
             - tag: HudSecurity
-              name: security hud
+              name: construction-graph-tag-security-hud
               icon:
                 sprite: Clothing/Eyes/Hud/sec.rsi
                 state: icon
@@ -22,7 +22,7 @@
               amount: 5
               doAfter: 5
             - tag: Radio
-              name: radio
+              name: construction-graph-tag-radio
               icon:
                 sprite: Objects/Devices/communication.rsi
                 state: walkietalkie
