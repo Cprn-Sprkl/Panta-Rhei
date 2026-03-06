@@ -20,9 +20,9 @@
     title: objective-condition-reap-soul-title
   - type: PickRandomPerson
     filters:
-    # Euphoria - Make RR objective targets opt in only
+    # Euphoria - Make Teach objective targets opt in
     - !type:MarkedMindFilter
-      objType: Remove
+      objType: Teach
     # Can't have multiple objectives to kill the same person.
     - !type:TargetObjectiveMindFilter
       blacklist:
