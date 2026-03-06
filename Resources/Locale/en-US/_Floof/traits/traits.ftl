@@ -26,14 +26,14 @@ trait-dog-accent-name = Dog accent
 trait-dog-accent-desc = Bork.
 
 trait-name-CyberEyes = Cyber-Eyes Basic System
-trait-name-CyberEyes =
+trait-description-CyberEyes =
     One or more of your eyes have been replaced with modular cybernetic optical implants.
     Their most basic functionality is to ameliorate weaknesses in the wearer's natural eyes.
     The functionality of these implants can be extended with a variety of commercially available upgrades.
     This provides immunity from most bright flashes of light, such as those from welding arcs.
 
 trait-name-CyberEyesFlare = Cyber-Eyes: Flare Protection Module
-trait-name-CyberEyesFlare = Your Cyber-Eyes have been upgraded with a set of photochromic lenses that automatically darken in response to intense light.
+trait-description-CyberEyesFlare = Your Cyber-Eyes have been upgraded with a set of photochromic lenses that automatically darken in response to intense light.
     This helps prevent optical damage caused by events such as exposure to welding arcs.
 
 trait-name-CyberEyesNightVision = Cyber-Eyes: Light Amplification Module
