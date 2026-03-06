@@ -38,6 +38,9 @@
     # Euphoria - Make random teach objective targets opt in only
     - !type:MarkedMindFilter
       objType: Teach
+      overrideDepts:
+      - Security
+      - Command
 
 - type: entity
   parent: [ BaseNinjaObjective, BaseKillObjective ]

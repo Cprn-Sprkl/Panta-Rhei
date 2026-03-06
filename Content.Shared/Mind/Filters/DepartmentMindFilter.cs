@@ -1,7 +1,6 @@
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Toolshed.Commands.Values;
 
 namespace Content.Shared.Mind.Filters;
 
