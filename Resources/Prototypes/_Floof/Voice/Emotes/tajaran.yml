@@ -5,6 +5,8 @@
   whitelist:
     components:
     - Vocal
+    tags:
+    - TajaranEmotes
   blacklist:
     components:
     - BorgChassis

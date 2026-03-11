@@ -93,6 +93,7 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost #Euphoria
+    - TajaranEmotes #Euphoria
   - type: FootPrints
   - type: Temperature
     coldDamageThreshold: 248.15 # -25 degrees centigrade, like 12 degrees below normal
