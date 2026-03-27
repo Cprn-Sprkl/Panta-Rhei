@@ -241,10 +241,10 @@
     layers:
     - state: crypt_red
     - state: synd_label
-  - type: ReverseEngineering # Nyano
-    difficulty: 5
-    recipes:
-      - EncryptionKeySyndie
+#  - type: ReverseEngineering # Nyano
+#    difficulty: 5
+#    recipes:
+#      - EncryptionKeySyndie
   - type: StaticPrice
     price: 500 # 1000 for 2
 
