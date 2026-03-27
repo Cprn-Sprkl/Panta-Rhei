@@ -241,6 +241,7 @@
     layers:
     - state: crypt_red
     - state: synd_label
+#  Euphoria | Disable reverse engineering syndie keys
 #  - type: ReverseEngineering # Nyano
 #    difficulty: 5
 #    recipes:
