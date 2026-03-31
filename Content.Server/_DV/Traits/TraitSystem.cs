@@ -61,16 +61,16 @@ public sealed class TraitSystem : EntitySystem
 
         // Apply valid traits
         // Floofstation edit: first, sort valid traits by priority
-        var sortedPrototypes = new List<TraitPrototype>();
+        var toSortPrototypes = new List<TraitPrototype>();
         foreach (var traitId in validTraits)
         {
             if (!_prototype.TryIndex(traitId, out var trait))
                 continue;
 
-            sortedPrototypes.Add(trait);
+            toSortPrototypes.Add(trait);
         }
 
-        sortedPrototypes.Sort((a, b) => -a.Priority.CompareTo(b.Priority));
+        var sortedPrototypes = toSortPrototypes.OrderBy(a => a.Priority).ThenBy(a => a.Cost).ToList();
         foreach (var trait in sortedPrototypes)
             ApplyTrait(args.Mob, trait);
         // Floofstation edit end
