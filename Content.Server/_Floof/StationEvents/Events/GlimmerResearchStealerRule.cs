@@ -64,7 +64,7 @@ internal sealed class GlimmerResearchStealerRule : StationEventSystem<GlimmerRes
 
         //Announce the event on the epistemics radio channel
         var message = Loc.GetString("glimmer-tech-steal-message");
-        var channel = _prototypeManager.Index<RadioChannelPrototype>("Science");
+        var channel = _prototypeManager.Index<RadioChannelPrototype>(comp.AnnouncementChannel);
         _radioSystem.SendRadioMessage(target, message, channel, target, escapeMarkup: false);
     }
 }
