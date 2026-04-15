@@ -13,4 +13,7 @@ public sealed partial class GlimmerResearchStealerRuleComponent : Component
     public int MaxToSteal = 8;
     [DataField]
     public SoundSpecifier GlimmerStealSound = new SoundPathSpecifier("/Audio/_DV/CosmicCult/ability_siphon.ogg");
+    
+   [DataField]
+   public ProtoId<RadioChannelPrototype> AnnouncementChannel = "Science"; 
 }
