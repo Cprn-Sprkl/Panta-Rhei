@@ -38,9 +38,13 @@ internal sealed class GlimmerResearchStealerRule : StationEventSystem<GlimmerRes
 
         //Declare the server with the most technology the target of the event
         var target = serverList[0];
+        int targetCount;
+        int servCount;
         foreach (var serv in serverList)
         {
-            if (EnsureComp<TechnologyDatabaseComponent>(target).UnlockedTechnologies.Count < EnsureComp<TechnologyDatabaseComponent>(serv).UnlockedTechnologies.Count)
+            targetCount = EnsureComp<TechnologyDatabaseComponent>(target).UnlockedTechnologies.Count;
+            servCount = EnsureComp<TechnologyDatabaseComponent>(serv).UnlockedTechnologies.Count;
+            if (targetCount < servCount)
                 target = serv;
         }
 
