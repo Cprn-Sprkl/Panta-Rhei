@@ -41,7 +41,7 @@
     components:
     - type: Psionic
     - type: MetapsionicPower
-    
+
 - type: trait
   id: TraitPsychokineticScream
   name: trait-psychokinetic-scream-name
@@ -54,18 +54,19 @@
     - type: Psionic
     - type: PsychokineticScreamPower
 
-- type: trait
-  id: TraitPsionicRegeneration
-  name: trait-psionic-regeneration-name
-  description: trait-psionic-regeneration-desc
-  category: Psionics
-  cost: 6
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: Psionic
-    - type: PsionicRegenerationPower
-  
+# Removed pending rework or lesser variant of the power
+# - type: trait
+#   id: TraitPsionicRegeneration
+#   name: trait-psionic-regeneration-name
+#   description: trait-psionic-regeneration-desc
+#   category: Psionics
+#   cost: 6
+#   effects:
+#   - !type:AddCompsEffect
+#     components:
+#     - type: Psionic
+#     - type: PsionicRegenerationPower
+
 - type: trait # Bible not included
   id: TraitReligious
   name: trait-religious-name

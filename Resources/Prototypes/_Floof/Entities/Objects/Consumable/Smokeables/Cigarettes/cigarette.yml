@@ -1,0 +1,20 @@
+- type: entity
+  id: CigaretteSyndicateFake
+  parent: Cigarette
+  name: cigarette
+  components:
+    - type: SolutionContainerManager
+      solutions:
+        smokable:
+          maxVol: 45
+          reagents:
+          - ReagentId: Tricordrazine
+            Quantity: 22.5
+          - ReagentId: Water
+            Quantity: 22.5
+      omnizinecigarette:
+        reagents:
+        - ReagentId: Nicotine
+          Quantity: 10
+        - type: Extractable
+          grindableSolutionName: omnizinecigarette
