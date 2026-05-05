@@ -12,7 +12,7 @@
 - type: startingGear
   id: SampleCollectorGear
   equipment:
-    id: VisitorMedicalPDA
+    id: MedicalPDA
     ears: ClothingHeadsetMedical
     pocket1: EncryptionKeyTraffic
     jumpsuit: ClothingUniformJumpsuitMedicalDoctor
