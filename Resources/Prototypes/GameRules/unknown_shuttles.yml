@@ -263,4 +263,4 @@
   - type: PrecognitionResult
     message: psionic-power-precognition-unknown-shuttle-sample-collector-result-message
   - type: LoadMapRule
-    gridPath: /_Floof/Maps/Shuttles/ShuttleEvent/samplecollector.yml
+    gridPath: /Maps/Floof/Shuttles/Event/SampleCollector/samplecollector.yml

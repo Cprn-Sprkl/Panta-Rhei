@@ -3586,18 +3586,6 @@ entities:
     - type: Transform
       pos: 3.5,-3.5
       parent: 2
-- proto: VisitorSampleCollector
-  entities:
-  - uid: 469
-    components:
-    - type: Transform
-      pos: 2.0789149,-0.53010535
-      parent: 2
-  - uid: 470
-    components:
-    - type: Transform
-      pos: 2.9756377,-1.7384384
-      parent: 2
 - proto: WallmountTelevision
   entities:
   - uid: 104
