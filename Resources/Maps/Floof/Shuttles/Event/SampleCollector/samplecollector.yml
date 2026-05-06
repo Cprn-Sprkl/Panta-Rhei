@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/06/2026 06:00:56
-  entityCount: 480
+  time: 05/06/2026 06:51:08
+  entityCount: 483
 maps: []
 grids:
 - 2
@@ -304,11 +304,11 @@ entities:
       parent: 2
     - type: DeviceList
       devices:
+      - 46
+      - 255
+      - 49
       - 47
       - 123
-      - 46
-      - 49
-      - 255
     - type: Fixtures
       fixtures: {}
   - uid: 294
@@ -318,18 +318,25 @@ entities:
       parent: 2
     - type: DeviceList
       devices:
-      - 51
-      - 50
-      - 302
-      - 303
+      - 483
       - 301
+      - 302
       - 300
-      - 182
+      - 50
+      - 51
+    - type: Fixtures
+      fixtures: {}
+  - uid: 303
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,2.5
+      parent: 2
+    - type: DeviceList
+      devices:
       - 185
-      - 183
-      - 184
-      - 46
-      - 47
+      - 182
+      - 301
     - type: Fixtures
       fixtures: {}
   - uid: 463
@@ -340,9 +347,35 @@ entities:
       parent: 2
     - type: DeviceList
       devices:
-      - 303
+      - 483
       - 273
       - 180
+    - type: Fixtures
+      fixtures: {}
+  - uid: 481
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,2.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 184
+      - 183
+      - 300
+    - type: Fixtures
+      fixtures: {}
+  - uid: 482
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,-3.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 186
+      - 181
+      - 302
     - type: Fixtures
       fixtures: {}
 - proto: AirlockExternalGlassShuttleArrivals
@@ -419,8 +452,10 @@ entities:
     - type: Transform
       pos: -3.5,0.5
       parent: 2
+    - type: AccessReader
+      accessListsOriginal: []
     - type: Door
-      secondsUntilStateChange: -200.36536
+      secondsUntilStateChange: -487.30313
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1368,6 +1403,7 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
+      - 481
       - 294
   - uid: 301
     components:
@@ -1376,6 +1412,7 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
+      - 303
       - 294
   - uid: 302
     components:
@@ -1384,18 +1421,18 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
+      - 482
       - 294
-  - uid: 303
+  - uid: 483
     components:
     - type: Transform
+      rot: 1.5707963267948966 rad
       pos: -3.5,0.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
-      - 294
       - 463
+      - 294
 - proto: FirelockGlass
   entities:
   - uid: 46
@@ -1405,7 +1442,6 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
-      - 294
       - 292
   - uid: 47
     components:
@@ -1414,7 +1450,6 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
-      - 294
       - 292
 - proto: GasMixerEnabled
   entities:
@@ -1981,7 +2016,7 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
-      - 294
+      - 481
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 185
@@ -1991,7 +2026,7 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
-      - 294
+      - 303
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 186
@@ -2000,6 +2035,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -1.5,-3.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 482
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 188
@@ -2054,6 +2092,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,-3.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 482
     - type: AtmosPipeColor
       color: '#990000FF'
   - uid: 182
@@ -2063,7 +2104,7 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
-      - 294
+      - 303
     - type: AtmosPipeColor
       color: '#990000FF'
   - uid: 183
@@ -2073,7 +2114,7 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
-      - 294
+      - 481
     - type: AtmosPipeColor
       color: '#990000FF'
   - uid: 255
