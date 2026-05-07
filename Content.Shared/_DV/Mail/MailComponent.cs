@@ -124,4 +124,10 @@ public sealed partial class MailComponent : Component
     /// Used to cancel the penalty timer when priority mail is successfully delivered.
     /// </summary>
     public CancellationTokenSource? PriorityCancelToken;
+
+    // Euphoria - Mail Tracker
+    /// <summary>
+    /// Stores the entity ID of the recipient for passing to a mail tracker.
+    /// </summary>
+    public EntityUid RecipientUID;
 }

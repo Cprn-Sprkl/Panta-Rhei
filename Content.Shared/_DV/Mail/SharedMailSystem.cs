@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._DV.Cargo.Components;
 using Content.Shared._DV.Cargo.Systems;
+using Content.Shared._DV.Tips.Conditions;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -20,6 +21,7 @@ using Content.Shared.Mind;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.PDA;
+using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
 using Content.Shared.Station;
 using Content.Shared.Tag;
@@ -48,6 +50,7 @@ public abstract class SharedMailSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] protected readonly SharedStationSystem Station = default!;
     [Dependency] protected readonly TagSystem Tag = default!;
+    [Dependency] private readonly SharedPinpointerSystem _sharedPinpointerSystem = default!;
 
     private static readonly ProtoId<TagPrototype> RecyclableTag = "Recyclable";
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
@@ -84,6 +87,14 @@ public abstract class SharedMailSystem : EntitySystem
 
         if (!HasComp<AccessReaderComponent>(ent))
             return;
+
+        // Euphoria - Intercept for Mail Tracker
+        if (HasComp<PinpointerComponent>(args.Used))
+        {
+            SetMailTrackerTarget(ent.Comp, args.Used);
+            return;
+        }
+        // Euphoria - End
 
         IdCardComponent? idCard = null; // We need an ID card.
 
@@ -148,6 +159,19 @@ public abstract class SharedMailSystem : EntitySystem
         }
 
         Dirty(ent);
+    }
+
+    // Euphoria - Mail Tracker
+    /// <summary>
+    /// Handles setting the target of a mail tracker.
+    /// </summary>
+    private void SetMailTrackerTarget(MailComponent mail, EntityUid pointer)
+    {
+        var pointcomp = Comp<PinpointerComponent>(pointer);
+        if (pointcomp.MailTracker == true)
+        {
+            _sharedPinpointerSystem.SetTarget(pointer, mail.RecipientUID, pointcomp);
+        }
     }
 
     /// <summary>
@@ -430,7 +454,8 @@ public abstract class SharedMailSystem : EntitySystem
                 idCard.Comp.LocalizedJobTitle ?? idCard.Comp.JobTitle ?? "Unknown",
                 idCard.Comp.JobIcon,
                 accessTags,
-                mayReceivePriorityMail);
+                mayReceivePriorityMail,
+                receiverUid); //Euphoria - Mail Tracker
 
             return true;
         }
@@ -520,11 +545,13 @@ public struct MailRecipient(
     string job,
     string jobIcon,
     HashSet<ProtoId<AccessLevelPrototype>> accessTags,
-    bool mayReceivePriorityMail)
+    bool mayReceivePriorityMail,
+    EntityUid recieverUID) //Euphoria - Mail Tracker
 {
     public readonly string Name = name;
     public readonly string Job = job;
     public readonly string JobIcon = jobIcon;
     public readonly HashSet<ProtoId<AccessLevelPrototype>> AccessTags = accessTags;
     public readonly bool MayReceivePriorityMail = mayReceivePriorityMail;
+    public readonly EntityUid RecieverUID = recieverUID; //Euphoria - Mail Tracker
 }
