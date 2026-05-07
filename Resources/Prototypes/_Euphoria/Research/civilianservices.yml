@@ -13,7 +13,7 @@
   - MedicalPouch
 
 - type: technology
-  id: Mail Tracker
+  id: MailTracker
   name: research-technology-mail-tracker
   icon:
     sprite: Objects/Devices/pinpointer.rsi
