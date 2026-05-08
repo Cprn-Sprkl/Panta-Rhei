@@ -11,15 +11,3 @@
   cost: 5000
   recipeUnlocks:
   - MedicalPouch
-
-- type: technology
-  id: MailTracker
-  name: research-technology-mail-tracker
-  icon:
-    sprite: Objects/Devices/pinpointer.rsi
-    state: pinpointer_mail
-  discipline: CivilianServices
-  tier: 1
-  cost: 5000
-  recipeUnlocks:
-  - PinpointerMailTracker

@@ -136,7 +136,6 @@
     - Mining
     - SalvageWeapons
     - SalvageHardsuits
-    - MailTracker #Euphoria - Mail Tracker
   - type: Machine
     board: LogisticsTechFabCircuitboard
   - type: StealTarget

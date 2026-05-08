@@ -1,8 +1,0 @@
-- type: latheRecipe
-  id: PinpointerMailTracker
-  result: PinpointerMailTracker
-  completetime: 3
-  materials:
-    Glass: 200 # Two screens
-    Steel: 400 # Case
-    Gold: 100 # Electronics
