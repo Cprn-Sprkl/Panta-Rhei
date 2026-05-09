@@ -31,3 +31,5 @@
   - type: Pinpointer
     updateTargetName: true
     mailTracker: true
+  - type: AccessReader
+    access: [[ Mail ]]

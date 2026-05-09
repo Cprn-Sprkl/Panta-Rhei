@@ -50,7 +50,7 @@ public abstract class SharedMailSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] protected readonly SharedStationSystem Station = default!;
     [Dependency] protected readonly TagSystem Tag = default!;
-    [Dependency] private readonly SharedPinpointerSystem _sharedPinpointerSystem = default!;
+    [Dependency] private readonly SharedPinpointerSystem _sharedPinpointerSystem = default!; //Euphoria - Mail Tracker
 
     private static readonly ProtoId<TagPrototype> RecyclableTag = "Recyclable";
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
@@ -89,9 +89,12 @@ public abstract class SharedMailSystem : EntitySystem
             return;
 
         // Euphoria - Intercept for Mail Tracker
-        if (HasComp<PinpointerComponent>(args.Used))
+        if (HasComp<PinpointerComponent>(args.Used) && Comp<PinpointerComponent>(args.Used).MailTracker == true)
         {
-            SetMailTrackerTarget(ent.Comp, args.Used);
+            if (Access.IsAllowed(args.User, args.Used))
+            {
+                SetMailTrackerTarget(ent.Comp, args.Used);
+            }
             return;
         }
         // Euphoria - End
@@ -165,13 +168,15 @@ public abstract class SharedMailSystem : EntitySystem
     /// <summary>
     /// Handles setting the target of a mail tracker.
     /// </summary>
-    private void SetMailTrackerTarget(MailComponent mail, EntityUid pointer)
+    private bool SetMailTrackerTarget(MailComponent mail, EntityUid pointer)
     {
         var pointcomp = Comp<PinpointerComponent>(pointer);
-        if (pointcomp.MailTracker == true)
+        if (_idCard.TryFindIdCard(mail.RecipientUID, out var targetID))
         {
-            _sharedPinpointerSystem.SetTarget(pointer, mail.RecipientUID, pointcomp);
+            _sharedPinpointerSystem.SetTarget(pointer, targetID, pointcomp);
+            return true;
         }
+        return false;
     }
 
     /// <summary>
