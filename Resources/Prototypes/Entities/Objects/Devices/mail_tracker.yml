@@ -30,6 +30,8 @@
     state: pinpointer-way
   - type: Pinpointer
     updateTargetName: true
-    mailTracker: true
+  - type: MailPinpointer
   - type: AccessReader
     access: [[ Mail ]]
+  - type: UseDelay
+    delay: 5

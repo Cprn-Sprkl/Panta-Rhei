@@ -3,6 +3,7 @@ using System.Linq;
 using Content.Shared._DV.Cargo.Components;
 using Content.Shared._DV.Cargo.Systems;
 using Content.Shared._DV.Tips.Conditions;
+using Content.Shared._Euphoria.MailPinpointer;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -25,6 +26,7 @@ using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
 using Content.Shared.Station;
 using Content.Shared.Tag;
+using Content.Shared.Timing;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -51,6 +53,7 @@ public abstract class SharedMailSystem : EntitySystem
     [Dependency] protected readonly SharedStationSystem Station = default!;
     [Dependency] protected readonly TagSystem Tag = default!;
     [Dependency] private readonly SharedPinpointerSystem _sharedPinpointerSystem = default!; //Euphoria - Mail Tracker
+    [Dependency] private readonly UseDelaySystem _useDelay = default!; //Euphoria - Mail Tracker
 
     private static readonly ProtoId<TagPrototype> RecyclableTag = "Recyclable";
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
@@ -89,12 +92,31 @@ public abstract class SharedMailSystem : EntitySystem
             return;
 
         // Euphoria - Intercept for Mail Tracker
-        if (HasComp<PinpointerComponent>(args.Used) && Comp<PinpointerComponent>(args.Used).MailTracker == true)
+        if (TryComp<MailPinpointerComponent>(args.Used, out var mailPinComp))
         {
+            TryComp(args.Used, out UseDelayComponent? delayComp);
+            if (_useDelay.IsDelayed((args.Used, delayComp)))
+                return;
+
             if (Access.IsAllowed(args.User, args.Used))
             {
-                SetMailTrackerTarget(ent.Comp, args.Used);
+                if (SetMailTrackerTarget(ent.Comp, args.Used))
+                {
+                    _popup.PopupPredicted(Loc.GetString("mail-tracker-started"), args.Used, args.User);
+                    Audio.PlayPredicted(mailPinComp.UseSuccess, args.Used, args.User);
+                    _useDelay.TryResetDelay(args.Used, true);
+                }
+                else
+                {
+                    _popup.PopupPredicted(Loc.GetString("mail-tracker-failed"), args.Used, args.User);
+                    Audio.PlayPredicted(mailPinComp.UseFail, args.Used, args.User);
+                }
+                _useDelay.TryResetDelay(args.Used, true);
+                return;
             }
+            _popup.PopupPredicted(Loc.GetString("mail-tracker-denied"), args.Used, args.User);
+            Audio.PlayPredicted(mailPinComp.UseDeny, args.Used, args.User);
+            _useDelay.TryResetDelay(args.Used, true);
             return;
         }
         // Euphoria - End

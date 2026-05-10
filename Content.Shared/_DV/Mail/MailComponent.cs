@@ -129,5 +129,6 @@ public sealed partial class MailComponent : Component
     /// <summary>
     /// Stores the entity ID of the recipient for passing to a mail tracker.
     /// </summary>
+    [AutoNetworkedField]
     public EntityUid RecipientUID;
 }

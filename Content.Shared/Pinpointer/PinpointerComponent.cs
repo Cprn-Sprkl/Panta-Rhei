@@ -68,13 +68,6 @@ public sealed partial class PinpointerComponent : Component
     /// </summary>
     [DataField("activateImmediately"), ViewVariables]
     public bool ActivateImmediately = false;
-
-    // Euphoria - Mail Tracker
-    /// <summary>
-    /// Sets whether this tracker can track mail recipients.
-    /// </summary>
-    [DataField("mailTracker"), ViewVariables]
-    public bool MailTracker = false;
 }
 
 [Serializable, NetSerializable]
