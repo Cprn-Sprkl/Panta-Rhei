@@ -588,8 +588,8 @@ namespace Content.Client.Lobby.UI
                 }
             }
 
-            Traits.SetSelectedTraits(selectedTraits);
             Traits.UpdateConditions(Profile);
+            Traits.SetSelectedTraits(selectedTraits);
         }
         // End DeltaV - Traits Integration
 
