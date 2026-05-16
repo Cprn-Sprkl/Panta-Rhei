@@ -588,8 +588,9 @@ namespace Content.Client.Lobby.UI
                 }
             }
 
-            Traits.UpdateConditions(Profile);
+            Traits.ResetConditions(); //Euphoria | Clears previous profile's conditions.
             Traits.SetSelectedTraits(selectedTraits);
+            Traits.UpdateConditions(Profile);
         }
         // End DeltaV - Traits Integration
 
