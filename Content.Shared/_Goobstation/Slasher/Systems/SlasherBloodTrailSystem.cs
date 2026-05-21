@@ -1,4 +1,4 @@
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.FixedPoint;
 using Content.Shared._Goobstation.Slasher.Components;
 using Content.Shared._Goobstation.Slasher.Events;
 using Content.Shared.Actions;

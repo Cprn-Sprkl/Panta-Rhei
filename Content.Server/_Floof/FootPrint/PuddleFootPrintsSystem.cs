@@ -1,6 +1,7 @@
 ﻿using Content.Shared._EE.Flight;
 using Content.Shared._EE.FootPrint;
 using Content.Shared._Floof.Footprint;
+using Content.Shared._Goobstation.PhaseShift;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
@@ -30,6 +31,11 @@ public sealed class PuddleFootPrintsSystem : EntitySystem
     private void OnStepTrigger(EntityUid uid, PuddleFootPrintsComponent component, ref EndCollideEvent args)
     {
         // Floofstation note: the below checks ensure OtherBody is a puddle nad uid is not
+
+        // Checks if phase shifted
+        if (TryComp<PhaseShiftedComponent>(uid, out _))
+            return;
+
         // This check was expanded to accomodate for non-flight-related flying
         if (_flight.IsFlying(uid) || TryComp<PhysicsComponent>(uid, out var phys) && phys.BodyStatus == BodyStatus.InAir)
             return;

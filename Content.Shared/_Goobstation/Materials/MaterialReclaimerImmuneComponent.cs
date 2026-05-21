@@ -1,4 +1,4 @@
-namespace Content.Client._Goobstation.Materials;
+namespace Content.Shared._Goobstation.Materials;
 
 /// <summary>
 /// Prevents this entity from being processed by an emagged recycler.

@@ -1,7 +1,7 @@
 using Content.Shared._Goobstation.Slasher.Components;
 using Content.Shared._Goobstation.Slasher.Events;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
+//using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components; // Euph | No wound
+//using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems; // Euph | No wound
 using Content.Shared.Actions;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
@@ -35,7 +35,7 @@ public sealed class SlasherMassacreSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly WoundSystem _wounds = default!;
+    //[Dependency] private readonly WoundSystem _wounds = default!; // Euph | No wound
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -291,51 +291,58 @@ public sealed class SlasherMassacreSystem : EntitySystem
     // Handles severing a random limb.
     private bool TrySeverRandomLimb(EntityUid victim)
     {
-        var parts = _body.GetBodyChildren(victim);
-        var severable = new List<EntityUid>();
+        // TODO Euphoria | Make alternate sever method
+        // Euphoria | No woundmed
+        return false;
+        // var parts = _body.GetBodyChildren(victim);
+        // var severable = new List<EntityUid>();
 
-        foreach (var part in parts)
-            if (part.Component.PartType is BodyPartType.Arm or BodyPartType.Leg)
-                severable.Add(part.Id);
+        // foreach (var part in parts)
+        //     if (part.Component.PartType is BodyPartType.Arm or BodyPartType.Leg)
+        //         severable.Add(part.Id);
 
-        if (severable.Count == 0)
-            return false;
+        // if (severable.Count == 0)
+        //     return false;
 
-        var pickedLimb = _random.Pick(severable);
+        // var pickedLimb = _random.Pick(severable);
 
-        if (!TryComp<WoundableComponent>(pickedLimb, out var limbWoundable)
-            || !limbWoundable.ParentWoundable.HasValue)
-            return false;
+        // if (!TryComp<WoundableComponent>(pickedLimb, out var limbWoundable)
+        //     || !limbWoundable.ParentWoundable.HasValue)
+        //     return false;
 
-        _wounds.AmputateWoundableSafely(limbWoundable.ParentWoundable.Value, pickedLimb, limbWoundable);
+        // _wounds.AmputateWoundableSafely(limbWoundable.ParentWoundable.Value, pickedLimb, limbWoundable);
 
-        if (_net.IsServer)
-            _popup.PopupEntity(Loc.GetString("slasher-massacre-limb"), victim, PopupType.Medium);
-        return true;
+        // if (_net.IsServer)
+        //     _popup.PopupEntity(Loc.GetString("slasher-massacre-limb"), victim, PopupType.Medium);
+        // return true;
     }
 
     // Handles decapitation.
     private bool Decapitate(EntityUid victim)
     {
-        var parts = _body.GetBodyChildren(victim);
-        EntityUid? head = null;
-        EntityUid? chest = null;
-        foreach (var part in parts)
-        {
-            switch (part.Component.PartType)
-            {
-                case BodyPartType.Head:
-                    head = part.Id;
-                    break;
-                case BodyPartType.Chest:
-                    chest = part.Id;
-                    break;
-            }
-        }
-        if (head == null || chest == null)
-            return false;
-        _wounds.AmputateWoundable(chest.Value, head.Value);
-        return true;
+        //TODO Euphoria | Make alternate part removal method
+        //Euphoria | no woundmed
+        return false;
+
+        // var parts = _body.GetBodyChildren(victim);
+        // EntityUid? head = null;
+        // EntityUid? chest = null;
+        // foreach (var part in parts)
+        // {
+        //     switch (part.Component.PartType)
+        //     {
+        //         case BodyPartType.Head:
+        //             head = part.Id;
+        //             break;
+        //         case BodyPartType.Chest:
+        //             chest = part.Id;
+        //             break;
+        //     }
+        // }
+        // if (head == null || chest == null)
+        //     return false;
+        // _wounds.AmputateWoundable(chest.Value, head.Value);
+        // return true;
     }
 
     /// <summary>

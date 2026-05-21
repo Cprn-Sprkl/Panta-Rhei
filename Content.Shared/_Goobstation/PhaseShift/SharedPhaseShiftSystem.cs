@@ -8,17 +8,17 @@ using Content.Shared.Stealth.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Events;
 using Content.Shared.Electrocution;
 using Content.Shared.Emoting;
 using Content.Shared.Flash;
-using Content.Shared.InteractionVerbs.Events;
 using Content.Shared.Pointing;
 using Content.Shared.ProximityDetection;
 using Content.Shared.Standing;
 using Content.Shared.StepTrigger.Systems;
-using Content.Goobstation.Common.Footprints;
+using Content.Shared.Chat;
+using Content.Shared._Floof.InteractionVerbs.Events;
 
 namespace Content.Shared._Goobstation.PhaseShift;
 
@@ -50,7 +50,7 @@ public abstract class SharedPhaseShiftSystem : EntitySystem
         SubscribeLocalEvent<PhaseShiftedComponent, BeforeEmoteEvent>(OnBeforeEmote);
         SubscribeLocalEvent<PhaseShiftedComponent, EmoteAttemptEvent>(OnEmoteAttempt);
         SubscribeLocalEvent<PhaseShiftedComponent, PointAttemptEvent>(OnPointAttempt);
-        SubscribeLocalEvent<PhaseShiftedComponent, FootprintLeaveAttemptEvent>(OnFootprintLeaveAttempt);
+        //SubscribeLocalEvent<PhaseShiftedComponent, FootprintLeaveAttemptEvent>(OnFootprintLeaveAttempt); //Euphoria | Handled by floof footprint system
         SubscribeLocalEvent<PhaseShiftedComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
         SubscribeLocalEvent<PhaseShiftedComponent, ProximityDetectionAttemptEvent>(OnProximityDetectionAttempt);
 
@@ -147,10 +147,11 @@ public abstract class SharedPhaseShiftSystem : EntitySystem
         args.Cancel();
     }
 
-    private void OnFootprintLeaveAttempt(EntityUid uid, PhaseShiftedComponent comp, ref FootprintLeaveAttemptEvent args)
-    {
-        args.Cancel();
-    }
+    // Euphoria | Handled by floof footprint systems
+    // private void OnFootprintLeaveAttempt(EntityUid uid, PhaseShiftedComponent comp, ref FootprintLeaveAttemptEvent args)
+    // {
+    //     args.Cancel();
+    // }
 
     private void OnStepTriggerAttempt(EntityUid uid, PhaseShiftedComponent comp, ref StepTriggerAttemptEvent args)
     {

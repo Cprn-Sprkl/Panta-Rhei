@@ -12,14 +12,15 @@ using Content.Shared.Stealth.Components;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Pulling.Components;
 using Robust.Shared.Network;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Speech.Muting;
-using Content.Goobstation.Common.Atmos;
-using Content.Goobstation.Common.Body.Components;
-using Content.Goobstation.Common.Temperature.Components;
+using Content.Shared._Goobstation.Atmos;
+using Content.Shared._Goobstation.Body.Components;
+using Content.Shared._Goobstation.Temperature.Components;
 using Content.Shared.Physics;
 using Content.Shared.DoAfter;
 using Robust.Shared.Timing;
@@ -36,11 +37,11 @@ using Content.Shared.Body.Part;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics;
 using Content.Shared.Throwing;
-using Content.Shared._Goobstation.Sprinting;
+//using Content.Shared._Goobstation.Sprinting; //Euphoria | Different move system
 using Content.Shared.Stunnable;
 using Content.Shared.Trigger;
 using Content.Shared.Trigger.Components.Triggers;
-using Content.Goobstation.Common.Materials;
+using Content.Shared._Goobstation.Materials;
 
 namespace Content.Shared._Goobstation.Slasher.Systems;
 
@@ -62,7 +63,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly FixtureSystem _fixtures = default!;
     [Dependency] private readonly SlasherObserverCheckSystem _observerCheck = default!;
-    [Dependency] private readonly SharedSprintingSystem _sprinting = default!;
+    //[Dependency] private readonly SharedSprintingSystem _sprinting = default!; //Euphoria | different move system
 
     private const string FootstepSoundTag = "FootstepSound";
 
@@ -84,7 +85,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
         SubscribeLocalEvent<SlasherIncorporealComponent, PullStoppedMessage>(OnPullStopped);
         SubscribeLocalEvent<DamageableComponent, BeforeDamageChangedEvent>(OnBeforeDamageBodyPart);
         SubscribeLocalEvent<ActionComponent, ActionAttemptEvent>(OnAnyActionAttempt);
-        SubscribeLocalEvent<SlasherIncorporealComponent, SprintAttemptEvent>(OnSprintAttempt);
+        //SubscribeLocalEvent<SlasherIncorporealComponent, SprintAttemptEvent>(OnSprintAttempt); //Euphoria | different move system
         SubscribeLocalEvent<SlasherIncorporealComponent, DownAttemptEvent>(OnDownAttempt);
         SubscribeLocalEvent<SlasherIncorporealComponent, KnockDownAttemptEvent>(OnKnockDownAttempt);
         SubscribeLocalEvent<SlasherIncorporealComponent, FlashAttemptEvent>(OnFlashAttempt);
@@ -229,7 +230,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
         // don't wanna let people see them obviously.
         var stealth = EnsureComp<StealthComponent>(uid);
         _stealth.SetVisibility(uid, stealth.MinVisibility, stealth);
-        _stealth.SetThermalsImmune(uid, true, stealth);
+        //_stealth.SetThermalsImmune(uid, true, stealth); //TODO Euphoria | Update ThermalVisionOverlay
 
         _actions.SetEnabled(ent.Comp.IncorporealizeActionEnt, false);
         _actions.SetEnabled(ent.Comp.CorporealizeActionEnt, true);
@@ -255,8 +256,9 @@ public sealed class SlasherIncorporealSystem : EntitySystem
         EnsureComp<SpecialLowTempImmunityComponent>(uid);
         EnsureComp<SpecialHighTempImmunityComponent>(uid);
 
-        // Supermatter immunity
-        EnsureComp<SupermatterImmuneComponent>(uid);
+        // Euphoria | No supermatter
+        // // Supermatter immunity
+        // EnsureComp<SupermatterImmuneComponent>(uid);
 
         // Recycler immunity
         EnsureComp<MaterialReclaimerImmuneComponent>(uid);
@@ -314,8 +316,9 @@ public sealed class SlasherIncorporealSystem : EntitySystem
         RemComp<SpecialLowTempImmunityComponent>(uid);
         RemComp<SpecialHighTempImmunityComponent>(uid);
 
-        // Remove supermatter immunity
-        RemComp<SupermatterImmuneComponent>(uid);
+        // Euphoria | No supermatter
+        // // Remove supermatter immunity
+        // RemComp<SupermatterImmuneComponent>(uid);
 
         // Remove recycler immunity
         RemComp<MaterialReclaimerImmuneComponent>(uid);
@@ -431,11 +434,12 @@ public sealed class SlasherIncorporealSystem : EntitySystem
         args.Cancelled = true;
     }
 
-    private void OnSprintAttempt(EntityUid uid, SlasherIncorporealComponent comp, ref SprintAttemptEvent args)
-    {
-        if (comp.IsIncorporeal)
-            args.Cancel();
-    }
+    // Euphoria | Different move system
+    // private void OnSprintAttempt(EntityUid uid, SlasherIncorporealComponent comp, ref SprintAttemptEvent args)
+    // {
+    //     if (comp.IsIncorporeal)
+    //         args.Cancel();
+    // }
 
     private void OnDownAttempt(EntityUid uid, SlasherIncorporealComponent comp, DownAttemptEvent args)
     {
