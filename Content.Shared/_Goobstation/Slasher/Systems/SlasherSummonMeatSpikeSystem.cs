@@ -1,20 +1,17 @@
-using Content.Goobstation.Shared.Slasher.Components;
-using Content.Goobstation.Shared.Slasher.Events;
-using Content.Shared.Actions;
+using Content.Shared._Goobstation.Slasher.Components;
+using Content.Shared._Goobstation.Slasher.Events;
 using Content.Shared.Actions;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 
-namespace Content.Goobstation.Shared.Slasher.Systems;
-namespace Content.Goobstation.Shared.Slasher.Systems;
+namespace Content.Shared._Goobstation.Slasher.Systems;
 
 /// <summary>
 /// Handles summoning a meat spike at the slasher's position.
 /// </summary>
 public sealed class SlasherSummonMeatSpikeSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;

@@ -1,17 +1,16 @@
-using Content.Goobstation.Shared.Slasher.Components;
-using Content.Goobstation.Shared.Slasher.Events;
+using Content.Shared._Goobstation.Slasher.Components;
+using Content.Shared._Goobstation.Slasher.Events;
 using Content.Shared.Actions;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffect;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 
-namespace Content.Goobstation.Shared.Slasher.Systems;
+namespace Content.Shared._Goobstation.Slasher.Systems;
 
 /// <summary>
 /// Handles the Slasher Stagger Area action. When used, slows nearby mobs in range for a short duration.

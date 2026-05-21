@@ -1,5 +1,5 @@
-using Content.Goobstation.Shared.Slasher.Components;
-using Content.Goobstation.Shared.Slasher.Events;
+using Content.Shared._Goobstation.Slasher.Components;
+using Content.Shared._Goobstation.Slasher.Events;
 using Content.Shared.Actions;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -7,7 +7,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 
-namespace Content.Goobstation.Shared.Slasher.Systems;
+namespace Content.Shared._Goobstation.Slasher.Systems;
 
 public sealed class SlasherSummonMacheteSystem : EntitySystem
 {

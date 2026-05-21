@@ -1,6 +1,6 @@
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Goobstation.Shared.Slasher.Components;
-using Content.Goobstation.Shared.Slasher.Events;
+using Content.Shared.FixedPoint;
+using Content.Shared._Goobstation.Slasher.Components;
+using Content.Shared._Goobstation.Slasher.Events;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Body.Components;
@@ -12,7 +12,7 @@ using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Audio.Systems;
 
-namespace Content.Goobstation.Shared.Slasher.Systems;
+namespace Content.Shared._Goobstation.Slasher.Systems;
 
 public sealed class SlasherRegenerateSystem : EntitySystem
 {
@@ -70,7 +70,8 @@ public sealed class SlasherRegenerateSystem : EntitySystem
         // If our entity is cuffed/in-cuffs --> uncuff them
         if (TryComp<CuffableComponent>(uid, out var cuffs) && cuffs.Container.ContainedEntities.Count > 0)
         {
-            var cuff = cuffs.LastAddedCuffs;
+            //var cuff = cuffs.LastAddedCuffs; //Euphoria | No last cuff
+            var cuff = cuffs.Container.ContainedEntities[0]; //Euphoria | Workaround
             _cuffs.Uncuff(uid, uid, cuff);
             QueueDel(cuff);
         }
