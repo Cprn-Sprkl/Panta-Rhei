@@ -31,6 +31,8 @@ using Robust.Shared.Timing;
 using Content.Server.Bible.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared._Goobstation.Religion;
+using Content.Shared.Follower;
+using Content.Shared.Follower.Components;
 
 namespace Content.Server._Goobstation.Possession;
 
@@ -48,6 +50,7 @@ public sealed partial class PossessionSystem : EntitySystem
     [Dependency] private readonly ActionsSystem _action = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly FollowerSystem _follower = default!;
 
     private static readonly ProtoId<TagPrototype> CannotSuicideAnyTag = "CannotSuicideAny"; // DeltaV - Don't use literals.
     private static readonly EntProtoId LolipopProto = "FoodLollipop"; // DeltaV - Don't use literals.
