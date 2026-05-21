@@ -48,13 +48,14 @@ public sealed class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoadProfile
         args.Entity = Spawn(species.Prototype);
         _humanoid.LoadProfile(args.Entity.Value, profile?.WithSpecies(species.ID));
 
-        // Goobstation start - Make entities spawn at max size for their species
-        if (ent.Comp.ForceMaxSize
-            && TryComp<HumanoidAppearanceComponent>(args.Entity.Value, out var humanoid))
-        {
-            var maxScale = new Vector2(species.MaxWidth, species.MaxHeight);
-            _sharedHumanoid.SetScale(args.Entity.Value, maxScale, true, humanoid);
-        }
-        // Goobstation end
+        // Euphoria | Disabled until width
+        // // Goobstation start - Make entities spawn at max size for their species
+        // if (ent.Comp.ForceMaxSize
+        //     && TryComp<HumanoidAppearanceComponent>(args.Entity.Value, out var humanoid))
+        // {
+        //     var maxScale = new Vector2(species.MaxWidth, species.MaxHeight);
+        //     _sharedHumanoid.SetScale(args.Entity.Value, maxScale, true, humanoid);
+        // }
+        // // Goobstation end
     }
 }
