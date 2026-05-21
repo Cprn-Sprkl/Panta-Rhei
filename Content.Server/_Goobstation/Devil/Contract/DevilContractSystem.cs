@@ -468,6 +468,21 @@ public sealed partial class DevilContractSystem : EntitySystem
         Log.Debug($"Selected {selectedClause.ID} effect for {ToPrettyString(target)}"); // DeltaV - Use EntitySystem Logger intead of _sawmill
     }
 
+    public void AddRandomNegativeClauseSlasher(EntityUid target)
+    {
+        var negativeClauses = _prototypeManager.EnumeratePrototypes<DevilClausePrototype>()
+            .Where(c => c.ClauseWeight >= 0 && c.ID != "humanity")
+            .ToList();
+
+        if (negativeClauses.Count == 0)
+            return;
+
+        var selectedClause = _random.Pick(negativeClauses);
+        ApplyEffectToTarget(target, selectedClause, null);
+
+        Log.Debug($"Selected {selectedClause.ID} effect for {ToPrettyString(target)}");
+    }
+
     public void AddRandomPositiveClause(EntityUid target)
     {
         var positiveClauses = _prototypeManager.EnumeratePrototypes<DevilClausePrototype>()
