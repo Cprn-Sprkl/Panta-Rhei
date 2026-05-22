@@ -23,12 +23,12 @@
       collection: EyeOpen
     deactivateSound: !type:SoundCollectionSpecifier
       collection: EyeClose
-  - type: GrabIntent
-    grabThrownSpeed: 10
-    throwingDistance: 8
-    softGrabSpeedModifier: 1
-    hardGrabSpeedModifier: 1
-    chokeGrabSpeedModifier: 1
+#  - type: GrabIntent #Euphoria | No grab
+#    grabThrownSpeed: 10
+#    throwingDistance: 8
+#    softGrabSpeedModifier: 1
+#    hardGrabSpeedModifier: 1
+#    chokeGrabSpeedModifier: 1
   - type: Hunger
     baseDecayRate: 0
   - type: Thirst

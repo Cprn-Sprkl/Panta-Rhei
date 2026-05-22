@@ -8,22 +8,22 @@
     duration: null
     earliestStart: 30
     minimumPlayers: 30
-    chaos:
-      Hostile: 40
-      Combat: 40
-      Death: 40
-    eventType: HostilesSpawn
+#    chaos: # Euph | Not here
+#      Hostile: 40
+#      Combat: 40
+#      Death: 40
+#    eventType: HostilesSpawn
   - type: GameRule
     chaosScore: 600
   - type: AntagLockerSpawn
   - type: AntagLoadProfileRule
     speciesOverride: Human
     speciesOverrideBlacklist:
-    - Yowie
+#    - Yowie # Euph | Not here
     - IPC
     - Diona
     - Harpy
-    - Plasmaman
+#    - Plasmaman # Euph | Not here
     forceMaxSize: true
   - type: AntagObjectives
     objectives:
@@ -91,6 +91,6 @@
         mindRoles:
         - MindRoleGhostRoleSoloAntagonist
       - type: GhostTakeoverAvailable
-  - type: Tag
-    tags:
-    - MidroundAntag
+#  - type: Tag # Euph | Not here
+#    tags:
+#    - MidroundAntag

@@ -2,6 +2,12 @@
   id: Slasher
   name: roles-antag-slasher-name
   antagonist: true
+  requirements: # Euph | Requirement handling
+  - !type:OverallPlaytimeRequirement
+    time: 10h
+  - !type:RoleTimeRequirement
+    role: JobSecurityOfficer
+    time: 2h
   setPreference: false
   objective: roles-antag-slasher-objectives
   guides: [ Slasher ]
@@ -19,9 +25,9 @@
     - MindRoleGhostRoleSoloAntagonist
     raffle:
       settings: default
-    requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hours
+    # requirements: # Euph | Handled elsewhere
+    # - !type:OverallPlaytimeRequirement
+    #   time: 18000 #5 hours
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:

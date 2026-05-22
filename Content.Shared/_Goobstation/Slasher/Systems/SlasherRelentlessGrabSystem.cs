@@ -1,11 +1,10 @@
-using Content.Goobstation.Common.Grab;
-using Content.Goobstation.Common.MartialArts;
-using Content.Goobstation.Common.Weapons;
 using Content.Shared._Goobstation.Slasher.Components;
 using Content.Shared._Goobstation.Slasher.Events;
 using Content.Shared.Actions;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Weapons.Melee.Components;
+using Content.Shared.Weapons.Melee.Events; //Euphoria | No martial workaround
 
 namespace Content.Shared._Goobstation.Slasher.Systems;
 
@@ -26,7 +25,8 @@ public sealed class SlasherRelentlessGrabSystem : EntitySystem
         SubscribeLocalEvent<SlasherRelentlessGrabComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<SlasherRelentlessGrabComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<SlasherRelentlessGrabComponent, SlasherRelentlessGrabEvent>(OnActivate);
-        SubscribeLocalEvent<SlasherRelentlessGrabComponent, LightAttackSpecialInteractionEvent>(OnLightAttackSpecial);
+        //SubscribeLocalEvent<SlasherRelentlessGrabComponent, LightAttackSpecialInteractionEvent>(OnLightAttackSpecial);
+        SubscribeLocalEvent<SlasherRelentlessGrabComponent, LightAttackEvent>(OnLightAttackSpecial); // Euphoria | No martial workaround
     }
 
     private void OnMapInit(Entity<SlasherRelentlessGrabComponent> ent, ref MapInitEvent args)
@@ -45,6 +45,7 @@ public sealed class SlasherRelentlessGrabSystem : EntitySystem
             return;
 
         ent.Comp.Ready = true;
+        var throwComp = AddComp<MeleeThrowOnHitComponent>(ent.Owner); //Euphoria | Make melee hit knockback
         Dirty(ent);
 
         _popup.PopupPredicted(Loc.GetString("slasher-relentless-grab-activate"), ent.Owner, ent.Owner);
@@ -52,16 +53,29 @@ public sealed class SlasherRelentlessGrabSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnLightAttackSpecial(Entity<SlasherRelentlessGrabComponent> ent, ref LightAttackSpecialInteractionEvent args)
+    // Euphoria | No martial for hard grabs
+    // private void OnLightAttackSpecial(Entity<SlasherRelentlessGrabComponent> ent, ref LightAttackSpecialInteractionEvent args)
+    // {
+    //     if (!ent.Comp.Ready || args.Target == null)
+    //         return;
+
+    //     if (!_pulling.CanPull(args.User, args.Target.Value))
+    //         return;
+
+    //     if (!_pulling.TryStartPull(args.User, args.Target.Value, grabStageOverride: GrabStage.Hard, force: true))
+    //         return;
+
+    //     ent.Comp.Ready = false;
+    //     Dirty(ent);
+    // }
+
+    // Euphoria | Workaround to give a knockback instead of a grab
+    private void OnLightAttackSpecial(Entity<SlasherRelentlessGrabComponent> ent, ref LightAttackEvent args)
     {
         if (!ent.Comp.Ready || args.Target == null)
             return;
 
-        if (!_pulling.CanPull(args.User, args.Target.Value))
-            return;
-
-        if (!_pulling.TryStartPull(args.User, args.Target.Value, grabStageOverride: GrabStage.Hard, force: true))
-            return;
+        RemComp<MeleeThrowOnHitComponent>(ent.Owner); // Remove knockback
 
         ent.Comp.Ready = false;
         Dirty(ent);

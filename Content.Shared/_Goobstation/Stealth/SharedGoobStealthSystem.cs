@@ -8,15 +8,15 @@
 
 using Content.Shared.Stealth.Components;
 using Content.Shared.Stealth;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Ninja.Components;
 using Content.Shared.Ninja.Systems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Throwing;
-using Content.Goobstation.Shared.Slasher.Components; // For SlasherIncorporealComponent
+using Content.Shared._Goobstation.Slasher.Components; // For SlasherIncorporealComponent
 
-namespace Content.Goobstation.Shared.Stealth;
+namespace Content.Shared._Goobstation.Stealth;
 
 /// <summary>
 /// This handles goobstations additions to stealth system
@@ -28,10 +28,11 @@ public sealed class SharedGoobStealthSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<StealthComponent, MeleeAttackEvent> (OnMeleeAttack);
-        SubscribeLocalEvent<StealthComponent, SelfBeforeGunShotEvent> (OnGunShootAttack);
-        SubscribeLocalEvent<StealthComponent, BeforeDamageChangedEvent>(OnTakeDamage);
-        SubscribeLocalEvent<StealthComponent, BeforeThrowEvent>(OnThrow);
+        // Euphoria | Only need Slasher stealth enchancements FOR NOW
+        // SubscribeLocalEvent<StealthComponent, MeleeAttackEvent> (OnMeleeAttack);
+        // SubscribeLocalEvent<StealthComponent, SelfBeforeGunShotEvent> (OnGunShootAttack);
+        // SubscribeLocalEvent<StealthComponent, BeforeDamageChangedEvent>(OnTakeDamage);
+        // SubscribeLocalEvent<StealthComponent, BeforeThrowEvent>(OnThrow);
         SubscribeLocalEvent<SlasherIncorporealComponent, MoveEvent>(OnSlasherMove);
     }
 
@@ -49,61 +50,63 @@ public sealed class SharedGoobStealthSystem : EntitySystem
         if (currentVisibility > stealth.MinVisibility)
             _stealth.SetVisibility(uid, stealth.MinVisibility, stealth);
     }
-
-    private void OnTakeDamage(Entity<StealthComponent> ent, ref BeforeDamageChangedEvent args)
-    {
-        if (!ent.Comp.RevealOnDamage)
-            return;
-
-        if (!args.Damage.AnyPositive()) // being healed does not reveal
-            return;
-
-        if (args.Damage.GetTotal() <= ent.Comp.Threshold) //damage needs to be above threshold
-            return;
-
-        _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
-        TryRevealNinja(ent.Owner);
-    }
-
-    private void OnMeleeAttack(Entity<StealthComponent> ent, ref MeleeAttackEvent args)
-    {
-        if (!ent.Comp.RevealOnAttack)
-            return;
-
-        _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
-        TryRevealNinja(ent.Owner);
-    }
-
-    private void OnGunShootAttack(Entity<StealthComponent> ent, ref SelfBeforeGunShotEvent args)
-    {
-        if (!ent.Comp.RevealOnAttack)
-            return;
-
-        _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
-        TryRevealNinja(ent.Owner);
-    }
-
-    private void OnThrow(Entity<StealthComponent> ent, ref BeforeThrowEvent args)
-    {
-        if (!ent.Comp.RevealOnAttack)
-            return;
-
-        // Some goida stuff. If a slasher attempts to throw an item it stops them from throwing it BUTTTTT THEY STILL GET REVEALED, so here we are.
-        // Slasher
-        if (TryComp<SlasherIncorporealComponent>(ent.Owner, out var slasher) && slasher.IsIncorporeal)
-            return;
-
-        _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
-        TryRevealNinja(ent.Owner);
-    }
-
-    public void TryRevealNinja(EntityUid uid)
-    {
-        if (!TryComp(uid, out SpaceNinjaComponent? ninja))
-            return;
-
-        if (ninja.Suit is { } suit
-            && TryComp<NinjaSuitComponent>(suit, out var suitComp))
-            _suit.RevealNinja((suit, suitComp), uid, true);
-    }
 }
+
+//Euphoria | Only need the Slasher stealth enchancements FOR NOW
+//     private void OnTakeDamage(Entity<StealthComponent> ent, ref BeforeDamageChangedEvent args)
+//     {
+//         if (!ent.Comp.RevealOnDamage)
+//             return;
+
+//         if (!args.Damage.AnyPositive()) // being healed does not reveal
+//             return;
+
+//         if (args.Damage.GetTotal() <= ent.Comp.Threshold) //damage needs to be above threshold
+//             return;
+
+//         _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
+//         TryRevealNinja(ent.Owner);
+//     }
+
+//     private void OnMeleeAttack(Entity<StealthComponent> ent, ref MeleeAttackEvent args)
+//     {
+//         if (!ent.Comp.RevealOnAttack)
+//             return;
+
+//         _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
+//         TryRevealNinja(ent.Owner);
+//     }
+
+//     private void OnGunShootAttack(Entity<StealthComponent> ent, ref SelfBeforeGunShotEvent args)
+//     {
+//         if (!ent.Comp.RevealOnAttack)
+//             return;
+
+//         _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
+//         TryRevealNinja(ent.Owner);
+//     }
+
+//     private void OnThrow(Entity<StealthComponent> ent, ref BeforeThrowEvent args)
+//     {
+//         if (!ent.Comp.RevealOnAttack)
+//             return;
+
+//         // Some goida stuff. If a slasher attempts to throw an item it stops them from throwing it BUTTTTT THEY STILL GET REVEALED, so here we are.
+//         // Slasher
+//         if (TryComp<SlasherIncorporealComponent>(ent.Owner, out var slasher) && slasher.IsIncorporeal)
+//             return;
+
+//         _stealth.ModifyVisibility(ent.Owner, ent.Comp.MaxVisibility, ent.Comp);
+//         TryRevealNinja(ent.Owner);
+//     }
+
+//     public void TryRevealNinja(EntityUid uid)
+//     {
+//         if (!TryComp(uid, out SpaceNinjaComponent? ninja))
+//             return;
+
+//         if (ninja.Suit is { } suit
+//             && TryComp<NinjaSuitComponent>(suit, out var suitComp))
+//             _suit.RevealNinja((suit, suitComp), uid, true);
+//     }
+// }

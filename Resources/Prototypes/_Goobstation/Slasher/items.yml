@@ -64,8 +64,8 @@
   - type: SelfEquipOnly
     unequipRequireConscious: false
   - type: Armor
-    coverage:
-    - Head
+#    coverage: # Euph | Not here
+#    - Head
     modifiers:
       coefficients:
         Blunt: 0.90
@@ -73,9 +73,16 @@
         Piercing: 0.90
         Heat: 0.90
         Caustic: 0.90
-  - type: ClothingGrantComponent
-    component:
-    - type: FaceHuggerBlocker
+  - type: SlotBlocker # Euphoria | Slot blocking
+    blocks:
+      slots:
+      - HEAD
+      - EYES
+      - EARS
+      - MASK
+#  - type: ClothingGrantComponent # Euph | Not here
+#    component:
+#    - type: FaceHuggerBlocker
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -98,11 +105,11 @@
     - Apron
     - WhitelistChameleon
   - type: Armor
-    coverage:
-    - Chest
-    - Groin
-    - Arm
-    - Leg
+    # coverage: # Euph | Not here
+    # - Chest
+    # - Groin
+    # - Arm
+    # - Leg
     modifiers:
       coefficients:
         Blunt: 0.90
@@ -110,10 +117,15 @@
         Piercing: 0.90
         Heat: 0.90
         Caustic: 0.90
+  - type: SlotBlocker # Euphoria | Slot blocking
+    blocks:
+      slots:
+      - INNERCLOTHING
+      - LEGS
   - type: StaminaResistance
     damageCoefficient: 0.1
-  - type: ModifyDelayedKnockdown
-    cancel: true
+#  - type: ModifyDelayedKnockdown # Euphoria | Doesn't exist
+#    cancel: true
 
 - type: entity
   parent: ClothingHandsGlovesColorBlack
@@ -122,8 +134,8 @@
   description: Heavy black gloves, stained by time.
   components:
   - type: Armor
-    coverage:
-    - Hand
+    # coverage: # Euph | Not here
+    # - Hand
     modifiers:
       coefficients:
         Blunt: 0.90
@@ -139,8 +151,8 @@
   description: Old leather boots that have seen better days.
   components:
   - type: Armor
-    coverage:
-    - Foot
+    # coverage: # Euph | Not here
+    # - Foot
     modifiers:
       coefficients:
         Blunt: 0.90

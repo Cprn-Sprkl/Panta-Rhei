@@ -1,4 +1,4 @@
-using Content.Goobstation.Shared.Slasher.Objectives;
+using Content.Shared._Goobstation.Slasher.Objectives;
 using Content.Server.Objectives.Systems;
 using Content.Shared.Objectives.Components;
 

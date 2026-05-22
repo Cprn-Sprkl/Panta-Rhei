@@ -42,9 +42,9 @@
         key: Adrenaline
         component: IgnoreSlowOnDamage
         time: 5
-      - !type:TakeStaminaDamage
-        amount: -10
-        immediate: true
-      - !type:SuppressPain
-        amount: 1.2
-        time: 30
+      # - !type:TakeStaminaDamage # Euph | Not here
+      #   amount: -10
+      #   immediate: true
+      # - !type:SuppressPain
+      #   amount: 1.2
+      #   time: 30

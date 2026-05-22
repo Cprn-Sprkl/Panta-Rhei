@@ -928,7 +928,7 @@
   id: MaintenanceCloset # Goob - The Slasher
 
 - type: Tag
-  id: Matchstick
+  id: Machete # Goob - The Slasher
 
 - type: Tag
   id: Medal # Storage whitelist: MedalCase
