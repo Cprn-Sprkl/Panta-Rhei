@@ -14,7 +14,7 @@
 #      Death: 40
 #    eventType: HostilesSpawn
   - type: GameRule
-    chaosScore: 600
+    # chaosScore: 600 # Euph | Not here
   - type: AntagLockerSpawn
   - type: AntagLoadProfileRule
     speciesOverride: Human
