@@ -16,10 +16,10 @@ public sealed partial class PhaseShiftedComponent : Component
     public float MovementSpeedBuff = 1.5f;
 
     [DataField]
-    public int CollisionMask = (int) CollisionGroup.None;
+    public int CollisionMask = (int)CollisionGroup.None;
 
     [DataField]
-    public int CollisionLayer = (int) CollisionGroup.None;
+    public int CollisionLayer = (int)CollisionGroup.None;
 
     [DataField]
     public EntProtoId PhaseInEffect = "EffectEmpPulseNoSound";
