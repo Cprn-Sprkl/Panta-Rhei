@@ -848,10 +848,12 @@
   icon: { sprite: /Textures/Objects/Devices/encryption_keys.rsi, state: synd_label }
   #productEntity: BoxEncryptionKeySyndie # Two for the price of one
   productEntity: EncryptionKeySyndie
-  cost:
-   Telecrystal: 0
+  #Euphoria | Changed to TC 0, cost removed to properly label it "free"
   categories:
   - UplinkDeception
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 - type: listing
   id: UplinkBinaryTranslatorKey
@@ -1353,20 +1355,19 @@
       tags:
       - NukeOpsUplink
 
-# Euphoria | Brings back the cats
-- type: listing #// DeltaV - Remove syndicats
-  id: UplinkMobCatMicrobomb
-  name: uplink-mobcat-microbomb-name
-  description: uplink-mobcat-microbomb-desc
-  icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-syndicat }
-  productEntity: ReinforcementRadioSyndicateSyndiCat
-  discountCategory: usualDiscounts
-  discountDownTo:
-   Telecrystal: 3
-  cost:
-   Telecrystal: 6
-  categories:
-   - UplinkAllies
+# - type: listing # DeltaV - Remove syndicats
+#   id: UplinkMobCatMicrobomb
+#   name: uplink-mobcat-microbomb-name
+#   description: uplink-mobcat-microbomb-desc
+#   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-syndicat }
+#   productEntity: ReinforcementRadioSyndicateSyndiCat
+#   discountCategory: usualDiscounts
+#   discountDownTo:
+#    Telecrystal: 3
+#   cost:
+#    Telecrystal: 6
+#   categories:
+#    - UplinkAllies
 
 - type: listing
   id: UplinkSyndicatePersonalAI
@@ -1814,8 +1815,8 @@
       tags:
       # - NukeOpsUplink # DeltaV - Commented out as of #5462 (only commander and loneop can get suit)
   # Begin DeltaV additions - Jugsuit buy limit #5462
-      - CommanderUplink 
-      - LoneOpUplink 
+      - CommanderUplink
+      - LoneOpUplink
   - !type:ListingLimitedStockCondition
     stock: 1
   # End DeltaV additions
@@ -1961,8 +1962,7 @@
   name: uplink-operative-suit-name
   description: uplink-operative-suit-desc
   productEntity: ClothingUniformJumpsuitOperative
-  cost:
-    Telecrystal: 0 # DeltaV - was 1
+  #Euphoria | Was TC 0, cost removed to properly label it "free"
   categories:
   - UplinkPointless
   conditions: # DeltaV - free so limited stock
@@ -1974,8 +1974,7 @@
   name: uplink-operative-skirt-name
   description: uplink-operative-skirt-desc
   productEntity: ClothingUniformJumpskirtOperative
-  cost:
-    Telecrystal: 0 # DeltaV - was 1
+  #Euphoria | Was TC 0, cost removed to properly label it "free"
   categories:
   - UplinkPointless
   conditions: # DeltaV - free so limited stock
