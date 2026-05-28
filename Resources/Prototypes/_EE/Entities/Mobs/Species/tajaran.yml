@@ -54,6 +54,8 @@
         Piercing: 1
   - type: Speech
     speechSounds: Alto
+    speechVerb: Felinid
+    allowedEmotes: ['Meow', 'Hiss', 'Mew', 'Purr', 'Growl', 'SoftTrill', 'FelineTrill']
   - type: DamageOnHighSpeedImpact # Landing on all fours!
     damage:
       types:
