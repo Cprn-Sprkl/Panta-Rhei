@@ -3507,7 +3507,7 @@
   - type: Speech
     speechSounds: Cat
     speechVerb: SmallMob
-    allowedEmotes: ['Meow', 'Hiss', 'Mew', 'Purr', 'Growl', 'SoftTrill', 'FelineTrill'] #Euphoria | Cat emotes!
+    allowedEmotes: ['Meow', 'Hiss', 'Mew', 'Purr', 'Growl'] #Euphoria | Cat emotes!
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -3547,6 +3547,7 @@
     tags:
     - VimPilot
     - TajaranEmotes # Euphoria | Cat emotes
+    - DoorBumpOpener # Euphoria | Parity with emotional support cats
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 4
@@ -3678,9 +3679,6 @@
   - type: Temperature
     heatDamageThreshold: 423
     coldDamageThreshold: 0
-  - type: Tag
-    tags:
-      - DoorBumpOpener
   - type: MovementAlwaysTouching
   - type: PressureImmunity
   - type: ProtectedFromStepTriggers
