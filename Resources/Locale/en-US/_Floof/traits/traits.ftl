@@ -98,4 +98,4 @@ trait-name-BadShooting = Bad Aim
 trait-description-BadShooting = Due to a lack of training or simply a lack of skill or talent, you can't aim very well.
 
 trait-rrrolling-accent-name = Rrrolling Accent
-trait-rrrolling-accent-desc = Whether it's from culture, physicality, or just an affectation you roll you 'r's.
+trait-rrrolling-accent-desc = Whether it's from culture, physicality, or just an affectation you roll your 'r's.
