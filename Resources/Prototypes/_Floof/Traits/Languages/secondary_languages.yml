@@ -298,14 +298,6 @@
   description: trait-SiikMaas-desc
   category: Languages
   cost: 1
-  conditions:
-  - !type:OneOfSpeciesCondition
-    species:
-    - Tajaran
-    - Felinid
-    - Vulpkanin
-    - Rodentia
-    - Kitsune
   effects:
   - !type:ModifyLanguagesTraitEffect
     languagesSpoken:
