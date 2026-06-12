@@ -8,7 +8,7 @@ trait-foreigner-desc =
     For some reason, you do not speak this station's primary language.
     Instead, you have been issued a translator that only you can use.
 
-trait-foreign-origin-name = Foreign Origin
+trait-foreign-origin-name = Cultural Disconnect
 trait-foreign-origin-desc =
     For some reason, you do not speak the common languages of your species.
     Removes all languages granted by your species.
