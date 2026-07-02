@@ -21,11 +21,13 @@
   - type: Climbable
   - type: Clickable
   - type: Occluder
+  - type: TimedDespawnDetailed #Euphoria | Alter despawn time
+    lifetime: 14400 # 4 hours
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 500
+        damage: 200
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]

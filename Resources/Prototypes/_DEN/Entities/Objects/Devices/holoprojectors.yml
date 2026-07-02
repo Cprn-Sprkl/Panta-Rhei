@@ -27,8 +27,7 @@
       enum.LabelableHolosignUIKey.Key:
         type: LabelableHolosignProjectorBoundUserInterface
   - type: LimitedCharges
-    maxCharges: 2
-    charges: 2
+    maxCharges: 8
   - type: AutoRecharge
     rechargeDuration: 60
   - type: Tag

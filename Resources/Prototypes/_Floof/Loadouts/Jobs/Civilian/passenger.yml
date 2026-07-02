@@ -1884,5 +1884,5 @@
 - type: loadout
   id: HoloprojectorNSFW
   storage:
-    - back:
-        - HoloprojectorNSFW
+    back:
+    - HoloprojectorNSFW
