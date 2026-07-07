@@ -2,7 +2,7 @@
   parent: BaseItem
   id: HoloprojectorNSFW
   name: nsfw holobarrier projector
-  description: Creates a holographic barrier indicating an NSFW area.
+  description: Creates a holographic barrier indicating an NSFW area. (This item is to be used for this purpose only. All other uses are considered powergaming.)
   components:
   - type: LabelableHolosignProjector
     signProto: HolosignNSFW
