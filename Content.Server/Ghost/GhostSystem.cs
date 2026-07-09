@@ -147,7 +147,7 @@ namespace Content.Server.Ghost
                 return;
             }
             if (_player.TryGetSessionByEntity(uid, out var session))
-                _euiManager.OpenEui(new AcceptPublicERPEui(uid, component), session);
+                _euiManager.OpenEui(new AcceptPublicERPEui(uid, component, this), session);
         }
 
         // Euphoria | Handles adding component for Eui message

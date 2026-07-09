@@ -7,10 +7,8 @@ using Content.Shared.Ghost;
 
 namespace Content.Server._Floof.Ghost.UI;
 
-public sealed class AcceptPublicERPEui(EntityUid uid, GhostComponent component) : BaseEui
+public sealed class AcceptPublicERPEui(EntityUid uid, GhostComponent component, GhostSystem ghostSystem) : BaseEui
 {
-    [Dependency] private readonly GhostSystem _ghostSystem = default!;
-
     public override void HandleMessage(EuiMessageBase message)
     {
         base.HandleMessage(message);
@@ -22,7 +20,7 @@ public sealed class AcceptPublicERPEui(EntityUid uid, GhostComponent component) 
             return;
         }
 
-        _ghostSystem.AddGhostHearingComponent(uid, component);
+        ghostSystem.AddGhostHearingComponent(uid, component);
         Close();
     }
 }
