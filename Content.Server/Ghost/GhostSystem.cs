@@ -1,5 +1,7 @@
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
+using Content.Server._Floof.Ghost.UI;
 using Content.Server.Administration.Managers; // DeltaV
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
@@ -41,6 +43,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Server.EUI;
 
 namespace Content.Server.Ghost
 {
@@ -74,6 +77,7 @@ namespace Content.Server.Ghost
         [Dependency] private readonly GhostSpriteStateSystem _ghostState = default!;
         [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!; // DeltaV
         [Dependency] private readonly IAdminManager _admin = default!; // DeltaV
+        [Dependency] private readonly EuiManager _euiManager = default!; // Euph
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -129,6 +133,7 @@ namespace Content.Server.Ghost
             }
         }
 
+        //Euphoria | Altered for public ERP consent check changes
         private void OnGhostHearingAction(EntityUid uid, GhostComponent component, ToggleGhostHearingActionEvent args)
         {
             args.Handled = true;
@@ -137,18 +142,20 @@ namespace Content.Server.Ghost
             {
                 RemComp<GhostHearingComponent>(uid);
                 _actions.SetToggled(component.ToggleGhostHearingActionEntity, true);
+                Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-hearing-popup-off"), uid, uid);
+                Dirty(uid, component);
+                return;
             }
-            else
-            {
-                AddComp<GhostHearingComponent>(uid);
-                _actions.SetToggled(component.ToggleGhostHearingActionEntity, false);
-            }
+            if (_player.TryGetSessionByEntity(uid, out var session))
+                _euiManager.OpenEui(new AcceptPublicERPEui(uid, component), session);
+        }
 
-            var str = HasComp<GhostHearingComponent>(uid)
-                ? Loc.GetString("ghost-gui-toggle-hearing-popup-on")
-                : Loc.GetString("ghost-gui-toggle-hearing-popup-off");
-
-            Popup.PopupEntity(str, uid, uid);
+        // Euphoria | Handles adding component for Eui message
+        public void AddGhostHearingComponent(EntityUid uid, GhostComponent component)
+        {
+            AddComp<GhostHearingComponent>(uid);
+            _actions.SetToggled(component.ToggleGhostHearingActionEntity, false);
+            Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-hearing-popup-on"), uid, uid);
             Dirty(uid, component);
         }
 
