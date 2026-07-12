@@ -237,6 +237,9 @@
   - HeadHatBlacksoft
   - HeadHatCorpsoft
   - HeadHatSolidHeadband
+  - ClothingHeadHatHijabColorable
+  - ClothingHeadHatTurbanColorable
+  - ClothingHeadHatKippahColorable
 
 # glasses/eyewear
 - type: loadoutGroup
@@ -312,3 +315,17 @@
   - ClothingSocksCoderValid
   - ClothingSocksCowprint
   - ClothingUnderSocksFishnets
+
+# Neck
+- type: loadoutGroup
+  id: FloofNeck
+  abstract: true
+  loadouts:
+  - ClothingNeckCrucifixColor
+  - ClothingNeckCrucifixColorSaintPeter
+  - ClothingNeckCrucifixGold
+  - ClothingNeckCrucifixGoldSaintPeter
+  - ClothingNeckCrucifixSilver
+  - ClothingNeckCrucifixSilverSaintPeter
+  - ClothingNeckScapular
+  - ClothingNeckTallit
