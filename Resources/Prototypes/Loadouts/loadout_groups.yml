@@ -378,7 +378,7 @@
 
 - type: loadoutGroup
   id: PassengerNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-passenger-neck
   minLimit: 0
   loadouts:
@@ -574,7 +574,7 @@
 
 - type: loadoutGroup
   id: LawyerNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-lawyer-neck
   minLimit: 0
   loadouts:

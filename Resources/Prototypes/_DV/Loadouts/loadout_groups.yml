@@ -36,7 +36,7 @@
 
 - type: loadoutGroup
   id: BartenderNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-bartender-neck
   minLimit: 0
   loadouts:
@@ -46,7 +46,7 @@
 ## Librarian
 - type: loadoutGroup
   id: LibrarianNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-librarian-neck
   minLimit: 0
   loadouts:
@@ -56,7 +56,7 @@
 ## Janitor
 - type: loadoutGroup
   id: JanitorNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-janitor-neck
   minLimit: 0
   loadouts:
@@ -65,7 +65,7 @@
 ## Botanist
 - type: loadoutGroup
   id: BotanistNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-botanist-neck
   minLimit: 0
   loadouts:
@@ -83,7 +83,7 @@
 ## Mime
 - type: loadoutGroup
   id: MimeNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-mime-neck
   minLimit: 0
   loadouts:
@@ -93,7 +93,7 @@
 ## Musician
 - type: loadoutGroup
   id: MusicianNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-musician-neck
   minLimit: 0
   loadouts:
@@ -789,7 +789,7 @@
 
 - type: loadoutGroup
   id: ClerkNeck
-  parent: [FloofNeck, CommonCollars] # Floofstation
+  parent: [FloofNeck] # Floofstation
   name: loadout-group-clerk-neck
   minLimit: 0
   loadouts:
