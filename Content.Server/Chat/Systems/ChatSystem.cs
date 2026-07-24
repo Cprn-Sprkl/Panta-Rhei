@@ -961,6 +961,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue;
 
             var observer = ghostHearing.HasComponent(playerEntity);
+            var isDead = HasComp<GhostComponent>(playerEntity);
 
             // Floofstation edit - check LOS
             sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance);
@@ -971,7 +972,10 @@ public sealed partial class ChatSystem : SharedChatSystem
             // even if they are a ghost hearer, in some situations we still need the range
             if (distance < voiceGetRange)
             {
-                recipients.Add(player, new ICChatRecipientData(distance, observer, InLOS: isVisible));
+                if (isDead && !observer)
+                    recipients.Add(player, new ICChatRecipientData(distance, observer, Subtle: false, InLOS: isVisible));
+                else
+                    recipients.Add(player, new ICChatRecipientData(distance, observer, InLOS: isVisible));
                 continue;
             }
 
@@ -984,7 +988,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
 
     // Floofstation: add inLOS
-    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null, bool InLOS = true)
+    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null, bool Subtle = true, bool InLOS = true)
     {
     }
 
