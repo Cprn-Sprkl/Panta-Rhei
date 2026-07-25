@@ -970,12 +970,10 @@ public sealed partial class ChatSystem : SharedChatSystem
             // Floofstation edit end
 
             // even if they are a ghost hearer, in some situations we still need the range
-            if (distance < voiceGetRange)
+            if (distance < voiceGetRange && !observer)
             {
-                if (isDead && !observer)
-                    recipients.Add(player, new ICChatRecipientData(distance, observer, Subtle: false, InLOS: isVisible));
-                else
-                    recipients.Add(player, new ICChatRecipientData(distance, observer, InLOS: isVisible));
+                // Euphoria | Hide Subtle from Non-Admin Ghosts
+                recipients.Add(player, new ICChatRecipientData(distance, observer, Subtle: !isDead, InLOS: isVisible));
                 continue;
             }
 
