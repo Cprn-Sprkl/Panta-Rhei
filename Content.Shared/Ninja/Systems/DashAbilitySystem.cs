@@ -11,6 +11,7 @@ using Content.Shared.Popups;
 using Content.Shared.Examine;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Ninja.Systems;
@@ -84,10 +85,7 @@ public sealed class DashAbilitySystem : EntitySystem
             return;
         }
 
-        //Euphoria | Setup information for dash do after
-        comp.Destination = args.Target;
-        comp.Dasher = args.Performer;
-        comp.Handled = TryStartDashDoAfter(ent);
+        args.Handled = TryStartDashDoAfter(ent, args);
 
         // Euphoria | Code moved to OnDashDoAfter for handling on successful do after
         // // Check if the user is BEING pulled, and escape if so
@@ -105,17 +103,20 @@ public sealed class DashAbilitySystem : EntitySystem
     }
 
     //Euphoria | Dash do after
-    private bool TryStartDashDoAfter(Entity<DashAbilityComponent> ent)
+    private bool TryStartDashDoAfter(Entity<DashAbilityComponent> ent, DashEvent args)
     {
-        var user = ent.Comp.Dasher;
-        var duration = ent.Comp.DashTime;
+        var dashDoEvent = new DashDoAfterEvent
+        {
+            Performer = args.Performer,
+            Destination = args.Target,
+        };
 
         return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager,
-            user,
-            duration,
-            new DashDoAfterEvent(),
+            dashDoEvent.Performer,
+            0.5f,
+            dashDoEvent,
             ent,
-            user,
+            dashDoEvent.Performer,
             ent)
         {
             NeedHand = true,
@@ -133,7 +134,7 @@ public sealed class DashAbilitySystem : EntitySystem
             return;
         }
 
-        var user = entity.Comp.Dasher;
+        var user = args.Performer;
 
         // Check if the user is BEING pulled, and escape if so
         if (TryComp<PullableComponent>(user, out var pull) && _pullingSystem.IsPulled(user, pull))
@@ -144,11 +145,10 @@ public sealed class DashAbilitySystem : EntitySystem
             _pullingSystem.TryStopPull(puller.Pulling.Value, pullable);
 
         var xform = Transform(user);
-        _transform.SetCoordinates(user, xform, entity.Comp.Destination);
+        _transform.SetCoordinates(user, xform, args.Destination);
         _transform.AttachToGridOrMap(user, xform);
 
-        if (!args.Handled)
-            _audio.PlayPredicted(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), user, user);
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), user);
 
         args.Handled = true;
     }
@@ -169,4 +169,11 @@ public record struct CheckDashEvent(EntityUid User, bool Cancelled = false);
 
 // Euphoria | Dash action do after
 [Serializable, NetSerializable]
-public sealed partial class DashDoAfterEvent : SimpleDoAfterEvent;
+public sealed partial class DashDoAfterEvent : SimpleDoAfterEvent
+{
+    [NonSerialized]
+    public EntityCoordinates Destination;
+
+    [NonSerialized]
+    public EntityUid Performer;
+}
