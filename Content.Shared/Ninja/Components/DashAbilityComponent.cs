@@ -2,6 +2,7 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Ninja.Systems;
 using Robust.Shared.GameStates;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Ninja.Components;
@@ -21,6 +22,20 @@ public sealed partial class DashAbilityComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? DashActionEntity;
+
+    // Euphoria | doafter dash start
+    [DataField]
+    public float DashTime = 0.5f;
+
+    [DataField]
+    public EntityCoordinates Destination;
+
+    [DataField]
+    public EntityUid Dasher;
+
+    [DataField]
+    public bool Handled;
+    // Euphoria | doafter dash end
 }
 
 public sealed partial class DashEvent : WorldTargetActionEvent;
