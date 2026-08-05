@@ -69,7 +69,7 @@
   frequency: 1213
   color: "#8f4a4b"
   longRange: true
-  stealth: true
+  stealth: true # Euphoria | stealth channels
 
 - type: radioChannel
   id: Handheld

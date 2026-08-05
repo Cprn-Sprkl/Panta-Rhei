@@ -216,6 +216,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
         {
             proto = _protoManager.Index<RadioChannelPrototype>(id);
 
+			// Euphoria | Stealth channels
             if (!HasComp<EncryptionKeyComponent>(examineEvent.Examined) && proto.Stealth)
                 continue;
 
