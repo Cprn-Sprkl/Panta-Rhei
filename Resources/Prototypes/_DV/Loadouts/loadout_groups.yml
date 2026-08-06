@@ -331,6 +331,9 @@
   - MedicalHud
   - MedicalEyePatchHud
   - PrescriptionMedHud
+  #- Glasses # Euphoria | In parent loadout
+  #- GlassesJamjar # Euphoria | In parent loadout
+  #- GlassesJensen # Euphoria | In parent loadout
 
 - type: loadoutGroup
   id: BrigMedicBack
@@ -472,6 +475,9 @@
   - SecurityHud
   - SecurityEyePatchHud
   - PrescriptionSecurityHud
+  #- Glasses # Euphoria | In parent loadout
+  #- GlassesJamjar # Euphoria | In parent loadout
+  #- GlassesJensen # Euphoria | In parent loadout
 
 ## Security Officer
 - type: loadoutGroup
@@ -917,6 +923,9 @@
   - ClothingEyesHudDiagnostic
   - ClothingEyesPrescriptionDiagHud
   - ClothingEyesEyepatchHudDiag
+  #- Glasses # Euphoria | In parent loadout
+  #- GlassesJamjar # Euphoria | In parent loadout
+  #- GlassesJensen # Euphoria | In parent loadout
 
 # Command
 ## Captain
