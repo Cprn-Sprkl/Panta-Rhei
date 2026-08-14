@@ -378,7 +378,7 @@
     location: Cryo
 
 - type: entity
-  id: WarpPointDorms
+  id: WarpPointDormsNoBomb # Euphoria | Bombing dorms is a rule break
   parent: WarpPoint
   suffix: Dorms
   components:
