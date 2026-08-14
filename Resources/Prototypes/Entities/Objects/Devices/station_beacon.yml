@@ -260,9 +260,6 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-medbay
-  - type: Tag # Euphoria | Parity with warp point blocklist
-    tags:
-    - NinjaBombingTargetBlocker
 
 - type: entity
   parent: DefaultStationBeaconMedical
@@ -320,9 +317,6 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-research-and-development
-  - type: Tag # Euphoria | Parity with warp point blocklist
-    tags:
-    - NinjaBombingTargetBlocker
 
 - type: entity
   parent: DefaultStationBeaconScience
@@ -331,9 +325,6 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-research-server
-  - type: Tag # Euphoria | Parity with warp point blocklist
-    tags:
-    - NinjaBombingTargetBlocker
 
 - type: entity
   parent: DefaultStationBeaconScience
@@ -342,9 +333,6 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-mystagogue  #Delta V - Renamed
-  - type: Tag # Euphoria | Parity with warp point blocklist
-    tags:
-    - NinjaBombingTargetBlocker
 
 - type: entity
   parent: DefaultStationBeaconScience
@@ -361,9 +349,6 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-artifact-lab
-  - type: Tag # Euphoria | Parity with warp point blocklist
-    tags:
-    - NinjaBombingTargetBlocker
 
 - type: entity
   parent: DefaultStationBeaconScience
@@ -372,9 +357,6 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-anomaly-gen
-  - type: Tag # Euphoria | Parity with warp point blocklist
-    tags:
-    - NinjaBombingTargetBlocker
 
 - type: entity
   parent: DefaultStationBeacon
@@ -532,9 +514,6 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-anchor
-  - type: Tag # Euphoria | Parity with warp point blocklist
-    tags:
-    - NinjaBombingTargetBlocker
 
 - type: entity
   parent: DefaultStationBeaconEngineering
