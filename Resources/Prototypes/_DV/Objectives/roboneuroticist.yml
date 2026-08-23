@@ -39,7 +39,7 @@
   description: Your dossier indicates that there is a very appealing neural pattern on the crew. Turn them into a Cyborg. #Euphoria
   components:
   - type: Objective
-    unique: true
+    unique: false # Euphoria | Changed to be non-unique
     icon:
       sprite: Objects/Weapons/Guns/Pistols/viper.rsi
       state: icon
@@ -56,6 +56,11 @@
     # Euphoria - Make RR objective targets opt in only
     - !type:MarkedMindFilter
       objType: Remove
+    # Euphoria - Can't have multiple objectives to kill the same person.
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
   - type: KillPersonCondition
     requireDead: true
 
