@@ -242,6 +242,7 @@
     reoccurrenceDelay: 30
     duration: null # so it shows up in round end
     maxOccurrences: 1
+    earliestStart: 30 # Euphoria | No showing up round start
   - type: RuleGrids
   - type: LoadMapRule
     gridPath: /Maps/_DV/Shuttles/Event/haibu.yml # was /Maps/_DV/Shuttles/Admin/roboneuroticist_ship.yml
@@ -250,10 +251,29 @@
   - type: AntagObjectives
     objectives:
     - RoboNeuroticistSurviveObjective
-    - RoboNeuroticistBorgObjective
+    #- RoboNeuroticistBorgObjective #Euphoria | No borging random crew
     - RoboNeuroticistKillObjective
     - RoboNeuroticistPlutoniumCoreStealObjective
     - RoboNeuroticistUploadAILawObjective
+    - RoboNeuroticistKillObjective #Euphoria | Giving a mass amount of targets to list everyone that qualifies on station
+    - RoboNeuroticistKillObjective #This objective is assigned 20 times as that will realistically catch everyone
+    - RoboNeuroticistKillObjective #that has opted into the conditions to be a target for the neuro. This means that
+    - RoboNeuroticistKillObjective #every nuero has a handy list of EVERYONE who is a valid target, and thus knows
+    - RoboNeuroticistKillObjective #who not to gib or RR in an attempt to borg them. This is being done this way
+    - RoboNeuroticistKillObjective #as it will minimally affect code that comes in from upstream.
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
+    - RoboNeuroticistKillObjective
   - type: AntagSelection
     agentName: roboneuroticist-round-end-agent-name
     definitions:

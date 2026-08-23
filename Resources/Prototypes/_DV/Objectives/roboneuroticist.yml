@@ -35,7 +35,8 @@
   parent: [ BaseRoboNeuroticistObjective, BaseKillObjective ]
   id: RoboNeuroticistKillObjective
   name: Condemn them to Metal
-  description: Your dossier indicates that there is one very appealing neural pattern on the crew. Turn them into a Cyborg.
+  #description: Your dossier indicates that there is one very appealing neural pattern on the crew. Turn them into a Cyborg. #Euphoria
+  description: Your dossier indicates that there is a very appealing neural pattern on the crew. Turn them into a Cyborg. #Euphoria
   components:
   - type: Objective
     unique: true
@@ -49,7 +50,8 @@
     - !type:BodyMindFilter
       whitelist:
         components:
-        - CommandStaff
+        - Unborgable # Euphoria | Nuero gets a list of valid targets
+      inverted: true # Euphoria
     - !type:ObjectiveImmuneFilter
     # Euphoria - Make RR objective targets opt in only
     - !type:MarkedMindFilter
