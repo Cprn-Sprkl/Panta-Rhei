@@ -35,8 +35,7 @@
   parent: [ BaseRoboNeuroticistObjective, BaseKillObjective ]
   id: RoboNeuroticistKillObjective
   name: Condemn them to Metal
-  #description: Your dossier indicates that there is one very appealing neural pattern on the crew. Turn them into a Cyborg. #Euphoria
-  description: Your dossier indicates that there is a very appealing neural pattern on the crew. Turn them into a Cyborg. #Euphoria
+  description: Your dossier indicates that there is a very appealing neural pattern on the crew. Turn them into a Cyborg. # Euphoria - rob-neuroticist can have multiple targets
   components:
   - type: Objective
     unique: false # Euphoria | Changed to be non-unique
