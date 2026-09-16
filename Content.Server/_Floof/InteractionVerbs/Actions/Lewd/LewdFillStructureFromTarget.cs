@@ -8,6 +8,9 @@ using Content.Shared.Chemistry.EntitySystems;
 
 namespace Content.Server._Floof.InteractionVerbs.Actions.Lewd;
 
+/// <summary>
+///     Transfers fluid from the target's organs into the structure the user is buckled onto.
+/// </summary>
 public sealed partial class LewdFillStructureFromTarget : BaseLewdOrganAction
 {
     /// <summary>
