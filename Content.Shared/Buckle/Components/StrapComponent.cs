@@ -119,7 +119,6 @@ public enum StrapPosition
 
 //Euphoria
 
-[Serializable, NetSerializable]
 public enum StrapVisuals : byte
 {
     RotationAngle,
