@@ -1,16 +1,14 @@
-using System.Linq;
-using Content.Server.Fluids.EntitySystems;
-using Content.Server.Hands.Systems;
+﻿using Content.Server.Fluids.EntitySystems;
 using Content.Shared._Floof.InteractionVerbs;
 using Content.Shared._Floof.Lewd;
 using Content.Shared._Floof.Lewd.Systems;
+using Content.Shared.Buckle.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.FixedPoint;
 
 namespace Content.Server._Floof.InteractionVerbs.Actions.Lewd;
 
-public sealed partial class LewdFillContainerFromTarget : BaseLewdOrganAction
+public sealed partial class LewdFillStructureFromTarget : BaseLewdOrganAction
 {
     /// <summary>
     ///     Organ on the target entity to draw from.
@@ -23,12 +21,10 @@ public sealed partial class LewdFillContainerFromTarget : BaseLewdOrganAction
         bool beforeDelay,
         VerbDependencies deps)
     {
-        // Code duplication buut idc man
-        var handsSys = deps.System<HandsSystem>();
-        var solSystem = deps.System<SharedSolutionContainerSystem>();
-        if (!handsSys.TryGetActiveItem(args.User, out var container)
-            || !solSystem.TryGetRefillableSolution(container.Value, out var targetSolEnt, out _))
+        if (!deps.EntMan.TryGetComponent(args.User, out BuckleComponent? buckComp)
+            || !deps.EntMan.HasComponent<RefillableSolutionComponent>(buckComp.BuckledTo))
             return false;
+        args.Used = buckComp.BuckledTo;
 
         var lewdSys = deps.System<LewdOrganSystem>();
         if (!lewdSys.TryGetOrganSolution(Organ, args.Target, out var solution, out var solEnt))
@@ -39,10 +35,13 @@ public sealed partial class LewdFillContainerFromTarget : BaseLewdOrganAction
 
     public override bool Perform(InteractionArgs args, InteractionVerbPrototype proto, VerbDependencies deps)
     {
-        var handsSys = deps.System<HandsSystem>();
         var solSystem = deps.System<SharedSolutionContainerSystem>();
-        if (!handsSys.TryGetActiveItem(args.User, out var container)
-            || !solSystem.TryGetRefillableSolution(container.Value, out var targetSolEnt, out var targetSol))
+        //Check first if user is buckled into something with a container, if not, check the user's hands.
+        if (!deps.EntMan.TryGetComponent(args.User, out BuckleComponent? buckComp)
+            || !deps.EntMan.HasComponent<RefillableSolutionComponent>(buckComp.BuckledTo))
+            return false;
+
+        if (!solSystem.TryGetRefillableSolution(buckComp.BuckledTo.Value, out var targetSolEnt, out var targetSol))
             return false;
 
         var lewdSys = deps.System<LewdOrganSystem>();
