@@ -133,6 +133,7 @@
   - type: Item
     size: Normal
   - type: Sprite
+    sprite: _Floof/Objects/Devices/extractor_flatpack.rsi
     layers:
     - state: extractor
 
@@ -213,7 +214,7 @@
 - type: cargoProduct
   id: CrateBreedingMountOrder
   icon:
-    sprite: Objects/Devices/flatpack.rsi
+    sprite: _Floof/Objects/Devices/extractor_flatpack.rsi
     state: extractor
   product: CrateBreedingMount
   cost: 1000
