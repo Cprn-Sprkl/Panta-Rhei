@@ -1,0 +1,53 @@
+﻿- type: latheRecipe
+  id: ClothingEyesGlassesEpistemics
+  result: ClothingEyesGlassesEpistemics
+  categories:
+  - Clothing
+  completetime: 2
+  materials:
+    Steel: 300
+    Glass: 200
+    Plastic: 100
+
+- type: latheRecipe
+  id: ClothingEyesGlassesEpistemicsMantis
+  result: ClothingEyesGlassesEpistemicsMantis
+  categories:
+  - Clothing
+  completetime: 2
+  materials:
+    Steel: 300
+    Glass: 200
+    Plastic: 100
+
+- type: latheRecipe
+  id: ClothingEyesGlassesEpistemicsMantisTinted
+  result: ClothingEyesGlassesEpistemicsMantisTinted
+  categories:
+  - Clothing
+  completetime: 2
+  materials:
+    Steel: 300
+    Glass: 200
+    Plastic: 100
+
+- type: latheRecipe
+  id: ClothingEyesGlassesEpistemicsMantisMirrored
+  result: ClothingEyesGlassesEpistemicsMantisMirrored
+  categories:
+  - Clothing
+  completetime: 2
+  materials:
+    Steel: 300
+    Glass: 200
+    Plastic: 100
+
+- type: latheRecipe
+  id: ClothingEyesGlassesEpistemicsMantisVeil
+  result: ClothingEyesGlassesEpistemicsMantisVeil
+  categories:
+  - Clothing
+  completetime: 2
+  materials:
+    Cloth: 200
+    Plastic: 100
