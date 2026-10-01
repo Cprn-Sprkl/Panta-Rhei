@@ -19,6 +19,7 @@ namespace Content.Shared._DV.Silicons.Borgs;
 public sealed class IdChipSlotSystem : EntitySystem
 {
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly ItemSlotsSystem _slots = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
     [Dependency] private readonly SharedAccessSystem _access = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
@@ -72,7 +73,7 @@ public sealed class IdChipSlotSystem : EntitySystem
 
     private void OnGetAdditionalAccess(Entity<IdChipSlotComponent> ent, ref GetAdditionalAccessEvent args)
     {
-        if (ent.Comp is { Active: true, Chip: {} chip })
+        if (ent.Comp.Chip is {} chip)
             args.Entities.Add(chip);
     }
 
@@ -82,7 +83,7 @@ public sealed class IdChipSlotSystem : EntitySystem
             return;
 
         // enable its access so the borg can use it
-        _access.SetAccessEnabled(args.Entity, ent.Comp.Active);
+        _access.SetAccessEnabled(args.Entity, true);
     }
 
     private void OnChipRemoved(Entity<IdChipSlotComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -103,15 +104,5 @@ public sealed class IdChipSlotSystem : EntitySystem
             $"{ToPrettyString(args.Actor):player} removed id chip {ToPrettyString(chip)} from borg {ToPrettyString(ent)}");
         _container.Remove(chip, ent.Comp.Container);
         _hands.TryPickupAnyHand(args.Actor, chip);
-    }
-
-    public void SetActive(Entity<IdChipSlotComponent?> ent, bool active)
-    {
-        if (!Resolve(ent, ref ent.Comp))
-            return;
-
-        ent.Comp.Active = active;
-        _access.SetAccessEnabled(ent.Owner, active && ent.Comp.Chip is not null);
-        Dirty(ent);
     }
 }

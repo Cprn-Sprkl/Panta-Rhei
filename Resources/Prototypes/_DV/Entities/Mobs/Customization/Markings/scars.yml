@@ -1,8 +1,9 @@
 - type: marking
   id: ScarChestFemale
   bodyPart: Chest
-# groupWhitelist: [Human, Felinid, Oni, Feroxi, Kitsune] # Euph - free markings
+  markingCategory: Chest
   sexRestriction: [Female]
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/scars.rsi
     state: scar_chest_female
@@ -10,7 +11,8 @@
 - type: marking
   id: ScarVoxHeadLEyeSmall
   bodyPart: Head
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Head
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_eye_left_small
@@ -18,7 +20,8 @@
 - type: marking
   id: ScarVoxHeadLEyeBig
   bodyPart: Head
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Head
+  followSkinColor: false
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_eye_left_big
@@ -26,7 +29,8 @@
 - type: marking
   id: ScarVoxHeadREyeSmall
   bodyPart: Head
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Head
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_eye_right_small
@@ -34,7 +38,8 @@
 - type: marking
   id: ScarVoxHeadREyeBig
   bodyPart: Head
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Head
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_eye_right_big
@@ -42,7 +47,8 @@
 - type: marking
   id: ScarVoxHeadFaceLong
   bodyPart: Head
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Head
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_face_long
@@ -50,7 +56,8 @@
 - type: marking
   id: ScarVoxChestBig
   bodyPart: Chest
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Chest
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_chest_big
@@ -58,7 +65,8 @@
 - type: marking
   id: ScarVoxChestBullets
   bodyPart: Chest
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Chest
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_chest_bullets
@@ -66,7 +74,8 @@
 - type: marking
   id: ScarVoxRArmSmall
   bodyPart: RArm
-# groupWhitelist: [Vox] # Euph - free markings
+  markingCategory: Arms
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_arm_right_small
@@ -74,7 +83,8 @@
 - type: marking
   id: ScarVoxLArmSmall
   bodyPart: LArm
-# groupWhitelist: [ Vox ] # Euph - free markings
+  markingCategory: Arms
+  followSkinColor: true
   sprites:
   - sprite: _DV/Mobs/Customization/Vox/scars.rsi
     state: scar_arm_left_small

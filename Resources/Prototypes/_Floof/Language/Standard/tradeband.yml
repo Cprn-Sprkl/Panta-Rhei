@@ -1,8 +1,6 @@
 - type: language
   id: Tradeband
-  parent: BaseLanguage
-  chatPrefix: trd # Euphoria/Starlight
-  icon: { state: tradeband }
+  isVisibleLanguage: true
   speech:
     color: "#597d35"
   obfuscation:

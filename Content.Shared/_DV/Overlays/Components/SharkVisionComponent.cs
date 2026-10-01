@@ -20,12 +20,5 @@ public sealed partial class SharkVisionComponent : SwitchableVisionOverlayCompon
         "AmmoniaBlood",
         "CopperBlood",
         "ZombieBlood",
-        // Euphoria additions start - add other custom blood prototypes
-        "BlackBlood",
-        "YellowBlood",
-        "WhiteBlood",
-        "BloodAllulalo",
-        "SynthBlood",
-        // Euphoria additions end
     ];
 }

@@ -31,7 +31,6 @@ public partial class ChatBox : UIWidget
     public bool Main { get; set; }
 
     public ChatSelectChannel SelectedChannel => ChatInput.ChannelSelector.SelectedChannel;
-    public RichTextLabel SelectedLanguage => LanguageNotifier; // Starlight
 
     // EE - Chat stacking
     private int _chatStackAmount = 0;
@@ -150,7 +149,6 @@ public partial class ChatBox : UIWidget
     private void OnChannelSelect(ChatSelectChannel channel)
     {
         _controller.UpdateSelectedChannel(this);
-        _controller.UpdateLanguageNotifier(this); // Starlight
     }
 
     public void Repopulate()
@@ -202,7 +200,7 @@ public partial class ChatBox : UIWidget
         }
         // End EE - Chat stacking
 
-        Contents.AddMessage(formatted, tagsAllowed: null);
+        Contents.AddMessage(formatted);
     }
 
     public void Focus(ChatSelectChannel? channel = null)
@@ -275,7 +273,6 @@ public partial class ChatBox : UIWidget
         // Warn typing indicator about change
         // _controller.NotifyChatTextChange(); // DeltaV
         _controller.NotifySpecificChatTextChange(SelectedChannel); // DeltaV - Alt Chat Indicators
-        _controller.UpdateLanguageNotifier(this); // Euph - port from starlight
     }
 
     private void OnFocusEnter(LineEditEventArgs args)

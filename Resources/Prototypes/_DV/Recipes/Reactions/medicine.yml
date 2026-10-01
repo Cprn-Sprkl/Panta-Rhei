@@ -71,13 +71,3 @@
       amount: 1
   products:
     Photoxadone: 3
-
-- type: reaction
-  id: SanctusSal
-  reactants:
-    Holywater:
-      amount: 4
-    TableSalt:
-      amount: 1
-  products:
-    SanctusSal: 5

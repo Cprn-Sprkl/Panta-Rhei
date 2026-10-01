@@ -12,13 +12,12 @@
 
 let
   dependencies = with pkgs; [
-    dotnet-sdk_10
+    dotnetCorePackages.sdk_9_0
     icu
     glfw
     libGL
     openal
     freetype
-    fontconfig
     fluidsynth
     soundfont-fluid
     gtk3
@@ -44,7 +43,6 @@ let
     xorg.libxshmfence
     mesa
     alsa-lib
-    pipewire
     dbus
     at-spi2-core
     cups

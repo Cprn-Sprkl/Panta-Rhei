@@ -10,4 +10,3 @@ stack-carpet-simple-purple-tile = carpet simple purple tile
 stack-carpet-simple-red-tile = carpet simple red tile
 stack-carpet-simple-skyblue-tile = carpet simple skyblue tile
 stack-carpet-simple-white-tile = carpet simple white tile
-stack-casino-chip = casino chip

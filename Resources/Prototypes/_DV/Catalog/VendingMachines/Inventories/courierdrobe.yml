@@ -16,7 +16,6 @@
     BoxMailCapsulePrimed: 4 # Frontier Mail Port
     # Floofstation additions start
     ClothingNeckCollarLogi: 2
-    ClothingNeckCollarLogiAlternative: 2
     ClothingHandsCourierWarmers: 2
     ClothingUniformCourierThong: 2
     ClothingUnderSocksCourier: 2
@@ -24,4 +23,5 @@
     ClothingOuterDevy: 2
     ClothingOuterExpressBuffCourierCoat: 2
     ClothingShoesCourierDevy: 2
+    ClothingBackpackDuffelCourierDevy: 2
     # Floofstation additions end

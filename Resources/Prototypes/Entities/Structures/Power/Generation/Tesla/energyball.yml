@@ -31,7 +31,6 @@
     shootMaxInterval: 10
     shootRange: 3
     lightningPrototype: Lightning
-  - type: SupermatterImmune # Floofstation - make tesla immune to the SM to
 
 - type: entity
   id: TeslaEnergyBall

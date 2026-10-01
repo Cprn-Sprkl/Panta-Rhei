@@ -7,6 +7,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Serilog;
 
 namespace Content.Client.Cargo.UI;
 
@@ -17,8 +18,8 @@ public sealed partial class BountyEntry : BoxContainer
 
     public Action? OnLabelButtonPressed;
     public Action? OnSkipButtonPressed;
-    public Action? OnClaimButtonPressed; // DeltaV
-    public Action? OnStatusOptionSelected; // DeltaV
+	public Action? OnClaimButtonPressed; //imp edit - bounty claiming & status
+    public Action? OnStatusOptionSelected; //imp edit - bounty claiming & status
 
     public TimeSpan EndTime;
     public TimeSpan UntilNextSkip;
@@ -47,20 +48,19 @@ public sealed partial class BountyEntry : BoxContainer
 
         PrintButton.OnPressed += _ => OnLabelButtonPressed?.Invoke();
         SkipButton.OnPressed += _ => OnSkipButtonPressed?.Invoke();
-
-        // Begin DeltaV bounty claiming
-        ClaimButton.OnPressed += _ => OnClaimButtonPressed?.Invoke();
-        BountyStatusSelector.AddItem(Loc.GetString($"bounty-console-status-{nameof(CargoBountyStatus.Undelivered)}"), 0);
-        BountyStatusSelector.AddItem(Loc.GetString($"bounty-console-status-{nameof(CargoBountyStatus.Waiting)}"), 1);
-        BountyStatusSelector.AddItem(Loc.GetString($"bounty-console-status-{nameof(CargoBountyStatus.OnShuttle)}"), 2);
-
+		
+		//imp edit start - bounty claiming & status
+		ClaimButton.OnPressed += _ => OnClaimButtonPressed?.Invoke();
+        BountyStatusSelector.AddItem(Loc.GetString("bounty-console-status", ("status", 0)), 0);
+        BountyStatusSelector.AddItem(Loc.GetString("bounty-console-status", ("status", 1)), 1);
+        BountyStatusSelector.AddItem(Loc.GetString("bounty-console-status", ("status", 2)), 2);
         BountyStatusSelector.Select((int) bounty.Status);
-        BountyStatusSelector.ToolTip = Loc.GetString($"bounty-console-status-tooltip-{bounty.Status.ToString()}");
+        BountyStatusSelector.ToolTip = Loc.GetString("bounty-console-status-tooltip", ("status", (int) bounty.Status));
 
         var claimedByText = string.IsNullOrEmpty(bounty.ClaimedBy) ? Loc.GetString("bounty-console-claimed-by-none") : bounty.ClaimedBy;
         ClaimedBylabel.SetMarkup(Loc.GetString("bounty-console-claimed-by", ("claimant", claimedByText)));
-        StatusLabel.SetMarkup(Loc.GetString($"bounty-console-status-formatted-{bounty.Status.ToString()}"));
-        // End DeltaV bounty claiming
+        StatusLabel.SetMarkup(Loc.GetString("bounty-console-status-label", ("status", (int) bounty.Status)));
+		//imp edit end
     }
 
     private void UpdateSkipButton(float deltaSeconds)

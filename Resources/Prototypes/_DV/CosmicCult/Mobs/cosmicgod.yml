@@ -87,7 +87,7 @@
   - type: MovementIgnoreGravity
   - type: GhostHearing
   - type: Physics
-    bodyType: KinematicController
+    bodyType: Dynamic
     bodyStatus: InAir
   - type: CanMoveInAir
   - type: WarpPoint

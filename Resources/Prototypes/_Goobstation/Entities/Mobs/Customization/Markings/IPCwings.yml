@@ -1,7 +1,8 @@
 - type: marking
   id: WingsRoboticMerciful
   bodyPart: Wings
-  # groupWhitelist: [Human, Slime, Oni, IPC] # Euphoria: Why can't everyone have them smh
+  markingCategory: Wings
+  speciesRestriction: [Human, SlimePerson, Oni, IPC]
   sprites:
     - sprite: _Goobstation/Mobs/Customization/IPCwings.rsi
       state: merciful_base

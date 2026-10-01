@@ -44,6 +44,6 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobSalvageSpecialist
-      time: 216000 # 60hr
+      time: 432000 # 120hr
   equipment:
     neck: ClothingNeckMantleSalvage

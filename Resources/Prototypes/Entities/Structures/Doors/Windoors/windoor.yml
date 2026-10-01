@@ -203,14 +203,15 @@
     containers:
       board: [ DoorElectronicsBar ]
 
-- type: entity
-  parent: WindoorSecureSecurityLocked
-  id: WindoorSecureBrigLocked
-  suffix: Brig, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBrig ]
+#Delta V: Removed Brig Access
+#- type: entity
+#  parent: WindoorSecureSecurityLocked
+#  id: WindoorSecureBrigLocked
+#  suffix: Brig, Locked
+#  components:
+#  - type: ContainerFill
+#    containers:
+#      board: [ DoorElectronicsBrig ]
 
 - type: entity
   parent: WindoorSecure
@@ -414,7 +415,7 @@
 - type: entity
   parent: WindoorSecureCommandLocked
   id: WindoorSecureResearchDirectorLocked
-  suffix: Mystagogue, Locked # DeltaV - Epistemics Department replacing Science
+  suffix: ResearchDirector, Locked
   components:
   - type: ContainerFill
     containers:
@@ -465,7 +466,7 @@
 - type: entity
   parent: WindoorSecurePlasma
   id: PlasmaWindoorSecureScienceLocked
-  suffix: Epistemics, Locked, Plasma # DeltaV - Epistemics Department replacing Science
+  suffix: Science, Locked, Plasma
   components:
   - type: ContainerFill
     containers:

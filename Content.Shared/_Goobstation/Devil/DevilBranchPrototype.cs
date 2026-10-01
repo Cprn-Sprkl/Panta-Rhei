@@ -3,7 +3,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Goobstation.Devil;
 
 [Prototype("devilBranchPrototype")]
-public sealed partial class DevilBranchPrototype : IPrototype // DeltaV - Added partial
+public sealed class DevilBranchPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; set; } = default!;

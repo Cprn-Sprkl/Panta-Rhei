@@ -69963,7 +69963,7 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
-- proto: WarpPointNoBomb
+- proto: WarpPoint
   entities:
   - uid: 10816
     components:

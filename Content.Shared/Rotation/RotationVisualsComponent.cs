@@ -9,7 +9,7 @@ public sealed partial class RotationVisualsComponent : Component
     /// <summary>
     /// Default value of <see cref="HorizontalRotation"/>
     /// </summary>
-    [DataField, AutoNetworkedField] // Floof - make auto-networked
+    [DataField]
     public Angle DefaultRotation = Angle.FromDegrees(90);
 
     [DataField]

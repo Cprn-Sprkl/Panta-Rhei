@@ -28,10 +28,9 @@ namespace Content.Shared.Verbs
         /// </remarks>
         public readonly bool IconsOnly;
 
-        public VerbCategory(string text, string? icon, bool iconsOnly = false, bool resolveLoc = true) // Euph - optional loc
+        public VerbCategory(string text, string? icon, bool iconsOnly = false)
         {
-            // Euph - optional
-            Text = resolveLoc ? Loc.GetString(text) : text;
+            Text = Loc.GetString(text);
             Icon = icon == null ? null : new SpriteSpecifier.Texture(new(icon));
             IconsOnly = iconsOnly;
         }

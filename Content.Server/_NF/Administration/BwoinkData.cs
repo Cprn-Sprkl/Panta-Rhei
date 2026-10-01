@@ -10,7 +10,6 @@ public sealed class BwoinkActionBody
     public required Guid Guid { get; init; }
     public bool UserOnly { get; init; }
     public required bool WebhookUpdate { get; init; }
-    public bool AdminOnly { get; init; } //Frontier
     public required string RoleName { get; init; }
     public required string RoleColor { get; init; }
 }

@@ -1,8 +1,6 @@
 - type: language
   id: Freespeak
-  parent: BaseLanguage
   isVisibleLanguage: true
-  chatPrefix: fre # Euphoria/Starlight
   speech:
     color: "#597d35"
   obfuscation:

@@ -19,9 +19,8 @@ public sealed class MuzzledAccentSystem : EntitySystem
 
     public override void Initialize()
     {
-        // making sure this is applied after every other accent system is basically impossible, so we're subscribing to TransformSpeechEvent
+        // Ьaking sure this is applied after every other accent system is basically impossible, so we're subscribing to TransformSpeechEvent
         SubscribeLocalEvent<TransformSpeechEvent>(OnTransformSpeech, after: [typeof(AccentSystem)]);
-        SubscribeLocalEvent<MuzzledAccentComponent, GetEmoteVolumeEvent>(OnGetEmoteVolume);
     }
 
     private void OnTransformSpeech(TransformSpeechEvent args)
@@ -31,11 +30,6 @@ public sealed class MuzzledAccentSystem : EntitySystem
             return;
 
         OnTransformSpeech((args.Sender, accent), ref args);
-    }
-
-    private void OnGetEmoteVolume(Entity<MuzzledAccentComponent> ent, ref GetEmoteVolumeEvent args)
-    {
-        args.Volume += ent.Comp.AccentPrototype?.EmoteVolume ?? 0f;
     }
 
     private void OnTransformSpeech(Entity<MuzzledAccentComponent> ent, ref TransformSpeechEvent args)
@@ -53,20 +47,12 @@ public sealed class MuzzledAccentSystem : EntitySystem
             // Try to find a suitable replacement
             start:
             var maxSubstr = Math.Min(args.Message.Length - i, accent.MaxCharacterLength);
-            if (maxSubstr == 0)
-                break;
-
             for (var substrLen = maxSubstr; substrLen > 0; substrLen--)
             {
-                var lookup = accent.Lookups![substrLen - 1];
-                if (lookup.Dictionary.Count == 0) // Skip length group if there's no replacements to make
-                    continue;
-
                 var span = args.Message.AsMemory(i, substrLen);
+                var lookup = accent.Lookups![substrLen - 1];
                 if (lookup.TryGetValue(span, out var replacement))
                 {
-                    // If a replacement is found, insert it, skip the replaced characters in the original character, and repeat the outer loop
-                    // I couldn't a good solution without using goto here
                     result.Append(replacement);
                     i += substrLen;
                     goto start;

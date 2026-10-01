@@ -4,11 +4,11 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Vulp.Speech.Accents.Mumble;
 
 
-[Prototype]
-public sealed partial class MuzzleAccentPrototype : IPrototype
+[Prototype("muzzleAccent")]
+public sealed class MuzzleAccentPrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; set; } = default!;
+    public string ID { get; } = default!;
 
     /// <summary>
     ///     A list where the nth entry contains replacements for char sequences that are exactly n characters long.

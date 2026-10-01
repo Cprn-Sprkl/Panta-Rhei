@@ -48,7 +48,6 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Effects/plant_rustle.ogg
-  - type: Carriable # Floofstation - pick up dem plants
 
 - type: entity
   id: PottedPlant0

@@ -43,7 +43,6 @@
       - TrayScanner
       - GasAnalyzer
       - HandLabeler
-      - LightReplacer # DeltaV
   - type: ItemMapper
     sprite: &BeltOverlay Clothing/Belt/belt_overlay.rsi
     mapLayers:
@@ -186,12 +185,13 @@
       - SurgeryTool
       - Dropper
       - Vial # DeltaV
-      - PurifyingSalts # DeltaV
+      - MedicalMisc # Euphoria
       components:
       - Injector
       - Pill
       - HandLabeler
       - Defibrillator # DeltaV - Add PortaFib to EMT belt
+      - SurgeryTool # Shitmed
   - type: ItemMapper
     sprite: *BeltOverlay
     mapLayers:
@@ -419,7 +419,7 @@
       - Whistle
       - BalloonPopper
   - type: ItemMapper # DeltaV - Custom sprite and item mapper
-    sprite: _DV/Clothing/Belt/belt_overlay.rsi
+    sprite: _DV/Clothing/Belt/belt_overlay.rsi 
     mapLayers:
       baton:
         whitelist:
@@ -438,19 +438,12 @@
       storagebase: !type:Container
         ents: []
       holster: !type:ContainerSlot {}
-      radio: !type:ContainerSlot {}
-  - type: ItemSlots # DeltaV - add sidearm and radio slot
+  - type: ItemSlots # DeltaV - add sidearm slot
     slots:
       holster:
         name: clothing-belt-sidearm
         whitelist:
           tags:
           - Sidearm
-        insertOnInteract: false
-      radio:
-        name: clothing-belt-radio
-        whitelist:
-          tags:
-          - Radio
         insertOnInteract: false
   - type: Appearance

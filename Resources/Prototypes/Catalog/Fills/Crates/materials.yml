@@ -1,6 +1,6 @@
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialGlass
+  parent: CrateGenericSteel
   name: glass sheet crate
   description: 90 sheets of glass, packed with care.
   components:
@@ -11,8 +11,8 @@
         amount: 3
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialSteel
+  parent: CrateGenericSteel
   name: steel sheet crate
   description: 90 sheets of steel.
   components:
@@ -23,8 +23,8 @@
         amount: 3
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialTextiles
+  parent: CrateGenericSteel
   name: textiles crate
   description: 60 pieces of cloth and 30 pieces of durathread.
   components:
@@ -37,8 +37,8 @@
         - id: MaterialDurathread
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialPlastic
+  parent: CrateGenericSteel
   name: plastic sheet crate
   description: 90 sheets of plastic.
   components:
@@ -49,8 +49,8 @@
         amount: 3
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialWood
+  parent: CrateGenericSteel
   name: wood crate
   description: Bunch of wood planks.
   components:
@@ -60,8 +60,8 @@
         id: MaterialWoodPlank
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialBrass
+  parent: CrateGenericSteel
   name: brass crate
   description: 90 sheets of brass.
   components:
@@ -72,8 +72,8 @@
         amount: 3
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialPlasteel
+  parent: CrateGenericSteel
   name: plasteel crate
   description: 30 sheets of plasteel.
   components:
@@ -83,8 +83,8 @@
         id: SheetPlasteel
 
 - type: entity
-  parent: CratePlasma
   id: CrateMaterialPlasma
+  parent: CratePlasma
   name: solid plasma crate
   description: 30 sheets of plasma.
   components:
@@ -94,8 +94,8 @@
         id: SheetPlasma
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialGold
+  parent: CrateGenericSteel
   name: gold crate
   description: 30 bars of gold.
   components:
@@ -105,8 +105,8 @@
         id: IngotGold
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialSilver
+  parent: CrateGenericSteel
   name: silver crate
   description: 30 bars of silver.
   components:
@@ -116,8 +116,8 @@
         id: IngotSilver
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialCardboard
+  parent: CrateGenericSteel
   name: cardboard crate
   description: 90 pieces of cardboard.
   components:
@@ -128,8 +128,8 @@
         amount: 3
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialPaper
+  parent: CrateGenericSteel
   name: paper crate
   description: 90 sheets of paper.
   components:
@@ -171,8 +171,8 @@
       - id: IngotSilver1
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialRandom
+  parent: CrateGenericSteel
   name: surplus materials
   description: Surplus materials from somewhere.
   components:
@@ -184,8 +184,8 @@
           range: 2, 4
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialSilo
+  parent: CrateGenericSteel
   name: material silo crate
   description: A package including all the materials to create a material silo.
   components:
@@ -202,8 +202,8 @@
           amount: 2
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialBasicResource
+  parent: CrateGenericSteel
   name: basic sheet crate
   description: 30 sheets of steel, glass, and plastic.
   components:
@@ -216,9 +216,9 @@
         - id: SheetPlastic
 
 #- type: entity
-#  parent: CrateGenericSteel
 #  id: CrateMaterialHFuelTank
 #  name: fueltank crate
+#  parent: CrateGenericSteel
 #  components:
 #  - type: EntityTableContainerFill
 #    containers:
@@ -226,9 +226,9 @@
 #        id: WeldingFuelTank
 
 #- type: entity
-#  parent: CrateGenericSteel
 #  id: CrateMaterialHWaterTank
 #  name: watertank crate
+#  parent: CrateGenericSteel
 #  components:
 #  - type: EntityTableContainerFill
 #    containers:

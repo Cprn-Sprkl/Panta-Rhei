@@ -1,7 +1,0 @@
-﻿- type: construction
-  id: FishGuitar
-  graph: FishGuitar
-  startNode: start
-  targetNode: bassguitar
-  category: construction-category-utilities
-  objectType: Item

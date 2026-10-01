@@ -56,7 +56,6 @@ public sealed partial class PlayerTab : Control
         _config.OnValueChanged(CCVars.AdminPlayerTabMarkGhosted, MarkGhostedChanged, true); // DeltaV
         _config.OnValueChanged(CCVars.AdminPlayerTabMarkWatchlisted, MarkWatchlistedChanged, true); // DeltaV
 
-
         OverlayButton.OnPressed += OverlayButtonPressed;
         ShowDisconnectedButton.OnPressed += ShowDisconnectedPressed;
 
@@ -69,7 +68,6 @@ public sealed partial class PlayerTab : Control
         SearchList.ItemKeyBindDown += (args, data) => OnEntryKeyBindDown?.Invoke(args, data);
 
         RefreshPlayerList(_adminSystem.PlayerList);
-
     }
 
     // DeltaV - mark ghosted, watchlisted START

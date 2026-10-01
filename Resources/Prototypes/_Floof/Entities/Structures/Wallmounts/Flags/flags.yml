@@ -1,9 +1,0 @@
-- type: entity
-  parent: BaseFlag
-  id: tsfFlag
-  name: Trans-Solar Federation flag
-  description: a flag with the Trans-Solar Federation emblem on it.
-  components:
-  - type: Sprite
-    sprite: _Floof/Wallmounts/flags.rsi
-    state: tsf_flag

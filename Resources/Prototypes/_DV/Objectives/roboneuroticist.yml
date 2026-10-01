@@ -35,10 +35,10 @@
   parent: [ BaseRoboNeuroticistObjective, BaseKillObjective ]
   id: RoboNeuroticistKillObjective
   name: Condemn them to Metal
-  description: Your dossier indicates that there is a very appealing neural pattern on the crew. Turn them into a Cyborg. # Euphoria - rob-neuroticist can have multiple targets
+  description: Your dossier indicates that there is one very appealing neural pattern on the crew. Turn them into a Cyborg.
   components:
   - type: Objective
-    unique: false # Euphoria | Changed to be non-unique
+    unique: true
     icon:
       sprite: Objects/Weapons/Guns/Pistols/viper.rsi
       state: icon
@@ -49,17 +49,14 @@
     - !type:BodyMindFilter
       whitelist:
         components:
-        - Unborgable # Euphoria | Nuero gets a list of valid targets
-      inverted: true # Euphoria
-    - !type:ObjectiveImmuneFilter
+        - CommandStaff
     # Euphoria - Make RR objective targets opt in only
     - !type:MarkedMindFilter
       objType: Remove
-    # Euphoria - Can't have multiple objectives to kill the same person.
     - !type:TargetObjectiveMindFilter
       blacklist:
         components:
-        - KillPersonCondition
+        - TargetObjectiveImmune
   - type: KillPersonCondition
     requireDead: true
 

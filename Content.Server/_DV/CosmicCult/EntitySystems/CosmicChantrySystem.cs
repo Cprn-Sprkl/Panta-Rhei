@@ -8,7 +8,6 @@ using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -26,7 +25,6 @@ public sealed class CosmicChantrySystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
 
     /// <summary>
@@ -81,11 +79,11 @@ public sealed class CosmicChantrySystem : EntitySystem
         comp.SpawnTimer = _timing.CurTime + comp.SpawningTime;
         comp.CountdownTimer = _timing.CurTime + comp.EventTime;
 
-        var targetMap = _transform.GetMapId(ent.Owner);
-        _sound.PlayGlobalOnMap(targetMap, _audio.ResolveSound(comp.ChantryAlarm));
-
-        _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("cosmiccult-chantry-location",
-            ("location", indicatedLocation)), null, false, null, Color.FromHex("#cae8e8"));
+        _sound.PlayGlobalOnStation(ent, _audio.ResolveSound(comp.ChantryAlarm));
+        _chatSystem.DispatchStationAnnouncement(ent,
+        Loc.GetString("cosmiccult-chantry-location", ("location", indicatedLocation)),
+        null, false, null,
+        Color.FromHex("#cae8e8"));
 
         if (_mind.TryGetMind(comp.InternalVictim, out _, out var mind))
             mind.PreventGhosting = true;

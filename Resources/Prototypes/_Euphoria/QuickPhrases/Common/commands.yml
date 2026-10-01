@@ -1,4 +1,0 @@
-- type: quickPhrase
-  id: ComplaintPhrase
-  parent: BaseImperativePhrase
-  text: phrase-complaint

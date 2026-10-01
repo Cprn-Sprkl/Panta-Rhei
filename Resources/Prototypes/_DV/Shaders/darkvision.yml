@@ -1,4 +1,0 @@
-- type: shader
-  id: DarkVision
-  kind: source
-  path: "/Textures/_DV/Shaders/darkvision.swsl"

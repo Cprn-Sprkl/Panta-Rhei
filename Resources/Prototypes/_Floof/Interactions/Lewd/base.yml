@@ -3,7 +3,7 @@
   id: BaseLewd
   abstract: true
   category: LewdInteraction
-  requiresCanAccess: true
+  requiresCanInteract: true
   contactInteraction: true
   range:
     max: 1.2
@@ -82,8 +82,7 @@
   abstract: true
   allowSelfInteract: true # A user can only trigger it themselves
   requiresHands: false
-  requiresCanAccess: false # Allow doing it while cuffed or w/e
-  requiresCanInteract: false # Floof
+  requiresCanInteract: false # Allow doing it while cuffed or w/e
   hideByRequirement: true
   effectSuccess:
     popup: ObviousWithLimitsForOthers

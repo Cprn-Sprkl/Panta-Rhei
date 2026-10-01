@@ -37,7 +37,6 @@ flavor-complex-mariejulep = minty and spicy
 flavor-complex-marsbar = like a creamy mars bar
 flavor-complex-millermargarita = like a boozy, zesty jello-shot
 flavor-complex-mossbloodshot = unbelievably sweet
-flavor-complex-nikkonectar = Like cream and pomegranates
 flavor-complex-numberone = empowering and energizing
 flavor-complex-opsshine = like alcohol poisoning
 flavor-complex-orgasmonthebeach = like a tart infection

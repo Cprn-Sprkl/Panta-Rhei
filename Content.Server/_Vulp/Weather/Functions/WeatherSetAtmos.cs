@@ -1,8 +1,11 @@
+using System.Linq;
+using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared._Vulp.Weather;
 using Content.Shared.Atmos;
-using Robust.Shared.Map.Components;
+using Content.Shared.Weather;
 using Robust.Shared.Random;
+
 
 namespace Content.Server._Vulp.Weather.Functions;
 
@@ -25,10 +28,10 @@ public sealed partial class WeatherSetAtmos : WeatherFunction
     [DataField]
     public float MaxTemperatureDeviation = 1f;
 
-    public override void Invoke(EntityManager entMan, EntityUid map, float updateTimeSeconds)
+    public override void Invoke(EntityManager entMan, Entity<WeatherComponent> ent, float updateTimeSeconds)
     {
         // Don't want to accidentally apply a map atmosphere to a mob or something... Because SetMapAtmosphere would do that
-        if (!entMan.HasComponent<MapComponent>(map))
+        if (!entMan.HasComponent<MapAtmosphereComponent>(ent))
             return;
 
         // Small deviations in the contents of the resulting mixture
@@ -45,6 +48,6 @@ public sealed partial class WeatherSetAtmos : WeatherFunction
         resultMixture.Temperature += random.NextFloat(-MaxTemperatureDeviation, MaxTemperatureDeviation);
         resultMixture.MarkImmutable();
 
-        entMan.System<AtmosphereSystem>().SetMapAtmosphere(map, false, Mixture);
+        entMan.System<AtmosphereSystem>().SetMapAtmosphere(ent, false, Mixture);
     }
 }

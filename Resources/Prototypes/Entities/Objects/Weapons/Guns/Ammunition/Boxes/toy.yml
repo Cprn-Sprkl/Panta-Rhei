@@ -2,7 +2,7 @@
   abstract: true
   parent: BaseItem
   id: BoxDonkSoftBase
-  name: toy ammunition box
+  name: foamdart box
   components:
   - type: EmitSoundOnPickup # Euphoria - Port over Goob's interaction sounds.
     sound:
@@ -25,8 +25,7 @@
 - type: entity
   parent: BoxDonkSoftBase
   id: BoxDonkSoftBox
-  name: foam dart box
-  description: A cardboard box of foam darts.
+  name: box of foam darts
   components:
   - type: BallisticAmmoProvider
     whitelist:
@@ -44,7 +43,6 @@
   parent: BaseMagazineBoxMagnum
   id: BoxCartridgeCap
   name: cap gun cartridge box
-  description: A cardboard box of cap gun cartridges.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeCap

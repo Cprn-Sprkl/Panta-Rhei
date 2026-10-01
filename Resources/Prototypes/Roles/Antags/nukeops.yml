@@ -7,17 +7,15 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 30h # DeltaV - was 5h
-  #Euphoria start: You really shouldnt need Engie and Salv hours to know how to hack doors
-  #- !type:DepartmentTimeRequirement # DeltaV - engi dept time requirement
-    #department: Engineering
-    #time: 2h
-  #- !type:RoleTimeRequirement # DeltaV - salvage time requirement
-  #  role: JobSalvageSpecialist
-  #  time: 2h
-  #Euphoria End
+  - !type:DepartmentTimeRequirement # DeltaV - engi dept time requirement
+    department: Engineering
+    time: 2h
+  - !type:RoleTimeRequirement # DeltaV - salvage time requirement
+    role: JobSalvageSpecialist
+    time: 2h
   - !type:DepartmentTimeRequirement # DeltaV - Security dept time requirement
     department: Security
-    time: 6h #Euphoria Reduced sec playtime because medic has no sec playtime and regular nukeop shouldnt take as much playtime as commander
+    time: 10h
   guides: [ NuclearOperatives ]
 
 - type: antag
@@ -67,14 +65,12 @@
     id: SyndiOperativePDA
     pocket2: PlushieCarp
     belt: ClothingBeltMilitaryWebbing
-  inhand:
-    - DnaScramblerImplanterDespawning
   storage:
     back:
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     # - DeathAcidifierImplanter # DeltaV - more TC less acid
-    - VoiceMaskImplanter # DeltaV - Voice masking implant
+    - BionicVoiceMaskImplanter # DeltaV - Voice masking implant
 
 #Nuclear Operative Gear
 - type: startingGear
@@ -88,7 +84,7 @@
   id: NukeopsOutfit
   name: roles-antag-nuclear-operative-name
   startingGear: SyndicateOperativeGearFullNoUplink
-  icon: "JobIconSyndicateOperative"
+  icon: "JobIconSyndicate"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndie
     neck: ClothingNeckScarfStripedSyndieRed
@@ -109,7 +105,7 @@
   id: NukeopsCommanderOutfit
   name: roles-antag-nuclear-operative-commander-name
   startingGear: SyndicateCommanderGearFull
-  icon: "JobIconSyndicateCommander"
+  icon: "JobIconSyndicate"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieCommander
     neck: ClothingNeckScarfStripedSyndieGreen
@@ -138,12 +134,13 @@
     - CombatMedipen
     # - DeathAcidifierImplanter # DeltaV - more TC less acid
     - BionicVoiceMaskImplanter # DeltaV - Voice masking implant
+    - OmnimedToolSyndie # Shitmed
 
 - type: chameleonOutfit
   id: NukeopsMedicOutfit
   name: roles-antag-nuclear-operative-agent-name
   startingGear: SyndicateOperativeMedicFull
-  icon: "JobIconSyndicateCorpsman"
+  icon: "JobIconSyndicate"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieMedic
     neck: ClothingNeckScarfStripedLightBlue

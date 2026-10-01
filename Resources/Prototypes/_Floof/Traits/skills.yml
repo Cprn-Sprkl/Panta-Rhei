@@ -24,15 +24,9 @@
   category: Skills
   cost: 2
   conditions:
-  - !type:OneOfSpeciesCondition # These species are innately capable of this already.
-    invert: true
-    species:
-      - Felinid
-      - Tajaran
-      - Allulalo
-      - Resomi
-      - Kitsune
-      - Rodentia
+  - !type:HasCompCondition
+    invert: true  
+    component: PseudoItem
   effects:
     - !type:OverrideCompsEffect
       components:
@@ -53,11 +47,10 @@
   description: trait-spearmaster-desc
   category: Skills
   cost: 0
+  conflicts:
+  - Swashbuckler
+  - WeaponsGeneralist
   conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - Swashbuckler
-    - WeaponsGeneralist
   - !type:OneOfSpeciesCondition
     species:
     - Oni
@@ -78,11 +71,10 @@
   description: trait-swashbuckler-desc
   category: Skills
   cost: 0
+  conflicts:
+  - Spearmaster
+  - WeaponsGeneralist
   conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - Spearmaster
-    - WeaponsGeneralist
   - !type:OneOfSpeciesCondition
     species:
     - Oni
@@ -103,11 +95,10 @@
   description: trait-weaponsgeneralist-desc
   category: Skills
   cost: 0
+  conflicts:
+  - Spearmaster
+  - Swashbuckler
   conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - Spearmaster
-    - Swashbuckler
   - !type:OneOfSpeciesCondition
     species:
     - Oni
@@ -122,53 +113,3 @@
           Piercing: 1.3
           Asphyxiation: 1.35
 # =================================================== #
-
-
-# ==================== Guns ========================= #
-- type: trait # This just adds the Oni shooting malcus to anyone
-  id: OniShooting
-  name: trait-name-OniShooting
-  description: trait-description-OniShooting
-  category: Skills
-  cost: -6
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - BadShooting
-  - !type:OneOfSpeciesCondition
-    invert: true
-    species:
-    - Oni #already has this
-  - !type:HasCompCondition
-    component: BorgChassis
-    invert: true
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: PlayerAccuracyModifier
-      spreadMultiplier: 7.5
-      maxSpreadAngle: 90
-
-- type: trait
-  id: BadShooting
-  name: trait-name-BadShooting
-  description: trait-description-BadShooting
-  category: Skills
-  cost: -2
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - OniShooting
-  - !type:OneOfSpeciesCondition
-    invert: true
-    species:
-    - Oni #already has this
-  - !type:HasCompCondition
-    component: BorgChassis
-    invert: true
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: PlayerAccuracyModifier
-      spreadMultiplier: 2.5
-      maxSpreadAngle: 90

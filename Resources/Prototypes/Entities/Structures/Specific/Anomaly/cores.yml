@@ -274,11 +274,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomalitePyroclastic
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - FireAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -296,11 +291,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteGravity
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - GravAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -318,11 +308,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteIce
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - FrostAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -341,11 +326,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteFlesh
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - FleshAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -363,11 +343,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteRock
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - RockAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -402,11 +377,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteBluespace
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - BlueSpaceAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -424,11 +394,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteElectricity
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - ShockAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -448,11 +413,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteFlora
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - FloralAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: [ BaseAnomalyInertCore, BaseShadow ]
@@ -470,11 +430,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteShadow
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - ShadowAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -492,11 +447,6 @@
     requiresBibleUser: false
     specialItem: SpawnPointGhostAnomaliteTech
     lives: 1 #DeltaV - Anomalite Limited Respawns
-  # Floofstation Anomaly hat additions start
-  - type: Tag
-    tags:
-    - TechAnomalyCore
-  # Floofstation anomaly hat additions end
 
 - type: entity
   parent: BaseAnomalyInertCore

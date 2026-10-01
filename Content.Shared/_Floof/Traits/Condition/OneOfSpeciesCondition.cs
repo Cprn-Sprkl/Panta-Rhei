@@ -30,7 +30,6 @@ public sealed partial class OneOfSpeciesCondition : BaseTraitCondition
     {
         var speciesNames = Species
             .Select(it => proto.TryIndex(it, out var speciesProto) ? speciesProto.Name : it.Id)
-            .Select(speciesProto => loc.GetString(speciesProto))
             .ToList();
 
         var namesJoined = string.Join(", or ", speciesNames); // Hardcoded "or", cry about it

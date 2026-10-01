@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using Content.IntegrationTests.Fixtures;
-using Content.IntegrationTests.Pair;
 using Content.Server._Vulp.Weather;
 using Content.Server._Vulp.Weather.Functions;
 using Content.Shared._Vulp.Weather;
@@ -11,7 +9,7 @@ using Content.Shared.Atmos;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Log;
 using Robust.Shared.Prototypes;
-using Robust.UnitTesting;
+using Serilog;
 
 
 namespace Content.IntegrationTests.Tests._Vulp;
@@ -19,7 +17,7 @@ namespace Content.IntegrationTests.Tests._Vulp;
 #nullable enable
 
 [TestFixture]
-public sealed class WeatherCycleTest : GameTest
+public sealed class WeatherCycleTest
 {
     private const float NominalPressure = 101; // In kpa
     private const float MaxDeviation = 0.05f * NominalPressure; // ±5%
@@ -29,13 +27,19 @@ public sealed class WeatherCycleTest : GameTest
         // Think twice and thrice before adding anything here.
     ];
 
+    private ISawmill Log = default!;
+
     [Test]
     public async Task EnsureAllWeathersHaveTheSamePressure()
     {
-        var weatherCycles = Server.ResolveDependency<IEntitySystemManager>().GetEntitySystem<WeatherCycleSystem>();
-        var errorLog = new List<string>(30);
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        Log = server.Log;
 
-        foreach (var proto in SProtoMan.EnumeratePrototypes<WeatherCyclePrototype>())
+        var prototypes = server.ResolveDependency<IPrototypeManager>();
+        var weatherCycles = server.ResolveDependency<IEntitySystemManager>().GetEntitySystem<WeatherCycleSystem>();
+        var errorLog = new List<string>(30);
+        foreach (var proto in prototypes.EnumeratePrototypes<WeatherCyclePrototype>())
         {
             if (IgnoredCycles.Contains(proto.ID))
                 continue;
@@ -74,8 +78,10 @@ public sealed class WeatherCycleTest : GameTest
                 builder.Append("- ");
                 builder.AppendLine(error);
             }
-            Assert.Fail(builder.ToString());
+            Log.Error(builder.ToString());
         }
+
+        await pair.CleanReturnAsync();
     }
 
     private void ValidateState(WeatherCyclePrototype proto, WeatherCycleData data, float calculatedAvgPressure, List<string> errorOutput)

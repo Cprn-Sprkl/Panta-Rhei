@@ -15,8 +15,6 @@ job-name-senior-engineer = Engineering Mentor
 job-name-senior-officer = Security Mentor
 job-name-qm = Logistics Officer
 job-name-centcomintern = CentComm Intern
-job-name-rd = Mystagogue
-job-name-brigmedic = Corpsman
 
 # Alternate titles
 job-alt-title-tourist = Tourist
@@ -44,7 +42,6 @@ job-alt-title-plasma-scientist = Plasma Scientist
 job-alt-title-senior-engineer = Engineering Mentor
 job-alt-title-electrician = Electrician
 job-alt-title-mechanic = Mechanic
-job-alt-title-nuclear-scientist = Nuclear Scientist
 
 job-alt-title-deck-worker = Deck Worker
 job-alt-title-inventory-associate = Inventory Associate
@@ -73,14 +70,14 @@ job-title-admeme-overwriting = Overwriting
 job-title-admeme-adding = Adding
 
 # Role timers
+JobMedicalBorg = Medical Cyborg
 JobCourier = Courier
 JobChiefJustice = Chief Justice
 JobClerk = Clerk
 JobProsecutor = Prosecutor
+JobSecurityBorg = Security Cyborg
 JobRoboticist = Roboticist
 JobCargoAssistant = Cargo Assistant
-JobZookeeper = Zookeeper
-JobBoxer = Boxer
 
 # Pet Roles
 RoleLaika = Laika
@@ -96,11 +93,3 @@ role-name-ifrit = Ifrit
 role-name-carpy = Carpy
 role-name-shiva = Shiva
 role-name-pun-pun = Pun Pun
-role-name-baba = Baba
-
-# Station specific
-job-name-boxer = Boxer
-job-name-zookeeper = Zookeeper
-
-# Generic secdog
-role-name-k9-officer = K9 Officer

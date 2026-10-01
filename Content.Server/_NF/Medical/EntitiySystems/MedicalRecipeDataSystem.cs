@@ -50,15 +50,10 @@ public sealed class MedicalRecipeDataSystem : SharedMedicalGuideDataSystem
                 continue;
 
             MicrowaveRecipeType recipeType = (MicrowaveRecipeType)recipe.RecipeType;
-            //Euph edits start - read all results from all recipes
             if (recipeType.HasFlag(MicrowaveRecipeType.MedicalAssembler))
             {
-                foreach (var result in recipe.Results)
-                {
-                    _sources.GetOrNew(result).Add(new MedicalRecipeData(recipe));
-                }
+                _sources.GetOrNew(recipe.Result).Add(new MedicalRecipeData(recipe));
             }
-            //Euph edits end
         }
 
         Registry.Clear();

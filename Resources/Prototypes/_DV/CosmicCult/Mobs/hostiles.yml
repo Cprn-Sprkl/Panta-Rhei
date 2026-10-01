@@ -51,12 +51,13 @@
             sound:
               path: /Audio/_DV/CosmicCult/ability_lapse.ogg
   - type: Bloodstream
+    bloodMaxVolume: 100
     maxBleedAmount: 10.75
     bleedReductionAmount: 0.1
-    bloodReferenceSolution:
+    bloodReagents:
       reagents:
       - ReagentId: Entropy
-        Quantity: 100
+        Quantity: 1
     bloodlossDamage:
       types:
         Bloodloss:
@@ -72,7 +73,7 @@
     damage:
       types:
         Asphyxiation: 5
-        Blunt: 5
+        Cold: 5
     soundHit:
       path: /Audio/_DV/CosmicCult/cosmiclance_hit.ogg
       params:

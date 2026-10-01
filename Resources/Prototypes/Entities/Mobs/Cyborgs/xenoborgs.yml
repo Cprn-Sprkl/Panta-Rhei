@@ -35,6 +35,8 @@
     containers:
       borg_brain:
       - MMIFilled
+      borg_id_chip: # DeltaV
+      - IdChipXenoborg
       borg_module:
       - XenoborgModuleBasic
       - BorgModuleAdvancedTool
@@ -43,7 +45,6 @@
       - BorgModuleCable
       - XenoborgModuleAccessBreaker
       - XenoborgModuleFireExtinguisher
-  - type: ShowElectrocutionHUD
   - type: ShowHealthBars
     damageContainers:
     - Inorganic
@@ -52,7 +53,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
@@ -88,7 +89,6 @@
   - type: MovementSpeedModifier # slower
     baseWalkSpeed : 1.2
     baseSprintSpeed : 2.2
-  - type: MovementAlwaysTouching # it flies in space by pure will power
   - type: FlashImmunity
   - type: MobThresholds # tankier
     thresholds:
@@ -121,20 +121,25 @@
           collection: MetalBreak
       - !type:SpawnEntitiesBehavior
         spawn:
-          PinpointerMothershipPiece: # drop a piece of core pinpointer upon being destructed (4 pieces to make a core pinpointer)
+          PinpointerMothership: # drop a pinpointer to the mothership upon being destructed
             min: 1
             max: 1
       - !type:EmptyContainersBehaviour
         containers:
         - borg_brain
+        - borg_id_chip # DeltaV
         - borg_module
         - cell_slot
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Repairable
+    doAfterDelay: 25 # more HP, more time to heal
   - type: ContainerFill
     containers:
       borg_brain:
       - MMIFilled
+      borg_id_chip: # DeltaV
+      - IdChipXenoborg
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -144,7 +149,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
@@ -189,6 +194,8 @@
     containers:
       borg_brain:
       - MMIFilled
+      borg_id_chip: # DeltaV
+      - IdChipXenoborg
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -198,7 +205,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
@@ -242,6 +249,8 @@
     containers:
       borg_brain:
       - MMIFilled
+      borg_id_chip: # DeltaV
+      - IdChipXenoborg
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -252,7 +261,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHigh
 
 
 # xenoborgs empty
@@ -265,6 +274,8 @@
     containers:
       borg_brain:
       - MMI
+      borg_id_chip: # DeltaV
+      - IdChipXenoborg
       borg_module:
       - XenoborgModuleBasic
       - BorgModuleAdvancedTool
@@ -277,7 +288,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHighPrinted
 
 - type: entity
   parent: XenoborgHeavy
@@ -297,7 +308,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHighPrinted
 
 - type: entity
   parent: XenoborgScout
@@ -317,7 +328,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHighPrinted
 
 - type: entity
   parent: XenoborgStealth
@@ -338,4 +349,4 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHighXenoborg # DeltaV
+        startingItem: PowerCellHighPrinted

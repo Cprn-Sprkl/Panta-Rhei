@@ -1,16 +1,19 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._Floof.Lewd.Components;
-using Content.Shared.Body;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Events;
+using Content.Shared.Body.Organ;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Examine;
+using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Verbs;
-using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -24,16 +27,16 @@ namespace Content.Shared._Floof.Lewd.Systems;
 public sealed class LewdOrganSystem : EntitySystem
 {
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solContainer = default!;
     [Dependency] private readonly SharedPuddleSystem _puddles = default!;
     [Dependency] private readonly ExamineSystemShared _examines = default!;
-    [Dependency] private readonly SharedContainerSystem _containers = default!;
 
     public override void Initialize()
     {
         SubscribeLocalEvent<LewdOrganComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<LewdOrganComponent, OrganGotInsertedEvent>(OnLewdAdded);
-        SubscribeLocalEvent<LewdOrganComponent, OrganGotRemovedEvent>(OnLewdRemoved);
+        SubscribeLocalEvent<LewdOrganComponent, OrganAddedToBodyEvent>(OnLewdAdded);
+        SubscribeLocalEvent<LewdOrganComponent, OrganRemovedFromBodyEvent>(OnLewdRemoved);
         SubscribeLocalEvent<LewdMobDataComponent, GetVerbsEvent<ExamineVerb>>(OnLewdExamine);
     }
 
@@ -44,22 +47,25 @@ public sealed class LewdOrganSystem : EntitySystem
             Log.Warning($"LewdOrganComponent added to an entity without Organ: {ent.Owner}.");
             return;
         }
+
+        organ.SlotId = ent.Comp.Data.OrganKind.ToString().ToLowerInvariant();
     }
 
-    private void OnLewdAdded(Entity<LewdOrganComponent> ent, ref OrganGotInsertedEvent args)
+    private void OnLewdAdded(Entity<LewdOrganComponent> ent, ref OrganAddedToBodyEvent args)
     {
         if (_net.IsClient) // Client-side BodySystem spams mechanism attachments/removals whenever entities move in and out of PVS
             return;
 
-        OrganAttached(ent, args.Target);
+        // TODO: we're not checking if it's in a valid slot? I'm not sure if it's an issue, but if it is, idk how to check
+        AttachOrgan(ent, args.Body);
     }
 
-    private void OnLewdRemoved(Entity<LewdOrganComponent> ent, ref OrganGotRemovedEvent args)
+    private void OnLewdRemoved(Entity<LewdOrganComponent> ent, ref OrganRemovedFromBodyEvent args)
     {
         if (_net.IsClient) // Client-side BodySystem spams mechanism attachments/removals whenever entities move in and out of PVS
             return;
 
-        OrganDetached(ent, args.Target);
+        DetachOrgan(ent, args.OldBody);
     }
 
     private void OnLewdExamine(Entity<LewdMobDataComponent> ent, ref GetVerbsEvent<ExamineVerb> args)
@@ -92,7 +98,6 @@ public sealed class LewdOrganSystem : EntitySystem
                 var message = FormattedMessage.FromMarkupPermissive(Loc.GetString("lewd-examine-organs-self-header"));
                 foreach (var organDescription in organDescriptions)
                     message.AddMarkupPermissive('\n' + organDescription);
-                message.AddMarkupPermissive('\n' + Loc.GetString("lewd-examine-organs-self-footer", ("bypassClothing", ent.Comp.BypassClothingChecks)));
 
                 _examines.SendExamineTooltip(user, ent, message, getVerbs: false, centerAtCursor: false);
             },
@@ -106,7 +111,7 @@ public sealed class LewdOrganSystem : EntitySystem
     /// </summary>
     public bool IsOfType(Entity<LewdOrganComponent?> ent, LewdOrganKind kind)
     {
-        if (!Resolve(ent, ref ent.Comp, false))
+        if (!Resolve(ent, ref ent.Comp))
             return false;
 
         return (ent.Comp.Data.OrganKind & kind) != 0;
@@ -123,54 +128,37 @@ public sealed class LewdOrganSystem : EntitySystem
     /// <summary>
     ///     Updates the organ on a mob.
     /// </summary>
-    public void UpdateOrgan(Entity<LewdOrganComponent> organ, EntityUid body)
+    public void UpdateOrgan(Entity<LewdOrganComponent> organ, EntityUid mob)
     {
-        // Original implementation removed and re-added the organ, which seemed to detach the solution from the mob and not add it back.
-        // This approach just tries to update the relevant components without removing it.
-        var bodyData = EnsureComp<LewdMobDataComponent>(body);
-        var organData = organ.Comp.Data;
-
-        // If this organ produces anything, change its produced reagents to contain the body's DNA
-        // This is primarily so that if e.g. somehow chemicals from person A get into person B's organs, they will get drained
-        if (organData.ProducedReagents is { Length: > 0 } && TryComp<DnaComponent>(body, out var donorComp) && donorComp.DNA != null)
-        {
-            var dna = new List<ReagentData> { new DnaData { DNA = donorComp.DNA } };
-            for (var i = 0; i < organData.ProducedReagents.Length; i++)
-            {
-                var reagent = organData.ProducedReagents[i];
-                organData.ProducedReagents[i] = new(reagent.Reagent.Prototype, reagent.Quantity, dna);
-            }
-        }
-
-        // Add the solution to the mob
-        _solContainer.EnsureSolutionEntity(body, organData.SolutionName, out var solution, organData.SolutionVolume);
-
-        UpdateData(organData);
-        bodyData.OrganKinds |= organData.OrganKind;
-        bodyData.CachedData[organData.OrganKind] = organData;
+        DebugTools.Assert(CompOrNull<OrganComponent>(organ)?.Body == mob);
+        DetachOrgan(organ, mob);
+        AttachOrgan(organ, mob);
     }
 
     /// <summary>
     ///     Creates a relevant slot for the lewd organ and attaches it to that slot.
     /// </summary>
-    public bool TryAddOrganToBody(Entity<LewdOrganComponent> organ, Entity<BodyComponent> body)
+    public bool TryAddOrganToBody(Entity<LewdOrganComponent> organ, EntityUid mob)
     {
-        if (body.Comp.Organs is not {} bodyContainer)
+        if (_body.GetRootPartOrNull(mob) is not { } rootPart)
             return false;
 
-        return _containers.InsertOrDrop(organ.Owner, bodyContainer);
+        var slotName = organ.Comp.Data.OrganKind.ToString().ToLowerInvariant();
+        _body.TryCreateOrganSlot(rootPart.Entity, slotName, out var slot, rootPart.BodyPart);
+
+        // The above method is shitcode, doesn't even specify [NotNullWhen, so we're ignoring the slot out var here.
+        return _body.InsertOrgan(rootPart.Entity, organ, slotName, rootPart.BodyPart);
     }
 
     public IEnumerable<Entity<OrganComponent, LewdOrganComponent>> GetLewdOrgans(EntityUid mob)
     {
-        if (!TryComp<BodyComponent>(mob, out var body) || body.Organs is null)
+        if (!TryComp<BodyComponent>(mob, out var body))
             return [];
 
         var lewdQuery = GetEntityQuery<LewdOrganComponent>();
-        var organQuery = GetEntityQuery<OrganComponent>();
-        return body.Organs.ContainedEntities
-            .Where(it => lewdQuery.HasComp(it))
-            .Select(it => new Entity<OrganComponent, LewdOrganComponent>(it, organQuery.Comp(it), lewdQuery.Comp(it)));
+        return _body.GetBodyOrgans(mob, body)
+            .Where(it => lewdQuery.HasComp(it.Id))
+            .Select(it => new Entity<OrganComponent, LewdOrganComponent>(it.Id, it.Component, lewdQuery.Comp(it.Id)));
     }
 
     public bool TryGetOrganSolution(
@@ -188,13 +176,8 @@ public sealed class LewdOrganSystem : EntitySystem
         [NotNullWhen(true)] out Solution? solution,
         [NotNullWhen(true)] out Entity<SolutionComponent>? solutionEnt)
     {
-        solution = default;
-        solutionEnt = default;
-        if (!TryComp<BodyComponent>(body, out var bodyComp) || bodyComp.Organs is null)
-            return false;
-
         var lewdQuery = GetEntityQuery<LewdOrganComponent>();
-        foreach (var organId in bodyComp.Organs.ContainedEntities)
+        foreach (var (organId, organComp) in _body.GetBodyOrgans(body))
         {
             if (!lewdQuery.TryComp(organId, out var lewd) || lewd.Data.OrganKind != organ)
                 continue;
@@ -203,16 +186,43 @@ public sealed class LewdOrganSystem : EntitySystem
                 return true;
         }
 
+        solution = default;
+        solutionEnt = default;
         return false;
     }
 
-    private void OrganAttached(Entity<LewdOrganComponent> organ, EntityUid body)
+    private void AttachOrgan(Entity<LewdOrganComponent> organ, EntityUid body)
     {
-        UpdateOrgan(organ, body);
+        var bodyData = EnsureComp<LewdMobDataComponent>(body);
+        var organData = organ.Comp.Data;
+
+        // If this organ produces anything, change its produced reagents to contain the body's DNA
+        // This is primarily so that if e.g. somehow chemicals from person A get into person B's organs, they will get drained
+        if (organData.ProducedReagents is { Length: > 0 } && TryComp<DnaComponent>(body, out var donorComp) && donorComp.DNA != null)
+        {
+            var dna = new List<ReagentData> { new DnaData { DNA = donorComp.DNA } };
+            for (var i = 0; i < organData.ProducedReagents.Length; i++)
+            {
+                var reagent = organData.ProducedReagents[i];
+                organData.ProducedReagents[i] = new(reagent.Reagent.Prototype, reagent.Quantity, dna);
+            }
+        }
+
+        UpdateData(organData);
+        bodyData.OrganKinds |= organData.OrganKind;
+        bodyData.CachedData[organData.OrganKind] = organData;
+
+        // Add the solution to the mob
+        _solContainer.EnsureSolution(body, organData.SolutionName, out var solution, organData.SolutionVolume);
     }
 
-    private void OrganDetached(Entity<LewdOrganComponent> ent, EntityUid body)
+    private void DetachOrgan(Entity<LewdOrganComponent> ent, EntityUid body)
     {
+        // There should NEVER be more than one organ corresponding to a single lewd type.
+        DebugTools.Assert(_body.GetBodyOrgans(body)
+                .Any(it => it.Id != ent.Owner && IsOfType(it.Id, ent.Comp.Data.OrganKind)),
+            "Body contains multiple lewd organs of the same type? This will cause issues.");
+
         var bodyData = EnsureComp<LewdMobDataComponent>(body);
         var organData = ent.Comp.Data;
         bodyData.OrganKinds &= ~organData.OrganKind;

@@ -382,8 +382,4 @@
   id: harpysnowfall
   flavorType: Complex
   description: flavor-complex-harpysnowfall
-
-- type: flavor
-  id: bananacreampie
-  flavorType: Complex
-  description: flavor-complex-bananacreampie
+  

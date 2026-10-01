@@ -1,5 +1,3 @@
-using System.Numerics; // DeltaV
-using Content.Shared.Body;
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
@@ -36,6 +34,18 @@ public sealed partial class SpeciesPrototype : IPrototype
     [DataField(required: true)]
     public bool RoundStart { get; private set; } = false;
 
+    // The below two are to avoid fetching information about the species from the entity
+    // prototype.
+
+    // This one here is a utility field, and is meant to *avoid* having to duplicate
+    // the massive SpriteComponent found in every species.
+    // Species implementors can just override SpriteComponent if they want a custom
+    // sprite layout, and leave this null. Keep in mind that this will disable
+    // sprite accessories.
+
+    [DataField("sprites")]
+    public ProtoId<HumanoidSpeciesBaseSpritesPrototype> SpriteSet { get; private set; } = default!;
+
     /// <summary>
     ///     Default skin tone for this species. This applies for non-human skin tones.
     /// </summary>
@@ -50,6 +60,12 @@ public sealed partial class SpeciesPrototype : IPrototype
     public int DefaultHumanSkinTone { get; private set; } = 20;
 
     /// <summary>
+    ///     The limit of body markings that you can place on this species.
+    /// </summary>
+    [DataField("markingLimits")]
+    public ProtoId<MarkingPointsPrototype> MarkingPoints { get; private set; } = default!;
+
+    /// <summary>
     ///     Humanoid species variant used by this entity.
     /// </summary>
     [DataField(required: true)]
@@ -62,7 +78,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     public EntProtoId DollPrototype { get; private set; } = default!;
 
     /// <summary>
-    /// Euph - whether to allow setting custom species name for this species.
+    /// Allow Custom Specie Name for this Specie.
     /// </summary>
     [DataField]
     public Boolean CustomName { get; private set; } = true;
@@ -118,7 +134,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// The base height scale for this species
     /// </summary>
     [DataField("baseScale")]
-    public Vector2 BaseScale = new(1f, 1f);
+    public System.Numerics.Vector2 BaseScale = new(1f, 1f);
     // End DV - CD Character Records shouldn't nuke species heights
 
     // Begin CD - Character Records
@@ -126,13 +142,13 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// The minimum height for this species
     /// </summary>
     [DataField("minHeight")]
-    public float MinHeight = 0.7f; // Euph
+    public float MinHeight = 0.75f; // DeltaV - less trolling with the heights // Floofstation - more trolling with the heights
 
     /// <summary>
     /// The maximum height for this species
     /// </summary>
     [DataField("maxHeight")]
-    public float MaxHeight = 1.25f; // Euph
+    public float MaxHeight = 1.25f; // DeltaV - less trolling with the heights // Floofstation - more trolling with the heights
 
     /// <summary>
     /// The default height for this species
@@ -165,10 +181,10 @@ public enum SpeciesNaming : byte
     First,
     FirstLast,
     FirstDashFirst,
-    FirstDashLast, // Euph - IPCs
     //Start of Nyano - Summary: for Oni naming
     LastNoFirst,
     //End of Nyano - Summary: for Oni naming
     TheFirstofLast,
     LastFirst, // DeltaV
+    FirstDashLast, // Goobstation
 }

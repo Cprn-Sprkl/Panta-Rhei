@@ -27,6 +27,7 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
+    damageCap: 20
     damage:
       types:
         Asphyxiation: 1
@@ -42,10 +43,11 @@
     - id: FoodMeatFish
       amount: 2
   - type: Bloodstream
-    bloodReferenceSolution: # DeltaV - Upstream changes for blood solution
+    bloodMaxVolume: 20
+    bloodReagents:
       reagents:
       - ReagentId: Blood
-        Quantity: 20 # DeltaV - Upstream changes for blood solution
+        Quantity: 1
   - type: ZombieImmune
 
 - type: entity
@@ -95,9 +97,6 @@
     state: bass
   - type: Item
     sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
-  - type: Tag # Euphoria tag for bass (fih) guitar crafting
-    tags:
-    - BassGuitarFish
 
 - type: entity
   id: FishBingle
@@ -171,10 +170,11 @@
   - type: Item
     sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
   - type: Bloodstream
-    bloodReferenceSolution: # DeltaV - Upstream changes for blood solution
+    bloodMaxVolume: 20
+    bloodReagents:
       reagents:
       - ReagentId: Laughter
-        Quantity: 20 # DeltaV - Upstream changes for blood solution
+        Quantity: 1
 
 - type: entity
   id: FishNukeDisk
@@ -284,10 +284,11 @@
   - type: Item
     sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
   - type: Bloodstream
-    bloodReferenceSolution: # DeltaV - Upstream changes for blood solution
+    bloodMaxVolume: 10
+    bloodReagents:
       reagents:
       - ReagentId: Laughter
-        Quantity: 10 # DeltaV - Upstream changes for blood solution
+        Quantity: 1
 
 - type: entity
   id: FishIan

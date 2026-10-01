@@ -18,10 +18,11 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Robust.Shared.Timing;
 
 namespace Content.Server.Nuke;
 
@@ -44,7 +45,6 @@ public sealed class NukeSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
 
     /// <summary>
     ///     Used to calculate when the nuke song should start playing for maximum kino with the nuke sfx
@@ -232,12 +232,6 @@ public sealed class NukeSystem : EntitySystem
         if (component.Status != NukeStatus.AWAIT_CODE)
             return;
 
-        var curTime = _timing.CurTime;
-        if (curTime < component.LastCodeEnteredAt + SharedNukeComponent.EnterCodeCooldown)
-            return; // Validate that they are not entering codes faster than the cooldown.
-
-        component.LastCodeEnteredAt = curTime;
-
         UpdateStatus(uid, component);
         UpdateUserInterface(uid, component);
     }
@@ -327,15 +321,15 @@ public sealed class NukeSystem : EntitySystem
         // should play
         if (nuke.RemainingTime <= _nukeSongLength + nuke.AlertSoundTime + NukeSongBuffer && !nuke.PlayedNukeSong && !ResolvedSoundSpecifier.IsNullOrEmpty(_selectedNukeSong))
         {
-            _sound.DispatchGlobalEventMusic(_selectedNukeSong, StationEventMusicType.Nuke); // DeltaV - Global Nuke Music
+            _sound.DispatchStationEventMusic(uid, _selectedNukeSong, StationEventMusicType.Nuke);
             nuke.PlayedNukeSong = true;
         }
 
         // play alert sound if time is running out
         if (nuke.RemainingTime <= nuke.AlertSoundTime && !nuke.PlayedAlertSound)
         {
-            _sound.PlayGlobal(_audio.ResolveSound(nuke.AlertSound), new AudioParams { Volume = -5f }); // DeltaV - Global Nuke SFX
-            _sound.StopGlobalEventMusic(StationEventMusicType.Nuke); // DeltaV - Global Nuke Music
+            _sound.PlayGlobalOnStation(uid, _audio.ResolveSound(nuke.AlertSound), new AudioParams{Volume = -5f});
+            _sound.StopStationEventMusic(uid, StationEventMusicType.Nuke);
             nuke.PlayedAlertSound = true;
             UpdateAppearance(uid, nuke);
         }
@@ -504,9 +498,9 @@ public sealed class NukeSystem : EntitySystem
             ("time", (int) component.RemainingTime),
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, nukeXform)))));
         var sender = Loc.GetString("nuke-component-announcement-sender");
-        _chatSystem.DispatchGlobalAnnouncement(announcement, sender, false, null, Color.Red); // DeltaV - Global Nuke Annoucement
+        _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Red);
 
-        _sound.PlayGlobal(_audio.ResolveSound(component.ArmSound)); // DeltaV - Global Nuke Music
+        _sound.PlayGlobalOnStation(uid, _audio.ResolveSound(component.ArmSound));
         _nukeSongLength = (float) _audio.GetAudioLength(_selectedNukeSong).TotalSeconds;
 
         // turn on the spinny light
@@ -544,11 +538,11 @@ public sealed class NukeSystem : EntitySystem
         // warn a crew
         var announcement = Loc.GetString("nuke-component-announcement-unarmed");
         var sender = Loc.GetString("nuke-component-announcement-sender");
-        _chatSystem.DispatchGlobalAnnouncement(announcement, sender, false); // DeltaV - Global Nuke Announcement
+        _chatSystem.DispatchStationAnnouncement(uid, announcement, sender, false);
 
         component.PlayedNukeSong = false;
-        _sound.PlayGlobal(_audio.ResolveSound(component.DisarmSound)); // DeltaV - Global Nuke SFX
-        _sound.StopGlobalEventMusic(StationEventMusicType.Nuke); // DeltaV - Global Nuke Music
+        _sound.PlayGlobalOnStation(uid, _audio.ResolveSound(component.DisarmSound));
+        _sound.StopStationEventMusic(uid, StationEventMusicType.Nuke);
 
         // reset nuke remaining time to either itself or the minimum time, whichever is higher
         component.RemainingTime = Math.Max(component.RemainingTime, component.MinimumTime);
@@ -610,7 +604,7 @@ public sealed class NukeSystem : EntitySystem
             OwningStation = transform.GridUid,
         });
 
-        _sound.StopGlobalEventMusic(StationEventMusicType.Nuke); // DeltaV - Global Nuke Music
+        _sound.StopStationEventMusic(uid, StationEventMusicType.Nuke);
         Del(uid);
     }
 

@@ -6,7 +6,6 @@
   description: trait-pirate-accent-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -18,7 +17,6 @@
   description: trait-southern-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -30,7 +28,6 @@
   description: trait-cowboy-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -43,7 +40,6 @@
   description: trait-italian-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -56,7 +52,6 @@
   description: trait-muted-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   conditions:
   - !type:HasCompCondition
     component: BorgChassis
@@ -73,7 +68,6 @@
   description: trait-french-accent-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -85,7 +79,6 @@
   description: trait-spanish-accent-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -97,7 +90,6 @@
   description: trait-irish-accent-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -109,7 +101,6 @@
   description: trait-mobster-accent-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -121,7 +112,6 @@
   description: trait-scottish-accent-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -133,7 +123,6 @@
   description: trait-accentless-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -141,7 +130,6 @@
       removes:
       - type: LizardAccent
       - type: MothAccent
-      - type: AllulaloAccent
       - type: ReplacementAccent
         accent: dwarf
 
@@ -151,7 +139,6 @@
   description: trait-socialanxiety-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -167,7 +154,6 @@
   description: trait-frontal-lisp-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -179,7 +165,6 @@
   description: trait-hushed-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   conditions:
   - !type:HasCompCondition
     component: BorgChassis
@@ -196,7 +181,6 @@
   description: trait-anglish-desc
   category: Accents
   cost: 0 #floof
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
@@ -208,21 +192,7 @@
   description: trait-slavic-desc
   category: Accents
   cost: 0
-  usesSlots: false # Euphoria
   effects:
   - !type:AddCompsEffect
     components:
     - type: SlavicAccent
-
-# Euphoria | Rrrolling Accent for rolling rrrrs
-- type: trait
-  id: RrrollingAccent
-  name: trait-rrrolling-accent-name
-  description: trait-rrrolling-accent-desc
-  category: Accents
-  cost: 0
-  usesSlots: false # Euphoria
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: RrrollingAccent

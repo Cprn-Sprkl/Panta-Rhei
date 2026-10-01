@@ -17,6 +17,7 @@ leash-detaching-popup-others = {THE($user)} is trying to remove the leash {$isSe
     *[false] from {THE($target)}
 }...
 
+leash-snap-popup = {THE($leash)} snaps off!
 leash-set-length-popup = Length set to {$length}m.
 
-leash-length-examine-text = Its current length is {$length}m with {$links} links.
+leash-length-examine-text = Its current length is {$length}m.

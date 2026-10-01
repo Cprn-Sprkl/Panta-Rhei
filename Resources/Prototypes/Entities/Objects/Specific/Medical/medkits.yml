@@ -17,7 +17,7 @@
         - Ointment
         - PillCanister
         - Syringe
-        - PurifyingSalts # DeltaV
+        - MedicalMisc # Euphoria
       components:
         - GasTank # DeltaV
         - BreathMask

@@ -3,7 +3,6 @@ using Content.Server.Bible.Components;
 using Content.Server.Popups;
 using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared._DV.CosmicCult;
-using Content.Shared._Floof.Antag.ConversionImmune;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mind;
 using Content.Shared.Mindshield.Components;
@@ -24,8 +23,6 @@ public sealed class CosmicConversionSystem : EntitySystem
     [Dependency] private readonly SharedCosmicCultSystem _cosmicCult = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
-
-    [Dependency] private readonly ConversionImmuneSystem _conversionImmune = default!; // Floof
 
     public override void Initialize()
     {
@@ -90,8 +87,6 @@ public sealed class CosmicConversionSystem : EntitySystem
                 _popup.PopupEntity(Loc.GetString("cult-glyph-target-mindshield"), uid, args.User);
                 args.Cancel();
             }
-            else if (_conversionImmune.CheckImmuneWithPopup(target.Owner, ConversionProtectionType.CosmicCult)) // Floof
-                args.Cancel();
             else
             {
                 _stun.TryUpdateStunDuration(target, TimeSpan.FromSeconds(4f));

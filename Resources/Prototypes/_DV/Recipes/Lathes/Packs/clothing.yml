@@ -42,28 +42,9 @@
   recipes:
   # CMO
   - ClothingLongcoatCMO
-  - ClothingUniformCMOFormal
-  - ClothingUniformJumpskirtCMOFormal
-  - ClothingUniformCMOVest
-  - ClothingUniformJumpskirtCMOVest
-  - ClothingUniformCMOSummer
   # Chemist
   - ClothingUniformJumpsuitChemShirt
   - ClothingUniformJumpskirtChemShirt
-  # Paramed
-  - ClothingUniformParamedicJumper
-  - ClothingUniformJumpskirtParamedicJumper
-  # General
-  - ClothingUniformMedicalApron
-  - ClothingUniformJumpskirtMedicalApron
-  - ClothingUniformMedicalOffset
-  - ClothingUniformJumpskirtMedicalOffset
-  - ClothingUniformMedicalVest
-  - ClothingUniformJumpskirtMedicalVest
-  # Hats
-  - ClothingHeadHatBeretMedical
-  - ClothingHeadHatBeretSeniorChemistry
-  - ClothingHeadHatBeretParamedic
 
 - type: latheRecipePack
   id: ClothingJustice
@@ -118,7 +99,6 @@
   - ClothingUniformJumpskirtAtmos
   - ClothingUniformJumpsuitAtmosCasual
   - ClothingUniformJumpskirtAtmosCasual
-  - ClothingHeadHatBeretAtmospherics
 
 - type: latheRecipePack
   id: ClothingServiceDeltaV
@@ -129,9 +109,6 @@
   # Bartender
   - ClothingUniformSeniorBartender
   - ClothingUniformSeniorBartenderSkirt
-  # Mime
-  - ClothingUniformJumpsuitMimeTurtleneckPants
-  - ClothingUniformJumpskirtMimeTurtleneckSkirt
 
 - type: latheRecipePack
   id: WinterCoatsDeltaV
@@ -140,9 +117,7 @@
   - ClothingOuterChiefJustice
   - ClothingOuterStasecSweater
   - ClothingOuterWinterLongMime
-  - ClothingOuterFurCoatMime
-    # Ponchos
-    # Euph - Readded the SecPoncho after DV killed it.
+  # Ponchos
   - ClothingNeckCWPSec
   - ClothingNeckCWPArctic
 
@@ -175,5 +150,4 @@
   - ClothingUniformCybersunCasual
   - ClothingUniformCybersunRND
   - ClothingOuterCybersunOvercoat
-  - ClothingOuterCoatLabCybersun
   - ClothingBeltSyndicateUtility

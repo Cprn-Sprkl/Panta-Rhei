@@ -6,14 +6,14 @@ namespace Content.Shared.Shipyard.Prototypes;
 /// Like <c>TagPrototype</c> but for vessel categories.
 /// Prevents making typos being silently ignored by the linter.
 /// </summary>
-[Prototype]
-public sealed partial class VesselCategoryPrototype : IPrototype
+[Prototype("vesselCategory")]
+public sealed class VesselCategoryPrototype : IPrototype
 {
     /// <summary>
     /// The unique ID for the vessel category.
     /// </summary>
     [ViewVariables, IdDataField]
-    public string ID { get; private set; } = default!;
+    public string ID { get; } = default!;
 
     /// <summary>
     /// The LocId containing the localization ID of the category name.

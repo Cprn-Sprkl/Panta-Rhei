@@ -5,7 +5,7 @@
   priority: -5
   cooldown: 4
   range: {max: 1.2}
-  allowedContests: [Strength]
+  allowedContests: [Mass]
   contestAdvantageRange:
     min: 0.4 # Only lower bound; you can be as much stronger than your target as you like
   contestAdvantageLimit:
@@ -79,13 +79,8 @@
   effectDelayed: null
   hideByRequirement: true
   requirement:
-    !type:ComplexRequirement # either the verb is specific to the target, or the target is an alive mob
-    requireAll: false
-    requirements:
-    - !type:MobStateRequirement
-      allowedStates: [ Alive, Critical ]
-    - !type:SourceRequirement
-      sources: TargetVerbs
+    !type:MobStateRequirement
+    allowedStates: [Alive, Critical]
   action:
     !type:ComplexAction
     actions:

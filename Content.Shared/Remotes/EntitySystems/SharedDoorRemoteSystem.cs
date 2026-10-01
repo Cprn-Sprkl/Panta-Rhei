@@ -1,17 +1,13 @@
 using Content.Shared.Access.Components;
-using Content.Shared.Access.Systems; // DeltaV
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
-using Content.Shared.Electrocution;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Remotes.Components;
-using Content.Shared.Tag;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
@@ -20,15 +16,11 @@ namespace Content.Shared.Remotes.EntitySystems;
 public abstract class SharedDoorRemoteSystem : EntitySystem
 {
     [Dependency] private readonly SharedAirlockSystem _airlock = default!;
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!; // DeltaV
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
-    [Dependency] private readonly SharedElectrocutionSystem _electrify = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
 
 
@@ -56,10 +48,10 @@ public abstract class SharedDoorRemoteSystem : EntitySystem
             || !TryComp<DoorComponent>(args.Target, out var doorComp) // If it isn't a door we don't use it
                                                                       // Only able to control doors if they are within your vision and within your max range.
                                                                       // Not affected by mobs or machines anymore.
-            || (entity.Comp.RequireInRangeUnoccluded && !_examine.InRangeUnOccluded(args.User,
+            || !_examine.InRangeUnOccluded(args.User,
                 args.Target.Value,
                 SharedInteractionSystem.MaxRaycastRange,
-                null)))
+                null))
 
         {
             return;
@@ -81,27 +73,8 @@ public abstract class SharedDoorRemoteSystem : EntitySystem
             // This covers the accesses the USER has, which always includes the remote's access since holding a remote acts like holding an ID card.
         }
 
-        // Only let remote work on doors that have AccessReader; otherwise, it works on anything with a Door component (curtains, fence gates, etc)
-        if (TryComp<AccessReaderComponent>(args.Target, out var accessComponent) && _tagSystem.HasTag(args.Target.Value, entity.Comp.TargetTag))
-        {
-            // Has an access reader component. Check access.
-            if (!_doorSystem.HasAccess(args.Target.Value, accessTarget, doorComp, accessComponent))
-            {
-                if (isAirlock)
-                    _doorSystem.Deny(args.Target.Value, doorComp, user: args.User, predicted: true);
-
-                _popup.PopupClient(Loc.GetString("door-remote-denied"), args.User, args.User);
-                return;
-            }
-        }
-        // Unless allowed to bypass by the flag on the component.
-        else if (entity.Comp.RequireTagWhitelist)
-            return;
-
-        // Begin DeltaV - Emergency access only bypasses open/close; bolting and toggling emergency access still require actual access.
-        if (entity.Comp.Mode != OperatingMode.OpenClose
-            && accessComponent != null
-            && !_accessReader.IsAllowed(accessTarget, args.Target.Value, accessComponent))
+        if (TryComp<AccessReaderComponent>(args.Target, out var accessComponent)
+            && !_doorSystem.HasAccess(args.Target.Value, accessTarget, doorComp, accessComponent))
         {
             if (isAirlock)
                 _doorSystem.Deny(args.Target.Value, doorComp, user: args.User, predicted: true);
@@ -109,7 +82,6 @@ public abstract class SharedDoorRemoteSystem : EntitySystem
             _popup.PopupClient(Loc.GetString("door-remote-denied"), args.User, args.User);
             return;
         }
-        // End DeltaV
 
         switch (entity.Comp.Mode)
         {
@@ -139,20 +111,6 @@ public abstract class SharedDoorRemoteSystem : EntitySystem
                     _adminLogger.Add(LogType.Action,
                         LogImpact.Medium,
                         $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to set emergency access {(airlockComp.EmergencyAccess ? "on" : "off")}");
-                }
-
-                break;
-            case OperatingMode.ToggleOvercharge:
-                if (TryComp<ElectrifiedComponent>(args.Target, out var eletrifiedComp))
-                {
-                    _electrify.SetElectrified((args.Target.Value, eletrifiedComp), !eletrifiedComp.Enabled);
-                    var soundToPlay = eletrifiedComp.Enabled
-                        ? eletrifiedComp.AirlockElectrifyEnabled
-                        : eletrifiedComp.AirlockElectrifyDisabled;
-                    _audio.PlayLocal(soundToPlay, args.Target.Value, args.User);
-                    _adminLogger.Add(LogType.Action,
-                        LogImpact.Medium,
-                        $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to {(eletrifiedComp.Enabled ? "" : "un")}electrify it");
                 }
 
                 break;

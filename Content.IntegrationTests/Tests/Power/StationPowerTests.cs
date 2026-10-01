@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Content.IntegrationTests.Fixtures;
 using Content.Server.GameTicking;
+using Content.Server.Maps;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Power.NodeGroups;
 using Content.Server.Power.Pow3r;
-using Content.Shared.Maps;
 using Content.Shared.Power.Components;
 using Content.Shared.NodeContainer;
 using Robust.Server.GameObjects;
@@ -14,7 +13,7 @@ using Robust.Shared.EntitySerialization;
 
 namespace Content.IntegrationTests.Tests.Power;
 
-public sealed class StationPowerTests : GameTest
+public sealed class StationPowerTests
 {
     /// <summary>
     /// How long the station should be able to survive on stored power if nothing is changed from round start.
@@ -47,16 +46,14 @@ public sealed class StationPowerTests : GameTest
     // ];
     // Begin DeltaV Additions - DeltaV maps for testing
 
-    public override PoolSettings PoolSettings => new ()
-    {
-        Dirty = true,
-    };
-
     [Explicit]
     [Test, TestCaseSource(nameof(GameMaps))]
     public async Task TestStationStartingPowerWindow(string mapProtoId)
     {
-        var pair = Pair;
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings
+        {
+            Dirty = true,
+        });
         var server = pair.Server;
 
         var entMan = server.EntMan;
@@ -109,12 +106,17 @@ public sealed class StationPowerTests : GameTest
             Assert.That(totalStartingCharge, Is.GreaterThanOrEqualTo(requiredStoredPower),
                 $"Needs at least {requiredStoredPower - totalStartingCharge} more stored power!");
         });
+
+        await pair.CleanReturnAsync();
     }
 
     [Test, TestCaseSource(nameof(GameMaps))]
     public async Task TestApcLoad(string mapProtoId)
     {
-        var pair = Pair;
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings
+        {
+            Dirty = true,
+        });
         var server = pair.Server;
 
         var entMan = server.EntMan;
@@ -153,5 +155,7 @@ public sealed class StationPowerTests : GameTest
                 }
             }
         });
+
+        await pair.CleanReturnAsync();
     }
 }

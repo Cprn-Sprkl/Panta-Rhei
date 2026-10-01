@@ -1,16 +1,17 @@
-# When adding new soaps, also add them to id: AllSoapsTable
-
 - type: entity
-  abstract: true
-  parent: BaseItem
-  id: BaseSoap
   name: soap
+  id: Soap
+  parent: BaseItem
+  description: A cheap bar of soap. Doesn't smell.
   components:
   - type: Tag
     tags:
     - Soap
   - type: Sprite
     sprite: Objects/Specific/Janitorial/soap.rsi
+    layers:
+    - state: soap-4
+      map: ["enum.SolutionContainerLayers.Fill"]
   - type: SolutionContainerVisuals
     maxFillLevels: 4
     fillBaseName: soap-
@@ -62,30 +63,21 @@
   - type: ColorPaintRemover # Floofstation
   - type: FlavorProfile
     flavors:
-    - clean
+      - clean
   - type: Edible
     solution: soap
   - type: BadFood
   - type: CleansForensics
+  - type: SurgeryCleansDirt # DeltaV - surgery cross contamination
   - type: Residue
     residueAdjective: residue-slippery
-
-- type: entity
-  parent: BaseSoap
-  id: Soap
-  description: A cheap bar of soap. Doesn't smell.
-  components:
-  - type: Sprite
-    layers:
-    - state: soap-4
-      map: ["enum.SolutionContainerLayers.Fill"]
-  - type: Residue
     residueColor: residue-green
   - type: PhysicalComposition # DeltaV - made soap recycleable
 
 - type: entity
-  parent: BaseSoap
+  name: soap
   id: SoapNT
+  parent: Soap
   description: A Nanotrasen brand bar of soap. Smells of plasma.
   components:
   - type: Sprite
@@ -104,11 +96,13 @@
         - ReagentId: SoapReagent
           Quantity: 100
   - type: Residue
+    residueAdjective: residue-slippery
     residueColor: residue-grey
 
 - type: entity
-  parent: BaseSoap
+  name: soap
   id: SoapDeluxe
+  parent: Soap
   description: A deluxe Waffle Co. brand bar of soap. Smells of strawberries.
   components:
   - type: Sprite
@@ -120,11 +114,13 @@
   - type: Item
     heldPrefix: deluxe
   - type: Residue
+    residueAdjective: residue-slippery
     residueColor: residue-brown
 
 - type: entity
-  parent: [BaseSoap, BaseSyndicateContraband]
+  name: soap
   id: SoapSyndie
+  parent: [Soap, BaseSyndicateContraband]
   description: An untrustworthy bar of soap. Smells of fear.
   components:
   - type: Sprite
@@ -147,27 +143,21 @@
       - punishment
   - type: CleansForensics
     cleanDelay: 8.0
+  - type: SurgeryCleansDirt # DeltaV - evil soap is fast
+    cleanDelay: 2
   - type: Residue
+    residueAdjective: residue-slippery
     residueColor: residue-red
   - type: StaticPrice
     price: 500
 
 - type: entity
-  parent: BaseSoap
-  id: SoapletSyndie
   name: soaplet
-  description: A tiny piece of syndicate soap.
+  id: SoapletSyndie
   categories: [ HideSpawnMenu ]
+  parent: Soap
+  description: A tiny piece of syndicate soap.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      soap:
-        maxVol: 1.5 # 50 / 30 = 1.666
-        reagents:
-        - ReagentId: SoapReagent
-          Quantity: 1.5
-  - type: SolutionContainerVisuals
-    maxFillLevels: 0
   - type: Sprite
     layers:
     - state: syndie-soaplet
@@ -201,13 +191,11 @@
       path: "/Audio/Effects/Fluids/splat.ogg"
       params:
         volume: -8
-  - type: Residue
-    residueAdjective: residue-slippery
-    residueColor: residue-red
 
 - type: entity
-  parent: BaseSoap
+  name: soap
   id: SoapHomemade
+  parent: Soap
   description: A homemade bar of soap. Smells of... well....
   components:
   - type: Sprite
@@ -216,6 +204,8 @@
       map: ["enum.SolutionContainerLayers.Fill"]
   - type: SolutionContainerVisuals
     fillBaseName: gibs-
+  - type: Slippery
+  - type: StepTrigger
   - type: Item
     heldPrefix: gibs
   - type: FlavorProfile
@@ -223,12 +213,13 @@
       - clean
       - meaty
   - type: Residue
+    residueAdjective: residue-slippery
     residueColor: residue-red
 
 - type: entity
-  parent: BaseSoap
-  id: SoapOmega
   name: omega soap
+  id: SoapOmega
+  parent: Soap
   description: The most advanced soap known to mankind. Smells of bluespace.
   components:
   - type: Sprite
@@ -252,5 +243,8 @@
         reagents:
         - ReagentId: SoapReagent
           Quantity: 240
+  - type: SurgeryCleansDirt # DeltaV - omega soap is fast
+    cleanDelay: 2
   - type: Residue
+    residueAdjective: residue-slippery
     residueColor: residue-blue

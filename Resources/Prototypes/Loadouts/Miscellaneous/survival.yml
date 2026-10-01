@@ -29,13 +29,7 @@
     - Kitsune
     - Avali
     # End DeltaV additions
-    - Allulalo #imp
-    - Shadekin # Delta V - Starlight Addition
-    # Euphoria additions begin
-    - Tajaran
-    - Arachne
-    - Resomi
-    # Euphoria additions end
+    - Shadowkin #floof - specific survival box seems unneeeded
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
@@ -94,7 +88,6 @@
     - Human
     - Reptilian
     # Begin DeltaV additions
-    - Allulalo
     - Felinid
     - Harpy
     - Oni
@@ -105,7 +98,7 @@
     - Kitsune
     - Avali
     # End DeltaV additions
-    - Tajaran #floof
+    - Shadowkin #floof - specific survival box seems unneeeded
 
 - type: loadoutEffectGroup
   id: OxygenBreatherMimeMoth
@@ -216,29 +209,6 @@
   storage:
     back:
     - BoxSurvivalSyndicateNitrogen
-
-# Military / Double Extended
-- type: loadout
-  id: EmergencyOxygenMilitaryDouble
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: OxygenBreather
-  equipment:
-    pocket1: DoubleEmergencyOxygenTankFilled
-  storage:
-    back:
-    - BoxSurvivalMilitaryDouble
-
-- type: loadout
-  id: EmergencyNitrogenMilitaryDouble
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: NitrogenBreather
-  equipment:
-    pocket1: DoubleEmergencyNitrogenTankFilled
-  storage:
-    back:
-    - BoxSurvivalMilitaryDoubleNitrogen
 
 # Pre-equipped species gear
 

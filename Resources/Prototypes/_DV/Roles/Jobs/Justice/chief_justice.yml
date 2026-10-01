@@ -19,7 +19,6 @@
   startingGear: CJGear
   icon: "JobIconChiefJustice"
   requireAdminNotify: true
-  joinNotifyCrew: true
   supervisors: job-supervisors-captain
   canBeAntag: false
   whitelisted: false # floofstation - we don't want CJ to be whitelisted like delta-v had it
@@ -39,8 +38,10 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-  - !type:ModifyPsionicChanceSpecial # Command Roles are more likely to be psionic.
-    jobBonusChance: 0.05 # Additional 5% chance.
+  - !type:AddComponentSpecial
+    components:
+    - type: PsionicBonusChance #Nyano - Summary: makes it more likely to become psionic.
+      flatBonus: 0.025
 
 - type: startingGear
   id: CJGear

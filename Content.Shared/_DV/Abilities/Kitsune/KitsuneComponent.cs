@@ -42,6 +42,5 @@ public sealed partial class KitsuneComponent : Component
 public enum KitsuneColorVisuals : byte
 {
     Color,
-    Layer,
-    InnerLayer // Floofstation - an extra layer for the inner color of kitsune fox form
+    Layer
 }

@@ -5,7 +5,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: SupermatterImmune # imp
   - type: Transform
     anchored: true
   - type: Physics
@@ -88,7 +87,6 @@
   - type: ExaminableDamage
     messages: WindowMessages
   - type: Repairable
-    qualityNeeded: Welding # DeltaV
   - type: DamageVisuals
     thresholds: [8, 16, 25]
     damageDivisor: 3.333
@@ -132,7 +130,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: SupermatterImmune # imp
   - type: Transform
     anchored: true
   - type: Physics
@@ -183,7 +180,6 @@
   - type: ExaminableDamage
     messages: WindowMessages
   - type: Repairable
-    qualityNeeded: Welding # DeltaV
   - type: Damageable
     damageContainer: StructuralInorganic
   - type: Tag

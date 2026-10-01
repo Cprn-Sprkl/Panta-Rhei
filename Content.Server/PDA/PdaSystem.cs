@@ -18,9 +18,6 @@ using Content.Shared.Light;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.PDA;
 using Content.Shared.PDA.Ringer;
-using Content.Shared.Silicons.Borgs.Components; // DeltaV - silicon PDAs
-using Content.Shared.Silicons.StationAi; // DeltaV - silicon PDAs
-using Content.Shared.VoiceMask;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration; // DeltaV - PDA date
@@ -66,8 +63,7 @@ namespace Content.Server.PDA
             SubscribeLocalEvent<StationRenamedEvent>(OnStationRenamed);
             SubscribeLocalEvent<EntityRenamedEvent>(OnEntityRenamed, after: new[] { typeof(IdCardSystem) });
             SubscribeLocalEvent<AlertLevelChangedEvent>(OnAlertLevelChanged);
-            SubscribeLocalEvent<PdaComponent, InventoryRelayedEvent<ChameleonControllerOutfitSelectedEvent>>(OnRelayedEventToIdCard);
-            SubscribeLocalEvent<PdaComponent, InventoryRelayedEvent<VoiceMaskNameUpdatedEvent>>(OnRelayedEventToIdCard);
+            SubscribeLocalEvent<PdaComponent, InventoryRelayedEvent<ChameleonControllerOutfitSelectedEvent>>(ChameleonControllerOutfitItemSelected);
 
             // Begin DeltaV additions
             Subs.CVar(_config,
@@ -77,7 +73,7 @@ namespace Content.Server.PDA
             // End DeltaV additions
         }
 
-        private void OnRelayedEventToIdCard<T>(Entity<PdaComponent> ent, ref InventoryRelayedEvent<T> args)
+        private void ChameleonControllerOutfitItemSelected(Entity<PdaComponent> ent, ref InventoryRelayedEvent<ChameleonControllerOutfitSelectedEvent> args)
         {
             // Relay it to your ID so it can update as well.
             if (ent.Comp.ContainedId != null)
@@ -172,12 +168,9 @@ namespace Content.Server.PDA
         {
             _ringer.RingerPlayRingtone(ent.Owner);
 
-            // Begin DeltaV - PDAs can be self-viewed
-            if (!(TryComp<ActorComponent>(ent, out var actor) ||
-                (_containerSystem.TryGetContainingContainer((ent, null, null), out var container)
-                && TryComp<ActorComponent>(container.Owner, out actor))))
+            if (!_containerSystem.TryGetContainingContainer((ent, null, null), out var container)
+                || !TryComp<ActorComponent>(container.Owner, out var actor))
                 return;
-            // End DeltaV - PDAs can be self-viewed
 
             var message = FormattedMessage.EscapeText(args.Message);
             var wrappedMessage = Loc.GetString("pda-notification-message",
@@ -220,26 +213,6 @@ namespace Content.Server.PDA
 
             var programs = _cartridgeLoader.GetAvailablePrograms(uid, loader);
             var id = CompOrNull<IdCardComponent>(pda.ContainedId);
-
-            // Begin DeltaV - PDAs can be silicons
-            var owner = id?.FullName;
-            var job = id?.LocalizedJobTitle;
-            if (HasComp<BorgChassisComponent>(uid))
-            {
-                if (TryComp<BorgSwitchableTypeComponent>(uid, out var switchable) && switchable.SelectedBorgType is { } borgType)
-                    job = Loc.GetString($"borg-type-{borgType}-transponder");
-                else
-                    job = Loc.GetString("borg-type-any-transponder");
-
-                owner = MetaData(uid).EntityName;
-            }
-            if (HasComp<StationAiHeldComponent>(uid))
-            {
-                job = Loc.GetString($"station-ai-transponder");
-                owner = MetaData(uid).EntityName;
-            }
-            // End DeltaV - PDAs can be silicons
-
             var state = new PdaUpdateState(
                 programs,
                 GetNetEntity(loader.ActiveProgram),
@@ -249,8 +222,8 @@ namespace Content.Server.PDA
                 new PdaIdInfoText
                 {
                     ActualOwnerName = pda.OwnerName,
-                    IdOwner = owner, // DeltaV - silicon PDAs
-                    JobTitle = job, // DeltaV - silicon PDAs
+                    IdOwner = id?.FullName,
+                    JobTitle = id?.LocalizedJobTitle,
                     CurrentDate = pda.CurrentDate, // DeltaV - PDA date
                     StationAlertLevel = pda.StationAlertLevel,
                     StationAlertColor = pda.StationAlertColor

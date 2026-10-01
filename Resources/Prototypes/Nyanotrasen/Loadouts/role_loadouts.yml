@@ -18,20 +18,11 @@
   groups:
   - GroupTankHarness
   - MantisHead
-  - MantisGlasses # Euphoria , Den
-  - MantisMasks # Den
-  - MantisNeck # Euphoria , Den
-  - MantisJumpsuit # Den
-  - MantisBackpack # Den
-  - FloofMantisPDAs # Floofstation
+  - MantisJumpsuit
+  - ScientistBackpack
   - MantisOuterClothing
   - MantisShoes
   - MantisGloves
-  - MantisHeadSets
-  - MantisBelt
-  - FloofUndergarmentTopScientist # Floof
-  - FloofUndergarmentBottomMantis # Floof
-  - FloofSocksMantis # Floof
   - Survival
   - GroupSpeciesBreathTool
 
@@ -45,19 +36,14 @@
   - PrisonGuardJumpsuit
   - SecurityBackpack
   - SecurityOuterClothingDeltaV # DeltaV - Switched to DeltaV version, was SecurityOuterClothing
-  - FloofSecurityPrisonguardPdas # Floofstation - give pdas
   - SecurityGloves # DeltaV - Security can start with gloves
   - SecurityShoes
   - SecurityBelt
   - SecurityEyewear # DeltaV - Security eyewear with prescription options
-  - FloofUndergarmentTopSecurityOfficer # Floof - they are sec so lets give them the sec stuff
-  - FloofUndergarmentBottomSecurityOfficer # Floof
-  - FloofSocksSecurityOfficer # Floof
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
   - SecurityFirearm # DeltaV - loadouts
   - SecurityFirearmAmmo # DeltaV - loadouts
-  - SecurityUtility
 
 # Wildcards
 - type: roleLoadout
@@ -69,14 +55,10 @@
   - PassengerFace # floofstation - give prisoners access to other clothing options
   - PrisonerJumpsuit
   - CommonBackpack
-  - FloofServicePrisonerPDAs # Floofstation pda
   - PassengerNeck # Floofstation - let prisoners have neck options
   - PassengerGloves # floofstation - give prisoners access to other clothing options
   - PassengerShoes
   - PassengerOuterClothing # floofstation - give prisoners access to other clothing options
-  - FloofUndergarmentTopPassenger # Floof
-  - FloofUndergarmentBottomPassenger # Floof
-  - FloofSocksPassenger # Floof
   - Glasses # DeltaV
   - Survival
   - GroupSpeciesBreathTool
@@ -96,9 +78,6 @@
   - MartialArtistShoes
   - BoxerGloves
   - PassengerOuterClothing # Floofstation
-  - FloofUndergarmentTopSecurityOfficer # Floof
-  - FloofUndergarmentBottomSecurityOfficer # Floof
-  - FloofSocksSecurityOfficer # Floof
   - CommonBackpack
   - Glasses # DeltaV
   - Survival
@@ -118,9 +97,6 @@
   - PassengerShoes # Floofstation
   - CommonBackpack
   - GladiatorOuterClothing
-  - FloofUndergarmentTopSecurityOfficer # Floof
-  - FloofUndergarmentBottomSecurityOfficer # Floof
-  - FloofSocksSecurityOfficer # Floof
   - Glasses # DeltaV
   - Survival
   - GroupSpeciesBreathTool

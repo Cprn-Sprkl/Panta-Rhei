@@ -1,6 +1,6 @@
 - type: entity
   name: NPC hostile human
-  parent: MobHuman
+  parent: BaseMobHuman
   id: MobHumanNPC
   description: "A humanoid with uncertain intent."
   components:
@@ -8,6 +8,7 @@
       factions:
         - SalvageMob
     - type: MindContainer
+      showExamineInfo: False
     - type: HTN
       rootTask:
         task: SimpleHumanoidHostileCompound

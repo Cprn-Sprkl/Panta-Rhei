@@ -30,7 +30,6 @@
   id: MedicalBoardsDeltaV
   recipes:
   - CrewMonitoringComputerCircuitboard
-  - CrewMonitoringServerMachineCircuitboard
   - CloningConsoleComputerCircuitboard
   - MedicalScannerMachineCircuitboard
   - CloningPodMachineCircuitboard

@@ -71,7 +71,6 @@
   components:
   - type: Lock
   - type: LockVisuals
-  - type: LockedStorage
   - type: AccessReader
   - type: Sprite
     layers:
@@ -189,7 +188,7 @@
 - type: entity
   parent: FilledSecureCabinet
   id: SecureCabinetWarden
-  suffix: Warden, Security
+  suffix: Warden
   components:
   - type: AccessReader
     access: [["Armory"]]
@@ -215,7 +214,7 @@
 #Clerk
 - type: entity
   parent: FilledSecureCabinet
-  id: SecureCabinetClerk # TODO - Remove for Justice Rework
+  id: SecureCabinetClerk
   suffix: Clerk
   components:
   - type: AccessReader
@@ -238,33 +237,6 @@
   components:
   - type: AccessReader
     access: [["Lawyer"]]
-
-#Warden (Justice)
-- type: entity
-  parent: FilledSecureCabinet
-  id: SecureCabinetJusticeWarden
-  suffix: Justice Warden
-  components:
-  - type: AccessReader
-    access: [["JusticeWarden"]]
-
-#Marshal
-- type: entity
-  parent: FilledSecureCabinet
-  id: SecureCabinetMarshal
-  suffix: Marshal
-  components:
-  - type: AccessReader
-    access: [["Marshal"]]
-
-#Armorer
-- type: entity
-  parent: FilledSecureCabinet
-  id: SecureCabinetArmorer
-  suffix: Armorer
-  components:
-  - type: AccessReader
-    access: [["Armory"]]
 
 #Psychologist
 - type: entity

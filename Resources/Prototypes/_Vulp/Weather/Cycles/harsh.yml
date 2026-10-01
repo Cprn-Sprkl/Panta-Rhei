@@ -54,7 +54,7 @@
 
     # Rain
     rain:
-      proto: WeatherRain
+      proto: Rain
       weight: 20
       durationMinutes:
         min: 10
@@ -82,7 +82,7 @@
         reagent: Water
 
     storm:
-      proto: WeatherStorm
+      proto: Storm
       weight: 2 # Unlikely to happen on its own; most of the time will be an extension of a rain
       durationMinutes:
         min: 5
@@ -111,7 +111,7 @@
 
     # Snow
     snow:
-      proto: WeatherSnowfallLight
+      proto: SnowfallLight
       weight: 12
       durationSeconds:
         min: 300
@@ -132,7 +132,7 @@
           - 83.770874  # N2
 
     snowMedium:
-      proto: WeatherSnowfallMedium
+      proto: SnowfallMedium
       weight: 3
       durationSeconds:
         min: 300
@@ -151,7 +151,7 @@
           - 90.10312  # N2
 
     snowHeavy:
-      proto: WeatherSnowfallHeavy
+      proto: SnowfallHeavy
       weight: 1
       durationSeconds:
         min: 240
@@ -177,7 +177,7 @@
 
     # Ashfall. Adds some CO2 to the air.
     ashfall:
-      proto: WeatherAshfallLight
+      proto: AshfallLight
       weight: 7
       durationSeconds: # I'm afraid people might suffocate
         min: 45
@@ -224,7 +224,7 @@
         dataset: WeatherTritiumCloudApproaching
 
     tritiumCloud:
-      proto: WeatherFallout
+      proto: Fallout
       weight: 0
       durationSeconds:
         min: 30

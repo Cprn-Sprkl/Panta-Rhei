@@ -377,7 +377,7 @@ public abstract partial class SharedBuckleSystem
                 _standing.Stand(buckle, force: true);
                 break;
             case StrapPosition.Down:
-                _standing.Down(buckle, false, false, force: true);
+                _standing.Down(buckle, false, false);
                 break;
         }
 
@@ -392,6 +392,7 @@ public abstract partial class SharedBuckleSystem
         if (TryComp<PhysicsComponent>(buckle, out var physics))
             _physics.ResetDynamics(buckle, physics);
 
+        // TOOD: DV - This fails when you try to buckle the entity you're carrying to something. Figure out why later.
         DebugTools.AssertEqual(xform.ParentUid, strap.Owner);
     }
 

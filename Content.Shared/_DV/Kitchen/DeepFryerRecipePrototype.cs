@@ -14,7 +14,7 @@ namespace Content.Shared._DV.Kitchen;
 /// we can still reuse it for guidebook generation without duping the code.
 /// </remarks>
 [Prototype]
-public sealed partial class DeepFryerRecipePrototype : IPrototype
+public sealed class DeepFryerRecipePrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]

@@ -126,6 +126,8 @@
     - id: PlushieSapphicHarpyPlushie
     - id: PlushieRatLogisticsOfficer
     - id: PlushieBunnyChiefMedicalOfficer
+    - id: PlushieKoboldCefJustice
+    - id: PlushieAvaliHOP
     - id: PlushieSlimeBartender
     - id: PlushieGrumpyQuartermaster
     - id: PlushieHardcoreDj
@@ -180,13 +182,6 @@
     - id: PlushieSatori
     - id: RedlizardPlushie
     - id: PlushieNonjudgmentalDemon
-    - id: PlushieItalian
-    - id: PlushieStationMom
-    - id: PlushieHgiRepresentative
-    - id: CJTajaranPlushie
-    - id: WhiteManPlushie
-    - id: AngryOfficerPlushie
-    - id: SleepyMGPlushie
     - !type:GroupSelector # Hypnotemp
       children:
       - id: PlushieHypnoTempLO
@@ -265,8 +260,6 @@
       - id: MrDips
       - id: PetRock
       - id: NewtonCradle
-      - id: Whistle
-      - id: TennisBall
 
 
 - type: entityTable

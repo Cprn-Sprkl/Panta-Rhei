@@ -5,7 +5,6 @@
   groups:
   - GroupTankHarness
   - CourierHead
-  - Glasses
   - CourierNeck
   - CourierJumpsuit
   - CourierOuterClothing
@@ -13,11 +12,9 @@
   - CourierPDA
   - CourierBackpack
   - CourierShoes
+  - Glasses
   - Survival
   - GroupSpeciesBreathTool
-  - FloofUndergarmentTopCourier # Floof
-  - FloofUndergarmentBottomCourier # Floof
-  - FloofSocksCourier # Floof
 
 - type: roleLoadout
   id: JobCargoAssistant
@@ -25,12 +22,11 @@
   groups:
   - GroupTankHarness
   - CargoAssistantHead
-  - Glasses
-  - CargoTechnicianNeck # Euphoria
   - CargoAssistantJumpsuit
   - CargoAssistantBackpack
   - CargoAssistantOuterClothing
   - CargoAssistantShoes
+  - Glasses
   - Survival
   - GroupSpeciesBreathTool
 
@@ -40,21 +36,17 @@
   parent: JobBaseLoadout # Floofstation
   groups:
   - BrigMedicHead
-  - CorpsmanEyewear
   - BrigMedicNeck
   - BrigMedicJumpsuit
   - BrigMedicBack
   - FloofCorpsmanGloves # Floofstation give corpsman gloves
   - BrigMedicOuterClothing
-  - FloofSecurityCorpsmanPdas # Floofstation pdas
   - FloofCorpsmanShoes # Floofstation give corpsman shoes
+  - CorpsmanEyewear
   - SurvivalSecurity
   - GroupSpeciesBreathToolCorpsman
   - SecurityFirearm
   - SecurityFirearmAmmo
-  - FloofUndergarmentTopCorpsman # Floof
-  - FloofUndergarmentBottomCorpsman # Floof
-  - FloofSocksCorpsman # Floof
 
 # Medical
 - type: roleLoadout
@@ -63,7 +55,6 @@
   groups:
   - GroupTankHarness
   - SurgeonHead
-  - MedicalEyewear
   - MedicalDoctorNeck
   - SurgeonMask
   - SurgeonScrubs
@@ -72,12 +63,10 @@
   - MedicalDoctorOuterClothing
   - MedicalShoes
   - SurgeonPDA
+  - MedicalEyewear
   - SurvivalMedical
   - MedicalDoctorJobTrinkets # Euphoria
   - GroupSpeciesBreathToolMedical
-  - FloofUndergarmentTopMedicalDoctor # Floof
-  - FloofUndergarmentBottomMedicalDoctor # Floof
-  - FloofSocksMedicalDoctor # Floof
 
 # Justice
 - type: roleLoadout
@@ -86,39 +75,31 @@
   groups:
   - GroupTankHarness
   - ChiefJusticeHead
-  - Glasses
-  - ChiefJusticeNeck
   - ChiefJusticeJumpsuit
+  - ChiefJusticeNeck
   - ChiefJusticeOuterClothing
   - FloofCJPDAs # Floofstation
   - JusticePaperworkBelt # Floofstation
   - PassengerGloves
   - CommonBackpack
   - ChiefJusticeShoes
-  - FloofUndergarmentTopPassenger # Floof
-  - FloofUndergarmentBottomPassenger # Floof
-  - FloofSocksPassenger # Floof
+  - Glasses
   - Survival
   - GroupSpeciesBreathTool
 
 - type: roleLoadout
-  id: JobClerk # TODO: Remove for Justice Rework
+  id: JobClerk
   parent: JobBaseLoadout # Floofstation
   groups:
   - GroupTankHarness
-  - AssistantHead # Euphoria
-  - Glasses
-  - ClerkNeck
   - ClerkJumpsuit
+  - ClerkNeck
   - ClerkOuterClothing
-  - FloofServiceClerkPDAs # Floofstation pda
   - JusticePaperworkBelt # Floofstation
   - PassengerGloves # Floofstation
   - CommonBackpack
   - ClerkShoes
-  - FloofUndergarmentTopPassenger # Floof
-  - FloofUndergarmentBottomPassenger # Floof
-  - FloofSocksPassenger # Floof
+  - Glasses
   - Survival
   - GroupSpeciesBreathTool
 
@@ -127,33 +108,15 @@
   parent: JobBaseLoadout # Floofstation
   groups:
   - GroupTankHarness
-  - AssistantHead # Euphoria
-  - Glasses
-  - ProsecutorNeck
   - ProsecutorJumpsuit
+  - ProsecutorNeck
   - ProsecutorOuterClothing
   - PassengerShoes # Floofstation
-  - FloofServiceProsecutorPDAs # Floofstation pdas
   - JusticePaperworkBelt # Floofstation
   - PassengerGloves # Floofstation
   - CommonBackpack
-  - FloofUndergarmentTopPassenger # Floof
-  - FloofUndergarmentBottomPassenger # Floof
-  - FloofSocksPassenger # Floof
-  - Survival
-  - GroupSpeciesBreathTool
-
-- type: roleLoadout
-  id: JobAttorney
-  groups:
-  - GroupTankHarness
-  - LawyerNeck
-  - LawyerJumpsuit
-  - CommonBackpack
   - Glasses
   - Survival
-  - Trinkets
-  - LawyerJobTrinkets
   - GroupSpeciesBreathTool
 
 # Epistemics
@@ -163,7 +126,6 @@
   groups:
   - GroupTankHarness
   - RoboticistHead
-  - RoboticistGlasses
   - ScientistNeck
   - RoboticistJumpsuit
   - ScientistBackpack
@@ -171,58 +133,6 @@
   - RoboticistGloves
   - RoboticistShoes
   - RoboticistPDA
-  - FloofUndergarmentTopScientist # Floof
-  - FloofUndergarmentBottomScientist # Floof
-  - FloofSocksScientist # Floof
+  - RoboticistGlasses
   - Survival
   - GroupSpeciesBreathTool
-
-# Wildcards
-- type: roleLoadout
-  id: JobZookeeper
-  parent: JobBaseLoadout # Floofstation
-  groups:
-  - GroupTankHarness
-  - AssistantHead # Euphoria
-  - Glasses
-  - PassengerNeck # Euphoria
-  - EuphoriaZookepperJumpsuits # Euphoria - give them the suities
-  - CommonBackpack
-  - Survival
-  - Trinkets
-  - ZookeeperJobTrinkets
-  - GroupSpeciesBreathTool
-  # Floof section
-  - PassengerShoes
-  - ServiceWorkerGloves
-  - ServiceWorkerNeck
-  - PassengerOuterClothing
-  - Glasses
-  - FloofUndergarmentTopSerivceWorker
-  - FloofUndergarmentBottomSerivceWorker
-  - FloofSocksSerivceWorker
-  # Floof section end
-
-- type: roleLoadout
-  id: JobBoxer
-  parent: JobBaseLoadout # Floofstation
-  groups:
-  - GroupTankHarness
-  - AssistantHead # Floofstation
-  - Glasses
-  - PassengerNeck # Floofstation
-  - PassengerFace # Floofstation
-  - BoxerJumpsuit
-  - BoxerGloves
-  - BoxerMask
-  - CommonBackpack
-  - FloofBoxerPDAs # Floofstation - pda customization
-  - Survival
-  - Trinkets
-  - BoxerJobTrinkets
-  - GroupSpeciesBreathTool
-  # Floof section
-  - FloofUndergarmentTopSerivceWorker
-  - FloofUndergarmentBottomSerivceWorker
-  - FloofSocksSerivceWorker
-  # Floof section end

@@ -1,3 +1,4 @@
+using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared._Vulp.Weather;
 using Content.Shared.Alert;
@@ -5,13 +6,16 @@ using Content.Shared.Body.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC;
+using Content.Shared.Weather;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+
 
 namespace Content.Server._Vulp.Weather.Functions;
 
@@ -43,7 +47,7 @@ public sealed partial class WeatherDamageMobs : WeatherFunction
     [DataField]
     public bool IgnoreInternalBreathers = false;
 
-    public override void Invoke(EntityManager entMan, EntityUid map, float updateTimeSeconds)
+    public override void Invoke(EntityManager entMan, Entity<WeatherComponent> ent, float updateTimeSeconds)
     {
         var query = entMan.EntityQueryEnumerator<MobStateComponent, DamageableComponent, TransformComponent>();
         var npcQuery = entMan.GetEntityQuery<ActiveNPCComponent>();
@@ -60,14 +64,16 @@ public sealed partial class WeatherDamageMobs : WeatherFunction
 
         while (query.MoveNext(out var uid, out var mobState, out var damageable, out var xform))
         {
-            if (xform.MapUid != map
+            if (xform.MapUid != ent
                 || IgnoreNpcs && npcQuery.HasComp(uid)
-                || IgnoreInternalBreathers && internalQuery.TryComp(uid, out var internals) && internalSystem.AreInternalsWorking(internals))
+                || IgnoreInternalBreathers && internalQuery.TryComp(uid, out var internals) && internalSystem.AreInternalsWorking(internals)
+                || !gridQuery.TryComp(xform.MapUid, out var grid) && !gridQuery.TryComp(xform.GridUid, out grid))
                 continue;
 
-            // Note: if the entity is not on a grid, damage is applied
-            if (TryGetGridOrMap(xform, out var grid, gridQuery)
-                && !IsTileWeathered(grid.Value, xform.Coordinates, maps, tileMan))
+            var tile = maps.GetTileRef((ent.Owner, grid), xform.Coordinates);
+            var tileDef = (ContentTileDefinition) tileMan[tile.Tile.TypeId];
+
+            if (!tileDef.Weather)
                 continue;
 
             if (Alert is not null)
@@ -88,7 +94,10 @@ public sealed partial class WeatherDamageMobs : WeatherFunction
                 false,
                 false,
                 null,
-                false);
+                false,
+                false,
+                false,
+                2f); // TODO: what is a good value for partMultiplier?
         }
     }
 }

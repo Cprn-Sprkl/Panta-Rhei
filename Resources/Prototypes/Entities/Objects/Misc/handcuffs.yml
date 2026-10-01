@@ -38,7 +38,7 @@
     - Security
     - Antagonists
   - type: UseDelay
-    delay: 15 # DeltaV - was 3
+    delay: 3
 
 - type: entity
   name: makeshift handcuffs

@@ -2,7 +2,6 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Server.Forensics;
-using Content.Shared._Floof.Smoking.Event;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry;
 using Content.Shared.Clothing.Components;
@@ -156,11 +155,9 @@ namespace Content.Server.Nutrition.EntitySystems
                 {
                     continue;
                 }
-                // Euphoria - if they have the messy smoke trait we can raise the event
-                RaiseLocalEvent(containerManager.Owner, new SmokingEvent(uid, inhaledSolution));
 
                 _reactiveSystem.DoEntityReaction(containerManager.Owner, inhaledSolution, ReactionMethod.Ingestion);
-                _bloodstreamSystem.TryAddToBloodstream((containerManager.Owner, bloodstream), inhaledSolution);
+                _bloodstreamSystem.TryAddToChemicals((containerManager.Owner, bloodstream), inhaledSolution);
             }
 
             _timer -= UpdateTimer;

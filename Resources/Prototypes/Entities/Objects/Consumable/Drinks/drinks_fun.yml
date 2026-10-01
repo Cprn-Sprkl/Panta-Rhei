@@ -126,11 +126,6 @@
     - Rum
     - Tequila
     - Absinthe
-    # Euphoria start: Add more blood variants to random tables
-    - AmmoniaBlood
-    - InsectBlood
-    - Sap
-    # Euphoria end
   - quantity: 10
     weight: 1
     reagents:
@@ -141,7 +136,6 @@
     - SpaceCleaner
     - MilkSpoiled
     - FourteenLoko
-    - YellowBlood # Euphoria: Add more blood variants to random tables
 
 - type: entity
   parent: [DrinkVisualsAllFilled, DrinkBottleGlassSmallBaseFull]

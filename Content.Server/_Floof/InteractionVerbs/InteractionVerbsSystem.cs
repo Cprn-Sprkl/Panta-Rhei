@@ -57,18 +57,10 @@ public sealed class InteractionVerbsSystem : SharedInteractionVerbsSystem
 
     private bool CanSee(EntityUid source, EntityUid target, float maxRange)
     {
-        // Make sure to call the overload of InRangeUnobstructed that doesn't do an override check
-        // Otherwise the ai eye will see all interacts.
-        var targetXForm = Transform(target);
-
         // TODO: InRangeUnobstructed has a pretty high performance cost and is not intended to be used like that.
         // We should see if we can move this to client side later, aka make the client check if the target is visible for it.
         return _interactions.InRangeUnobstructed(
-            source,
-            (target, targetXForm),
-            targetXForm.Coordinates,
-            targetXForm.LocalRotation,
-            maxRange,
+            source, target, maxRange,
             CollisionGroup.Opaque,
             uid => !_occluderQuery.TryComp(uid, out var occluder) || !occluder.Enabled, // We ignore all entities that do not occlude light
             false);

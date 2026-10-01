@@ -13,19 +13,19 @@ namespace Content.Shared._Floof.InteractionVerbs;
 public sealed partial class VerbCategoryPrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; set;  } = default!;
+    public string ID { get; } = default!;
 
     [DataField(required: true)]
     public LocId Name;
 
     [DataField]
-    public SpriteSpecifier.Texture? Icon = null;
+    public readonly SpriteSpecifier.Texture? Icon = null;
 
     [DataField]
     public int Columns = 1;
 
     [DataField]
-    public bool IconsOnly = false;
+    public readonly bool IconsOnly = false;
 
     public VerbCategory Materialize() => new(Name, Icon?.TexturePath.ToString(), IconsOnly)
     {

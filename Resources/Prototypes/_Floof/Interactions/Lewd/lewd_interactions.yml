@@ -14,11 +14,11 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - &onlyMobs
-      !type:MobStateRequirement
-      allowedStates: [ Alive, Critical ]
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - !type:SlotObstructionRequirement &accessibleUnderwearTarget
+      checkUser: false
+      slot: INNERCLOTHING # Must have accessible groin/breasts
+    - !type:UnderwearRequirement &noTopUndergarmentTarget
+      layer: UndergarmentTop
     - !type:SelfTargetRequirement
   action:
     !type:LewdFillContainerFromTarget
@@ -34,9 +34,10 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
+    - !type:UnderwearRequirement &noBottomUndergarmentTarget
+      checkUser: false
+      layer: UndergarmentBottom
     - !type:SelfTargetRequirement
   action:
     !type:LewdFillContainerFromTarget
@@ -52,9 +53,8 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
+    - *noBottomUndergarmentTarget
     - !type:SelfTargetRequirement
   action:
     !type:LewdFillContainerFromTarget
@@ -73,9 +73,8 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
+    - *noTopUndergarmentTarget
     - !type:ConsentRequirement &filledByOthersConsent
       consent: LewdContainerFillByOthers
       inverted: true
@@ -93,9 +92,8 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
+    - *noBottomUndergarmentTarget
     - *filledByOthersConsent
   action:
     !type:LewdFillContainerFromTarget
@@ -111,9 +109,8 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
+    - *noBottomUndergarmentTarget
     - *filledByOthersConsent
   action:
     !type:LewdFillContainerFromTarget
@@ -132,12 +129,11 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
     - !type:SlotObstructionRequirement &accessibleMouthUser
       checkUser: true
-      slot: MASK # Must have accessible mouth - this is a hack because LewdAccessibleRequirement can't sanely handle this
+      slot: MASK # Must have accessible mouth
+    - *noBottomUndergarmentTarget
   action:
     !type:LewdDrinkFromOrgan
     organ: Penis
@@ -152,10 +148,9 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
     - *accessibleMouthUser
+    - *noBottomUndergarmentTarget
   action:
     !type:LewdDrinkFromOrgan
     organ: Breasts
@@ -172,10 +167,14 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
-      checkUserUnderwear: true
+    - *accessibleUnderwearTarget
+    - !type:SlotObstructionRequirement &accessibleUnderwearUser
+      checkUser: true
+      slot: INNERCLOTHING
+    - *noBottomUndergarmentTarget
+    - !type:UnderwearRequirement &noBottomUndergarmentUser
+      checkUser: false
+      layer: UndergarmentBottom
   action:
     !type:LewdOrganFluidTransfer
     donorOrgan: Penis
@@ -188,10 +187,10 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
-      checkUserUnderwear: true
+    - *accessibleUnderwearTarget
+    - *accessibleUnderwearUser
+    - *noBottomUndergarmentTarget
+    - *noBottomUndergarmentUser
   action:
     !type:LewdOrganFluidTransfer
     donorOrgan: Penis
@@ -209,9 +208,8 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
+    - *noBottomUndergarmentTarget
     - !type:SelfTargetRequirement
   action:
     !type:LewdOrganFluidTransfer
@@ -226,9 +224,8 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *onlyMobs
-    - !type:LewdAccessibleRequirement
-      checkTargetUnderwear: true
+    - *accessibleUnderwearTarget
+    - *noBottomUndergarmentTarget
     - !type:SelfTargetRequirement
   action:
     !type:LewdOrganFluidTransfer

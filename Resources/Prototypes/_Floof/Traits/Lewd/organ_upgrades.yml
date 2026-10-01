@@ -7,10 +7,8 @@
   category: Lewd
   cost: 0
   usesSlots: false
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - QuadrupleLewdProduction
+  conflicts:
+  - QuadrupleLewdProduction
   effects:
   - !type:ModifyLewdOrgansEffect
     target: All # Todo: specialized traits?
@@ -24,10 +22,8 @@
   category: Lewd
   cost: 1
   usesSlots: false
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - DoubleLewdProduction
+  conflicts:
+  - DoubleLewdProduction
   effects:
   - !type:ModifyLewdOrgansEffect
     target: All
@@ -43,10 +39,8 @@
   category: Lewd
   cost: 0
   usesSlots: false
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - QuadrupleLewdProductionCapacity
+  conflicts:
+  - QuadrupleLewdProductionCapacity
   effects:
   - !type:ModifyLewdOrgansEffect
     target: All
@@ -60,10 +54,8 @@
   category: Lewd
   cost: 1
   usesSlots: false
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - DoubleLewdProductionCapacity
+  conflicts:
+  - DoubleLewdProductionCapacity
   effects:
   - !type:ModifyLewdOrgansEffect
     target: All
@@ -79,10 +71,8 @@
   category: Lewd
   cost: 0
   usesSlots: false
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - LewdDepositionCapacity40
+  conflicts:
+  - LewdDepositionCapacity40
   effects:
   - !type:ModifyLewdOrgansEffect
     target: # Only these two support deposition
@@ -98,10 +88,8 @@
   category: Lewd
   cost: 1
   usesSlots: false
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - LewdDepositionCapacity20
+  conflicts:
+  - LewdDepositionCapacity20
   effects:
   - !type:ModifyLewdOrgansEffect
     target: # Only these two support deposition
@@ -119,10 +107,8 @@
   category: Lewd
   cost: 0
   usesSlots: false
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - LewdDepositionCapacity20 # Come back to this later. Why conflict with the 20 and not the 40?
+  conflicts:
+  - LewdDepositionCapacity20
   effects:
   - !type:ModifyLewdOrgansEffect
     target: All

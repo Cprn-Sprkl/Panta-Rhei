@@ -1,12 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
-using Content.Server._Impstation.Revenant.Components;
-using Content.Server._Impstation.Revenant.EntitySystems;
-using Content.Server._DV.Access.Systems; // DeltaV - Subdermal ID Cards
+using Content.Server.Administration.Components;
 using Content.Server.Cargo.Components;
 using Content.Server.Doors.Systems;
 using Content.Server.Hands.Systems;
+using Content.Server.Power.Components;
 using Content.Server.Revenant.Components; // Imp
 using Content.Server.Revenant.EntitySystems; // Imp
 using Content.Server.Stack;
@@ -16,11 +15,10 @@ using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration;
-using Content.Shared.Administration.Components;
-using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Construction.Components;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
@@ -60,7 +58,6 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly GunSystem _gun = default!;
     [Dependency] private readonly RevenantAnimatedSystem _revenantAnimate = default!; // Imp
-    [Dependency] private readonly SubdermalIdCardSystem _subdermalId = default!; // DeltaV - Subdermal ID Cards
 
     private void AddTricksVerbs(GetVerbsEvent<Verb> args)
     {
@@ -730,7 +727,7 @@ public sealed partial class AdminVerbSystem
                             return;
 
                         _gun.SetBallisticUnspawned((args.Target, ballisticAmmo), result);
-                        _gun.UpdateBallisticAppearance((args.Target, ballisticAmmo));
+                        _gun.UpdateBallisticAppearance(args.Target, ballisticAmmo);
                     });
                 },
                 Impact = LogImpact.Medium,
@@ -872,11 +869,6 @@ public sealed partial class AdminVerbSystem
                 }
             }
         }
-
-        // Begin DeltaV Additions - Subdermal ID chips
-        if (_subdermalId.TryGetIdCard(target, out var idEntity))
-            return idEntity;
-        // End DeltaV Additions - Subdermal ID chips
 
         return null;
     }

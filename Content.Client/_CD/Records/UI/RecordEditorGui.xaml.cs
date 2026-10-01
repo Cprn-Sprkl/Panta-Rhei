@@ -25,6 +25,14 @@ public sealed partial class RecordEditorGui : Control
 
         #region General
 
+        HeightEdit.OnTextChanged += args =>
+        {
+            if (!int.TryParse(args.Text, out var newHeight))
+                return;
+            UpdateImperialHeight(newHeight);
+            UpdateRecords(_records.WithHeight(newHeight));
+        };
+
         WeightEdit.OnTextChanged += args =>
         {
             if (!int.TryParse(args.Text, out var newWeight))
@@ -120,6 +128,8 @@ public sealed partial class RecordEditorGui : Control
 
     private void UpdateWidgets()
     {
+        HeightEdit.SetText(_records.Height.ToString());
+        UpdateImperialHeight(_records.Height);
         WeightEdit.SetText(_records.Weight.ToString());
         UpdateImperialWeight(_records.Weight);
         ContactNameEdit.SetText(_records.EmergencyContactName);
@@ -133,8 +143,13 @@ public sealed partial class RecordEditorGui : Control
         PostmortemEdit.SetText(_records.PostmortemInstructions);
     }
 
+    private void UpdateImperialHeight(int newHeight)
+    {
+        HeightImperialLabel.Text = UnitConversion.GetImperialDisplayLength(newHeight);
+    }
+
     private void UpdateImperialWeight(int newWeight)
     {
-        WeightImperialLabel.Text = $"({UnitConversion.GetImperialDisplayMass(newWeight)})";
+        WeightImperialLabel.Text = UnitConversion.GetImperialDisplayMass(newWeight);
     }
 }

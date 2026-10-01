@@ -5,9 +5,6 @@
   category: Skills
   cost: 2 # Has pros and cons, not sure
   conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - Heavyweight
   - !type:HasCompCondition
     component: BorgChassis
     invert: true
@@ -21,6 +18,8 @@
   effects:
   - !type:ModifyDensityEffect
     factor: 0.6
+  conflicts:
+    - Heavyweight
 
 - type: trait
   id: Heavyweight
@@ -29,9 +28,6 @@
   category: Skills
   cost: 2 # Has pros and cons, not sure
   conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - Lightweight
   - !type:HasCompCondition
     component: BorgChassis
     invert: true
@@ -41,6 +37,8 @@
     - Harpy # Doesn't really make sense with their wings and flight ability
     - Diona # Trees are heavy as it is.
     - Chitinid # Ants got weight.
+  conflicts:
+    - Lightweight
   effects:
   - !type:ModifyDensityEffect
     factor: 1.4

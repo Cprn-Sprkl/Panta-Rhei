@@ -90,11 +90,6 @@ public sealed partial class CargoSystem
             Components =
             [
                 Factory.GetComponentName<CargoShuttleComponent>()
-            ],
-            // Floofstation - use  the salvage shuttle grid's tag so it can ftl to the ATS
-            Tags =
-            [
-                "SalvShuttleFTL"
             ]
         };
 

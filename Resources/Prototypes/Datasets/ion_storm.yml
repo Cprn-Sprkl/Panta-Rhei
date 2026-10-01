@@ -71,7 +71,7 @@
   - INTELLIGENT
   - INVISIBLE
   - LARGE
-  # LIGHT - DeltaV - Prevents the AI from gaining "LIGHT CREW" laws
+  - LIGHT
   - LOUD
   - MASKED
   - MEAN
@@ -716,7 +716,6 @@
   - RACKS
   - RADIOS
   - RCDS
-  - RPDS # Starlight: RPD
   - REFRIGERATORS
   - REINFORCED WALLS
   - ROBOTS

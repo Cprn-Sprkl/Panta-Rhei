@@ -3,6 +3,7 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Floof.InteractionVerbs.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class ChanceRequirement : InteractionRequirement
 {
     [DataField(required: true)]

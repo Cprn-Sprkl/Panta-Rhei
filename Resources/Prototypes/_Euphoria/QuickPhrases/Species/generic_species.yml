@@ -1,4 +1,0 @@
-- type: quickPhrase
-  id: SpeciesBorgPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-borg

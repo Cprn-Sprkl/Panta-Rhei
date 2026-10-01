@@ -13,7 +13,6 @@ using Content.Shared.Popups;
 using Content.Shared.Station.Components;
 using Content.Shared.Throwing;
 using Content.Shared.Warps;
-using Content.Shared.Weapons.Melee.Events;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
@@ -42,7 +41,6 @@ public sealed class CosmicColossusSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<CosmicColossusComponent, ComponentInit>(OnSpawn);
         SubscribeLocalEvent<CosmicColossusComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<CosmicColossusComponent, MeleeHitEvent>(OnMeleeHit);
     }
 
     public override void Update(float frameTime)
@@ -69,8 +67,7 @@ public sealed class CosmicColossusSystem : EntitySystem
                 Spawn(comp.CultBigVfx, Transform(ent).Coordinates);
                 if (!TryComp<DamageableComponent>(ent, out var damageable))
                     continue;
-                var dmg = _damage.GetPositiveDamage((ent, damageable));
-                _damage.TryChangeDamage(ent, dmg / 2 * -1, true);
+                _damage.TryChangeDamage(ent, damageable.Damage / 2 * -1, true);
             }
             if (comp.Timed && _timing.CurTime >= comp.DeathTimer)
             {
@@ -85,7 +82,7 @@ public sealed class CosmicColossusSystem : EntitySystem
 
     private void OnSpawn(Entity<CosmicColossusComponent> ent, ref ComponentInit args) // I WANT THIS BIG GUY HURLED TOWARDS THE STATION
     {
-        ent.Comp.DeathTimer = _timing.CurTime + ent.Comp.DeathWaitSpawn;
+        ent.Comp.DeathTimer = _timing.CurTime + ent.Comp.DeathWait;
         var station = _station.GetStationInMap(Transform(ent).MapID);
         if (TryComp<StationDataComponent>(station, out var stationData))
         {
@@ -117,10 +114,5 @@ public sealed class CosmicColossusSystem : EntitySystem
         RemComp<PointLightComponent>(ent);
         RemComp<WarpPointComponent>(ent);
         RemComp<CosmicCorruptingComponent>(ent);
-    }
-
-    private void OnMeleeHit(Entity<CosmicColossusComponent> colossus, ref MeleeHitEvent args)
-    {
-        args.BonusDamage += colossus.Comp.BonusDamage;
     }
 }

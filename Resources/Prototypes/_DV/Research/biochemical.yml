@@ -1,4 +1,6 @@
-#MARK: Tier 2
+# Tier 1
+
+# Tier 2
 
 - type: technology
   id: Cloning
@@ -15,18 +17,4 @@
   - MedicalScannerMachineCircuitboard
   - CloningPodMachineCircuitboard
 
-#MARK: Tier 3
-
-- type: technology
-  id: MedicalTracking
-  name: research-technology-medical-tracking
-  icon:
-    sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
-    state: scanner
-  discipline: Biochemical
-  tier: 3
-  cost: 15000
-  recipeUnlocks:
-  - HandheldCrewMonitor
-  - CrewMonitoringServerMachineCircuitboard
-  - CrewMonitoringComputerCircuitboard
+# Tier 3

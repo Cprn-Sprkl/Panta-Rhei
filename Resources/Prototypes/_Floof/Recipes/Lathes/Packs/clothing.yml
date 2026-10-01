@@ -3,7 +3,6 @@
   recipes:
   - LeashBasic
   - ClothingNeckShockCollarCivilian
-  - ClothingNeckShockCollarCivilianAlternative
 
 - type: latheRecipePack
   id: CollarsFloofstation
@@ -20,19 +19,7 @@
   - ClothingNeckCollarCmd
   - ClothingNeckCollarCC
   - ClothingNeckCollarSyndi
-  - ClothingNeckCowBellCollar #The Den
   - ClothingUncategorizedHarnessGray
-  - ClothingNeckCollarBlueAlternative
-  - ClothingNeckCollarBlackAlternative
-  - ClothingNeckCollarPinkAlternative
-  - ClothingNeckCollarBellAlternative
-  - ClothingNeckCollarEngiAlternative
-  - ClothingNeckCollarLogiAlternative
-  - ClothingNeckCollarMedAlternative
-  - ClothingNeckCollarSecAlternative
-  - ClothingNeckCollarEpiAlternative
-  - ClothingNeckCollarService
-  - ClothingNeckCollarJustice
 
 - type: latheRecipePack
   id: CarpetSimple

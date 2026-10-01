@@ -18,6 +18,8 @@
   - Detective
   - Cryogenics
   - External
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -26,7 +28,7 @@
   id: DetectiveGear
   equipment:
     #eyes: ClothingEyesGlassesSecurity # DeltaV - loadouts
-    #id: DetectivePDA # Floofstation - let loadouts handle this
+    id: DetectivePDA
     #gloves: ClothingHandsGlovesForensic # Floofstation - we will put the gloves in their bag for character customization
     ears: ClothingHeadsetSecurity
     belt: ClothingBeltHolster # DeltaV - loadouts

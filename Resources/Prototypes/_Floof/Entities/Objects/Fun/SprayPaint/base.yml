@@ -24,7 +24,7 @@
     blacklist:
       components:
       - CargoSellBlacklist
-      - HumanoidProfile
+      - HumanoidAppearance
       - SubFloorHide
   - type: Item
     sprite: _Floof/Objects/Fun/spraycans.rsi

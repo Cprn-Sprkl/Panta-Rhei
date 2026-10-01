@@ -10,6 +10,7 @@
     id: XenoarchPDA
 
 # Jumpsuits
+
 - type: loadout
   id: FormalScientistJumpsuit
   equipment:
@@ -19,9 +20,3 @@
   id: FormalScientistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtScientistFormal
-
-# OuterClothing
-- type: loadout
-  id: BomberEpistemic
-  equipment:
-    outerClothing: ClothingOuterCoatBomberEpistemic

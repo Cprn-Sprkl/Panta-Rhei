@@ -22,6 +22,12 @@
 
 - type: loadout
   id: AtmosBeret
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobAtmosphericTechnician
+      time: 216000 # 60hr
   equipment:
     head: ClothingHeadHatBeretAtmospherics
 

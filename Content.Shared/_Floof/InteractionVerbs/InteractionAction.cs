@@ -13,7 +13,7 @@ namespace Content.Shared._Floof.InteractionVerbs;
 /// <summary>
 ///     Represents an action performed when a verb is used successfully.
 /// </summary>
-[ImplicitDataDefinitionForInheritors]
+[ImplicitDataDefinitionForInheritors, Serializable, NetSerializable]
 public abstract partial class InteractionAction
 {
     /// <summary>

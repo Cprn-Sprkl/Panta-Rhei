@@ -1,7 +1,8 @@
 - type: marking
   id: Fangs
   bodyPart: Snout
-# groupWhitelist: [Reptilian] # Euph - free markings
+  markingCategory: Overlay
+  speciesRestriction: [Reptilian]
   coloring:
     default:
       type:
@@ -14,7 +15,8 @@
 - type: marking
   id: LizardBeard
   bodyPart: Snout
-  groupWhitelist: [Reptilian]
+  markingCategory: Overlay
+  speciesRestriction: [Reptilian]
   sprites:
   - sprite: _Impstation/Mobs/Customization/reptilian_parts.rsi
     state: beard
@@ -23,7 +25,8 @@
   id: LizardSnoutTall
   bodyPart: Snout
   forcedColoring: true
-  groupWhitelist: [Reptilian]
+  markingCategory: Snout
+  speciesRestriction: [Reptilian]
   sprites:
   - sprite: _Impstation/Mobs/Customization/reptilian_parts.rsi
     state: snout_tall
@@ -31,7 +34,8 @@
 - type: marking
   id: LizardHornsKoboldEarspiercings
   bodyPart: HeadTop
-  groupWhitelist: [Reptilian]
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
   sprites:
   - sprite: _Impstation/Mobs/Customization/reptilian_parts.rsi
     state: horns_kobold_ears
@@ -41,7 +45,8 @@
 - type: marking
   id: LizardHornsNubby
   bodyPart: HeadTop
-  groupWhitelist: [Reptilian]
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
   sprites:
   - sprite: _Impstation/Mobs/Customization/reptilian_parts.rsi
     state: horns_nubby
@@ -49,8 +54,9 @@
 - type: marking
   id: LizardSnoutpiercings
   bodyPart: Snout
+  markingCategory: Overlay
   forcedColoring: true
-  groupWhitelist: [Reptilian]
+  speciesRestriction: [Reptilian]
   coloring:
     default:
       type:
@@ -63,7 +69,8 @@
 - type: marking
   id: LizardHeadFlat
   bodyPart: HeadTop
-  groupWhitelist: [Reptilian]
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
   sprites:
   - sprite: _Impstation/Mobs/Customization/reptilian_parts.rsi
     state: head_flat

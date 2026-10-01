@@ -1,6 +1,6 @@
 - type: entity
-  parent: CrateMedical
   id: CrateMedicalSupplies
+  parent: CrateMedical
   name: medical supplies crate
   description: Basic medical supplies.
   components:
@@ -19,8 +19,8 @@
         - id: BoxMouthSwab
 
 - type: entity
-  parent: CrateMedical
   id: CrateChemistrySupplies
+  parent: CrateMedical
   name: chemistry supplies crate
   description: Basic chemistry supplies.
   components:
@@ -39,8 +39,8 @@
           amount: 2
 
 - type: entity
-  parent: CrateMedical
   id: CrateChemistryVials
+  parent: CrateMedical
   name: vial supply crate
   description: Crate filled with a box of vials.
   components:
@@ -50,8 +50,8 @@
         id: BoxVial
 
 - type: entity
-  parent: CrateMedical
   id: CrateMindShieldImplants
+  parent: CrateMedical
   name: MindShield implant crate
   description: Crate filled with 3 MindShield implants.
   components:
@@ -62,24 +62,30 @@
         amount: 3
 
 - type: entity
-  parent: CrateSurgery
   id: CrateMedicalSurgery
+  parent: CrateSurgery
   name: surgical supplies crate
   description: Surgical instruments.
   components:
-  - type: StorageFill
-    contents:
-      - id: Scalpel
-      - id: Retractor
-      - id: Cautery
-      - id: Drill
-      - id: Saw
-      - id: Hemostat
-      - id: ClothingMaskSterile
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: Scalpel
+        - id: Retractor
+        - id: Cautery
+        - id: Drill
+        - id: SawElectric # Shitmed Change
+        - id: Hemostat
+        - id: ClothingMaskSterile
+        # Shitmed Change
+        - id: BoneGel
+        - id: BoxLatexGloves
+        - id: BoxSterileMask
 
 - type: entity
-  parent: CrateMedical
   id: CrateMedicalScrubs
+  parent: CrateMedical
   name: medical scrubs crate
   description: Medical clothings.
   components:
@@ -110,8 +116,8 @@
           amount: 1
 
 - type: entity
-  parent: CrateMedical
   id: CrateEmergencyBurnKit
+  parent: CrateMedical
   name: emergency burn kit
   description: Crate filled with a burn treatment kit.
   components:
@@ -121,8 +127,8 @@
         id: MedkitBurnFilled
 
 - type: entity
-  parent: CrateMedical
   id: CrateEmergencyToxinKit
+  parent: CrateMedical
   name: emergency toxin kit
   description: Crate filled with a toxin treatment kit.
   components:
@@ -132,8 +138,8 @@
         id: MedkitToxinFilled
 
 - type: entity
-  parent: CrateMedical
   id: CrateEmergencyO2Kit
+  parent: CrateMedical
   name: emergency O2 kit
   description: Crate filled with an O2 treatment kit.
   components:
@@ -143,8 +149,8 @@
         id: MedkitOxygenFilled
 
 - type: entity
-  parent: CrateMedical
   id: CrateEmergencyBruteKit
+  parent: CrateMedical
   name: emergency brute kit
   description: Crate filled with a brute treatment kit.
   components:
@@ -154,8 +160,8 @@
         id: MedkitBruteFilled
 
 - type: entity
-  parent: CrateMedical
   id: CrateEmergencyAdvancedKit
+  parent: CrateMedical
   name: emergency advanced kit
   description: Crate filled with an advanced treatment kit.
   components:
@@ -165,8 +171,8 @@
         id: MedkitAdvancedFilled
 
 - type: entity
-  parent: CrateMedical
   id: CrateEmergencyRadiationKit
+  parent: CrateMedical
   name: emergency radiation kit
   description: Crate filled with a radiation treatment kit.
   components:
@@ -176,8 +182,8 @@
         id: MedkitRadiationFilled
 
 - type: entity
-  parent: CrateMedical
   id: CrateBodyBags
+  parent: CrateMedical
   name: body bags crate
   description: Contains ten body bags.
   components:
@@ -188,8 +194,8 @@
         amount: 2
 
 - type: entity
-  parent: CrateMedicalSecure
   id: CrateVirologyBiosuit
+  parent: CrateMedicalSecure
   name: virology bio suit crate
   description: Contains 2 biohazard suits to ensure that no disease will distract you from treating the crew. Requires Medical access to open.
   components:

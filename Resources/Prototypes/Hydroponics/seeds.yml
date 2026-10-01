@@ -897,10 +897,6 @@
   packetPrototype: ChanterelleSeeds
   productPrototypes:
     - FoodMushroom
-  # Euphoria additions start
-  mutationPrototypes:
-    - WalkingMushrooms
-  # Euphoria additions end
   lifespan: 35
   maturation: 10
   production: 7
@@ -1170,7 +1166,7 @@
   productPrototypes:
     - FoodPoppy
   mutationPrototypes:
-    - spacemansTrumpet # Delta-V - Makes Trumpets Easier to get over Deus! Was lily
+    - lily
   lifespan: 25
   maturation: 10
   production: 3
@@ -1278,7 +1274,7 @@
   productPrototypes:
     - FoodAmbrosiaVulgaris
   mutationPrototypes:
-    - AmbrosiaNobilis # Delta-V - Added Secondary Mutation (Ambrosia Nobilis)
+    - ambrosiaDeus
   lifespan: 25
   maturation: 10
   production: 3
@@ -1309,7 +1305,7 @@
   name: seeds-ambrosiadeus-name
   noun: seeds-noun-seeds
   displayName: seeds-ambrosiadeus-display-name
-  plantRsi: _DV/Objects/Specific/Hydroponics/ambrosia_deus.rsi # Delta-V - Replaced Sprite due to Ambrosia Nobilis
+  plantRsi: Objects/Specific/Hydroponics/ambrosia_deus.rsi
   packetPrototype: AmbrosiaDeusSeeds
   productPrototypes:
     - FoodAmbrosiaDeus
@@ -1318,7 +1314,7 @@
   production: 3
   yield: 3
   potency: 10
-  growthStages: 5 # Delta-V - Replaced Sprite due to Ambrosia Nobilis
+  growthStages: 6
   waterConsumption: 0.60
   chemicals:
     Nutriment:
@@ -1568,8 +1564,8 @@
       PotencyDivisor: 50
     PolypyryliumOligomers:
       Min: 1
-      Max: 5 # Delta-V - Was 15
-      PotencyDivisor: 20 # Delta-V - Was 5 (50 potency/5 = 10u of Polyp in one Trumpet, now 3.5u)
+      Max: 15
+      PotencyDivisor: 5
 
 - type: seed
   id: koibean

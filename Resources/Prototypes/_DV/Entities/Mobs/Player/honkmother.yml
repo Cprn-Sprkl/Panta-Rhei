@@ -88,7 +88,7 @@
     - Syndicate
     globalReceive: true
   - type: Physics
-    bodyType: KinematicController
+    bodyType: Dynamic
     bodyStatus: InAir
   - type: CanMoveInAir
   #Delta-V - Discount singularity because Honki needs to annihilate the sinners.

@@ -8,22 +8,20 @@
     - id: BoxFolderQmClipboard
     - id: BoxQMCircuitboards
     - id: BoxQMStamps
-    # Begin Euphoria additions
-    - id: CargoBountyComputerCircuitboard
-    - id: CargoRequestComputerCircuitboard
-    - id: CargoSaleComputerCircuitboard
-    - id: CargoShuttleConsoleCircuitboard
-    - id: SalvageMagnetMachineCircuitboard
-    - id: SalvageShuttleConsoleCircuitboard # for the salvage console
-    - id: PrinterDocFlatpack #Corvax - Printer
-    # End Euphoria additions
+    - id: CargoBountyComputerCircuitboard # Floofstation
+    - id: CargoRequestComputerCircuitboard # Floofstation
+    - id: CargoSaleComputerCircuitboard # Floofstation
+    - id: CargoShuttleConsoleCircuitboard # Floofstation
+    - id: SalvageMagnetMachineCircuitboard # Floofstation
+    #- id: SalvageJobBoardComputerCircuitboard # DeltaV - unneeded mechanic with mining points vendor
+    - id: SalvageShuttleConsoleCircuitboard #floofstation - for the salvage console
     - id: CigPackGreen
       prob: 0.50
     - id: ClothingHeadsetAltCargo
     - id: DoorRemoteCargo
     - id: AstroNavCartridge
-    - id: ClothingHandsKnuckleDustersQM
-    - id: BunnysuitBoxQuartermaster # Euphoria
+    #- id: ClothingHandsKnuckleDustersQM # DeltaV - No weaponry for LO.
+    - id: PrinterDocFlatpack #Corvax - Printer
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -48,6 +46,8 @@
     - id: ClothingBeltSheathFilled
     - id: ClothingHeadsetAltCommand
     - id: ClothingOuterArmorCaptainCarapace
+    - id: ClothingOuterWinterCapArmored #DeltaV
+    - id: ClothingOuterCoatCapTrench # TheDen
     - id: BoxCaptainCircuitboards
     - id: DoorRemoteCustom
     #- id: MedalCase # DeltaV - Moved to dresser
@@ -59,14 +59,11 @@
     - id: SpaceCash1000
     - id: WeaponDisabler
     - id: ClothingEyesGlassesCommand
-    - id: OrganSkeletonPersonHead # A skull to accompany your skeleton crew
+    - id: PrinterDocFlatpack #Corvax - Printer
+    - id: HeadSkeleton # A skull to accompany your skeleton crew
       conditions:
       - !type:PlayerCountCondition
         max: 15
-    # Begin Euphoria additions
-    - id: BunnysuitBoxCaptain
-    - id: ClothingOuterCoatCapTrench # TheDen
-    # End Euphoria additions
 
 # No laser table + Laser table
 - type: entityTable
@@ -130,12 +127,10 @@
     children:
     - !type:NestedSelector # DeltaV
       tableId: LockerFillHeadOfPersonnelDeltaV
-    # Begin DeltaV modifications - Moved to PTech
-    #- id: AccessConfigurator
-    #- id: BoxEncryptionKeyPassenger
-    #- id: BoxEncryptionKeyService
-    #- id: BoxHeadset
-    # End DeltaV modifications
+    #- id: AccessConfigurator # DeltaV - Moved to PTech
+    #- id: BoxEncryptionKeyPassenger # DeltaV - PTech
+    #- id: BoxEncryptionKeyService # DeltaV - PTech
+    #- id: BoxHeadset # DeltaV - PTech
     - id: BoxHoPCircuitboards
     - id: BoxHoPStamps
     #- id: BoxID # DeltaV - PTech
@@ -146,15 +141,13 @@
       # Yes they do fuck you.
     - id: ClothingBackpackIan
       prob: 0.5
-    #- id: ClothingHeadsetCommand # DeltaV - HOP is head of service.
+    - id: ClothingHeadsetAltService # DeltaV - HoP is now a service role, replaces their all channels headset.
     - id: ClothingNeckGoldmedal
     - id: DoorRemoteService
     - id: HoPIDCard
     #- id: WeaponDisabler # DeltaV - There is no reason for the service head to have a disabler.
     - id: ClothingEyesHudCommand
-    # Begin Euphoria additions
-    - id: BunnysuitBoxHeadOfPersonnel # Euphoria
-    # End Euphoria additions
+    - id: PrinterDocFlatpack #Corvax - Printer
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -178,19 +171,20 @@
     - id: CigarCase
       prob: 0.15
     - id: ClothingBeltChiefEngineerFilled
-    - id: ClothingEyesGlassesMesonTray # DeltaV- replace normal meson goggles
+    - id: ClothingEyesGlassesMeson
     #- id: ClothingHandsGlovesColorYellow # DeltaV - Moved to dresser
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
     - id: BoxCECircuitboards
-    #- id: RCD # DeltaV - Replaced normal RCD
+    - id: RCDRecharging # DeltaV - Replaces normal RCD
     - id: RCDAmmo
     - id: RubberStampCE
     - id: MetalFoamGrenade
-    # Begin Euphoria additions
     - id: MachinePowerTransmissionLaserFlatpack # Goobstation
-    - id: BunnysuitBoxChiefEngineer # Euphoria
-    # End Euphoria additions
+    - id: AirGrenade # DeltaV
+    - id: HolotapeProjector # DeltaV - engineering tape
+    - id: BoxFolderCeClipboard # DeltaV - Power Digi-Board
+    - id: PrinterDocFlatpack #Corvax - Printer
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -249,9 +243,7 @@
     - id: MedkitFilled
     - id: RubberStampCMO
     - id: MedTekCartridge
-    # Begin Euphoria additions
-    - id: BunnysuitBoxChiefMedicalOfficer
-    # End Euphoria additions
+    - id: PrinterDocFlatpack #Corvax - Printer
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -303,10 +295,9 @@
     - id: DoorRemoteResearch
     - id: HandTeleporter
     - id: RubberStampRd
-    # Begin Euphoria additions
-    - id: EncryptionKeyBinary
-    - id: BunnysuitBoxResearchDirector
-    # End Euphoria additions
+    - id: BibleMystagogue  # DeltaV - steal objective and source of abilities
+    - id: EncryptionKeyBinary # Floofstation - give mystagouge the binary key to spek to borgs an AI
+    - id: PrinterDocFlatpack #Corvax - Printer
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -370,9 +361,7 @@
     - id: WeaponTaser
     #- id: WantedListCartridge # DeltaV - replaced by secwatch
     - id: DrinkHosFlask
-    # Begin Euphoria additions
-    - id: BunnysuitBoxHoS
-    # End Euphoria additions
+    - id: PrinterDocFlatpack #Corvax - Printer
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -420,9 +409,7 @@
     - id: SpaceCash1000
     - id: BeachBall
     - id: BikeHorn
-    # Begin Euphoria additions
     - id: PrinterDocFlatpack #Corvax - Printer
-    # End Euphoria additions
 
 - type: entity
   id: LockerFreezerVaultFilled

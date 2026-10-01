@@ -36,16 +36,16 @@
       0: Alive
       100: Dead
   - type: Stamina
-    baseCritThreshold: 150
+    critThreshold: 150
   - type: MovementAlwaysTouching
   - type: Bloodstream
-    bloodReferenceSolution:
+    bloodMaxVolume: 300
+    bloodReagents:
       reagents:
       - ReagentId: Cryoxadone
-        Quantity: 300
+        Quantity: 1
   - type: CombatMode
   - type: Temperature
-  - type: TemperatureDamage
     heatDamageThreshold: 500
     coldDamageThreshold: 0
   - type: MeleeWeapon
@@ -75,8 +75,6 @@
     - Xeno
     understands:
     - Xeno
-  - type: NightVision #DeltaV - Added nightvision to animals
-    color: "#808080"
 
 - type: entity
   name: space bear
@@ -165,7 +163,7 @@
       Dead:
         Base: kangaroo-space-dead
   - type: Stamina
-    baseCritThreshold: 180
+    critThreshold: 180
   - type: Inventory
     speciesId: kangaroo
     templateId: spacekangaroo
@@ -212,7 +210,7 @@
       0: Alive
       90: Dead
   - type: Stamina
-    baseCritThreshold: 150
+    critThreshold: 150
   - type: DamageStateVisuals
     states:
       Alive:
@@ -228,10 +226,11 @@
       amount: 1
       prob: 0.5
   - type: Bloodstream
-    bloodReferenceSolution:
+    bloodMaxVolume: 250
+    bloodReagents:
       reagents:
       - ReagentId: Cryoxadone
-        Quantity: 250
+        Quantity: 1
   - type: Fixtures
     fixtures:
       fix1:
@@ -304,6 +303,8 @@
   parent: MobSpaceBasic
   description: Long fangs and a glowing hood, and the alluring look begs to come closer.
   components:
+    - type: Body # Shitmed Change
+      prototype: SpaceCobra
     - type: Sprite
       drawdepth: Mobs
       sprite: Mobs/Animals/spacecobra.rsi
@@ -321,7 +322,7 @@
         0: Alive
         100: Dead
     - type: Stamina
-      baseCritThreshold: 150
+      critThreshold: 150
     - type: DamageStateVisuals
       states:
         Alive:
@@ -339,10 +340,11 @@
           amount: 1
           prob: 0.3
     - type: Bloodstream
-      bloodReferenceSolution:
+      bloodMaxVolume: 200
+      bloodReagents:
         reagents:
         - ReagentId: Cryoxadone
-          Quantity: 200
+          Quantity: 1
     - type: Fixtures
       fixtures:
         fix1:
@@ -389,12 +391,6 @@
       radius: 1.1
       energy: 2.7
       color: "#4faffb"
-    - type: Stealth
-      enabledOnDeath: false
-      maxVisibility: 1.2
-    - type: StealthOnMove
-      passiveVisibilityRate: -0.25
-      movementVisibilityRate: 0.25
 
 - type: entity
   id: MobCobraSpaceSalvage
@@ -404,26 +400,23 @@
     - type: SalvageMobRestrictions
 
 - type: entity
-  parent:
-  - SimpleSpaceMobBase
-  - BaseMobAnimal
-  - DVNodeCrawler # DeltaV - node crawling
+  parent: SimpleSpaceMobBase
   id: MobSnail
   name: snail
   description: Revolting unless you're french.
   components:
-  # Begin DeltaV Removals - players can spawn in as these at will
-  # - type: GhostRole
-  #   makeSentient: true
-  #   allowSpeech: false
-  #   allowMovement: true
-  #   name: ghost-role-information-snail-name
-  #   description: ghost-role-information-snail-description
-  #   rules: ghost-role-information-freeagent-rules
-  #   mindRoles:
-  #   - MindRoleGhostRoleFreeAgentHarmless
-  # - type: GhostTakeoverAvailable
-  # End DeltaV Removals - players can spawn in as these at will
+  - type: Body
+    prototype: Mouse
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: false
+    allowMovement: true
+    name: ghost-role-information-snail-name
+    description: ghost-role-information-snail-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgentHarmless
+  - type: GhostTakeoverAvailable
   - type: Emoting
   - type: Sprite
     drawdepth: SmallMobs
@@ -502,7 +495,7 @@
       Peckish: 15
       Starving: 10
       Dead: 0
-    baseDecayRate: 0.04 # Euph - *2/5 just like mice
+    baseDecayRate: 0.1
   - type: Extractable
     grindableSolutionName: food
   - type: SolutionContainerManager
@@ -524,10 +517,11 @@
   - type: CombatMode
     combatToggleAction: ActionCombatModeToggleOff
   - type: Bloodstream
-    bloodReferenceSolution:
+    bloodMaxVolume: 30
+    bloodReagents:
       reagents:
       - ReagentId: Cryoxadone
-        Quantity: 30
+        Quantity: 1
   - type: CanEscapeInventory
   - type: MobPrice
     price: 50
@@ -537,7 +531,6 @@
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
   - type: Temperature
-  - type: TemperatureDamage
     heatDamageThreshold: 500
     coldDamageThreshold: 0
   - type: Reactive
@@ -559,8 +552,6 @@
     - Hissing
     understands:
     - Hissing
-  - type: NightVision #DeltaV - Added nightvision to animals
-    color: "#808080"
 
 - type: entity
   parent: MobSnail
@@ -586,12 +577,10 @@
   id: MobSnailSpeed
   suffix: Speed
   components:
-  # Begin DeltaV Removals - players can spawn in as these at will
-  # - type: GhostRole
-  #   name: ghost-role-information-snailspeed-name
-  #   description: ghost-role-information-snailspeed-description
-  #   rules: ghost-role-information-freeagent-rules
-  # End DeltaV Removals - players can spawn in as these at will
+  - type: GhostRole
+    name: ghost-role-information-snailspeed-name
+    description: ghost-role-information-snailspeed-description
+    rules: ghost-role-information-freeagent-rules
   - type: Sprite
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -611,16 +600,16 @@
   - type: MovementAlwaysTouching
 
 - type: entity
-  parent: [ BaseMobMothroach, MobSnail ]
+  parent: MobSnail
   id: MobSnailMoth
   name: Snoth
   components:
-  # Begin DeltaV Removals - players can spawn in as these at will
-  # - type: GhostRole
-  #   name: ghost-role-information-snoth-name
-  #   description: ghost-role-information-snoth-description
-  #   rules: ghost-role-information-freeagent-rules
-  # End DeltaV Removals - players can spawn in as these at will
+  - type: Body
+    prototype: Mothroach
+  - type: GhostRole
+    name: ghost-role-information-snoth-name
+    description: ghost-role-information-snoth-description
+    rules: ghost-role-information-freeagent-rules
   - type: Sprite
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]

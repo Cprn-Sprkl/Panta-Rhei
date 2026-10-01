@@ -14,11 +14,25 @@ namespace Content.Shared.Humanoid.Markings
         [DataField("bodyPart", required: true)]
         public HumanoidVisualLayers BodyPart { get; private set; } = default!;
 
+        [DataField("markingCategory", required: true)]
+        public MarkingCategories MarkingCategory { get; private set; } = default!;
+
+        /// <summary>
+        ///     Floofstation note: if InvertedRestrictions is false (default), this is the species whitelist, otherwise it's a blacklist.
+        /// </summary>
+        [DataField("speciesRestriction")]
+        public List<string>? SpeciesRestrictions { get; private set; }
+
+        // Floofstation section - if true, SpeciesRestrictions will have an inverted effect
         [DataField]
-        public List<ProtoId<MarkingsGroupPrototype>>? GroupWhitelist;
+        public bool InvertedRestrictions { get; private set; } = false;
+        // Floofststation section end
 
         [DataField("sexRestriction")]
         public Sex? SexRestriction { get; private set; }
+
+        [DataField("followSkinColor")]
+        public bool FollowSkinColor { get; private set; } = false;
 
         [DataField("forcedColoring")]
         public bool ForcedColoring { get; private set; } = false;
@@ -64,17 +78,15 @@ namespace Content.Shared.Humanoid.Markings
         [DataField("colorLinks")]
         public Dictionary<string, string>? ColorLinks { get; private set; }
 
-
-        /// <summary>
-        /// Impstation: Porting PR #842: Markings now support shaders
-        /// </summary>
-        [DataField("shader")]
-        public string? Shader { get; private set; } = null;
-
         public Marking AsMarking()
         {
             return new Marking(ID, Sprites.Count);
         }
+
+        // Floofstation section
+        public bool AllowsSpecies(string species) => SpeciesRestrictions == null ||
+                                                     (SpeciesRestrictions.Contains(species) ^ InvertedRestrictions);
+        // Floofstation section end
     }
 }
 
@@ -132,7 +144,9 @@ namespace Content.Shared.Humanoid.Markings
  *
 - type: marking
   id: TailDebugPro
-  groupWhitelist: [Reptilian, Slime, IPC, Rodentia, Vulpkanin, Felinid, Human, Oni]
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian, SlimePerson, IPC, Rodentia, Vulpkanin, Felinid, Human, Oni]
   layering:
     tail_oversuit: TailOversuit <--------------\
     tail_behind: TailBehind   <----------------+--------\

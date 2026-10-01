@@ -3,8 +3,6 @@ using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Whitelist;
-using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 
 
 namespace Content.Shared._Floof.Clothing.SlotBlocker;
@@ -14,13 +12,11 @@ public sealed class SlotBlockerSystem : EntitySystem
 {
     public static SlotFlags IgnoredSlots = SlotFlags.POCKET;
 
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
     private EntityQuery<SlotBlockerComponent> _blockerQuery = default!;
     private EntityQuery<ClothingComponent> _clothingQuery = default!;
-
-    // Singleton entities spawned in nullspace for more advanced checks
-    private Dictionary<EntProtoId, EntityUid> Singletons = new();
 
     public override void Initialize()
     {
@@ -108,26 +104,6 @@ public sealed class SlotBlockerSystem : EntitySystem
     }
 
     /// <summary>
-    ///     Variant of IsSlotObstructedOrOccupied that uses a singleton entity to do more advanced checks.
-    ///     Singleton entities are only spawned once.
-    /// </summary>
-    public bool IsSlotObstructedOrOccupied(
-        Entity<InventoryComponent?> ent,
-        EntProtoId equipmentProto,
-        CheckType check,
-        SlotFlags targetSlot,
-        out string? reason)
-    {
-        if (!Singletons.TryGetValue(equipmentProto, out var equipment) || Deleted(equipment))
-        {
-            equipment = Spawn(equipmentProto, MapCoordinates.Nullspace);
-            Singletons[equipmentProto] = equipment;
-        }
-
-        return IsSlotObstructedOrOccupied(ent, equipment, check, targetSlot, out reason);
-    }
-
-    /// <summary>
     ///     Checks whether any slot with the target flags is occupied, returns true if so. Otherwise, checks if it is obstructed and returns that.
     ///     See <see cref="IsSlotObstructed"/>
     /// </summary>
@@ -142,14 +118,6 @@ public sealed class SlotBlockerSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp))
             return false;
 
-        if (IsSlotOccupied(ent!, equipment, targetSlot))
-            return true;
-
-        return IsSlotObstructed(ent!, equipment, check, targetSlot, out reason);
-    }
-
-    private static bool IsSlotOccupied(Entity<InventoryComponent> ent, EntityUid? equipment, SlotFlags targetSlot)
-    {
         // Code duplication, blegh
         var slots = ent.Comp.Slots;
         for (int i = 0; i < slots.Length; i++)
@@ -159,18 +127,18 @@ public sealed class SlotBlockerSystem : EntitySystem
                 continue;
 
             var container = ent.Comp.Containers[i];
-            if (container.ContainedEntity is not { Valid: true } other || other == equipment)
+            if (container.ContainedEntity is not { Valid: true } other || other == equipment?.Owner)
                 continue;
 
             // The target slot contains an entity, and that entity is not the equipment (if any).
             return true;
         }
 
-        return false;
+        return IsSlotObstructed(ent!, equipment, check, targetSlot, out reason);
     }
 
     /// <summary>
-    ///     Checks whether a slot (or any of the slots) is blocked. This does NOT check if it's blocked (occupied) by something.
+    ///     Checks whether a slot (or any of the slots) is blocked.
     /// </summary>
     /// <param name="ent">Entity to check for blocking clothing.</param>
     /// <param name="equipment">Entity getting equipped/unequipped. Optional. If present, will check "blocked by" and apply blocker whitelists.</param>
@@ -206,7 +174,7 @@ public sealed class SlotBlockerSystem : EntitySystem
             // Check whether this clothing is blocked by this slot
             if (equipment is { Comp: not null } equipment2
                 && equipment2.Comp.BlockedBy.Slots != SlotFlags.NONE
-                && BlockerObstructsSlot(other, other, ref equipment2.Comp.BlockedBy, check, slot.SlotFlags, slot.SlotFlags, ref reason))
+                && BlockerObstructsSlot(other, other, ref equipment2.Comp.BlockedBy, check, slot.SlotFlags, targetSlot, ref reason))
                 return true;
 
             // Check whether the clothing in this slot blocks this clothing
@@ -226,10 +194,10 @@ public sealed class SlotBlockerSystem : EntitySystem
         ref BlockerDefinition blocks,
         CheckType check,
         SlotFlags blockerInSlot,
-        SlotFlags checkedSlot,
+        SlotFlags equipmentInSlot,
         ref string? reason)
     {
-        if (!blocks.Slots.HasFlag(checkedSlot)
+        if (!blocks.Slots.HasFlag(equipmentInSlot)
             || (blocks.EnableInSlots & blockerInSlot) == 0
             // If there's an equipment whitelist, then equipment must be present to consider this blocker.
             || blocks.Whitelist != null && (whitelistTarget == null || _whitelist.IsWhitelistFail(blocks.Whitelist, whitelistTarget.Value))

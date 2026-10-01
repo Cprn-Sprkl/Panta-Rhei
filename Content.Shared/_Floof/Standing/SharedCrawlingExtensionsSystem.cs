@@ -22,6 +22,7 @@ public sealed class SharedCrawlingExtensionsSystem : EntitySystem
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedRotationVisualsSystem _rotVisuals = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearence = default!;
 
     public override void Initialize()
     {
@@ -67,7 +68,6 @@ public sealed class SharedCrawlingExtensionsSystem : EntitySystem
             || !TryComp<StandingStateComponent>(uid, out var standingState)
             || !TryComp<CrawlingExtensionsComponent>(uid, out var ext)
             || !TryComp<AppearanceComponent>(uid, out var appearance)
-            || !TryComp<RotationVisualsComponent>(uid, out var rotVisuals)
             || !_actionBlocker.CanConsciouslyPerformAction(uid)
             || !_timing.IsFirstTimePredicted
             || !ext.CanChangeDirections
@@ -78,9 +78,8 @@ public sealed class SharedCrawlingExtensionsSystem : EntitySystem
         Dirty(uid, ext);
 
         // +90deg = default horizontal rotation, -90deg = opposite
-        // We have to change the default rotation because the BuckleSystem and other systems may attempt to reset it later
-        rotVisuals.DefaultRotation = Angle.FromDegrees(90) + (!ext.InvertedCrawlingDirection ? 0 : Angle.FromDegrees(180));
-        _rotVisuals.SetHorizontalAngle((uid, rotVisuals), rotVisuals.DefaultRotation);
+        var rotVisuals = EnsureComp<RotationVisualsComponent>(uid);
+        _rotVisuals.SetHorizontalAngle((uid, rotVisuals), rotVisuals.DefaultRotation + (!ext.InvertedCrawlingDirection ? 0 : Angle.FromDegrees(180)));
         // Have to queue an appearance update so the RotationVisualizerSystem can play an animation if the entity is already laying
         Dirty(uid, appearance);
     }

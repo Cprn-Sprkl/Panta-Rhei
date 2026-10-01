@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
-using Content.Server.Fax;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Events;
+using Content.Server.Fax;
 using Content.Server.Station.Systems;
 using Content.Shared._EE.CCVars;
 using Content.Shared._DV.CCVars;
@@ -37,24 +38,15 @@ public sealed class StationGoalPaperSystem : EntitySystem
     {
         base.Initialize();
 
-        // Was: SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarted);
-        // Changed to GameRunLevelChangedEvent so we can check if the round is running
-        // our event needs to happen AFTER the round has started so we know the fax machines
-        // have finished initializing, and we don't have the fax que cleared.
-        SubscribeLocalEvent<GameRunLevelChangedEvent>(OnRunLevelChanged);
+        SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarted);
     }
 
-    private void OnRunLevelChanged(GameRunLevelChangedEvent ev)
-    {
-        // if we are not in round return (other otions are in lobby or post round
-        if (ev.New != GameRunLevel.InRound)
-            return;
 
+    private void OnRoundStarted(RoundStartingEvent ev)
+    {
         if (_config.GetCVar(EECVars.StationGoalsEnabled)
-            && _random.Prob(_config.GetCVar(EECVars.StationGoalsChance))) // changed this to be in the _EE namespace
-        {
+        	&& _random.Prob(_config.GetCVar(EECVars.StationGoalsChance))) // changed this to be in the _EE namespace
             SendRandomGoal();
-        }
     }
 
     /// <summary>
@@ -97,7 +89,7 @@ public sealed class StationGoalPaperSystem : EntitySystem
     /// <returns>True if at least one fax received paper</returns>
     public bool SendStationGoal(StationGoalPrototype goal)
     {
-        var enumerator = EntityQueryEnumerator<FaxMachineComponent>();
+        var enumerator = EntityManager.EntityQueryEnumerator<FaxMachineComponent>();
         var wasSent = false;
         var signerName = _prototype.Index<LocalizedDatasetPrototype>(RandomSignature);
 

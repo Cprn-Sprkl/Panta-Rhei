@@ -103,12 +103,12 @@
     magState: uranium
 
 - type: entity
-  id: SpeedLoaderSpecialLernaea
-  name: "speed loader (.38 special lernaea)"
+  id: SpeedLoaderSpecialMindbreaker
+  name: "speed loader (.38 special mindbreaker)"
   parent: BaseSpeedLoaderSpecial
   components:
   - type: BallisticAmmoProvider
-    proto: CartridgeSpecialLernaea
+    proto: CartridgeSpecialMindbreaker
   - type: Sprite
     layers:
     - state: base

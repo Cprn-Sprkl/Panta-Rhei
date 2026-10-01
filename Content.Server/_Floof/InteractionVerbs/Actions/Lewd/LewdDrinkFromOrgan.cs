@@ -2,7 +2,6 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Shared._Floof.InteractionVerbs;
 using Content.Shared._Floof.Lewd;
 using Content.Shared._Floof.Lewd.Systems;
-using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
@@ -38,7 +37,7 @@ public sealed partial class LewdDrinkFromOrgan : BaseLewdOrganAction
         var success = removed.Volume > 0;
 
         var stomachSys = deps.System<StomachSystem>();
-        if (GetBiggestStomach(args.User, deps.EntMan, solSystem) is not {} stomach || !stomachSys.TryTransferSolution(stomach, removed, stomach))
+        if (GetBiggestStomach(deps, args.User, solSystem) is not {} stomach || !stomachSys.TryTransferSolution(stomach, removed, stomach))
         {
             // Splash if the user can't consume the liquid for some reason (no stomach?)
             // As such we don't prevent the user from trying to drink even if they cant consume it
@@ -49,26 +48,24 @@ public sealed partial class LewdDrinkFromOrgan : BaseLewdOrganAction
         return true;
     }
 
-    public static Entity<StomachComponent>? GetBiggestStomach(Entity<BodyComponent?> user, IEntityManager entMan, SharedSolutionContainerSystem solSystem)
+    public static Entity<StomachComponent>? GetBiggestStomach(VerbDependencies deps, EntityUid user, SharedSolutionContainerSystem solSystem)
     {
-        if (user.Comp == null && !entMan.TryGetComponent(user, out user.Comp)
-            || user.Comp.Organs is not {} organs)
+        var bodySystem = deps.System<SharedBodySystem>();
+        if (!bodySystem.TryGetBodyOrganEntityComps<StomachComponent>(user, out var stomachs))
             return null;
 
         var highestAvailable = FixedPoint2.Zero;
         Entity<StomachComponent>? stomachToUse = null;
-        foreach (var organ in organs.ContainedEntities)
+        foreach (var ent in stomachs)
         {
-            if (!entMan.TryGetComponent<StomachComponent>(organ, out var stomach))
-                continue;
-
-            if (!solSystem.ResolveSolution(organ, StomachSystem.DefaultSolutionName, ref stomach.Solution, out var stomachSol))
+            var owner = ent.Owner;
+            if (!solSystem.ResolveSolution(owner, StomachSystem.DefaultSolutionName, ref ent.Comp1.Solution, out var stomachSol))
                 continue;
 
             if (stomachSol.AvailableVolume <= highestAvailable)
                 continue;
 
-            stomachToUse = (organ, stomach);
+            stomachToUse = ent;
             highestAvailable = stomachSol.AvailableVolume;
         }
 

@@ -21,6 +21,7 @@
         reagents:
         - ReagentId: Ectoplasm
           Quantity: 15
+  - type: PotentialPsionic
   - type: Psionic
   - type: GlimmerSource
   - type: AmbientSound
@@ -62,18 +63,19 @@
           radius: 0.35
         density: 13
         mask:
-        - SmallMobMask
-        layer:
         - Opaque
+        layer:
+        - MobLayer
   - type: MovementSpeedModifier
     baseSprintSpeed: 8
     baseWalkSpeed: 5
   - type: MovementIgnoreGravity
   - type: Speech
   # powers
+  - type: PotentialPsionic
   - type: Psionic
+    removable: false
   - type: NoosphericZapPower
-    canBeRemoved: false
   - type: LifeDrainer
     damage:
       types:
@@ -115,7 +117,7 @@
   - type: DamageOnDispel
     damage:
       types:
-        Holy: 150 # Euphoria - 2 Hits Wisp (instead of 3) for future reference dispel ignores resistances thus weaknesses too.
+        Heat: 100
   - type: SlowOnDamage
     speedModifierThresholds:
       150: 0.8

@@ -15,10 +15,3 @@ public sealed partial class PortalTimeoutComponent : Component
     [ViewVariables, DataField, AutoNetworkedField]
     public EntityUid? EnteredPortal;
 }
-
-/// <summary>
-///     Euph. Prevents this entity from entering portals at all.
-/// </summary>
-[RegisterComponent, NetworkedComponent]
-public sealed partial class PortalBlockComponent : Component;
-

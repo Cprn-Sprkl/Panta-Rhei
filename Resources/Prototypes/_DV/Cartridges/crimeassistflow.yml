@@ -124,6 +124,12 @@
 - type: crimeAssistPage
   id: "questionWasEntranceLocked"
   locKey: "crime-assist-question-wasentrancelocked"
+  onYes: "questionWasItHighSecArea"
+  onNo: "resultTrespass"
+
+- type: crimeAssistPage
+  id: "questionWasItHighSecArea"
+  locKey: "crime-assist-question-questionwasithighsec"
   onYes: "resultBreakingAndEntering"
   onNo: "resultTrespass"
 

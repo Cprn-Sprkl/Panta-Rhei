@@ -39,10 +39,11 @@
     - id: FoodMeatCrab
       amount: 3
   - type: Bloodstream
-    bloodReferenceSolution:
+    bloodMaxVolume: 100
+    bloodReagents:
       reagents:
       - ReagentId: BbqSauce #australia reference
-        Quantity: 100
+        Quantity: 1
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-possum
@@ -55,14 +56,16 @@
   - type: Puller
     needsHands: false
   - type: MindContainer
-  - type: MindExaminable
+    showExamineInfo: true
   - type: PotentialPsionic
   - type: Psionic
+    removable: false
   - type: PyrokinesisPower
-    canBeRemoved: false
   - type: NpcFactionMember
     factions:
     - Passive
+  - type: Body
+    prototype: Animal
   - type: HTN
     rootTask:
       task: SimpleHostileCompound

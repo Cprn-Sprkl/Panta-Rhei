@@ -1,12 +1,10 @@
 # Spoken by Chitinids.
 - type: language
   id: Chittin
-  parent: BaseLanguage
-  chatPrefix: cht # Euphoria/Starlight
   isVisibleLanguage: true
   speech:
     color: "#7d7d7d"
-    fontId: OnlyYou
+    fontId: Only_You
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1 # Replacements are really short

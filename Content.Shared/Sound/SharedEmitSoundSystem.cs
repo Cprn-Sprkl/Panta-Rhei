@@ -62,7 +62,6 @@ public abstract class SharedEmitSoundSystem : EntitySystem
         if (_whitelistSystem.IsWhitelistFail(component.Blacklist, args.User))
         {
             TryEmitSound(uid, component, args.User);
-            args.InteractionParticle = true; // Stellar - interaction particles
         }
     }
 

@@ -24,7 +24,10 @@
       whitelist:
         components:
         - CommandStaff
-    - !type:ObjectiveImmuneFilter
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - TargetObjectiveImmune
 
 - type: entity
   parent: BaseNinjaTeachLessonObjective
@@ -56,11 +59,13 @@
       whitelist:
         components:
         - CommandStaff
-    - !type:ObjectiveImmuneFilter
     # Euphoria - Make RR objective targets opt in only
     - !type:MarkedMindFilter
       objType: Remove
-
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - TargetObjectiveImmune
   - type: KillPersonCondition
     requireDead: true
 

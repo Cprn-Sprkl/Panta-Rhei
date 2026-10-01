@@ -55,8 +55,7 @@
     sprite: Nyanotrasen/Clothing/Head/Hats/tinfoil.rsi
   - type: Clothing
     sprite: Nyanotrasen/Clothing/Head/Hats/tinfoil.rsi
-  - type: PsionicallyInsulative
-    canBeFried: true
+  - type: TinfoilHat
   - type: Armor
     modifiers:
       coefficients:
@@ -80,7 +79,7 @@
     sprite: Nyanotrasen/Clothing/Head/Hats/bellhop.rsi
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadTinfoil
   id: ClothingHeadCage
   name: insulative headcage
   suffix: SelfUnremovable
@@ -93,18 +92,12 @@
     equipDelay: 5
     sprite: Nyanotrasen/Clothing/Head/Hats/cage.rsi
   - type: SelfUnremovableClothing
-  - type: PsionicallyInsulative
-    shieldsFromPsionics: false
-    canBeFried: true
-  - type: GuideHelp
-    guides:
-    - Psionics
   - type: Tag
     tags:
     - ForensicBeltEquip
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadTinfoil
   id: ClothingHeadHelmetInsulated
   name: insulative skullcap
   description: Psionically insulates whoevers head is inside it. It has some protection from physical damage.
@@ -113,7 +106,6 @@
     sprite: Nyanotrasen/Clothing/Head/Helmets/insulative_skullcap.rsi
   - type: Clothing
     sprite: Nyanotrasen/Clothing/Head/Helmets/insulative_skullcap.rsi
-  - type: PsionicallyInsulative
   - type: Armor
     modifiers:
       coefficients:

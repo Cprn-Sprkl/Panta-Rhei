@@ -11,56 +11,6 @@
   - StationAiIconDorf
   - StationAiIconHeartline
   - StationAiIconSmiley
-  # Starlight Start
-  - StationAiIconAlien
-  - StationAiIconThinking
-  - StationAiIconDatabase
-  - StationAiIconFirewall
-  - StationAiIconGlitchman
-  - StationAiIconGoon
-  - StationAiIconHades
-  - StationAiIconHelios
-  - StationAiIconInverted
-  - StationAiIconMatrix
-  - StationAiIconMonochrome
-  - StationAiIconMurica
-  - StationAiIconNanoTrasen
-  - StationAiIconNotMalf
-  - StationAiIconPresident
-  - StationAiIconRainbow
-  - StationAiIconRed
-  - StationAiIconRedOctober
-  - StationAiIconStatic
-  - StationAiIconMeow
-  - StationAiIconText
-  - StationAiIconTooDeep
-  - StationAiIconTriumvirate
-  - StationAiIconWeird
-  - StationAiIconCat
-  - StationAiIconBlob
-  - StationAiIconGondola
-  - StationAiIconMalicious
-  - StationAiIconPlain
-  - StationAiIconFox
-  - StationAiIconBee
-  - StationAiIconBorb
-  - StationAiIconDarkmatter
-  - StationAiIconNadBurn
-  - StationAiIconVoiddonut
-  - StationAiIconTiger
-  - StationAiIconVox
-  - StationAiIconLiz
-  - StationAiIconSparkles
-  - StationAiIconAhasuerus
-  - StationAiIconAlterEgo
-  - StationAiIconChild
-  - StationAiIconGodfrey
-  - StationAiIconHoneycomb
-  - StationAiIconHourglass
-  - StationAiIconRat
-  - StationAiIconRoyal
-  - StationAiIconSillycon
-  # Starlight End
 
 - type: stationAiCustomizationGroup
   id: StationAiHolograms
@@ -74,36 +24,14 @@
   - StationAiHologramDog
   - StationAiHologramKobold
   - StationAiHologramMonkey
-  # Starlight Start
-  - StationAiHologramAlien
-  - StationAiHologramBees
-  - StationAiHologramBigMoth
-  - StationAiHologramGhost
-  - StationAiHologramHorror
-  - StationAiHologramLeaves
-  - StationAiHologramNarsie
-  - StationAiHologramRatvar
-  - StationAiHologramSemi
-  - StationAiHologramCy
-  - StationAiHologramcloudkat
-  - StationAiHologramBoy
-  - StationAiHologramGirl
-  - StationAiHologramMono
-  - StationAiHologramPunkFemale
-  - StationAiHologramPunkMale
-  - StationAiHologramPurrfus
-  - StationAiHologramRat
-  # Starlight End
 
 # Iconography
-
-# floofstation Start - Upstream -> Starlight 
 - type: stationAiCustomization
   abstract: true
   id: StationAiIconBase
   previewKey: Occupied
   previewBackground:
-    sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+    sprite: Mobs/Silicon/station_ai.rsi
     state: base
 
 - type: stationAiCustomization
@@ -112,10 +40,10 @@
   name: station-ai-icon-ai
   layerData:
     Occupied:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai
     Dead:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dead
 
 - type: stationAiCustomization
@@ -124,10 +52,10 @@
   name: station-ai-icon-angel
   layerData:
     Occupied:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_angel
     Dead:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_angel_dead
 
 - type: stationAiCustomization
@@ -136,10 +64,10 @@
   name: station-ai-icon-bliss
   layerData:
     Occupied:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_bliss
     Dead:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dead
 
 - type: stationAiCustomization
@@ -148,10 +76,10 @@
   name: station-ai-icon-clown
   layerData:
     Occupied:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_clown
     Dead:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_clown_dead
 
 - type: stationAiCustomization
@@ -160,10 +88,10 @@
   name: station-ai-icon-dorf
   layerData:
     Occupied:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dorf
     Dead:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dead
 
 - type: stationAiCustomization
@@ -172,10 +100,10 @@
   name: station-ai-icon-heartline
   layerData:
     Occupied:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: "ai_heartline"
     Dead:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: "ai_heartline_dead"
 
 - type: stationAiCustomization
@@ -184,12 +112,11 @@
   name: station-ai-icon-smiley
   layerData:
     Occupied:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: "ai_smiley"
     Dead:
-      sprite: _Starlight/Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/station_ai.rsi
       state: "ai_dead"
-# floofstation End - Upstream -> Starlight 
 
 # Holograms
 - type: stationAiCustomization

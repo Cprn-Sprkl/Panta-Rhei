@@ -10,4 +10,3 @@
     sprite: _NF/Clothing/Eyes/Glasses/pilot.rsi
   - type: HandheldGPS
   - type: VisionCorrection
-    correctionPower: 8 # Delta-V (was default value, 2)

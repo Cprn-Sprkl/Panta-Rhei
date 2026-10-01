@@ -7,6 +7,7 @@
 - type: marking
   id: OverlayPlushSeamsHuman
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -19,6 +20,7 @@
 - type: marking
   id: OverlayPlushSeamsHeadHuman
   bodyPart: Head
+  markingCategory: Head
   coloring:
     default:
       type:
@@ -31,6 +33,7 @@
 - type: marking
   id: OverlayPlushSeamsHeadSmallSnout
   bodyPart: Head
+  markingCategory: Head
   coloring:
     default:
       type:
@@ -43,6 +46,7 @@
 - type: marking
   id: OverlayPlushSeamsHeadLongSnout
   bodyPart: HeadTop
+  markingCategory: Head
   coloring:
     default:
       type:
@@ -55,6 +59,7 @@
 - type: marking
   id: OverlayPlushSeamsHandsFeet
   bodyPart: RHand
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -67,6 +72,7 @@
 - type: marking
   id: OverlayPlushSeamsFeet
   bodyPart: RFoot
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -79,6 +85,7 @@
 - type: marking
   id: OverlayPlushSeamsHands
   bodyPart: RHand
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -91,6 +98,7 @@
 - type: marking
   id: OverlayPlushSeamsShadowkin
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -103,6 +111,7 @@
 - type: marking
   id: OverlayPlushSeamsShadowkinFeet
   bodyPart: RFoot
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -115,6 +124,7 @@
 - type: marking
   id: OverlayPlushSeamsBuggy
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -127,6 +137,7 @@
 - type: marking
   id: OverlayPlushSeamsBuggyFeet
   bodyPart: RFoot
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -139,6 +150,7 @@
 - type: marking
   id: OverlayPlushSeamsArachne
   bodyPart: LArm
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -151,6 +163,7 @@
 - type: marking
   id: OverlayPlushSeamsHarpy
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -163,6 +176,7 @@
 - type: marking
   id: OverlayPlushSeamsHarpyFeet
   bodyPart: RFoot
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -175,6 +189,7 @@
 - type: marking
   id: OverlayPlushSeamsVox
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -187,6 +202,7 @@
 - type: marking
   id: OverlayPlushSeamsVoxFeet
   bodyPart: RFoot
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -203,6 +219,7 @@
 - type: marking
   id: ChestZipper
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -215,6 +232,7 @@
 - type: marking
   id: ChestWindupKeyGold
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -227,6 +245,7 @@
 - type: marking
   id: ChestWindupKeySilver
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -241,6 +260,7 @@
 - type: marking
   id: ChestWindupKeyGoldAnimated
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -253,6 +273,7 @@
 - type: marking
   id: ChestWindupKeySilverAnimated
   bodyPart: LLeg
+  markingCategory: Overlay
   coloring:
     default:
       type:
@@ -267,6 +288,7 @@
 - type: marking
   id: OverlayPlushTorsoHumanM
   bodyPart: Chest
+  markingCategory: Chest
   coloring:
     default:
       type:
@@ -278,6 +300,7 @@
 - type: marking
   id: OverlayPlushTorsoHumanF
   bodyPart: Chest
+  markingCategory: Chest
   coloring:
     default:
       type:
@@ -289,6 +312,7 @@
 - type: marking
   id: OverlayPlushFootLeft
   bodyPart: LFoot
+  markingCategory: Legs
   coloring:
     default:
       type:
@@ -301,6 +325,7 @@
 - type: marking
   id: OverlayPlushFootRight
   bodyPart: RFoot
+  markingCategory: Legs
   coloring:
     default:
       type:
@@ -313,6 +338,7 @@
 - type: marking
   id: OverlayPlushBellyF
   bodyPart: Chest
+  markingCategory: Chest
   coloring:
     default:
       type:
@@ -325,6 +351,7 @@
 - type: marking
   id: OverlayPlushBellyM
   bodyPart: Chest
+  markingCategory: Chest
   coloring:
     default:
       type:

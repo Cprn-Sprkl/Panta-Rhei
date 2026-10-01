@@ -77,10 +77,4 @@ public sealed partial class BorgTransponderComponent : Component
     /// </summary>
     [DataField]
     public bool FakeDisabled;
-
-    /// <summary>
-    /// DeltaV - whether the transponder is active
-    /// </summary>
-    [DataField]
-    public bool Active = true;
 }

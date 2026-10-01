@@ -1,6 +1,7 @@
 - type: marking
   id: ZetaHairLongSpikehair
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: long_spikehair
@@ -8,6 +9,7 @@
 - type: marking
   id: ZetaHairNerfish
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: nerfish
@@ -15,6 +17,7 @@
 - type: marking
   id: ZetaHairPlantpoofs
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: plantish_poofs
@@ -22,6 +25,7 @@
 - type: marking
   id: ZetaHairRattyRoyalty
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: ratty_royalty
@@ -29,6 +33,7 @@
 - type: marking
   id: ZetaHairShortMessy
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: short_and_messy
@@ -36,6 +41,7 @@
 - type: marking
   id: ZetaHairShortSpikehair
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: short_spikehair
@@ -43,6 +49,7 @@
 - type: marking
   id: ZetaHairSpikehawk
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: spikehawk
@@ -50,6 +57,7 @@
 - type: marking
   id: ZetaHairPolitical
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: the_political
@@ -57,13 +65,15 @@
 - type: marking
   id: ZetaHairZetaBasicBraids
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: zeta_basic_braids
-
+      
 - type: marking
   id: ZetaHairQuadspike
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: quadspike
@@ -71,6 +81,7 @@
 - type: marking
   id: ZetaHairJohnny
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: the_johnny
@@ -78,6 +89,7 @@
 - type: marking
   id: ZetaHairMattedSpikes
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: matted_spikes
@@ -85,6 +97,7 @@
 - type: marking
   id: ZetaHairManageableMess
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: manageable_mess
@@ -92,6 +105,7 @@
 - type: marking
   id: ZetaHairPoofed
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: poofed
@@ -99,6 +113,7 @@
 - type: marking
   id: ZetaHairOverShoulderBraids
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: over_shoulder_braids
@@ -106,6 +121,7 @@
 - type: marking
   id: ZetaHairMonk
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: monk
@@ -113,6 +129,7 @@
 - type: marking
   id: ZetaHairMiniMattedSpikes
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: mini_matted_spikes
@@ -120,6 +137,7 @@
 - type: marking
   id: ZetaHairNaturalMessShort
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: natural_mess_short
@@ -127,6 +145,7 @@
 - type: marking
   id: ZetaHairNaturalMessLong
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: natural_mess_long
@@ -134,6 +153,7 @@
 - type: marking
   id: ZetaHairFrontSpikes
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: front_spikes
@@ -141,6 +161,7 @@
 - type: marking
   id: ZetaHairMessyPonytail
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: messy_ponytail
@@ -148,6 +169,7 @@
 - type: marking
   id: ZetaHairFaded
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: faded
@@ -155,6 +177,7 @@
 - type: marking
   id: ZetaHairHalfsies
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: halfsies
@@ -162,6 +185,7 @@
 - type: marking
   id: ZetaHairPorcupine
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: porcupine
@@ -169,6 +193,7 @@
 - type: marking
   id: ZetaHairHalfShavedBraids
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: half_shaved_braids
@@ -176,6 +201,7 @@
 - type: marking
   id: ZetaHairLoneTail
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: lone_tail
@@ -184,7 +210,8 @@
 #- type: marking
 #  id: ZetaHairRadical
 #  bodyPart: Hair
-##  sprites:
+#  markingCategory: Hair
+#  sprites:
 #    - sprite: _Nuclear14/Mobs/Customization/hair.rsi
 #      state: radical
 
@@ -192,13 +219,15 @@
 #- type: marking
 #  id: ZetaHairTunnelSnake
 #  bodyPart: Hair
-##  sprites:
+#  markingCategory: Hair
+#  sprites:
 #    - sprite: _Nuclear14/Mobs/Customization/hair.rsi
 #      state: tunnel_snake
 
 - type: marking
   id: ZetaHairOverTheShoulder
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: over_the_shoulder
@@ -206,6 +235,7 @@
 - type: marking
   id: ZetaHairStandardAsymmetry
   bodyPart: Hair
+  markingCategory: Hair
   sprites:
     - sprite: _Nuclear14/Mobs/Customization/hair.rsi
       state: standard_asymmetry

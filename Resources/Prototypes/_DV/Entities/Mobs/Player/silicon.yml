@@ -48,7 +48,8 @@
       - SyndicateNeuroling
       borg_module:
       - BorgModuleTopicals
-      - BorgModuleAdvancedTopical
+      - BorgModuleAdvancedChemical
+      - BorgModuleAdvancedSurgery
       borg_id_chip:
       - IdChipSyndie
   - type: ItemSlots

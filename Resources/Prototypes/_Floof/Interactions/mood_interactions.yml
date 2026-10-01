@@ -7,17 +7,14 @@
   delay: 0.7
   range: {max: 1}
   hideByRequirement: true
-  requirement: &mobOrSpeciallyDesignatedVerb
-    !type:ComplexRequirement # either the verb is specific to the target, or the target is a mob
-    requireAll: false
-    requirements:
-    - !type:MobStateRequirement
-      inverted: true
-    - !type:SourceRequirement
-      sources: TargetVerbs
+  requirement:
+    !type:MobStateRequirement
+    inverted: true
   action:
-    !type:NoOpAction
-  effectFailure: null
+    # TODO: this should pull the target closer or sumth, but I need to code that action first
+    !type:MoodAction
+    effect: BeingHugged
+  effectFailure: null # Floof
 
 # Petting someone (people) - improves the mood of the target
 - type: Interaction
@@ -29,10 +26,40 @@
   range: {max: 1}
   hideByRequirement: true
   requirement:
-    *mobOrSpeciallyDesignatedVerb
+    !type:ComplexRequirement
+    requirements:
+    - !type:MobStateRequirement
+      inverted: true
+    - !type:EntityWhitelistRequirement
+      whitelist:
+        components: [HumanoidAppearance]
   action:
-    !type:NoOpAction
-  effectFailure: null
+    !type:MoodAction
+    effect: BeingPet
+  effectFailure: null # Floof
+
+# Petting someone (animals) - improves the mood of the user and the target
+- type: Interaction
+  id: PetAnimal
+  parent: Pet
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+    - !type:MobStateRequirement
+      allowedStates: [Alive]
+    - !type:EntityWhitelistRequirement
+      blacklist:
+        components: [HumanoidAppearance]
+  action:
+    !type:ComplexAction # TODO might wanna make a multiplexer action for situations like this
+    actions:
+    - !type:MoodAction
+      effect: BeingPet
+    - !type:OnUserAction
+      action:
+        !type:MoodAction
+        effect: PetAnimal
+  effectFailure: null # Floof
 
 # Kissing
 - type: Interaction
@@ -45,17 +72,20 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - *mobOrSpeciallyDesignatedVerb
+    - !type:EntityWhitelistRequirement
+      whitelist:
+        components: [MobState] # Don't go around kissing inanimate objects.
     - !type:SlotObstructionRequirement
       slot: MASK
   action:
-    !type:NoOpAction
+    !type:MoodAction
+    effect: BeingKissed
   effectSuccess:
     popup: Obvious
     sound: {path: /Audio/_Floof/Lewd/kiss.ogg}
   effectFailure: null
 
-# Licking
+# Licking?
 - type: Interaction
   id: Lick
   parent: [BaseGlobal, BaseMouth]
@@ -66,17 +96,15 @@
   requirement:
     !type:ComplexRequirement
     requirements:
-    - !type:ComplexRequirement # either the verb is specific to the target, or the target is a mob/something else
-      requireAll: false
-      requirements:
-      - !type:EntityWhitelistRequirement
-        whitelist:
-          components: [MobState, Anomaly, Edible] # TODO check if can be metabolized
-          tags: [Window] # yes.
+    - !type:EntityWhitelistRequirement
+      whitelist:
+        components: [MobState, Anomaly, Edible] # TODO check if can be metabolized
+        tags: [Window] # yes.
     - !type:SlotObstructionRequirement
       slot: MASK
   action:
-    !type:NoOpAction
+    !type:MoodAction
+    effect: BeingLicked
   effectSuccess:
     popup: Obvious
     sound: {path: /Audio/_Floof/Lewd/lick.ogg}

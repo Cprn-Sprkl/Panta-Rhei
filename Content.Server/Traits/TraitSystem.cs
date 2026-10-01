@@ -45,14 +45,12 @@
 //                 continue;
 //
 //             // Add all components required by the prototype
-//             if (traitPrototype.Components.Count > 0)
-//                 EntityManager.AddComponents(args.Mob, traitPrototype.Components, false);
+//             EntityManager.AddComponents(args.Mob, traitPrototype.Components, false);
 //
-//             // Add all JobSpecials required by the prototype
-//             foreach (var special in traitPrototype.Specials)
-//             {
-//                 special.AfterEquip(args.Mob);
-//             }
+//             // Begin DeltaV - Add overridden components
+//             if(traitPrototype.OverriddenComponents != null)
+//                 EntityManager.AddComponents(args.Mob, traitPrototype.OverriddenComponents, true);
+//             // End DeltaV
 //
 //             // Add item required by the trait
 //             if (traitPrototype.TraitGear == null)
@@ -70,4 +68,3 @@
 //         }
 //     }
 // }
-//

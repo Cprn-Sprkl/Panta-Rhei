@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Atmos.Prototypes;
-using Content.Shared.Body;
+using Content.Shared.Body.Part;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -10,7 +10,6 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Kitchen.Components;
 using Content.Shared.Prototypes;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Client.Chemistry.EntitySystems;
 
@@ -95,7 +94,7 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                 continue;
 
             //these bloat the hell out of blood/fat
-            if (entProto.HasComponent<OrganComponent>())
+            if (entProto.HasComponent<BodyPartComponent>())
                 continue;
 
             //these feel obvious...
@@ -110,15 +109,14 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                     juiceSolution);
                 foreach (var (id, _) in juiceSolution.Contents)
                 {
-                    // Euph - get or new
-                    _reagentSources.GetOrNew(id.Prototype).Add(data);
+                    _reagentSources[id.Prototype].Add(data);
                 }
 
                 usedNames.Add(entProto.Name);
             }
 
 
-            if (extractableComponent.GrindableSolutionName is { } grindableSolutionId &&
+            if (extractableComponent.GrindableSolution is { } grindableSolutionId &&
                 entProto.TryGetComponent<SolutionContainerManagerComponent>(out var manager, EntityManager.ComponentFactory) &&
                 _solutionContainer.TryGetSolution(manager, grindableSolutionId, out var grindableSolution))
             {
@@ -128,8 +126,7 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                     grindableSolution);
                 foreach (var (id, _) in grindableSolution.Contents)
                 {
-                    // Euph - get or new
-                    _reagentSources.GetOrNew(id.Prototype).Add(data);
+                    _reagentSources[id.Prototype].Add(data);
                 }
                 usedNames.Add(entProto.Name);
             }

@@ -76,8 +76,6 @@
       - Packet
   - type: ExaminableSolution
     exactVolume: true
-  - type: Spillable # DeltaV - spilling salt on the floor, should work for all packets
-    solution: food
 
 - type: entity
   parent: BaseFoodCondimentPacket

@@ -27,9 +27,6 @@
   - MineralScannerEmpty
   - AdvancedMineralScannerEmpty
   - OreBagOfHolding
-  - PKAUpgradeDamage
-  - PKAUpgradeRange
-  - PKAUpgradeFireRate
   - ClothingShoesBootsJump # DV - Jump Boots since its mining research
 
 - type: latheRecipePack
@@ -38,6 +35,5 @@
   id: CargoBoards
   recipes:
   - OreProcessorIndustrialMachineCircuitboard
-  - CargoTelepadMachineCircuitboard # DeltaV - Telepad removed for benefit of cargo pilots + logi gameplay flow.
-  # Euph - Haha no. Readding the telepad.
+  - CargoTelepadMachineCircuitboard
   - ShuttleGunKineticCircuitboard

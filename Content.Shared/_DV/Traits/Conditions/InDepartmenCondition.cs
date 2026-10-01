@@ -1,4 +1,3 @@
-using Content.Shared._Euphoria.Traits.Conditions;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
@@ -9,7 +8,6 @@ namespace Content.Shared._DV.Traits.Conditions;
 /// Use Invert = true to check if the player is NOT in the department.
 /// </summary>
 public sealed partial class InDepartmentCondition : BaseTraitCondition
-    , ITraitConditionSkipLobbyCheck // Euphoria: Skip lobby checks for job-related conditions.
 {
     /// <summary>
     /// The department prototype ID to check for.

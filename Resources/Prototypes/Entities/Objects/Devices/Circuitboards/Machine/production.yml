@@ -21,7 +21,7 @@
   - type: MachineBoard
     prototype: AutolatheHyperConvection
     stackRequirements:
-      Manipulator: 4
+      Manipulator: 3
       Glass: 1
     tagRequirements:
       Igniter:
@@ -691,6 +691,8 @@
         Plastic: 25
     - type: StaticPrice
       price: 15
+    - type: Tag # DeltaV - augment construction
+      tags: [ AugmentAPCBoard ]
 
 - type: entity
   id: PowerCageRechargerCircuitboard
@@ -734,6 +736,8 @@
         Plastic: 25
     - type: StaticPrice
       price: 15
+    - type: Tag # DeltaV - augment construction
+      tags: [ AugmentStationBoard ]
 
 - type: entity
   id: WeaponCapacitorRechargerCircuitboard
@@ -833,11 +837,6 @@
           amount: 1
           defaultPrototype: SaxophoneInstrument
           examineName: construction-insert-info-examine-name-instrument-woodwind
-  # Begin DeltaV additions
-  - type: Tag
-    tags:
-    - DawInstrumentMachineCircuitboard
-  # End DeltaV additions
 
 - type: entity
   id: PortableGeneratorPacmanMachineCircuitboard
@@ -1091,7 +1090,7 @@
 
 - type: entity
   id: SyndicateMicrowaveMachineCircuitboard
-  parent: [ BaseMachineCircuitboard, BaseSyndicateContraband ]
+  parent: BaseMachineCircuitboard
   name: donk co. microwave machine board
   components:
     - type: Sprite
@@ -1288,7 +1287,6 @@
         Manipulator: 2
         Steel: 5
         Bluespace: 2  # DeltaV Bluespace Exists
-        # Euph - readded after removal.
     - type: ReverseEngineering # delta
       difficulty: 4
       recipes:

@@ -2,7 +2,6 @@ using Content.Client.Cargo.UI;
 using Content.Shared.Cargo.Components;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
-using Content.Shared._DV.Cargo.Components; // DeltaV: Bounty claim messages
 
 namespace Content.Client.Cargo.BUI;
 
@@ -31,8 +30,7 @@ public sealed class CargoBountyConsoleBoundUserInterface : BoundUserInterface
         {
             SendMessage(new BountySkipMessage(id));
         };
-
-        // DeltaV: bounty claim stuff begins
+		//imp edit start - bounty claiming & statuses
         _menu.OnClaimButtonPressed += id =>
         {
             SendMessage(new BountyClaimedMessage(id));
@@ -42,7 +40,7 @@ public sealed class CargoBountyConsoleBoundUserInterface : BoundUserInterface
         {
             SendMessage(new BountySetStatusMessage(id, status));
         };
-        // DeltaV: bounty claim stuff ends
+		//imp edit end
     }
 
     protected override void UpdateState(BoundUserInterfaceState message)

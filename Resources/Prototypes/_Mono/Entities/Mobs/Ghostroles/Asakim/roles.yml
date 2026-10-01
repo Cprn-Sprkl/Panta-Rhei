@@ -11,6 +11,9 @@
   components:
   - type: RandomHumanoidAppearance
     randomizeName: True
+  - type: HumanoidAppearance
+    #height: 1.2 # DeltaV - non-functional
+    #width: 1.2 # DeltaV - non-functional
   - type: Loadout
     prototypes: [AsakimGear]
     #roleLoadout: [RoleSurvivalTankOnly] # DeltaV - nope
@@ -30,6 +33,8 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
+  - type: SurgerySpeedModifier
+    speedModifier: 1.5
   #- type: IntrinsicRadioReceiver # DeltaV - unused
   #- type: IntrinsicRadioTransmitter
   #  channels:

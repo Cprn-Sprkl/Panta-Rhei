@@ -1,7 +1,8 @@
 - type: marking
   id: WristBraceletRight
   bodyPart: RHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -15,7 +16,8 @@
 - type: marking
   id: WristBraceletLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -28,7 +30,8 @@
 - type: marking
   id: WristBraceletArmRight
   bodyPart: RArm
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RArm
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -41,7 +44,8 @@
 - type: marking
   id: WristBraceletArmLeft
   bodyPart: LArm
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LArm
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -54,7 +58,8 @@
 - type: marking
   id: WristWatchRight
   bodyPart: RHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -67,7 +72,8 @@
 - type: marking
   id: WristWatchLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -80,7 +86,8 @@
 - type: marking
   id: WristWatchSilverRight
   bodyPart: RHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -93,7 +100,8 @@
 - type: marking
   id: WristWatchSilverLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -106,7 +114,8 @@
 - type: marking
   id: WristWatchGoldRight
   bodyPart: RHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -119,7 +128,8 @@
 - type: marking
   id: WristWatchGoldLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -132,7 +142,8 @@
 - type: marking
   id: WristWatchHoloRight
   bodyPart: RHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -145,7 +156,8 @@
 - type: marking
   id: WristWatchHoloLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -158,7 +170,8 @@
 - type: marking
   id: WristWatchLeatherRight
   bodyPart: RHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -171,7 +184,8 @@
 - type: marking
   id: WristWatchLeatherLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -184,7 +198,8 @@
 - type: marking
   id: WristWatchColorableRight
   bodyPart: RHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Diona, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:
@@ -199,7 +214,8 @@
 - type: marking
   id: WristWatchColorableLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Slime, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Arachne, Rodentia, Feroxi, Kitsune, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Dwarf, SlimePerson, Arachnid, Reptilian, Felinid, Tajaran, Oni, Vulpkanin, Gingerbread, Arachne, Rodentia, Feroxi, Lamia, Kitsune, IPC]
   coloring:
     default:
       type:

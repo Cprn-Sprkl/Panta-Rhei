@@ -27,4 +27,3 @@
     belt: ClothingBeltSyndicateUtility
   inhand:
     - RecruiterBriefcase
-    - DnaScramblerImplanterDespawning #Euphoria, optional DNA scrambler for if you don't want to play your own character.

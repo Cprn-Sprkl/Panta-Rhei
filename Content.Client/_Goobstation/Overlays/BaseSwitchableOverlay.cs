@@ -7,10 +7,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
-using Content.Shared._Floof.CCVar;
 using Content.Shared._Goobstation.Overlays;
 using Robust.Client.Graphics;
-using Robust.Shared.Configuration; // Euphoria: Grey night vision
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
@@ -19,7 +17,6 @@ namespace Content.Client._Goobstation.Overlays;
 public sealed class BaseSwitchableOverlay<TComp> : Overlay where TComp : SwitchableVisionOverlayComponent
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!; // Euphoria: Grey night vision
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -30,12 +27,10 @@ public sealed class BaseSwitchableOverlay<TComp> : Overlay where TComp : Switcha
 
     public bool IsActive = true;
 
-    private readonly ProtoId<ShaderPrototype> NightVisionName = "NightVision";
-
     public BaseSwitchableOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _shader = _prototype.Index(NightVisionName).InstanceUnique();
+        _shader = _prototype.Index<ShaderPrototype>("NightVision").InstanceUnique();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -53,10 +48,9 @@ public sealed class BaseSwitchableOverlay<TComp> : Overlay where TComp : Switcha
         var accumulator = Math.Clamp(Comp.PulseAccumulator, 0f, Comp.PulseTime);
         var alpha = Comp.PulseTime <= 0f ? 1f : float.Lerp(1f, 0f, accumulator / Comp.PulseTime);
 
-        var colour = _config.GetCVar(FloofCCVars.GreyNightVision) ? Color.Gray : Comp.Color; // Euphoria: Grey night vision
         worldHandle.SetTransform(Matrix3x2.Identity);
         worldHandle.UseShader(_shader);
-        worldHandle.DrawRect(args.WorldBounds, colour.WithAlpha(alpha)); // Euphoria: Grey night vision
+        worldHandle.DrawRect(args.WorldBounds, Comp.Color.WithAlpha(alpha));
         worldHandle.UseShader(null);
     }
 }

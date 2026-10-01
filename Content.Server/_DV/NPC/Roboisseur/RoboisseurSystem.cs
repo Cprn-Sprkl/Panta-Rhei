@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
@@ -13,7 +12,6 @@ using Content.Shared.Database;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Shared.Chat;
-using Content.Shared.Chemistry.Reagent;
 
 namespace Content.Server.Roboisseur.Roboisseur
 {
@@ -83,7 +81,7 @@ namespace Content.Server.Roboisseur.Roboisseur
             {
                 while (tier != 0)
                 {
-                    Spawn(_random.Pick(component.RobossuierRewards), Transform(uid).Coordinates);
+                    EntityManager.SpawnEntity(_random.Pick(component.RobossuierRewards), Transform(uid).Coordinates);
                     tier--;
                 }
             }
@@ -123,7 +121,7 @@ namespace Content.Server.Roboisseur.Roboisseur
             }
 
             component.Impatient = false;
-            QueueDel(args.Used);
+            EntityManager.QueueDeleteEntity(args.Used);
 
             int tier = CheckTier(component.DesiredPrototype.ID, component);
 
@@ -184,15 +182,9 @@ namespace Content.Server.Roboisseur.Roboisseur
 
             var allRecipes = _prototypeManager.EnumeratePrototypes<FoodRecipePrototype>();
             var allProtos = new List<String>();
-            //Euph edits start - read all results from all recipes
+
             foreach (var recipe in allRecipes)
-            {
-                foreach (var result in recipe.Results)
-                {
-                    allProtos.Add(result);
-                }
-            }
-            //Euph edits end
+                allProtos.Add(recipe.Result);
 
             foreach (var proto in component.BlacklistedProtos)
                 allProtos.Remove(proto);

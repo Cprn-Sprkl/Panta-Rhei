@@ -1,4 +1,3 @@
-using Content.Server._Floof.GameTicking;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -88,14 +87,4 @@ public sealed partial class StationEventComponent : Component
     /// </summary>
     [DataField]
     public bool OccursDuringRoundEnd = true;
-
-    // Floof section - custom conditions
-
-    /// <summary>
-    ///     A list of conditions that must be met for the event to run.
-    /// </summary>
-    [DataField]
-    public List<StationEventCondition>? Conditions;
-
-    // Floof section end
 }

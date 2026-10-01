@@ -1,4 +1,3 @@
-using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Floof.InteractionVerbs.Events;
@@ -11,32 +10,19 @@ namespace Content.Shared._Floof.InteractionVerbs.Events;
 ///     Note that this is raised before IsAllowed checks are performed on any of the verbs.
 /// </summary>
 [ByRefEvent]
-public sealed class GetInteractionVerbsEvent(EntityUid user, EntityUid target, EntityUid? used, IEnumerable<InteractionVerbIdSource> verbs)
+public sealed class GetInteractionVerbsEvent(EntityUid user, EntityUid target, IEnumerable<ProtoId<InteractionVerbPrototype>> verbs)
 {
-    public readonly EntityUid
+    public EntityUid
         User = user,
         Target = target;
 
-    public readonly EntityUid? Used = used;
+    public HashSet<ProtoId<InteractionVerbPrototype>> Verbs = new(verbs);
 
-    public HashSet<InteractionVerbIdSource> Verbs = new(verbs);
-
-    public bool Add(ProtoId<InteractionVerbPrototype> verb, InteractionVerbSource source)
+    public bool Add(ProtoId<InteractionVerbPrototype> verb)
     {
-        if (!Verbs.Add(new(verb, source)))
+        if (!Verbs.Add(verb))
             return false;
 
         return true;
-    }
-}
-
-/// <summary>
-///   Combination of an interaction verb ID and its source.
-/// </summary>
-public record class InteractionVerbIdSource(ProtoId<InteractionVerbPrototype> Proto, InteractionVerbSource Source)
-{
-    public (InteractionVerbPrototype, InteractionVerbSource) Index(IPrototypeManager protoMan)
-    {
-        return (protoMan.Index(Proto), Source);
     }
 }

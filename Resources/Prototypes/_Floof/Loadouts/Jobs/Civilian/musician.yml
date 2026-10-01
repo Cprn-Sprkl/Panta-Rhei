@@ -1,4 +1,9 @@
 ﻿# musician additions
+- type: loadout
+  id: UniformMusicianThong
+  equipment:
+    jumpsuit: ClothingUniformMusicianThong
+
 # gloves
 - type: loadout
   id: ClothingHandsMusicianWarmers
@@ -6,41 +11,7 @@
     gloves: ClothingHandsMusicianWarmers
 
 # shoes
-
-# emotional support collar
-- type: loadout
-  id: ClothingNeckCollarEmotionalSupportMusician
-  equipment:
-    neck: ClothingNeckCollarEmotionalSupportMusician
-
-- type: loadout
-  id: MusicianPDA
-  equipment:
-    id: MusicianPDA
-
-# top undergarment
-
-# bottom undergarment
-- type: loadout
-  id: UniformMusicianThong
-  equipment:
-    undergarmentBottom: ClothingUniformMusicianThong
-
-# socks
 - type: loadout
   id: ClothingUnderSocksMusician
   equipment:
-    undergarmentSocks: ClothingUnderSocksMusician
-
-# dj kit for musicians
-- type: loadout
-  id: DJSetInstrument
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Civilian
-      time: 250h
-  storage:
-    back:
-    - DJSetInstrument
+    shoes: ClothingUnderSocksMusician

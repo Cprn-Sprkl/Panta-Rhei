@@ -101,9 +101,6 @@ public abstract partial class SharedStaminaSystem : EntitySystem
 
     private void OnStartup(Entity<StaminaComponent> entity, ref ComponentStartup args)
     {
-        // Set the base threshold here since ModifiedCritThreshold can't be modified via yaml.
-        entity.Comp.CritThreshold = entity.Comp.BaseCritThreshold;
-
         UpdateStaminaVisuals(entity);
     }
 
@@ -420,18 +417,14 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         component.Critical = true;
         component.StaminaDamage = component.CritThreshold;
 
-        StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime, true);
+        if (StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime))
+            StunSystem.TrySeeingStars(uid);
 
         // Give them buffer before being able to be re-stunned
         component.NextUpdate = Timing.CurTime + component.StunTime + StamCritBufferTime;
         EnsureComp<ActiveStaminaComponent>(uid);
         Dirty(uid, component);
         _adminLogger.Add(LogType.Stamina, LogImpact.Medium, $"{ToPrettyString(uid):user} entered stamina crit");
-
-        // Begin DeltaV Additions - StaminaCrit event
-        var ev = new EnterStaminaCritEvent();
-        RaiseLocalEvent(uid, ref ev);
-        // End DeltaV Additions - StaminaCrit event
     }
 
     private void ExitStamCrit(EntityUid uid, StaminaComponent? component = null)
@@ -472,7 +465,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         {
             var key = thres.Key.Float();
 
-            if ((ent.Comp.StaminaDamage / ent.Comp.CritThreshold) >= key && key > closest && closest < 1f)
+            if (ent.Comp.StaminaDamage >= key && key > closest && closest < ent.Comp.CritThreshold)
                 closest = thres.Key;
         }
 

@@ -1,4 +1,3 @@
-using Content.Server._DV.CosmicCult.Abilities.Colossus;
 using Content.Server._DV.CosmicCult.EntitySystems;
 using Content.Shared.Maps;
 using Robust.Shared.Prototypes;
@@ -6,7 +5,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server._DV.CosmicCult.Components;
 
-[RegisterComponent, Access(typeof(CosmicCorruptingSystem), typeof(CosmicColossusBuffsSystem))]
+[RegisterComponent, Access(typeof(CosmicCorruptingSystem))]
 [AutoGenerateComponentPause]
 public sealed partial class CosmicCorruptingComponent : Component
 {

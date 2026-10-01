@@ -28,7 +28,7 @@
     #neck: ClothingNeckProsecutorbadge
     #back: ClothingBackpackLawyerFilled
     shoes: ClothingShoesBootsLaceup
-    #id: ProsecutorPDA # Floofstation - let loadouts handle pdas
+    id: ProsecutorPDA
     ears: ClothingHeadsetJustice
     # TODO add copy of space law
   inhand:

@@ -8,4 +8,6 @@ namespace Content.Shared._Floof.OfferItem;
 /// </summary>
 [RegisterComponent]
 [NetworkedComponent]
-public sealed partial class OfferableVirtualItemComponent : Component;
+public sealed partial class OfferableVirtualItemComponent : Component
+{
+}

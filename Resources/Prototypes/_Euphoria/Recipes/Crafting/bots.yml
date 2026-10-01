@@ -1,7 +1,0 @@
-﻿- type: construction
-  id: clowncar
-  graph: ClownCar
-  startNode: start
-  targetNode: bot
-  category: construction-category-utilities
-  objectType: Item

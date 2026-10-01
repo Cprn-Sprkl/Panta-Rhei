@@ -41,6 +41,7 @@ public sealed class PenLightSystem : EntitySystem
     {
         if (args.Handled
             || args.Target is not {} target
+            || target == null
             || !args.CanReach
             || !HasComp<MobStateComponent>(target)
             || !_powerCell.HasDrawCharge(uid, user: args.User))
@@ -79,7 +80,8 @@ public sealed class PenLightSystem : EntitySystem
 
         if (!IsLightEnabled(uid))
         {
-            _popup.PopupEntity(Loc.GetString("penlight-off"), uid, user);
+            if (user != null)
+                _popup.PopupEntity(Loc.GetString("penlight-off"), uid, user);
             return false;
         }
         // can't examine your own eyes, dingus

@@ -38,9 +38,6 @@
     interfaces:
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
-  - type: SuppressArtifactContainer # Euphoria - It activated and swapped with someone, round removing them.
-  - type: RadiationBlockingContainer
-    resistance: 5
 
 - type: entity
   id: DisplayCase

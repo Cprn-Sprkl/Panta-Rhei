@@ -1,4 +1,9 @@
 ﻿# bartender additions
+- type: loadout
+  id: UniformBartenderThong
+  equipment:
+    jumpsuit: ClothingUniformBartenderThong
+
 # gloves
 - type: loadout
   id: ClothingHandsBartenderWarmers
@@ -7,27 +12,11 @@
 
 # shoes
 - type: loadout
+  id: ClothingUnderSocksBartender
+  equipment:
+    shoes: ClothingUnderSocksBartender
+
+- type: loadout
   id: ClothingShoesColorBlack
   equipment:
     shoes: ClothingShoesColorBlack
-
-# emotional support collar
-- type: loadout
-  id: ClothingNeckCollarEmotionalSupportBartender
-  equipment:
-    neck: ClothingNeckCollarEmotionalSupportBartender
-
-
-# top undergarment
-
-# bottom undergarment
-- type: loadout
-  id: UniformBartenderThong
-  equipment:
-    undergarmentBottom: ClothingUniformBartenderThong
-
-# socks
-- type: loadout
-  id: ClothingUnderSocksBartender
-  equipment:
-    undergarmentSocks: ClothingUnderSocksBartender

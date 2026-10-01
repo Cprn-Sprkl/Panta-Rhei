@@ -2,11 +2,9 @@
   parent: CBURNGear
   id: CBURNGearDeltaV
   equipment:
-    eyes: ClothingEyesERTInformationHud
     pocket1: WeaponPistolUniversalIncendiary
     pocket2: WeaponAdvancedLaser
     belt: ClothingBeltMilitaryWebbing
-    shoes: ClothingShoesBootsERTMagboots
   storage:
     back:
     - WeaponShotgunKammererIncendiary
@@ -16,11 +14,9 @@
     - MagazineBoxMagnumIncendiary
     - PillAmbuzolPlus
     - PillAmbuzol
-    - CombatKnife
     belt:
     - MagazineUniversalMagnumIncendiary
     - MagazineUniversalMagnumIncendiary
     - GrenadeFlashBang
     - GrenadeFlashBang
     - GrenadeFlashBang
-    - JawsOfLife

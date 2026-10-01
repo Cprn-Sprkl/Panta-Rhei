@@ -320,11 +320,9 @@
   - PortableGenerator
   - AME
   - SingularityTeslaEngine
-  - NuclearReactor # FH edit
   - TEG
   - RTG
   - SolarPanels
-  - Supermatter # imp
 
 - type: guideEntry
   id: AME

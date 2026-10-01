@@ -890,6 +890,9 @@
         BaseUnshaded: aslime-_3
       Dead:
         Base: rainbow_baby_slime_dead
+  - type: Body  # DeltaV - Changes to add brain
+    prototype: Smiles
+    requiredLegs: 1
   - type: Butcherable
     spawned:
     - id: FoodMeatSlime
@@ -904,7 +907,6 @@
         Bloodloss:
           -0.8
   - type: Temperature
-  - type: TemperatureDamage
     heatDamageThreshold: 800
     coldDamageThreshold: 0
   - type: MeleeWeapon
@@ -969,10 +971,6 @@
     attributes:
       proper: true
       gender: male
-  #DeltaV Changes - he can shoot his gun 80% of the time
-  - type: Clumsy
-    clumsyGunShootCheck: 0.2
-    #DeltaV Changes end
 
 - type: entity
   name: Tropico

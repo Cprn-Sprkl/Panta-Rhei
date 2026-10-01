@@ -1,6 +1,5 @@
 using Content.Shared.Abilities.Psionics;
 using Content.Server.Objectives.Components;
-using Content.Shared._DV.Psionics.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 

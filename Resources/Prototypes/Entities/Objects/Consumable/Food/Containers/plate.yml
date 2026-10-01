@@ -55,7 +55,6 @@
   - type: Tag
     tags:
     - Trash
-    - Dinnerware # DeltaV - Service Borg Chef Module
   - type: PhysicalComposition
     materialComposition:
       Glass: 50
@@ -195,7 +194,6 @@
   - type: Tag
     tags:
     - Trash
-    - Kitchenware # DeltaV - Service Borg Chef Module
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -220,7 +218,6 @@
   - type: Tag
     tags:
     - Trash
-    - Kitchenware # DeltaV - Service Borg Chef Module
   - type: PhysicalComposition
     materialComposition:
       Steel: 25

@@ -1,8 +1,7 @@
 # Spoken by shadowkins.
 - type: language
   id: Marish
-  parent: BaseLanguage
-  chatPrefix: mar # Euphoria/Starlight
+  isVisibleLanguage: true
   speech:
     color: "#be3cc5"
     fontId: Lymphatic

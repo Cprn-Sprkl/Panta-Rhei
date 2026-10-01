@@ -1,8 +1,0 @@
-﻿# Entity tables
-- type: entityTable
-  id: SecondaryKineticWeapons
-  table: !type:GroupSelector
-    children:
-    - id: WeaponCrusherDagger
-    #- id: LavalandWeaponKineticClaws -Euphoria
-    #- id: LavalandWeaponKineticMachete -Euphoria

@@ -368,7 +368,7 @@
         orGroup: GiftPool
       - id: Bola
         orGroup: GiftPool
-      - id: GlowstickGreen
+      - id: GlowstickBase
         orGroup: GiftPool
       - id: GlowstickBlue
         orGroup: GiftPool
@@ -388,6 +388,8 @@
       - id: ToyRenault
         orGroup: GiftPool
       - id: ToySiobhan
+        orGroup: GiftPool
+      - id: PlushieIPC
         orGroup: GiftPool
       - id: PlushieFelinid
         orGroup: GiftPool

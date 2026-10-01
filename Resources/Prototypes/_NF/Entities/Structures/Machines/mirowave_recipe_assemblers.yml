@@ -100,10 +100,7 @@
       - !type:DoActsBehavior
         acts: ["Breakage"]
   - type: ApcPowerReceiver
-    powerLoad: 50
-  - type: PowerState # Euph
-    idlePowerDraw: 50
-    workingPowerDraw: 1000
+    powerLoad: 1000 # Assume the range is off.
   - type: Machine
     board: ElectricRangeMachineCircuitboard
   - type: ContainerContainer
@@ -127,9 +124,6 @@
     whitelist:
       components:
       - Temperature
-      - FitsInDispenser # Floofstation - let beakers and other objects be heated by an oven
-  - type: SolutionHeater # Floofstation - let beakers and other objects be heated by an oven
-    heatPerSecond: 100
 
 - type: entity
   id: SyndicateKitchenElectricRange
@@ -212,10 +206,7 @@
       map: ["scan"]
       visible: false
   - type: ApcPowerReceiver
-    powerLoad: 50
-  - type: PowerState # Euph
-    idlePowerDraw: 50
-    workingPowerDraw: 400
+    powerLoad: 400
   - type: Machine
     board: KitchenAssemblerMachineCircuitboard
   - type: ActivatableUI
@@ -263,10 +254,7 @@
       map: ["enum.MicrowaveVisualizerLayers.BaseUnlit"]
       visible: false
   - type: ApcPowerReceiver
-    powerLoad: 50
-  - type: PowerState # Euph
-    idlePowerDraw: 50
-    workingPowerDraw: 500
+    powerLoad: 500
   - type: GuideHelp
     guides:
     - MedicalRecipes

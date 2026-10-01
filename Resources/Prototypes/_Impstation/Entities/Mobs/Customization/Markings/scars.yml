@@ -1,7 +1,9 @@
 - type: marking
   id: ArmTwistingLeft
   bodyPart: LArm
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: LArm
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: arm_l_twisting
@@ -9,7 +11,9 @@
 - type: marking
   id: ArmTwistingRight
   bodyPart: RArm
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: RArm
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: arm_r_twisting
@@ -17,7 +21,9 @@
 - type: marking
   id: ChestBackstabbed
   bodyPart: Chest
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Moth, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: chest_backstabbed
@@ -25,7 +31,9 @@
 - type: marking
   id: ChestTwistingLeft
   bodyPart: Chest
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: chest_l_twisting
@@ -33,7 +41,9 @@
 - type: marking
   id: ChestTwistingRight
   bodyPart: Chest
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: chest_r_twisting
@@ -41,7 +51,9 @@
 - type: marking
   id: ChestStar
   bodyPart: Chest
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: chest_star
@@ -49,7 +61,9 @@
 - type: marking
   id: HandTwistingLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: hand_l_twisting
@@ -57,7 +71,9 @@
 - type: marking
   id: HandTwistingRight
   bodyPart: RHand
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: hand_r_twisting
@@ -65,7 +81,9 @@
 - type: marking
   id: SmileScars
   bodyPart: Head
-# groupWhitelist: [Human, Oni, Slime, Tajaran, Felinid, Arachne, IPC] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Human, Oni, SlimePerson, Tajaran, Felinid, Arachne, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: head_smile
@@ -73,7 +91,9 @@
 - type: marking
   id: HeadTwisting
   bodyPart: Head
-# groupWhitelist: [Human, Oni, Slime, Tajaran, Felinid, Arachne, IPC] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Human, Oni, SlimePerson, Tajaran, Felinid, Arachne, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: head_twisting
@@ -81,7 +101,9 @@
 - type: marking
   id: HeadTwistingFlipped
   bodyPart: Head
-# groupWhitelist: [Human, Oni, Slime, Tajaran, Felinid, Arachne, IPC] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Human, Oni, SlimePerson, Tajaran, Felinid, Arachne, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: head_twisting_flipped
@@ -89,7 +111,9 @@
 - type: marking
   id: LegTwistingLeft
   bodyPart: LLeg
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Shadekin, Moth, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: LLeg
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Shadowkin, Moth, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: leg_l_twisting
@@ -97,7 +121,9 @@
 - type: marking
   id: LegTwistingRight
   bodyPart: RLeg
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Shadekin, Moth, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: RLeg
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Shadowkin, Moth, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: leg_r_twisting
@@ -105,7 +131,9 @@
 - type: marking
   id: TorsoIncision
   bodyPart: Chest
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: torso_incision
@@ -113,7 +141,9 @@
 - type: marking
   id: ArmProstheticLeft
   bodyPart: LArm
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: LArm
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:
@@ -126,7 +156,9 @@
 - type: marking
   id: ArmProstheticRight
   bodyPart: RArm
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: RArm
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:
@@ -139,7 +171,9 @@
 - type: marking
   id: FootProstheticLeft
   bodyPart: LFoot
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Shadekin, Moth, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: LFoot
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Shadowkin, Moth, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:
@@ -152,7 +186,9 @@
 - type: marking
   id: FootProstheticRight
   bodyPart: RFoot
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Shadekin, Moth, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: RFoot
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Shadowkin, Moth, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:
@@ -165,7 +201,9 @@
 - type: marking
   id: HandProstheticLeft
   bodyPart: LHand
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: LHand
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:
@@ -178,7 +216,9 @@
 - type: marking
   id: HandProstheticRight
   bodyPart: RHand
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Arachne, Shadekin, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: RHand
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:
@@ -191,7 +231,9 @@
 - type: marking
   id: LegProstheticLeft
   bodyPart: LLeg
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Shadekin, Moth, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: LLeg
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Shadowkin, Moth, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:
@@ -204,7 +246,9 @@
 - type: marking
   id: LegProstheticRight
   bodyPart: RLeg
-# groupWhitelist: [Human, Oni, Reptilian, Slime, Arachnid, Tajaran, Felinid, Shadekin, Moth, Vulpkanin, IPC] # Euph - free markings
+  markingCategory: RLeg
+  speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Shadowkin, Moth, Vulpkanin, IPC]
+  followSkinColor: false
   coloring:
     default:
       type:

@@ -6,12 +6,10 @@
   category: Languages
   cost: -2
   priority: -1 # Give way for natural language traits
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
+  conflicts:
     - Foreigner
     - Muted # If you are muted, losing the ability to speak the common tongue has literally no effect
-    - ForeignOrigin
+  conditions:
   - !type:HasCompCondition
     component: LanguageKnowledge
   effects:
@@ -27,31 +25,12 @@
   category: Languages
   cost: -4
   priority: -1 # Give way for natural language traits
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
+  conflicts:
     - ForeignerLight
-    - ForeignOrigin
+  conditions:
   - !type:HasCompCondition
     component: LanguageKnowledge
   effects:
   - !type:ForeignerTraitEffect
     baseLanguage: TauCetiBasic
     baseTranslator: TranslatorForeigner
-
-- type: trait
-  id: ForeignOrigin
-  name: trait-foreign-origin-name
-  description: trait-foreign-origin-desc
-  category: Languages
-  cost: -1
-  priority: 1
-  conditions:
-  - !type:TraitDependencyCondition
-    conflicts:
-    - Foreigner
-    - ForeignerLight
-  - !type:HasCompCondition
-    component: LanguageKnowledge
-  effects:
-  - !type:RemoveSpeciesLanguageEffect

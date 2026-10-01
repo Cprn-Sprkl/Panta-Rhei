@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Content.Server.Chat.Systems;
+﻿using Content.Server.Chat.Systems;
 using Content.Server.NPC;
 using Content.Server.NPC.HTN.PrimitiveTasks;
 using Content.Server.NPC.HTN;
@@ -18,21 +17,26 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Floof.NPC.Operators.Specific;
 
-// Euph - most of this shitcode was rewritten by me
-// Idk who came up with the original code but it was beyond awful
 public sealed partial class WeldbotWeldOperator : HTNOperator
 {
     [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-
     private ChatSystem _chat = default!;
+    private WeldbotSystem _weldbot = default!;
     private SharedAudioSystem _audio = default!;
     private SharedInteractionSystem _interaction = default!;
+    private SharedPopupSystem _popup = default!;
     private DamageableSystem _damageableSystem = default!;
     private TagSystem _tagSystem = default!;
 
-    public static readonly ProtoId<TagPrototype> SiliconTag = "SiliconMob";
-    public static readonly ProtoId<TagPrototype> WeldotFixableStructureTag = "WeldbotFixableStructure";
+    public const string SiliconTag = "SiliconMob";
+    public const string WeldotFixableStructureTag = "WeldbotFixableStructure";
+    public const string BurnDamage = "Burn";
+    public const string BruteDamage = "Brute";
+
+    public const float EmaggedBurnDamage = 10;
+    public const float SiliconRepairAmount = 30;
+    public const float StructureRepairAmount = 10;
 
     /// <summary>
     /// Target entity to inject.
@@ -40,42 +44,14 @@ public sealed partial class WeldbotWeldOperator : HTNOperator
     [DataField(required: true)]
     public string TargetKey = string.Empty;
 
-    [DataField]
-    public DamageSpecifier StructureHealing = new()
-    {
-        DamageDict =
-        {
-            { "Structural", -3 },
-            { "Blunt", -3 },
-        }
-    };
-
-    [DataField]
-    public DamageSpecifier SiliconHealing = new() // Intentionally WAY less than even a brute pack to compensate for the spammability
-    {
-        DamageDict =
-        {
-            { "Blunt", -1.33 },
-            { "Slash", -1.33 },
-            { "Piercing", -1.33 },
-        }
-    };
-
-    [DataField]
-    public DamageSpecifier EmaggedDamage = new()
-    {
-        DamageDict =
-        {
-            { "Heat", -10 },
-        }
-    };
-
     public override void Initialize(IEntitySystemManager sysManager)
     {
         base.Initialize(sysManager);
         _chat = sysManager.GetEntitySystem<ChatSystem>();
+        _weldbot = sysManager.GetEntitySystem<WeldbotSystem>();
         _audio = sysManager.GetEntitySystem<SharedAudioSystem>();
         _interaction = sysManager.GetEntitySystem<SharedInteractionSystem>();
+        _popup = sysManager.GetEntitySystem<SharedPopupSystem>();
         _damageableSystem = sysManager.GetEntitySystem<DamageableSystem>();
         _tagSystem = sysManager.GetEntitySystem<TagSystem>();
     }
@@ -89,11 +65,12 @@ public sealed partial class WeldbotWeldOperator : HTNOperator
     public override HTNOperatorStatus Update(NPCBlackboard blackboard, float frameTime)
     {
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
         if (!blackboard.TryGetValue<EntityUid>(TargetKey, out var target, _entMan) || _entMan.Deleted(target))
             return HTNOperatorStatus.Failed;
 
-        var tagSiliconMobPrototype = _prototypeManager.Index(SiliconTag);
-        var tagWeldFixableStructurePrototype = _prototypeManager.Index(WeldotFixableStructureTag);
+        var tagSiliconMobPrototype = _prototypeManager.Index<TagPrototype>(SiliconTag);
+        var tagWeldFixableStructurePrototype = _prototypeManager.Index<TagPrototype>(WeldotFixableStructureTag);
 
         if(!_entMan.TryGetComponent<TagComponent>(target, out var tagComponent))
             return HTNOperatorStatus.Failed;
@@ -103,44 +80,53 @@ public sealed partial class WeldbotWeldOperator : HTNOperator
 
         if ((!weldableIsSilicon && !weldableIsStructure)
             || !_entMan.TryGetComponent<WeldbotComponent>(owner, out var botComp)
-            || !_entMan.TryGetComponent<DamageableComponent>(target, out var damageable)
+            || !_entMan.TryGetComponent<DamageableComponent>(target, out var damage)
             || !_interaction.InRangeUnobstructed(owner, target))
             return HTNOperatorStatus.Failed;
 
-        var damage = _damageableSystem.GetPositiveDamage((target, damageable));
-
-        var canWeldSilicon = DamageIntersects(damage, SiliconHealing) || _entMan.HasComponent<EmaggedComponent>(owner);
-        var canWeldStructure = DamageIntersects(damage, StructureHealing);
+        var canWeldSilicon = damage.DamagePerGroup["Brute"].Value > 0  || _entMan.HasComponent<EmaggedComponent>(owner);
+        var canWeldStructure = damage.TotalDamage.Value > 0;
 
         if ((!canWeldSilicon && weldableIsSilicon) || (!canWeldStructure && weldableIsStructure))
             return HTNOperatorStatus.Failed;
 
-        DamageSpecifier damageChange;
+        // Euphoria - Not the most elegant solution I bet, but this reworks the old code to work on wizden current changes under Delta-V.
         if (botComp.IsEmagged)
-            damageChange = EmaggedDamage;
+        {
+             if (!_prototypeManager.TryIndex<DamageGroupPrototype>( BurnDamage, out var prototype) || weldableIsStructure)
+                return HTNOperatorStatus.Failed;
+
+             _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, EmaggedBurnDamage), true, false);
+        }
         else
         {
             if (weldableIsSilicon)
-                damageChange = SiliconHealing;
+            {
+                if (!_prototypeManager.TryIndex<DamageGroupPrototype>(BruteDamage, out var prototype))
+                    return HTNOperatorStatus.Failed;
+
+                _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, -SiliconRepairAmount), true, false);
+            }
             else if (weldableIsStructure)
-                damageChange = StructureHealing;
+            {
+                if (!_prototypeManager.TryIndex<DamageGroupPrototype>(BruteDamage, out var prototype))
+
+                    return HTNOperatorStatus.Failed;
+
+                _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, -StructureRepairAmount));
+            }
             else
-                return HTNOperatorStatus.Failed; // Shouldn't happen?
+            {
+                return HTNOperatorStatus.Failed;
+            }
         }
 
-        if (!_damageableSystem.TryChangeDamage(target, damageChange, true, false))
-            return HTNOperatorStatus.Failed;
-
         _audio.PlayPvs(botComp.WeldSound, target);
-        _chat.TrySendInGameICMessage(owner, Loc.GetString("weldbot-finish-weld"), InGameICChatType.Speak, hideChat: true, hideLog: true);
+
+        if((weldableIsSilicon && damage.DamagePerGroup["Brute"].Value == 0)
+            || (weldableIsStructure && damage.TotalDamage.Value == 0)) //only say "all done if we're actually done!"
+            _chat.TrySendInGameICMessage(owner, Loc.GetString("weldbot-finish-weld"), InGameICChatType.Speak, hideChat: true, hideLog: true);
 
         return HTNOperatorStatus.Finished;
     }
-
-    // I'm tired of this BS
-    public static bool DamageIntersects(DamageSpecifier toHeal, DamageSpecifier healing) =>
-        DamageIntersects(toHeal, healing.DamageDict.Keys);
-
-    public static bool DamageIntersects(DamageSpecifier toHeal, IEnumerable<ProtoId<DamageTypePrototype>> healing) =>
-        healing.Any(it => toHeal.DamageDict.ContainsKey(it));
 }

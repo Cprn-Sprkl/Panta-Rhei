@@ -53,7 +53,7 @@
 
     # Rain
     rain:
-      proto: WeatherRain
+      proto: Rain
       weight: 15
       durationMinutes:
         min: 10
@@ -73,7 +73,7 @@
         reagent: Water
 
     storm:
-      proto: WeatherStorm
+      proto: Storm
       weight: 1 # Unlikely to happen on its own; most of the time will be an extension of a rain
       durationMinutes:
         min: 5
@@ -94,7 +94,7 @@
 
     # Snow
     snow:
-      proto: WeatherSnowfallLight
+      proto: SnowfallLight
       weight: 8
       durationSeconds:
         min: 300
@@ -115,7 +115,7 @@
           - 84.784355  # N2
 
     snowMedium:
-      proto: WeatherSnowfallMedium
+      proto: SnowfallMedium
       weight: 3
       durationSeconds:
         min: 300
@@ -134,7 +134,7 @@
           - 90.10312  # N2
 
     snowHeavy:
-      proto: WeatherSnowfallHeavy
+      proto: SnowfallHeavy
       weight: 1
       durationSeconds:
         min: 240
@@ -160,11 +160,11 @@
 
     # Ashfall. Adds some CO2 to the air.
     ashfall:
-      proto: WeatherAshfallLight
+      proto: AshfallLight
       weight: 5
-      durationSeconds: # Maps with this weather cycle are mostly indoors, so this is fine™
-        min: 60
-        max: 140
+      durationSeconds: # I'm afraid people might suffocate
+        min: 30
+        max: 70
       transitions:
         default: 1
       onTransition:

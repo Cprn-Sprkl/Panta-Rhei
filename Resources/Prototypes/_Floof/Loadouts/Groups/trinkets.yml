@@ -25,7 +25,6 @@
   - CardBoxNanotrasen
   - CardBoxSyndicate
   - CardBoxBlack
-  - CardBoxTarot
   - TennisBall
   - BeachBall
   - PlushieSharkGrey
@@ -33,25 +32,6 @@
   - PlushieSharkBlue
   - Wristwatch
   - WristwatchGold
-  - Clicker
-  - LoadoutNapsack
-  - LoadoutNapsackDuffel
-  - CarpChewToy
-  - PaperPlane
-  - PaperOrigamiSwan
-  - LeashBasic # Note for raykir: this is NOT a sex toy. Even though it can be used as one. Neither is the signaller.
-  - RemoteSignaller
-  - RemoteSignallerCollarLink
-  - MedicalLicense
-  - Doctorate
-  - FlippableCoinNT
-  - FlippableCoinClown
-  - FlippableCoinDiamond
-  - FlippableCoinPlasma
-  - CombBrush
-  - HairBrush
-  - ClothingMaskMuzzle
-  - ClothingMaskMuzzleBasket
 
 - type: loadoutGroup
   id: SexToys
@@ -82,8 +62,5 @@
   - WhipPink
   - WhipTealCrotch
   - WhipTeal
-  - CondomPackTeal
-  - CondomPackPink
-  - HoloprojectorNSFW # Den
-  - FuzzyHandcuffs
-  - PlayHandcuffs
+  - LeashBasic
+  - RemoteSignaller

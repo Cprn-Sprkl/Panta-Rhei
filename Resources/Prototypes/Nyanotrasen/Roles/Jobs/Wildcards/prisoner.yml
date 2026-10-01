@@ -26,6 +26,6 @@
   id: PrisonerChameleonOutfit
   job: Prisoner
   equipment:
-    #id: PrisonerPDA # Floofstation - let loadouts handle pdas
+    id: PrisonerPDA
     ears: ClothingHeadsetPrison
     jumpsuit: ClothingUniformJumpsuitPrisoner

@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingUndergarmentBottomBase
+  parent: ClothingUniformThongBase
   id: ClothingUniformCowprintBikini
   name: Cow Print Bikini
   description: Moo
@@ -12,7 +12,7 @@
     unequipDelay: 0
 
 - type: entity
-  parent: ClothingUndergarmentSocksBase
+  parent: ClothingShoesBase
   id: ClothingUnderCowprintsocks
   name: Cow Print Thigh Highs
   description: For some reason, these are a little tighter at the top.

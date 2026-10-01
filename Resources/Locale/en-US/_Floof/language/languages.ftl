@@ -1,6 +1,3 @@
-# From Starlight
-language-chat-confirmation = Message will send in {$lang}.
-
 language-Universal-name = Universal
 language-Universal-description = What are you?
 

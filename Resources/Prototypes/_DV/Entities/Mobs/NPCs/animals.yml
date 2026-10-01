@@ -53,7 +53,7 @@
     interactSuccessSpawn: EffectHearts
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
-  - type: TemperatureDamage
+  - type: Temperature
     coldDamageThreshold: 210
     coldDamage:
       types:
@@ -62,10 +62,7 @@
     attributes:
       gender: epicene
   - type: Bloodstream
-    bloodReferenceSolution:
-      reagents:
-      - ReagentId: Blood
-        Quantity: 100
+    bloodMaxVolume: 100
   - type: MobPrice
     price: 400
   - type: Tag
@@ -74,8 +71,7 @@
 
 - type: entity
   parent: MobCorgiBase # Floofstation - changed to be parented from MobCorgiBase (MobDog when)
-  abstract: true
-  id: MobSecDogBase
+  id: MobSecDog
   name: security dog
   description: Funnily enough, this pig is actually a dog.
   components:
@@ -166,8 +162,8 @@
     spawned:
     - id: FoodMeat
       amount: 2
-#  - type: ReplacementAccent # Euphoria - M3739 - #706 - Consistency with FloofStation changes
-#    accent: dog
+  - type: ReplacementAccent
+    accent: dog
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-dog
@@ -179,10 +175,7 @@
     attributes:
       gender: epicene
   - type: Bloodstream
-    bloodReferenceSolution:
-      reagents:
-      - ReagentId: Blood
-        Quantity: 150 # BIG DOG. MUCH BLOOD :3 - About half as much as a human
+    bloodMaxVolume: 300 # BIG DOG. MUCH BLOOD :3
   - type: Puller
     needsHands: false
   - type: MobPrice
@@ -192,40 +185,12 @@
     - DoorBumpOpener
     - VimPilot
     - K9
-  - type: MindOnlyAccess
-  - type: AutoImplant
-    implants:
-    - TrackingImplant
-    - K9IDCardImplant
   - type: Vocal
     sounds:
       Unsexed: MobDog
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
-  - type: Grappler
-    handDisabling: None
-    cooldown: 15
-    grapplingPart: grapple-part-jaws
-    proneOnGrapple: true # Make sure Secdogs aren't shot by sprays
-    grappleSound:
-      collection: VulpkaninGrowls
-    activationMode:
-      !type:GrapplerActivationStaminaDrain
-        staminaDrainRate: 5
-        movementSpeedModifier: 0.2
-        initialDamage:
-          types:
-            Slash: 5
-            Piercing: 10
-
-# Split from MobSecDog for random names, allows Laika to be Laika
-- type: entity
-  parent: MobSecDogBase
-  id: MobSecDog
-  components:
-  - type: RandomMetadata
-    nameSegments: [NamesSecDogs]
 
 - type: entity
   parent: MobMouse
@@ -233,6 +198,8 @@
   name: scrimpering whimperlet
   description: A pitiful creature. It loses a lot of salt through its tears.
   components:
+  - type: Body
+    prototype: Animal
   - type: GhostRole
     name: ghost-role-information-whimperlet-name
     description: ghost-role-information-whimperlet-description
@@ -282,7 +249,7 @@
       30: Critical # Whimpier than mothroaches (40/60)
       50: Dead
   - type: Hunger
-    baseDecayRate: 0.11 # slower than mouse (0.5), even if they will act similarly # Euph - * 0.66
+    baseDecayRate: 0.15 # slower than mouse (0.5), even if they will act similarly
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -326,14 +293,6 @@
     damage:
       types:
         Piercing: 0.5 # Minimal damage, 'mostly harmless'.
-  - type: LanguageKnowledge # Euphoria
-    speaks:
-    - Mouse
-    - Scurret
-    understands:
-    - TauCetiBasic
-    - Mouse
-    - Scurret
 
 - type: entity
   parent: SimpleMobBase # Not parenting off from MobMothroach to remove the ghost role components
@@ -393,7 +352,7 @@
     size: Normal
   - type: Clothing
     quickEquip: false
-    sprite: Mobs/Animals/mothroach.rsi
+    sprite: Mobs/Animals/mothroach/mothroach.rsi
     equippedPrefix: 0
     slots:
     - HEAD
@@ -421,10 +380,10 @@
     damageContainer: Biological
     damageModifierSet: Moth
   - type: Bloodstream
-    bloodReferenceSolution:
+    bloodReagents:
       reagents:
       - ReagentId: InsectBlood
-        Quantity: 100
+        Quantity: 1
   - type: Respirator
     damage:
       types:
@@ -460,6 +419,9 @@
     - CannotSuicide
     - VimPilot
   - type: CanEscapeInventory
+  - type: Body
+    prototype: Mothroach
+  - type: SurgeryTarget # Shitmed
   - type: TypingIndicator
     proto: moth
   - type: Destructible
@@ -479,6 +441,8 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.SurgeryUIKey.Key: # Shitmed
+        type: SurgeryBui
   - type: InventorySlots
   - type: Inventory
     speciesId: hamster

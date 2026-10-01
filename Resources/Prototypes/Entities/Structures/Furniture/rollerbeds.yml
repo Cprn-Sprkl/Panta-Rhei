@@ -91,9 +91,6 @@
     folded: true
   - type: Strap
     enabled: False
-  - type: Tag # DeltaV - Whitelist for Medical Borg
-    tags:
-    - PatientTransportation
 
 - type: entity
   id: CheapRollerBed
@@ -123,9 +120,6 @@
     folded: true
   - type: Strap
     enabled: False
-  - type: Tag # DeltaV - Whitelist for Medical Borg
-    tags:
-    - PatientTransportation
 
 - type: entity
   id: EmergencyRollerBed
@@ -155,6 +149,3 @@
     folded: true
   - type: Strap
     enabled: False
-  - type: Tag # DeltaV - Whitelist for Medical Borg
-    tags:
-    - PatientTransportation

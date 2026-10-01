@@ -73,7 +73,6 @@ public sealed partial class SleepingSystem : EntitySystem
         SubscribeLocalEvent<SleepingComponent, StunEndAttemptEvent>(OnStunEndAttempt);
         SubscribeLocalEvent<SleepingComponent, StandUpAttemptEvent>(OnStandUpAttempt);
 
-        SubscribeLocalEvent<ForcedSleepingStatusEffectComponent, StatusEffectRelayedEvent<MobStateChangedEvent>>(OnStatusMobStateChanged);
         SubscribeLocalEvent<ForcedSleepingStatusEffectComponent, StatusEffectAppliedEvent>(OnStatusEffectApplied);
         SubscribeLocalEvent<SleepingComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);
         //SubscribeLocalEvent<SleepingComponent, EmoteAttemptEvent>(OnEmoteAttempt); # DeltaV - Reverted "Block emotes for sleeping" (upstream PR #32779)
@@ -164,6 +163,7 @@ public sealed partial class SleepingSystem : EntitySystem
 
     private void OnSpeakAttempt(Entity<SleepingComponent> ent, ref SpeakAttemptEvent args)
     {
+        // TODO reduce duplication of this behavior with MobStateSystem somehow
         if (HasComp<AllowNextCritSpeechComponent>(ent))
         {
             RemCompDeferred<AllowNextCritSpeechComponent>(ent);
@@ -203,7 +203,6 @@ public sealed partial class SleepingSystem : EntitySystem
     {
         // Shh the Urist McHands is sleeping...
         args.Cancelled = true;
-        args.Autostand = false; // Floof - why wasnt this set?!
     }
 
     private void OnExamined(Entity<SleepingComponent> ent, ref ExaminedEvent args)
@@ -251,8 +250,14 @@ public sealed partial class SleepingSystem : EntitySystem
         if (!args.DamageIncreased || args.DamageDelta == null)
             return;
 
-        if (args.DamageDelta.GetTotal() >= ent.Comp.WakeThreshold)
+        /* Shitmed Change Start - Surgery needs this, sorry! If the nocturine gamers get too feisty
+        I'll probably just increase the threshold */
+
+        if (args.DamageDelta.GetTotal() >= ent.Comp.WakeThreshold
+            && !HasComp<ForcedSleepingStatusEffectComponent>(ent))
             TryWaking((ent, ent.Comp));
+
+        // Shitmed Change End
     }
 
     /// <summary>
@@ -271,19 +276,14 @@ public sealed partial class SleepingSystem : EntitySystem
     /// </summary>
     private void OnMobStateChanged(Entity<SleepingComponent> ent, ref MobStateChangedEvent args)
     {
+        if (args.NewMobState == MobState.Dead)
+        {
+            RemComp<SpamEmitSoundComponent>(ent);
+            RemComp<SleepingComponent>(ent);
+            return;
+        }
         if (TryComp<SpamEmitSoundComponent>(ent, out var spam))
             _emitSound.SetEnabled((ent, spam), args.NewMobState == MobState.Alive);
-
-        if (args.NewMobState == MobState.Dead)
-            RemCompDeferred<SleepingComponent>(ent);
-    }
-
-    private void OnStatusMobStateChanged(Entity<ForcedSleepingStatusEffectComponent> ent, ref StatusEffectRelayedEvent<MobStateChangedEvent> args)
-    {
-        if (args.Args.NewMobState == MobState.Dead || HasComp<SleepingComponent>(args.Args.Target))
-            return;
-
-        TrySleeping(args.Args.Target);
     }
 
     private void OnStatusEffectApplied(Entity<ForcedSleepingStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)

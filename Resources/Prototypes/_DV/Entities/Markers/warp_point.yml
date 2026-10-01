@@ -1,6 +1,6 @@
 - type: entity
-  parent: WarpPoint
   id: WarpPointNoBomb
+  parent: WarpPoint
   suffix: No Bomb Target
   components:
   - type: Tag
@@ -106,22 +106,6 @@
   - type: WarpPoint
     location: Security Checkpoint
 
-- type: entity
-  id: WarpPointArmorer
-  parent: WarpPoint
-  suffix: Armorer
-  components:
-  - type: WarpPoint
-    location: Armorer
-
-- type: entity
-  parent: WarpPoint
-  id: WarpPointArmory
-  suffix: Armory
-  components:
-  - type: WarpPoint
-    location: Armory
-
 # Justice
 - type: entity
   id: WarpPointCourt
@@ -147,42 +131,10 @@
   - type: WarpPoint
     location: Attorney
 
-- type: entity
-  id: WarpPointJusticeWarden
-  parent: WarpPoint
-  suffix: JusticeWarden
-  components:
-  - type: WarpPoint
-    location: Warden
-
-- type: entity
-  id: WarpPointMarshal
-  parent: WarpPoint
-  suffix: Marshal
-  components:
-  - type: WarpPoint
-    location: Marshal
-
-- type: entity
-  parent: WarpPoint
-  id: WarpPointNonLethalArmory
-  suffix: Non-lethal Armory
-  components:
-  - type: WarpPoint
-    location: Non-lethal armory
-
-- type: entity
-  parent: WarpPoint
-  id: WarpPointGenPop
-  suffix: GenPop
-  components:
-  - type: WarpPoint
-    location: GenPop
-
 #Medical
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointMedical
+  parent: WarpPointNoBomb
   suffix: Medical
   components:
   - type: WarpPoint
@@ -206,56 +158,56 @@
 
 #Epistemics
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointEpistemics
+  parent: WarpPointNoBomb
   suffix: Epistemics
   components:
   - type: WarpPoint
     location: Epistemics
 
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointXenoarchaeologyLab
+  parent: WarpPointNoBomb
   suffix: Xenoarchaeology Lab
   components:
   - type: WarpPoint
     location: Xenoarchaeology Lab
 
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointAnomalyLab
+  parent: WarpPointNoBomb
   suffix: Anomaly Lab
   components:
   - type: WarpPoint
     location: Anomaly Lab
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointChapel
+  parent: WarpPoint
   suffix: Chapel
   components:
   - type: WarpPoint
     location: Chapel
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointLibrary
+  parent: WarpPoint
   suffix: Library
   components:
   - type: WarpPoint
     location: Library
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointRobotics
+  parent: WarpPoint
   suffix: Robotics
   components:
   - type: WarpPoint
     location: Robotics
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointMantis
+  parent: WarpPoint
   suffix: Psionic Mantis
   components:
   - type: WarpPoint
@@ -263,32 +215,32 @@
 
 #Logistics
 - type: entity
-  parent: WarpPoint
   id: WarpPointLogistics
+  parent: WarpPoint
   suffix: Logistics
   components:
   - type: WarpPoint
     location: Logistics
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointMail
+  parent: WarpPoint
   suffix: Mail
   components:
   - type: WarpPoint
     location: Mail
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointSalvage
+  parent: WarpPoint
   suffix: Salvage
   components:
   - type: WarpPoint
     location: Salvage
 
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointSalvageDock
+  parent: WarpPointNoBomb
   suffix: Salvage Dock
   components:
   - type: WarpPoint
@@ -296,40 +248,40 @@
 
 #Engineering
 - type: entity
-  parent: WarpPoint
   id: WarpPointEngineering
+  parent: WarpPoint
   suffix: Engineering
   components:
   - type: WarpPoint
     location: Engineering
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointSingulo
+  parent: WarpPoint
   suffix: Singularity
   components:
   - type: WarpPoint
     location: Singularity
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointAtmos
+  parent: WarpPoint
   suffix: Atmos
   components:
   - type: WarpPoint
     location: Atmos
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointAME
+  parent: WarpPoint
   suffix: AME
   components:
   - type: WarpPoint
     location: AME
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointTEG
+  parent: WarpPoint
   suffix: TEG
   components:
   - type: WarpPoint
@@ -337,56 +289,56 @@
 
 #Service
 - type: entity
-  parent: WarpPoint
   id: WarpPointHOP
+  parent: WarpPoint
   suffix: HoP
   components:
   - type: WarpPoint
     location: HoP
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointKitchen
+  parent: WarpPoint
   suffix: Kitchen
   components:
   - type: WarpPoint
     location: Kitchen
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointBar
+  parent: WarpPoint
   suffix: Bar
   components:
   - type: WarpPoint
     location: Bar
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointBotany
+  parent: WarpPoint
   suffix: Botany
   components:
   - type: WarpPoint
     location: Botany
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointJanitor
+  parent: WarpPoint
   suffix: Janitor
   components:
   - type: WarpPoint
     location: Janitor
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointReporter
+  parent: WarpPoint
   suffix: Reporter
   components:
   - type: WarpPoint
     location: Reporter
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointBoxing
+  parent: WarpPoint
   suffix: Boxing Ring
   components:
   - type: WarpPoint
@@ -394,64 +346,64 @@
 
 #Misc
 - type: entity
-  parent: WarpPoint
   id: WarpPointAI
+  parent: WarpPoint
   suffix: AI
   components:
   - type: WarpPoint
     location: AI
 
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointArrivals
+  parent: WarpPointNoBomb
   suffix: Arrivals
   components:
   - type: WarpPoint
     location: Arrivals
 
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointEvac
+  parent: WarpPointNoBomb
   suffix: Evac
   components:
   - type: WarpPoint
     location: Evac
 
 - type: entity
-  parent: WarpPointNoBomb
   id: WarpPointCryo
+  parent: WarpPointNoBomb
   suffix: Cryo
   components:
   - type: WarpPoint
     location: Cryo
 
 - type: entity
-  parent: WarpPointNoBomb # Euphoria | Bombing dorms is a rule break
   id: WarpPointDorms
+  parent: WarpPoint
   suffix: Dorms
   components:
   - type: WarpPoint
     location: Dorms
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointDisposals
+  parent: WarpPoint
   suffix: Disposals
   components:
   - type: WarpPoint
     location: Disposals
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointPark
+  parent: WarpPoint
   suffix: Park
   components:
   - type: WarpPoint
     location: Park
 
 - type: entity
-  parent: WarpPoint
   id: WarpPointArcade
+  parent: WarpPoint
   suffix: Arcade
   components:
   - type: WarpPoint

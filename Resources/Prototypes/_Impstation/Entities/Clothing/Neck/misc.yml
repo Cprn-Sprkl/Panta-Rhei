@@ -1,7 +1,0 @@
-- type: entity
-  id: BaseObviousBadge
-  abstract: true
-  components:
-  - type: WearerGetsExamineText
-    examineText: obvious-desc-proves
-    thing: obvious-thing-badge

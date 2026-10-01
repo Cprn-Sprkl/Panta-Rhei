@@ -91,6 +91,8 @@
     blacklist:
       tags:
       - GhostOnlyWarp
+  - type: Body
+    requiredLegs: 0
   - type: Emoting
   - type: Speech
     speechSounds: ColossusSpeech
@@ -123,17 +125,17 @@
     - DoorBumpOpener
     - Unimplantable
     - GhostOnlyWarp # Prevents it from being warped to or being a warp location bombing target
-    - TaserImmune
   - type: Damageable
     damageContainer: InorganicMetaphysical
     damageModifierSet: EntropicColossus
   - type: Bloodstream
+    bloodMaxVolume: 650
     maxBleedAmount: 0.1
     bleedReductionAmount: 0.1
-    bloodReferenceSolution:
+    bloodReagents:
       reagents:
       - ReagentId: Entropy
-        Quantity: 400 # DeltaV - reduced from 650 to 400 to prevent overflow
+        Quantity: 1
     bloodlossDamage:
       types:
         Bloodloss:
@@ -270,16 +272,9 @@
     allowedStates:
     - Alive
     damage:
-      types:
-        Blunt: -1
-        Piercing: -1
-        Slash: -1
-        Heat: -0.5
-        Cold: -0.5
-  - type: MultiplyAttackRateOnSupercritical
-  - type: MultiplyCorruptingSpeedOnSupercritical
-  - type: FlatAttackBonusOnSupercritical
-  - type: HealOnSupercritical
+      groups:
+        Brute: -1
+        Burn: -0.5
 
 - type: entity
   parent: [ MobCosmicColossusBase ]

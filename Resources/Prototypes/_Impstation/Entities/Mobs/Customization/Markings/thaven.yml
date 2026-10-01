@@ -1,8 +1,9 @@
 - type: marking
   id: ThavenEars1
   bodyPart: HeadSide
-  groupWhitelist: [Thaven]
+  markingCategory: HeadSide
   forcedColoring: true
+  followSkinColor: true
   sprites:
   - sprite: _Impstation/Mobs/Customization/thaven/thaven.rsi
     state: ears1
@@ -10,8 +11,9 @@
 - type: marking
   id: ThavenEars2
   bodyPart: HeadSide
-  groupWhitelist: [Thaven]
+  markingCategory: HeadSide
   forcedColoring: true
+  followSkinColor: true
   sprites:
   - sprite: _Impstation/Mobs/Customization/thaven/thaven.rsi
     state: ears2
@@ -19,8 +21,9 @@
 - type: marking
   id: ThavenEars3
   bodyPart: HeadSide
-  groupWhitelist: [Thaven]
+  markingCategory: HeadSide
   forcedColoring: true
+  followSkinColor: true
   sprites:
   - sprite: _Impstation/Mobs/Customization/thaven/thaven.rsi
     state: ears3
@@ -28,8 +31,9 @@
 - type: marking
   id: ThavenEars4
   bodyPart: HeadSide
-  groupWhitelist: [Thaven]
+  markingCategory: HeadSide
   forcedColoring: true
+  followSkinColor: true
   sprites:
   - sprite: _Impstation/Mobs/Customization/thaven/thaven.rsi
     state: ears4
@@ -37,8 +41,9 @@
 - type: marking
   id: ThavenPiercings
   bodyPart: HeadTop
-  groupWhitelist: [Thaven]
+  markingCategory: HeadTop
   forcedColoring: false
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/thaven/thaven.rsi
     state: piercings
@@ -46,8 +51,9 @@
 - type: marking
   id: ThavenPiercings2
   bodyPart: HeadTop
-  groupWhitelist: [Thaven]
+  markingCategory: HeadTop
   forcedColoring: false
+  followSkinColor: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/thaven/thaven.rsi
     state: piercings2
@@ -55,7 +61,7 @@
 - type: marking
   id: ThavenChestTattoo1
   bodyPart: Chest
-  groupWhitelist: [Thaven]
+  markingCategory: Chest
   coloring:
     default:
       type:
@@ -68,7 +74,7 @@
 - type: marking
   id: ThavenLArmTattoo1
   bodyPart: LArm
-  groupWhitelist: [Thaven]
+  markingCategory: Arms
   coloring:
     default:
       type:
@@ -81,7 +87,7 @@
 - type: marking
   id: ThavenRArmTattoo1
   bodyPart: RArm
-  groupWhitelist: [Thaven]
+  markingCategory: Arms
   coloring:
     default:
       type:

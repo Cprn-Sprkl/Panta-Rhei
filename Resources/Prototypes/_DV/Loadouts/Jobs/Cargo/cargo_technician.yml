@@ -14,12 +14,6 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtCargoTechRomper
 
-# Head
-- type: loadout
-  id: CargoTechnicianBeret
-  equipment:
-    head: ClothingHeadHatBeretLogi
-
 # PDA
 - type: loadout
   id: CargoPDA
@@ -35,9 +29,3 @@
   id: InventoryAssociatePDA
   equipment:
     id: InventoryAssociatePDA
-
-# OuterClothing
-- type: loadout
-  id: BomberLogistic
-  equipment:
-    outerClothing: ClothingOuterCoatBomberLogistic

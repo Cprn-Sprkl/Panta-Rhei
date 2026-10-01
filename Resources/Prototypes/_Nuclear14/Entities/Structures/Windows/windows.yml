@@ -17,6 +17,7 @@
     arc: 360 # interact despite grilles
   - type: Tag
     tags:
+      - ForceFixRotations
       - Window
       - WeldbotFixableStructure # Euphoria - Uncommented for Weldbots
   - type: Physics

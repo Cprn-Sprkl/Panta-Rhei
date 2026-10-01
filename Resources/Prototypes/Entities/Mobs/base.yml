@@ -39,6 +39,7 @@
   - type: RequireProjectileTarget
     active: False
   - type: AnimatedEmotes # goob edit - animated emotes
+  #- type: StunVisuals # DeltaV - No stars
   - type: LanguageSpeaker # Floofstation - all mobs are language speakers
   - type: LanguageKnowledge # Floofstation. Mobs by default understand tau-ceti. This should ideally be overridden for each kind of mob.
     speaks:
@@ -93,7 +94,7 @@
         damage: 400
       behaviors:
       - !type:GibBehavior { }
-#    - trigger: # DeltaV- We don't like round removing people for being in the same room as a plasma trapped crate.
+#    - trigger:                       # DeltaV- We don't like round removing people for being in the same room as a plasma trapped crate.
 #        !type:DamageTypeTrigger
 #        damageType: Heat
 #        damage: 1500
@@ -104,7 +105,7 @@
 #          Ash:
 #            min: 1
 #            max: 1
-#      - !type:BurnBodyBehavior
+#      - !type:BurnBodyBehavior { }
 #      - !type:PlaySoundBehavior
 #        sound:
 #          collection: MeatLaserImpact
@@ -125,7 +126,7 @@
       - !type:VomitBehavior
   - type: RadiationReceiver
   - type: Stamina
-  - type: StunVisuals
+  #- type: StunVisuals # DeltaV - No stars
   - type: MobState
   - type: MobThresholds
     thresholds:
@@ -161,8 +162,7 @@
   - type: LightningTarget
     priority: 2
     lightningExplode: false
-  - type: GhostOnMove
-    mustBeDead: true
+  - type: SurgeryContaminable # DeltaV - surgery cross contamination
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity
@@ -176,8 +176,8 @@
     soundHit:
       collection: MetalThud
     damage:
-      types:
-        Blunt: 5
+      groups:
+        Brute: 5
 
 # Used for mobs that are affected by atmospherics, pressure, and heat
 - type: entity
@@ -187,14 +187,13 @@
   components:
   - type: AtmosExposed
   - type: Temperature
-    currentTemperature: 310.15
-    specificHeat: 42
-  - type: TemperatureDamage
     heatDamageThreshold: 325
     coldDamageThreshold: 0
+    currentTemperature: 310.15
     coldDamage: #per second, scales with temperature & other constants
       types:
         Cold : 0.1
+    specificHeat: 42
     heatDamage: #per second, scales with temperature & other constants
       types:
         Heat : 1.5
@@ -223,11 +222,10 @@
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
   - type: Temperature
-    currentTemperature: 310.15
-    specificHeat: 42
-  - type: TemperatureDamage
     heatDamageThreshold: 325
     coldDamageThreshold: 260
+    currentTemperature: 310.15
+    specificHeat: 42
     coldDamage:
       types:
         Cold: 1 #per second, scales with temperature & other constants
@@ -278,7 +276,7 @@
   components:
   - type: SolutionContainerManager
   - type: InjectableSolution
-    solution: bloodstream
+    solution: chemicals
   - type: Bloodstream
     bloodlossDamage:
       types:

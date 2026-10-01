@@ -76,15 +76,12 @@
     - !type:AutomatedPorts
       sinks:
       - FaxCopy
-  # - type: DeviceNetworkRequiresPower # DeltaV - we want faxes to refresh on map init
+  - type: DeviceNetworkRequiresPower
   - type: DeviceNetwork
     deviceNetId: Wireless
-    receiveFrequencyId: NTNet # DeltaV
-    transmitFrequencyId: NTNet # DeltaV
+    receiveFrequencyId: Fax
+    transmitFrequencyId: Fax
   - type: RequireProjectileTarget
-  # Begin DeltaV
-  - type: PageSender
-  # End DeltaV
 
 # Special
 - type: entity
@@ -101,10 +98,6 @@
   - type: FaxMachine
     name: "Central Command"
     notifyAdmins: true
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkDepartments: [CentralCommand]
-  # End DeltaV
 
 - type: entity
   parent: FaxMachineBase
@@ -134,10 +127,5 @@
       name: "Captain's Office"
       receiveNukeCodes: true
       receiveStationGoal: true # Floofstation - station goals
-      receiveShiftExtensionReview: true # Euphoria - M3739 - #698 - Evac vote tiebreaker
-  #    - type: StealTarget # Euphoria - M3739 - #698 - Considering this is now pivotal to tiebreaking, bad idea.
-  #      stealGroup: FaxMachineCaptain
-    # Begin DeltaV
-    - type: PageSender
-      autoLinkJobs: [Captain]
-    # End DeltaV
+    - type: StealTarget
+      stealGroup: FaxMachineCaptain

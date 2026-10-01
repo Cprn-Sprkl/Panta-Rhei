@@ -16,6 +16,3 @@ delta-chat-emote-name-harpysquish = Squish
 delta-chat-emote-name-quack = Quack
 delta-chat-emote-name-squawk = Squawk
 delta-chat-emote-name-horn = Horn
-delta-chat-emote-name-yip = Yip
-
-delta-chat-emote-msg-yip = yips.

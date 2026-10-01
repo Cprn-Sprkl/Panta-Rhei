@@ -27,7 +27,6 @@
     - CannotSuicide
     - DoorBumpOpener
     - VimPilot
-    - TajaranEmotes # Euphoria | Trills
   - type: Puller
     needsHands: false
   - type: Inventory

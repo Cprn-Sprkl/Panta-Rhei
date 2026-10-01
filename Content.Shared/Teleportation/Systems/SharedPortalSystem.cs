@@ -5,14 +5,12 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Teleportation.Components;
-using Content.Shared.Weapons.Misc;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -33,7 +31,6 @@ public abstract class SharedPortalSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedJointSystem _joints = default!;
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
@@ -96,10 +93,6 @@ public abstract class SharedPortalSystem : EntitySystem
         if (Transform(subject).Anchored)
             return;
 
-        // Euph
-        if (HasComp<PortalBlockComponent>(subject))
-            return;
-
         // break pulls before portal enter so we don't break shit
         if (TryComp<PullableComponent>(subject, out var pullable) && pullable.BeingPulled)
         {
@@ -111,9 +104,6 @@ public abstract class SharedPortalSystem : EntitySystem
         {
             _pulling.TryStopPull(pullerComp.Pulling.Value, subjectPulling);
         }
-
-        // also break grapple joints
-        _joints.RemoveJoint(subject, SharedGrapplingGunSystem.GrapplingJoint);
 
         // if they came from another portal, just return and wait for them to exit the portal
         if (HasComp<PortalTimeoutComponent>(subject))
@@ -236,18 +226,6 @@ public abstract class SharedPortalSystem : EntitySystem
             return;
         }
 
-        // Begin Euphoria additions
-        var beforeEv = new BeforeTeleportedEvent { Subject = subject, Portal = ent };
-        RaiseLocalEvent(subject, beforeEv); // Euph
-
-        if (beforeEv.Cancelled)
-        {
-            if (beforeEv.CancelReason is {} cancelReason && _netMan.IsServer)
-                _popup.PopupEntity(cancelReason, subject);
-            return;
-        }
-        // End Euphoria additions
-
         var arrivalSound = CompOrNull<PortalComponent>(targetEntity)?.ArrivalSound ?? ent.Comp.ArrivalSound;
         var departureSound = ent.Comp.DepartureSound;
 
@@ -262,7 +240,7 @@ public abstract class SharedPortalSystem : EntitySystem
         LogTeleport(ent, subject, Transform(subject).Coordinates, target);
 
         _transform.SetCoordinates(subject, target);
-        RaiseLocalEvent(subject, new TeleportedEvent { Subject = subject, Portal = ent }); // Euph
+        RaiseLocalEvent(subject, new TeleportedEvent { Subject = subject }, true); // Floofstation. Note that this is raised broadcast.
 
         if (!playSound)
             return;
@@ -303,27 +281,9 @@ public abstract class SharedPortalSystem : EntitySystem
     }
 }
 
-//Begin Euphoria additions
-/// <summary>
-///     Raised on an entity before it is teleported.
-/// </summary>
-public sealed class BeforeTeleportedEvent : CancellableEntityEventArgs
-{
-    public EntityUid Subject;
-    public EntityUid Portal;
-
-    /// <summary>
-    ///     If the event is not null and this field is set, a popup will be shown above the portal.
-    /// </summary>
-    public string? CancelReason;
-}
-
-/// <summary>
-///     Raised on an entity after it is teleported.
-/// </summary>
+// Floofstation - remove when upstream adds something similar
+// This is needed to let the leash system know the entity has been teleported and break the leash joint if necessary
 public sealed class TeleportedEvent : EntityEventArgs
 {
     public EntityUid Subject;
-    public EntityUid Portal;
 }
-// End Euphoria additions

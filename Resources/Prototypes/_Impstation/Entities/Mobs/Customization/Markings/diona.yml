@@ -1,7 +1,8 @@
 - type: marking
   id: DionaThornsHead_colorable
   bodyPart: Head
-  groupWhitelist: [Diona]
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: thorns_head_colorable
@@ -9,7 +10,8 @@
 - type: marking
   id: DionaThornsBody_colorable
   bodyPart: Chest
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: thorns_body_colorable
@@ -17,7 +19,8 @@
 - type: marking
   id: DionaFlowersHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: flowers_head_primary_colorable
@@ -27,7 +30,8 @@
 - type: marking
   id: DionaFlowersBody_colorable
   bodyPart: Chest
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: flowers_body_primary_colorable
@@ -37,7 +41,8 @@
 - type: marking
   id: DionaLeafCover_colorable
   bodyPart: Chest
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Chest
+  speciesRestriction: [Diona]
   coloring:
     default:
       type:
@@ -49,7 +54,8 @@
 - type: marking
   id: DionaBloomHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: bloom_primary_colorable
@@ -59,7 +65,8 @@
 - type: marking
   id: DionaBracketHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   coloring:
     default:
       type:
@@ -71,7 +78,8 @@
 - type: marking
   id: DionaBrushHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   coloring:
     default:
       type:
@@ -83,7 +91,8 @@
 - type: marking
   id: DionaCornflowerHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: cornflower_primary_colorable
@@ -95,7 +104,8 @@
 - type: marking
   id: DionaFicusHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: ficus_colorable
@@ -103,7 +113,8 @@
 - type: marking
   id: DionaGarlandHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: garland_primary_colorable
@@ -119,7 +130,8 @@
 - type: marking
   id: DionaKingHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: king_primary_colorable
@@ -129,7 +141,8 @@
 - type: marking
   id: DionaLaurelHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: laurel_colorable
@@ -137,7 +150,8 @@
 - type: marking
   id: DionaLeafyHeadTop_colorable
   bodyPart: HeadTop
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: HeadTop
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: leafy_colorable
@@ -145,7 +159,8 @@
 - type: marking
   id: DionaLotusHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: lotus_primary_colorable
@@ -155,7 +170,8 @@
 - type: marking
   id: DionaMeadowHeadTop_colorable
   bodyPart: HeadTop
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: HeadTop
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: meadow_colorable
@@ -163,7 +179,8 @@
 - type: marking
   id: DionaOakHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: oak_colorable
@@ -171,7 +188,8 @@
 - type: marking
   id: DionaPalmHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: palm_colorable
@@ -179,7 +197,8 @@
 - type: marking
   id: DionaRootHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: root_colorable
@@ -187,7 +206,8 @@
 - type: marking
   id: DionaRoseHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: rose_primary_colorable
@@ -197,7 +217,8 @@
 - type: marking
   id: DionaRoseyHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: rosey_primary_colorable
@@ -209,7 +230,8 @@
 - type: marking
   id: DionaShrubHeadTop_colorable
   bodyPart: HeadTop
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: HeadTop
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: shrub_colorable
@@ -217,7 +239,8 @@
 - type: marking
   id: DionaSpinnerHeadSide_colorable
   bodyPart: HeadSide
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: HeadSide
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: spinner_primary_colorable
@@ -227,7 +250,8 @@
 - type: marking
   id: DionaSproutHeadSide_colorable
   bodyPart: HeadSide
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: HeadSide
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: sprout_primary_colorable
@@ -237,7 +261,8 @@
 - type: marking
   id: DionaVineHeadTop_colorable
   bodyPart: HeadTop
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: HeadTop
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: vine_primary_colorable
@@ -247,7 +272,8 @@
 - type: marking
   id: DionaVinelHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: vinel_primary_colorable
@@ -257,7 +283,8 @@
 - type: marking
   id: DionaVinesHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: vines_primary_colorable
@@ -267,7 +294,8 @@
 - type: marking
   id: DionaWildflowerHead_colorable
   bodyPart: Head
-# groupWhitelist: [Diona] # Euph - free markings
+  markingCategory: Head
+  speciesRestriction: [Diona]
   sprites:
   - sprite: _Impstation/Mobs/Customization/diona.rsi
     state: wildflower_primary_colorable

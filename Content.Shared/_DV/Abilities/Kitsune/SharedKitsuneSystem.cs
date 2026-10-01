@@ -4,7 +4,6 @@ using Content.Shared.Charges.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Popups;
-using Content.Shared.Zombies;
 
 namespace Content.Shared._DV.Abilities.Kitsune;
 
@@ -24,30 +23,31 @@ public abstract class SharedKitsuneSystem : EntitySystem
         SubscribeLocalEvent<FoxfireComponent, ComponentShutdown>(OnFoxfireShutdown);
         SubscribeLocalEvent<KitsuneComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<KitsuneComponent, AppearanceLoadedEvent>(OnProfileLoadFinished);
-
-        SubscribeLocalEvent<KitsuneComponent, EntityZombifiedEvent>(OnKitsuneZombified);
     }
 
     private void OnProfileLoadFinished(Entity<KitsuneComponent> ent, ref AppearanceLoadedEvent args)
     {
         // Eye color is stored on component to be used for fox fire/fox form color.
-        ent.Comp.Color = args.EyeColor;
+        if (TryComp<HumanoidAppearanceComponent>(ent, out var humanComp))
+        {
+            ent.Comp.Color = humanComp.EyeColor;
 
-        var lightColor = ent.Comp.Color.Value;
-        var max = MathF.Max(lightColor.R, MathF.Max(lightColor.G, lightColor.B));
-        // Don't let it divide by 0
-        if (max == 0)
-        {
-            lightColor = new Color(1, 1, 1, lightColor.A);
+            var lightColor = ent.Comp.Color.Value;
+            var max = MathF.Max(lightColor.R, MathF.Max(lightColor.G, lightColor.B));
+            // Don't let it divide by 0
+            if (max == 0)
+            {
+                lightColor = new Color(1, 1, 1, lightColor.A);
+            }
+            else
+            {
+                var factor = 1 / max;
+                lightColor.R *= factor;
+                lightColor.G *= factor;
+                lightColor.B *= factor;
+            }
+            ent.Comp.ColorLight = lightColor;
         }
-        else
-        {
-            var factor = 1 / max;
-            lightColor.R *= factor;
-            lightColor.G *= factor;
-            lightColor.B *= factor;
-        }
-        ent.Comp.ColorLight = lightColor;
     }
 
     private void OnMapInit(Entity<KitsuneComponent> ent, ref MapInitEvent args)
@@ -56,17 +56,6 @@ public abstract class SharedKitsuneSystem : EntitySystem
         if (!HasComp<KitsuneFoxComponent>(ent))
             _actions.AddAction(ent, ref ent.Comp.KitsuneActionEntity, ent.Comp.KitsuneAction);
         ent.Comp.FoxfireAction = _actions.AddAction(ent, ent.Comp.FoxfireActionId);
-    }
-
-    /// <summary>
-    /// Handles when a Kitsune becomes a zombie, removing their abilities.
-    /// </summary>
-    /// <param name="kitsune">The Kitsune zombie that has just spawned.</param>
-    /// <param name="args">Args for the event.</param>
-    private void OnKitsuneZombified(Entity<KitsuneComponent> kitsune, ref EntityZombifiedEvent args)
-    {
-        _actions.RemoveAction(kitsune.Comp.KitsuneActionEntity);
-        _actions.RemoveAction(kitsune.Comp.FoxfireAction);
     }
 
     private void OnCreateFoxfire(Entity<KitsuneComponent> ent, ref CreateFoxfireActionEvent args)

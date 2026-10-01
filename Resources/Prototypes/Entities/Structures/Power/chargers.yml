@@ -166,12 +166,8 @@
   name: recharger
   description: A modern recharging station that can fit both power cells and small electronic devices.
   components:
-# Begin DeltaV Changes - Directional Sprite
   - type: Sprite
-    sprite: _DV/Structures/Power/recharger.rsi
-    snapCardinals: false
-  - type: Rotatable
-# End DeltaV Changes - Directional Sprite
+    sprite: Structures/Power/recharger.rsi
   - type: Machine
     board: WeaponCapacitorRechargerCircuitboard
   - type: ItemSlots
@@ -194,12 +190,8 @@
   name: turbo recharger
   description: An overclocked recharger. Not recommended for use around asthmatics.
   components:
-# Begin DeltaV Changes - Directional Sprite
   - type: Sprite
-    sprite: _DV/Structures/Power/turbo_recharger.rsi
-    snapCardinals: false
-  - type: Rotatable
-# End DeltaV Changes - Directional Sprite
+    sprite: Structures/Power/turbo_recharger.rsi
   - type: Machine
     board: TurboItemRechargerCircuitboard
   - type: Charger
@@ -224,12 +216,8 @@
   name: wall recharger
   description: A compact wall-mounted recharger. It can only recharge electronic devices and has no space for power cells.
   components:
-# Begin DeltaV Changes - Directional Sprite
-  - type: Rotatable
   - type: Sprite
-    sprite: _DV/Structures/Power/wall_recharger.rsi
-    snapCardinals: false
-# End DeltaV Changes - Directional Sprite
+    sprite: Structures/Power/wall_recharger.rsi
     layers:
     - map: ["enum.PowerChargerVisualLayers.Base"]
       state: "empty"
@@ -259,7 +247,6 @@
   components:
   - type: Sprite
     sprite: Structures/Power/borg_charger.rsi
-    noRot: True
     layers:
       - state: borgcharger-u1
         map: ["base"]
@@ -279,6 +266,8 @@
     whitelist:
       components:
       - BorgChassis
+      - Silicon # EE IPCs
+      - AugmentStationRecharge # DeltaV augment power cells
   - type: Construction
     containers:
     - machine_parts
@@ -322,22 +311,13 @@
     whitelist:
       components:
       - BorgChassis
+      - Silicon # EE IPCs
+      - AugmentStationRecharge # DeltaV augment power cells
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container
       machine_board: !type:Container
       machine_parts: !type:Container
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.48
-        density: 190
-        mask:
-        - MachineMask
-        layer:
-        - MachineLayer
 
 - type: entity
   parent: BorgCharger

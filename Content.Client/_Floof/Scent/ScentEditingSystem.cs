@@ -26,15 +26,8 @@ public sealed class ScentEditingSystem : SharedScentEditingSystem
 
         // No tryX method for controllers
         ScentsUIController scentsUi;
-        try
-        {
-            scentsUi = _ui.GetUIController<ScentsUIController>();
-        }
-        catch (Exception e)
-        {
-            Log.Error(e.ToString());
-            return;
-        }
+        try { scentsUi = _ui.GetUIController<ScentsUIController>(); }
+        catch (Exception e) { return; }
 
         var verb = new Verb
         {

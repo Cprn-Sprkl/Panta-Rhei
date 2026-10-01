@@ -5,9 +5,6 @@
   recipes:
   - HolotapeProjector
   - SheetPlasteel1Engineering
-  - ConstructionBag
-  - NaniteApplicator
-  - AccessConfigurator
 
 ## Dynamic
 
@@ -17,7 +14,6 @@
   - FireExtinguisherBluespace
   - RCDAmmo # RE
   - RCDRecharging
-  - RPDRecharging # Floofstation re-charging RPD
 
 - type: latheRecipePack
   id: PowerCellsDeltaV
@@ -43,8 +39,3 @@
   - ClothingOuterSuitAtmosFire
   - ClothingHeadHelmetAtmosFire
   - ClothingOuterVoidsuitEngineering
-
-- type: latheRecipePack
-  id: AdvancedConstruction
-  recipes:
-  - ConstructionBagOfHolding

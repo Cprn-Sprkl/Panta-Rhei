@@ -1,7 +1,9 @@
 - type: marking
   id: TallStraightBunnyEars
   bodyPart: HeadTop
-  groupWhitelist: []
+  markingCategory: HeadTop
+  speciesRestriction: []
+  invertedRestrictions: true
   coloring:
     default:
       type:

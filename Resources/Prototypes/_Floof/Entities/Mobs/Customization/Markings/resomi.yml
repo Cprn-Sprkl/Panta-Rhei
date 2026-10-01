@@ -1,6 +1,7 @@
 - type: marking
   id: ResomiTail
   bodyPart: Chest
+  markingCategory: Tail
   forcedColoring: true
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
@@ -9,6 +10,7 @@
 - type: marking
   id: ResomiTailFeathers
   bodyPart: Chest
+  markingCategory: Tail
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: tail_feathers
@@ -16,6 +18,7 @@
 - type: marking
   id: ResomiLArmFeathers
   bodyPart: LHand
+  markingCategory: Arms
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: l_hand_feathers
@@ -23,6 +26,7 @@
 - type: marking
   id: ResomiLLegFeathers
   bodyPart: LFoot
+  markingCategory: Legs
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: l_foot_feathers
@@ -30,6 +34,7 @@
 - type: marking
   id: ResomiRArmFeathers
   bodyPart: RHand
+  markingCategory: Arms
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: r_hand_feathers
@@ -37,6 +42,7 @@
 - type: marking
   id: ResomiRLegFeathers
   bodyPart: RFoot
+  markingCategory: Legs
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: r_foot_feathers
@@ -44,6 +50,7 @@
 - type: marking
   id: ResomiFluff
   bodyPart: Chest
+  markingCategory: Chest
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: fluff
@@ -51,6 +58,7 @@
 - type: marking
   id: ResomiFluffHead
   bodyPart: Head
+  markingCategory: Head
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: fluff_head
@@ -58,6 +66,7 @@
 - type: marking
   id: ResomiFluffHeadUp
   bodyPart: Head
+  markingCategory: Head
   sprites:
   - sprite: _Floof/Mobs/Customization/resomi_parts.rsi
     state: fluff_head_up

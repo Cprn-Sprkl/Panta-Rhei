@@ -7,8 +7,6 @@
   categories:
   - Tiles
   completetime: 0.5
-  materials: # Euph - make tiles cost something by default so they arent free
-    Steel: 25
 
 - type: latheRecipe
   abstract: true
@@ -152,21 +150,6 @@
   id: FloorTileItemSteelPavementVertical
   result: FloorTileItemSteelPavementVertical
 
-- type: latheRecipe
-  parent: BaseSteelTileRecipe
-  id: FloorTileItemSteelSlatsContinuous
-  result: FloorTileItemSteelSlatsContinuous
-
-- type: latheRecipe
-  parent: BaseSteelTileRecipe
-  id: FloorTileItemSteelVerticalSlatsBordered
-  result: FloorTileItemSteelVerticalSlatsBordered
-
-- type: latheRecipe
-  parent: BaseSteelTileRecipe
-  id: FloorTileItemSteelHorizontalSlatsBordered
-  result: FloorTileItemSteelHorizontalSlatsBordered
-
 # Dark tiles
 - type: latheRecipe
   parent: BaseDarkTileRecipe
@@ -212,21 +195,6 @@
   parent: BaseDarkTileRecipe
   id: FloorTileItemDarkOffset
   result: FloorTileItemDarkOffset
-
-- type: latheRecipe
-  parent: BaseDarkTileRecipe
-  id: FloorTileItemDarkSlatsContinuous
-  result: FloorTileItemDarkSlatsContinuous
-
-- type: latheRecipe
-  parent: BaseDarkTileRecipe
-  id: FloorTileItemDarkVerticalSlatsBordered
-  result: FloorTileItemDarkVerticalSlatsBordered
-
-- type: latheRecipe
-  parent: BaseDarkTileRecipe
-  id: FloorTileItemDarkHorizontalSlatsBordered
-  result: FloorTileItemDarkHorizontalSlatsBordered
 
 - type: latheRecipe
   parent: BaseDarkTileRecipe
@@ -278,21 +246,6 @@
   parent: BaseWhiteTileRecipe
   id: FloorTileItemWhitePavementVertical
   result: FloorTileItemWhitePavementVertical
-
-- type: latheRecipe
-  parent: BaseWhiteTileRecipe
-  id: FloorTileItemWhiteSlatsContinuous
-  result: FloorTileItemWhiteSlatsContinuous
-
-- type: latheRecipe
-  parent: BaseWhiteTileRecipe
-  id: FloorTileItemWhiteVerticalSlatsBordered
-  result: FloorTileItemWhiteVerticalSlatsBordered
-
-- type: latheRecipe
-  parent: BaseWhiteTileRecipe
-  id: FloorTileItemWhiteHorizontalSlatsBordered
-  result: FloorTileItemWhiteHorizontalSlatsBordered
 
 # Maints
 - type: latheRecipe
@@ -393,21 +346,6 @@
   id: FloorTileItemOldConcreteSmooth
   result: FloorTileItemOldConcreteSmooth
 
-- type: latheRecipe
-  parent: BaseConcreteTileRecipe
-  id: FloorTileItemIronsandConcrete
-  result: FloorTileItemIronsandConcrete
-
-- type: latheRecipe
-  parent: BaseConcreteTileRecipe
-  id: FloorTileItemIronsandConcreteMono
-  result: FloorTileItemIronsandConcreteMono
-
-- type: latheRecipe
-  parent: BaseConcreteTileRecipe
-  id: FloorTileItemIronsandConcreteSmooth
-  result: FloorTileItemIronsandConcreteSmooth
-
 # Faux
 - type: latheRecipe
   parent: BaseFauxTileRecipe
@@ -458,16 +396,6 @@
   parent: BaseFauxTileRecipe
   id: FauxTileDesertAstroSand
   result: FloorTileItemDesertAstroSand
-
-- type: latheRecipe
-  parent: BaseFauxTileRecipe
-  id: FauxTileAstroIronsand
-  result: FloorTileItemAstroIronsand
-
-- type: latheRecipe
-  parent: BaseFauxTileRecipe
-  id: FauxTileAstroIronsandBorderless
-  result: FloorTileItemAstroIronsandBorderless
 
 # Marble
 - type: latheRecipe

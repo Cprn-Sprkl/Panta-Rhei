@@ -11,7 +11,7 @@
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingERT
+    belt: WeaponEnergyGun
     pocket1: CrowbarRed
     pocket2: FlashlightSeclite
   storage:
@@ -19,12 +19,7 @@
     - PinpointerNuclear
     - Zipties
     - Zipties
-    - DoorRemoteCustom
-    - ERTGearSelectorMedsAmber
-    - WeaponPistolUniversal
-    - MagazineUniversalMagnum
-    - MagazineUniversalMagnum
-    - MagazineUniversalMagnum
+    - DoorRemoteOmni
 
 - type: startingGear
   parent: ERTLeaderGearAmber
@@ -33,13 +28,16 @@
     shoes: ClothingShoesBootsERTMagboots
     mask: ClothingMaskGasERT
     outerClothing: ClothingOuterHardsuitERTLeaderBase
+    belt: ClothingBeltSecurityFilled
+    pocket1: WeaponEnergyGunPistol
   storage:
     back:
     - CrowbarRed
-    - DoorRemoteCustom
+    - DoorRemoteOmni
     - PinpointerNuclear
-    - ERTGearSelectorLeaderRed
-    - ERTGearSelectorMedsRed
+    - MagazineUniversalMagnum
+    - MagazineUniversalMagnum
+    - WeaponPistolUniversal
     belt:
     - Zipties
     - Zipties
@@ -49,13 +47,20 @@
   id: ERTLeaderGearGamma
   equipment:
     outerClothing: ClothingOuterHardsuitERTLeaderElite
+    pocket2: WeaponPistolUniversal
+  inhand:
+  - WeaponRifleLaserERT
   storage:
     back:
+    - MagazineLaser
+    - MagazineLaser
+    - MagazineLaser
+    - MagazineUniversalMagnum
+    - MagazineUniversalMagnum
+    - CrowbarRed
     - PinpointerNuclear
-    - DoorRemoteCustom
-    - ERTGearSelectorLeaderGamma
-    - ERTGearSelectorMedsGammaSec
-    - ToolDebug
+    - DoorRemoteOmni
+    - FlashlightSeclite
 
 # Chaplain
 
@@ -121,7 +126,7 @@
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
-    pocket1: WeaponAdvancedLaser
+    pocket1: WeaponEnergyGunMini
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -130,6 +135,7 @@
     - CableApcStack
     - SheetPlasteel
     - SheetSteel
+    belt:
     - RCDRecharging
 
 - type: startingGear
@@ -138,7 +144,7 @@
   equipment:
     shoes: ClothingShoesBootsERTMagboots
     mask: ClothingMaskGasERT
-    pocket1: WeaponAdvancedLaser
+    pocket1: WeaponEnergyGunPistol
   inhand:
   - JetpackVoid
   storage:
@@ -162,7 +168,8 @@
     - CableApcStack
     - SheetPlasteel
     - SheetSteel
-    - WeaponAdvancedLaser
+    - WeaponBeamCannon
+    belt:
     - RCDCombat
 
 # Security
@@ -185,8 +192,8 @@
   storage:
     back:
     - CrowbarRed
-    - ERTGearSelectorGunAmberSec
-    - ERTGearSelectorMedsAmber
+    - BoxFlashbang
+    - WeaponLaserCannon
     belt:
     - Zipties
     - Zipties
@@ -201,25 +208,25 @@
     pocket1: WeaponEnergyGunPistol
   storage:
     back:
-    - ToolDebug
-    - ERTGearSelectorGunRedSec
-    - ERTGearSelectorMedsRed
+    - CrowbarRed
+    - MagazineLaser
+    - MagazineLaser
+    - MagazineLaser
+    - WeaponRifleLaserERT
 
 - type: startingGear
   parent: ERTSecurityGearRed
   id: ERTSecurityGearGamma
   equipment:
     outerClothing: ClothingOuterHardsuitERTSecurityElite
-    pocket1: WeaponAdvancedLaser
+    pocket1: CrowbarRed
+  inhand:
+  - WeaponImmolatorMulti
+  - PortableRecharger
   storage:
     back:
-    - DoorRemoteCustom
-    - ERTGearSelectorGunGammaSec
-    - ERTGearSelectorMedsGammaSec
-    - ERTGearSelectorGammaSecUtility
-    - ToolDebug
-    - Multitool
-    - WelderIndustrialAdvanced
+    - WeaponEnergyGunAdvanced
+    - BoxC4
 
 # Medical
 
@@ -240,7 +247,7 @@
     pocket2: FlashlightSeclite
   storage:
     back:
-    - WeaponAdvancedLaser
+    - WeaponEnergyGunMini
     - MedkitCombatFilled
     - CrowbarRed
 #    - ChemistryBottleEpinephrine # Euphoria: removed
@@ -258,7 +265,7 @@
     outerClothing: ClothingOuterHardsuitERTMedicalBase
     pocket1: MedicalPouchFilledERTRed # Euphoria
   inhand:
-  - WeaponAdvancedLaser
+  - WeaponEnergyGun
   storage:
     back:
     - MedkitCombatFilled
@@ -278,7 +285,7 @@
     outerClothing: ClothingOuterHardsuitERTMedicalElite
     pocket1: MedicalPouchFilledERTGamma # Euphoria
   inhand:
-  - WeaponAdvancedLaser
+  - WeaponEnergyGunPistol
   storage:
     back:
     - MedkitCombatFilled
@@ -325,7 +332,7 @@
     shoes: ClothingShoesBootsERTMagboots
     mask: ClothingMaskGasERT
     outerClothing: ClothingOuterHardsuitERTJanitorBase
-    pocket1: WeaponAdvancedLaser
+    pocket1: WeaponEnergyGunMini
     pocket2: FlashlightSeclite
   inhand:
   - AdvMopItem
@@ -342,66 +349,4 @@
   id: ERTJanitorGearGamma
   equipment:
     outerClothing: ClothingOuterHardsuitERTJanitorElite
-    pocket1: WeaponAdvancedLaser
-
-# SRT
-
-- type: startingGear
-  id: SRTOfficerBase
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitDeathSquad
-    back: ClothingBackpackDeathSquadFilledBase
-    shoes: ClothingShoesBootsERTMagboots
-    head: ClothingHeadHatBeretSRT
-    eyes: ClothingEyesERTInformationHud
-    gloves: ClothingHandsGlovesCombat
-    mask: ClothingMaskGasDeathSquad
-    outerClothing: ClothingOuterHardsuitSRT
-    suitstorage: JetpackBlackFilled
-    id: SRTPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingERTMedicine
-    pocket1: DoubleEmergencyOxygenTankFilled
-    pocket2: DoubleEmergencyNitrogenTankFilled
-  inhand:
-  - BoxMRE
-
-- type: startingGear
-  id: SRTOfficerBlack
-  parent: SRTOfficerBase
-  equipment:
-    back: ClothingBackpackDeathSquadFilledBlack
-
-- type: startingGear
-  id: SRTOfficerEpsilon
-  parent: SRTOfficerBase
-  equipment:
-    back: ClothingBackpackDeathSquadFilledEpsilon
-
-- type: startingGear
-  id: SRTOfficerHeavy
-  parent: SRTOfficerBase
-  equipment:
-    back:  ClothingBackpackPlasmaBattery
-  inhand:
-  - WeaponPlasmaBackpack
-
-
-- type: job
-  id: SRTAgent
-  name: job-name-srtagent
-  description: job-description-srtagent
-  playTimeTracker: JobSRTAgent
-  setPreference: false
-  startingGear: SRTOfficerBase
-  icon: "JobIconDeathSquad"
-  supervisors: job-supervisors-centcom
-  canBeAntag: false
-  access:
-  - CentralCommand
-  - ERT
-  accessGroups:
-  - AllAccess
-  special:
-  - !type:AddImplantSpecial
-    implants: [ CentCommImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant]
+    pocket1: WeaponEnergyGunPistol

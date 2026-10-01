@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._ST.Interaction; // Stellar - Interaction particles
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -31,7 +30,6 @@ using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
 using Content.Shared.Wall;
 using Content.Shared._Goobstation.DoAfter; // Goobstation
-using Content.Shared.Inventory.VirtualItem; // Stellar - interaction particles
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.Input;
@@ -77,7 +75,6 @@ namespace Content.Shared.Interaction
         [Dependency] private readonly SharedPlayerRateLimitManager _rateLimit = default!;
         [Dependency] private readonly TagSystem _tagSystem = default!;
         [Dependency] private readonly UseDelaySystem _useDelay = default!;
-        [Dependency] private readonly INetManager _net = default!; // Stellar - interaction particles
 
         private EntityQuery<IgnoreUIRangeComponent> _ignoreUiRangeQuery;
         private EntityQuery<FixturesComponent> _fixtureQuery;
@@ -528,16 +525,12 @@ namespace Content.Shared.Interaction
             }
 
             DebugTools.Assert(!IsDeleted(user) && !IsDeleted(target));
-
             // all interactions should only happen when in range / unobstructed, so no range check is needed
             var message = new InteractHandEvent(user, target);
             RaiseLocalEvent(target, message, true);
-            var userMessage = new UserInteractHandEvent(user, target);
-            RaiseLocalEvent(user, userMessage, true);
-
             _adminLogger.Add(LogType.InteractHand, LogImpact.Low, $"{user} interacted with {target}");
-            DoContactInteraction(user, target, null, true, message); // Stellar - interaction particles
-            if (message.Handled || userMessage.Handled)
+            DoContactInteraction(user, target, message);
+            if (message.Handled)
                 return true;
 
             DebugTools.Assert(!IsDeleted(user) && !IsDeleted(target));
@@ -582,7 +575,7 @@ namespace Content.Shared.Interaction
                 RaiseLocalEvent(target.Value, rangedMsg, true);
 
                 // We contact the USED entity, but not the target.
-                DoContactInteraction(user, used, null, true, rangedMsg); // Stellar - interaction particles
+                DoContactInteraction(user, used, rangedMsg);
                 if (rangedMsg.Handled)
                     return;
             }
@@ -1022,7 +1015,7 @@ namespace Content.Shared.Interaction
                 return false;
 
             // We contact the USED entity, but not the target.
-            DoContactInteraction(user, used, null, true, ev); // Stellar - interaction particles
+            DoContactInteraction(user, used, ev);
             return ev.Handled;
         }
 
@@ -1070,14 +1063,10 @@ namespace Content.Shared.Interaction
             // all interactions should only happen when in range / unobstructed, so no range check is needed
             var interactUsingEvent = new InteractUsingEvent(user, used, target, clickLocation);
             RaiseLocalEvent(target, interactUsingEvent, true);
-
-            var userInteractUsingEvent = new UserInteractUsingEvent(user, used, target, clickLocation);
-            RaiseLocalEvent(user, userInteractUsingEvent, true);
-
-            DoContactInteraction(user, used, null, true, interactUsingEvent, interactionParticles: interactUsingEvent.InteractionParticle); // Stellar - interaction particles
-            DoContactInteraction(user, target, used, true, interactUsingEvent, interactionParticles: interactUsingEvent.InteractionParticle); // Stellar - interaction particles
+            DoContactInteraction(user, used, interactUsingEvent);
+            DoContactInteraction(user, target, interactUsingEvent);
             // Contact interactions are currently only used for forensics, so we don't raise used -> target
-            if (interactUsingEvent.Handled || userInteractUsingEvent.Handled)
+            if (interactUsingEvent.Handled)
                 return true;
 
             if (InteractDoAfter(user, used, target, clickLocation, canReach: true, checkDeletion: false))
@@ -1107,10 +1096,10 @@ namespace Content.Shared.Interaction
 
             var afterInteractEvent = new AfterInteractEvent(user, used, target, clickLocation, canReach);
             RaiseLocalEvent(used, afterInteractEvent);
-            DoContactInteraction(user, used, null, true, afterInteractEvent, interactionParticles: afterInteractEvent.SpawnInteractionParticles); // Stellar/ES Interaction particles
+            DoContactInteraction(user, used, afterInteractEvent);
             if (canReach)
             {
-                DoContactInteraction(user, target, used, true, afterInteractEvent, interactionParticles: afterInteractEvent.SpawnInteractionParticles); // Stellar/ES Interaction particles
+                DoContactInteraction(user, target, afterInteractEvent);
                 // Contact interactions are currently only used for forensics, so we don't raise used -> target
             }
 
@@ -1124,10 +1113,10 @@ namespace Content.Shared.Interaction
             var afterInteractUsingEvent = new AfterInteractUsingEvent(user, used, target, clickLocation, canReach);
             RaiseLocalEvent(target.Value, afterInteractUsingEvent);
 
-            DoContactInteraction(user, used, null, true, afterInteractUsingEvent, interactionParticles: afterInteractUsingEvent.SpawnInteractionParticles); // Stellar/ES Interaction particles
+            DoContactInteraction(user, used, afterInteractUsingEvent);
             if (canReach)
             {
-                DoContactInteraction(user, target, used, true, afterInteractUsingEvent, interactionParticles: afterInteractUsingEvent.SpawnInteractionParticles); // Stellar/ES Interaction particles
+                DoContactInteraction(user, target, afterInteractUsingEvent);
                 // Contact interactions are currently only used for forensics, so we don't raise used -> target
             }
 
@@ -1190,7 +1179,7 @@ namespace Content.Shared.Interaction
             RaiseLocalEvent(used, activateMsg, true);
             if (activateMsg.Handled)
             {
-                DoContactInteraction(user, used, null, true, interactionParticles: activateMsg.InteractionParticle); // Stellar - Interaction particles
+                DoContactInteraction(user, used);
                 if (!activateMsg.WasLogged)
                     _adminLogger.Add(LogType.InteractActivate, LogImpact.Low, $"{ToPrettyString(user):user} activated {ToPrettyString(used):used}");
 
@@ -1205,7 +1194,7 @@ namespace Content.Shared.Interaction
             if (!userEv.Handled)
                 return false;
 
-            DoContactInteraction(user, used, null, true); // Interaction particles
+            DoContactInteraction(user, used);
             // Still need to call this even without checkUseDelay in case this gets relayed from Activate.
             if (delayComponent != null)
                 _useDelay.TryResetDelay(used, component: delayComponent);
@@ -1246,7 +1235,7 @@ namespace Content.Shared.Interaction
             RaiseLocalEvent(used, useMsg, true);
             if (useMsg.Handled)
             {
-                DoContactInteraction(user, used, null, true, useMsg); // Interaction particles
+                DoContactInteraction(user, used, useMsg);
                 if (delayComponent != null && useMsg.ApplyDelay)
                     _useDelay.TryResetDelay((used, delayComponent));
                 return true;
@@ -1386,7 +1375,7 @@ namespace Content.Shared.Interaction
             if (wearer == user)
                 return true;
 
-            if (_strippable.IsStripHidden(slotDef, user, target))
+            if (_strippable.IsStripHidden(slotDef, user))
                 return false;
 
             return InRangeUnobstructed(user, wearer) && _containerSystem.IsInSameOrParentContainer(user, wearer);
@@ -1432,14 +1421,7 @@ namespace Content.Shared.Interaction
         /// <summary>
         ///     Simple convenience function to raise contact events (disease, forensics, etc).
         /// </summary>
-        /// <param name="uidA">The entity doing the contacting.</param>
-        /// <param name="uidB">The entity being contacted.</param>
-        /// <param name="used">The entity used to contact <see cref="uidB"/>.</param>
-        /// <param name="predicted">Whether this interaction is predicted. <see cref="uidA"/> is assumed to be the client entity.</param>
-        /// <param name="args">Optional handleable entity event to check.</param>
-        /// <param name="interactionParticles">Whether to spawn interaction particles on this contact.</param>
-        /// <param name="interactionParticleType">The type of interaction particle to spawn for this event.</param>
-        public void DoContactInteraction(EntityUid uidA, EntityUid? uidB, EntityUid? used, bool predicted, HandledEntityEventArgs? args = null, bool interactionParticles = true, StellarInteractionParticleType interactionParticleType = StellarInteractionParticleType.Use) // Stellar/ES - interaction particles
+        public void DoContactInteraction(EntityUid uidA, EntityUid? uidB, HandledEntityEventArgs? args = null)
         {
             if (uidB == null || args?.Handled == false)
                 return;
@@ -1459,25 +1441,6 @@ namespace Content.Shared.Interaction
 
             ev.Other = uidA;
             RaiseLocalEvent(uidB.Value, ev);
-
-            // Begin Stellar/ES Additions - Interaction particles
-            if (!interactionParticles || HasComp<VirtualItemComponent>(uidB))
-                return;
-
-            if (_net.IsServer)
-            {
-                var filter = predicted
-                    ? Filter.PvsExcept(uidA, entityManager: EntityManager)
-                    : Filter.Pvs(uidA, entityManager: EntityManager);
-
-                RaiseNetworkEvent(new StellarInteractionParticleEvent(GetNetEntity(uidA), GetNetEntity(used), GetNetEntity(uidB.Value), false, interactionParticleType), filter);
-            }
-            else if (_gameTiming.IsFirstTimePredicted)
-            {
-                var evt = new StellarInteractionParticleEvent(GetNetEntity(uidA), GetNetEntity(used), GetNetEntity(uidB.Value), true, interactionParticleType);
-                RaiseLocalEvent(evt);
-            }
-            // End Stellar/ES Additions - Interaction particles
         }
 
 

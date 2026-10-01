@@ -20,7 +20,6 @@
     title: objective-condition-reap-soul-title
   - type: PickRandomPerson
     filters:
-    - !type:ObjectiveImmuneFilter
     # Euphoria - Make Teach objective targets opt in
     - !type:MarkedMindFilter
       objType: Teach
@@ -32,6 +31,7 @@
       blacklist:
         components:
         - KillPersonCondition
+        - TargetObjectiveImmune
   - type: RerollAfterCompletion
     rerollObjectivePrototype: SkiaReapObjective
     rerollObjectiveMessage: objective-condition-reap-soul-reroll-message

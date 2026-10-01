@@ -1,4 +1,4 @@
-using Content.Server._DV.StationEvents.GameRules;
+using Content.Server._DV.StationEvents.Events;
 
 namespace Content.Server._DV.StationEvents.Components;
 

@@ -1,6 +1,6 @@
 - type: entity
-  parent: CrateChemistrySecure
   id: CrateChemistryP
+  parent: CrateChemistrySecure
   name: chemicals crate (P)
   description: Contains chemicals from the P-Block of elements. Requires Chemistry access to open.
   components:
@@ -20,8 +20,8 @@
         - id: JugNitrogen
 
 - type: entity
-  parent: CrateChemistrySecure
   id: CrateChemistryS
+  parent: CrateChemistrySecure
   name: chemicals crate (S)
   description: Contains chemicals from the S-Block of elements. Requires Chemistry access to open.
   components:
@@ -36,8 +36,8 @@
         - id: JugRadium
 
 - type: entity
-  parent: CrateChemistrySecure
   id: CrateChemistryD
+  parent: CrateChemistrySecure
   name: chemicals crate (D)
   description: Contains chemicals from the D-Block of elements. Requires Chemistry access to open.
   components:
@@ -52,8 +52,8 @@
         - id: JugSilver
 
 - type: entity
-  parent: CrateGenericSteel
   id: CratePlantBGone
+  parent: CrateGenericSteel
   name: bulk Plant-B-Gone crate
   description: From Monstano. "Unwanted Weeds, Meet Your Celestial Roundup!"
   components:

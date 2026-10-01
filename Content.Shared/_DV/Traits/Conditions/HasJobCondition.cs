@@ -1,4 +1,3 @@
-using Content.Shared._Euphoria.Traits.Conditions;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
@@ -9,7 +8,6 @@ namespace Content.Shared._DV.Traits.Conditions;
 /// Use Invert = true to check if the player does NOT have the job.
 /// </summary>
 public sealed partial class HasJobCondition : BaseTraitCondition
-    , ITraitConditionSkipLobbyCheck // Euphoria: Skip lobby check for job-related conditions.
 {
     /// <summary>
     /// The job prototype ID to check for.

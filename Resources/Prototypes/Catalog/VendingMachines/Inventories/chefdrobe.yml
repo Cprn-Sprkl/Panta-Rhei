@@ -5,8 +5,7 @@
     ClothingOuterApronChef: 3
     ClothingOuterWinterChef: 2
     ClothingOuterJacketChef: 1
-    ClothingUniformJumpsuitChef: 2 # Euphoria: Why was this only 1
-    ClothingUniformJumpsuitChefKimono : 2 #Delta V: Add chef kimono jumpsuit
+    ClothingUniformJumpsuitChef: 1
     ClothingMaskItalianMoustache: 2
     ClothingUniformJumpskirtChef:  2
     ClothingHeadHatChef: 2
@@ -14,12 +13,8 @@
     ClothingShoesBootsWinterChef: 2 #Delta V: Add departmental winter boots
     ClothingShoesChef: 2
     ClothingBeltChef: 2
-    # Floofstation section
-    ClothingNeckCollarService: 2
-    ClothingHandsChefWarmers: 2
-    ClothingUnderSocksChef: 2
-    ClothingUniformChefThong: 2
-    BunnysuitBoxChef: 4
-    # Floofstation section end
+    ClothingHandsChefWarmers: 2 # Floofstation
+    ClothingUnderSocksChef: 2 # Floofstation
+    ClothingUniformChefThong: 2 # Floofstation
   contrabandInventory:
     ToyFigurineChef: 1

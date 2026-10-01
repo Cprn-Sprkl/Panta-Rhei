@@ -62,14 +62,3 @@
       - EncryptionKeyTraffic
       # - EncryptionKeySyndie # Taken out until remodeling of recruiter is done.
       - EncryptionKeyCommon
-
-- type: entity
-  parent: ClothingHeadsetGrey
-  id: ClothingHeadsetGreyHitman
-  components:
-  - type: ContainerFill
-    containers:
-      key_slots:
-      - EncryptionKeyCommon
-      - EncryptionKeyTraffic
-      - EncryptionKeyFreelance

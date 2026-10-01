@@ -30,7 +30,7 @@ public sealed partial class WeatherCycleData
     public string? StateId;
 
     [DataField(required: true)]
-    public EntProtoId<WeatherStatusEffectComponent>? Proto;
+    public ProtoId<WeatherPrototype>? Proto;
 
     [DataField(required: true)]
     public float Weight;

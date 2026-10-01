@@ -1,4 +1,3 @@
-using Content.Shared.StatusEffectNew;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
@@ -33,5 +32,4 @@ public sealed class TraitEffectContext
     public required IComponentFactory CompFactory { get; init; }
     public required ILogManager LogMan { get; init; }
     public required TransformComponent Transform { get; init; }
-    public required StatusEffectsSystem StatusEffects { get; init; }
 }

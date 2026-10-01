@@ -52,16 +52,15 @@
   recipes:
   - WeaponPistolCHIMP
   # Begin DeltaV Removals - lrp/moved to logi techfab
-  - WeaponForceGun # FLoofstation - RUN IT BACK
+  #- WeaponForceGun
   #- WeaponProtoKineticAccelerator
   #- PKAUpgradeDamage
   #- PKAUpgradeRange
   #- PKAUpgradeFireRate
-  - WeaponTetherGun # FLoofstation - RUN IT BACK
+  #- WeaponTetherGun
   # End DeltaV Removals
   - WeaponGauntletGorilla
   - WeaponMicrowaveEmitter # DeltaV - Microwave emitter
-  - WeaponLaserSvalinn # Euphoria
 
 # Only contains parts for making basic modular grenades, no actual explosives
 - type: latheRecipePack

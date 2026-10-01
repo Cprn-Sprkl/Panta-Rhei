@@ -10,10 +10,10 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Goobstation.Devil.Contract;
 
 [Prototype("clause")]
-public sealed partial class DevilClausePrototype : IPrototype // DeltaV - Added partial
+public sealed class DevilClausePrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; private set; } = default!; // DeltaV - Added private set
+    public string ID { get; private init; } = default!;
 
     [DataField(required: true)]
     public int ClauseWeight;
@@ -26,9 +26,6 @@ public sealed partial class DevilClausePrototype : IPrototype // DeltaV - Added 
 
     [DataField]
     public ComponentRegistry? OverriddenComponents; // DeltaV - Added overridden components
-
-    [DataField]
-    public HashSet<EntProtoId> StatusEffects = new(); // DeltaV - Add status effects to clauses
 
     [DataField]
     public string? DamageModifierSet;

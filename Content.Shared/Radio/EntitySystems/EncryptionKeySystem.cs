@@ -166,7 +166,9 @@ public sealed partial class EncryptionKeySystem : EntitySystem
 
     private void OnHolderExamined(EntityUid uid, EncryptionKeyHolderComponent component, ExaminedEvent args)
     {
-        if (!args.IsInDetailsRange)
+        if (!args.IsInDetailsRange
+            || !component.ExamineWhileLocked && !component.KeysUnlocked // Goobstation
+            || !component.ExamineWhileLocked && TryComp<WiresPanelComponent>(uid, out var panel) && !panel.Open) // Goobstation
             return;
 
         if (component.KeyContainer.ContainedEntities.Count == 0)
@@ -213,10 +215,6 @@ public sealed partial class EncryptionKeySystem : EntitySystem
         foreach (var id in channels)
         {
             proto = _protoManager.Index<RadioChannelPrototype>(id);
-
-			// Euphoria | Stealth channels
-            if (!HasComp<EncryptionKeyComponent>(examineEvent.Examined) && proto.Stealth)
-                continue;
 
             var key = id == SharedChatSystem.CommonChannel
                 ? SharedChatSystem.RadioCommonPrefix.ToString()

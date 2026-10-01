@@ -71,7 +71,7 @@ public sealed partial class MaterialDisplay : PanelContainer
         if (!_canEject)
             return;
 
-        int[] sheetsToEjectArray = { 1, 5, 10, 30 }; // DeltaV - added 30 to array
+        int[] sheetsToEjectArray = { 1, 5, 10 };
 
         for (var i = 0; i < sheetsToEjectArray.Length; i++)
         {
@@ -88,7 +88,7 @@ public sealed partial class MaterialDisplay : PanelContainer
                 Name = $"{sheetsToEject}",
                 Access = AccessLevel.Public,
                 Text = Loc.GetString($"{sheetsToEject}"),
-                MinWidth = 35, // DeltaV - reduced from 45 to accomodate extra button
+                MinWidth = 45,
                 StyleClasses = { styleClass }
             };
 

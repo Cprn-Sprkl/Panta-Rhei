@@ -1,6 +1,6 @@
 - type: entity
-  parent: CratePirate
   id: CrateCargoLuxuryHardsuit
+  parent: CratePirate
   name: luxury mining hardsuit crate
   # DeltaV - Logistics Department - Replace Quartermaster with Logistics Officer
   description: Finally, a hardsuit the Logistics Officer could call their own. Centcomm has heard you, now stop asking.
@@ -8,16 +8,12 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingOuterHardsuitLuxury
-        - id: ClothingMaskBreath
-        - id: OxygenTankFilled
-        - id: NitrogenTankFilled
+      entity_storage:
+        id: ClothingOuterHardsuitLuxury
 
 - type: entity
-  parent: CrateGenericSteel
   id: CrateCargoParcelWrap
+  parent: CrateGenericSteel
   name: parcel wrap crate
   description: All your parcel wrapping needs in one crate, containing three rolls of parcel wrap.
   components:
@@ -28,10 +24,10 @@
         amount: 3
 
 - type: entity
-  parent: CratePrivateSecure
   id: CrateCargoGambling
   name: the grand lottery $$$
   description: A box containing treasure beyond your greatest imaginations!
+  parent: CratePrivateSecure
   components:
   - type: EntityTableContainerFill
     containers:
@@ -79,14 +75,17 @@
   id: LotteryJunkEntityTable
   table: !type:GroupSelector
     children:
-    - !type:NestedSelector
-      tableId: AllBananaPeelsTable
-      weight: 4
     - id: CigaretteSpent
     - id: FoodBowlBigTrash
     - id: FoodFrozenPopsicleTrash
     - id: FoodCornTrash
+    - id: TrashBananaPeel
+    - id: TrashBananaPeelExplosive
+      weight: 0.01
     - id: FoodTinBeansTrash
+    - id: TrashBakedBananaPeel
+    - id: TrashMimanaPeel
+    - id: TrashBananiumPeel
 
 - type: entityTable
   id: LotteryCanistersEntityTable
@@ -127,10 +126,13 @@
     - id: WeaponShotgunHandmade
     - id: WeaponFlareGun
     - id: Bola
+    - id: ToySword
     - id: Shovel
+    - id: WeaponWaterPistol
+    - id: WeaponWaterBlaster
     - id: WeaponTurretXeno
-    - !type:NestedSelector
-      tableId: AllToyWeaponsTable
+    - id: WeaponRifleFoam
+      weight: 3
 
 - type: entityTable
   id: LotteryClothingEntityTable

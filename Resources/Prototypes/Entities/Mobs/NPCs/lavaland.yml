@@ -5,7 +5,6 @@
   abstract: true
   description: It's like it's staring right through you.
   components:
-  - type: AshStormImmune #Euphoria
   - type: NpcFactionMember
     factions:
     - SimpleHostile

@@ -19,17 +19,8 @@ public sealed partial class WeatherCycleComponent : Component
         NextUpdate = TimeSpan.Zero,
         NextWeather = TimeSpan.Zero;
 
-    /// <summary>
-    ///     The state of the cycle. This field is only ever null before the weather cycle is initialized.
-    /// </summary>
     [DataField]
     public WeatherCycleData? CurrentState = null;
-
-    /// <summary>
-    ///     A status effect entity added to the map that represents a weather state associated with <see cref="CurrentState"/>
-    /// </summary>
-    [DataField]
-    public EntityUid? CurrentWeatherEntity;
 
     /// <summary>
     ///     For debug use only, makes the weather cycle go on faster or slower.
@@ -39,5 +30,5 @@ public sealed partial class WeatherCycleComponent : Component
 
     // Accessibility
     [ViewVariables(VVAccess.ReadWrite), UsedImplicitly]
-    private string PrototypeVv { get => Prototype; set => Prototype = value; }
+    private string _prototypeVV { get => Prototype; set => Prototype = value; }
 }

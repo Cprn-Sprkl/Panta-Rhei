@@ -4,11 +4,6 @@
   id: FoodMealAvocadoSushi
   description: Where did the seaweed come from?
   components:
-  #Euphoria start
-  - type: FoodSequenceElement
-    entries:
-      Hotdog: Sushi
-  #Euphoria end
   - type: FlavorProfile
     flavors:
     - cucumber
@@ -62,11 +57,6 @@
   id: FoodMealCarpSushi
   description: Certainly worth the risk.
   components:
-  #Euphoria start
-  - type: FoodSequenceElement
-    entries:
-      Hotdog: Sushi
-  #Euphoria end
   - type: FlavorProfile
     flavors:
     - cucumber

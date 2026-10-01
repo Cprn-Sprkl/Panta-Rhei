@@ -1,11 +1,8 @@
 - type: entity
   id: LockerSyndicatePersonalFilled
-  suffix: Nukie, Filled
+  suffix: Filled
   parent: LockerSyndicatePersonal
-  description: It's a personal storage unit for operative gear.
   components:
-  - type: AccessReader
-    access: [["NuclearOperative"]]
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:AllSelector
@@ -17,33 +14,6 @@
         - id: ClothingUniformJumpskirtOperative
         - id: ClothingHeadsetAltSyndicate
         - id: ClothingEyesHudSyndicate
-
-- type: entity
-  id: LockerSyndicateWallFilled
-  suffix: Nukie, Filled
-  parent: LockerWallSyndicate
-  description: It's a personal storage unit for operative gear.
-  components:
-  - type: AccessReader
-    access: [["NuclearOperative"]]
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingBeltMilitaryWebbing
-        - id: ClothingHandsGlovesCombat
-        - id: JetpackBlackFilled
-        - id: ClothingUniformJumpsuitOperative
-        - id: ClothingUniformJumpskirtOperative
-        - id: ClothingHeadsetAltSyndicate
-        - id: ClothingEyesHudSyndicate
-
-- type: entityTable
-  id: FillEmergencyInflatables
-  table: !type:AllSelector
-    children:
-    - id: InflatableWallStack5
-    - id: InflatableDoorStack1
 
 - type: entityTable
   id: FillLockerEmergencyStandard
@@ -63,8 +33,6 @@
       prob: 0.1
     - id: BoxMRE
       prob: 0.1
-    - !type:NestedSelector
-      tableId: FillEmergencyInflatables
 
 - type: entity
   id: ClosetEmergencyFilledRandom
@@ -101,8 +69,6 @@
       - id: EmergencyNitrogenTankFilled
         weight: 4
       - id: NitrogenTankFilled
-    - !type:NestedSelector
-      tableId: FillEmergencyInflatables
 
 - type: entity
   id: ClosetEmergencyN2FilledRandom
@@ -226,7 +192,7 @@
       prob: 0.45
       rolls: !type:RangeNumberSelector
         range: 0, 2
-    # README: when porting lewd toys, put them here or under MaintenanceToysTable
+    # TODO: when porting lewd toys, put them here or under MaintenanceToysTable
     # Floofstation section end
 
 - type: entity

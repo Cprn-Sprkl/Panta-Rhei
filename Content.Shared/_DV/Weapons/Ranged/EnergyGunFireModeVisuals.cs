@@ -13,8 +13,5 @@ public enum EnergyGunFireModeState : byte
 {
     Disabler,
     Lethal,
-    Special,
-    Cyan,
-    Red,
-    Yellow
+    Special
 }

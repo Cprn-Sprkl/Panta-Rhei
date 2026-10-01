@@ -17,6 +17,6 @@ public sealed partial class ReagentDispenserComponent : Component
     /// Returns if the entity has auto-labeling toggled on.
     /// Will have no effect if <see cref="CanAutoLabel"/> is false.
     /// </summary>
-    [DataField, ViewVariables] // Floofstation - make this a datafield so we can turn this off
+    [ViewVariables]
     public bool AutoLabelToggle = true;
 }

@@ -30,9 +30,9 @@
     Sigh:
       collection: MaleSigh
     Crying:
-      path: /Audio/_Starlight/Voice/Avali/avali_cry.ogg # Starlight
+      collection: MaleCry
     Whistle:
-      path: /Audio/_Starlight/Voice/Resomi/resomi_whistle.ogg # Starlight
+      collection: Whistles
     Weh:
       collection: Weh
     Gasp:
@@ -42,20 +42,7 @@
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
   # End DeltaV Additions
-  #Starlight start
-    Purr:
-      collection: FelinidPurrs  
-    Growl:
-      collection: FelinidGrowls
-    FelineTrill:
-      collection: FelineTrills
-    Scree:
-      collection: ResomiScrees
-    Call:
-      collection: ResomiCalls
-    HarpySquawk:
-      collection: ResomiSquawk
-  #Starlight end
+
 - type: emoteSounds
   #parent: [RMCUnisexAvali, RMCFemaleHuman] # DeltaV - no inheritence
   id: RMCFemaleAvali
@@ -79,9 +66,9 @@
     Sigh:
       collection: FemaleSigh
     Crying:
-      path: /Audio/_Starlight/Voice/Avali/avali_cry.ogg # Starlight
+      collection: FemaleCry
     Whistle:
-      path: /Audio/_Starlight/Voice/Resomi/resomi_whistle.ogg # Starlight
+      collection: Whistles
     Weh:
       collection: Weh
     Gasp:
@@ -91,17 +78,3 @@
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
   # End DeltaV Additions
-  #Starlight start
-    Purr:
-      collection: FelinidPurrs  
-    Growl:
-      collection: FelinidGrowls
-    FelineTrill:
-      collection: FelineTrills
-    Scree:
-      collection: ResomiScrees
-    Call:
-      collection: ResomiCalls
-    HarpySquawk:
-      collection: ResomiSquawk
-  #Starlight end

@@ -6,7 +6,6 @@ using Content.Server.Chat.Systems;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Psionics;
-using Content.Shared._DV.Psionics.Components;
 using Content.Shared.Abilities.Psionics;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
@@ -30,16 +29,15 @@ namespace Content.Server.Research.Oracle;
 
 public sealed class OracleSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _adminLog = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionSystem = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly SolutionContainerSystem _solutionSystem = default!;
     [Dependency] private readonly GlimmerSystem _glimmerSystem = default!;
     [Dependency] private readonly PuddleSystem _puddleSystem = default!;
-    [Dependency] private readonly SharedResearchSystem _research = default!;
+    [Dependency] private readonly IAdminLogManager _adminLog = default!;
+    [Dependency] private readonly SharedResearchSystem _research = default!; 
 
     public override void Update(float frameTime)
     {
@@ -81,41 +79,49 @@ public sealed class OracleSystem : EntitySystem
         NextItem(component);
     }
 
-    private void OnInteractHand(Entity<OracleComponent> oracle, ref InteractHandEvent args)
+    private void OnInteractHand(EntityUid uid, OracleComponent component, InteractHandEvent args)
     {
-        if (!HasComp<PotentialPsionicComponent>(args.User)
-            || !_playerManager.TryGetSessionByEntity(args.User, out var session))
+        if (!HasComp<PotentialPsionicComponent>(args.User) || HasComp<PsionicInsulationComponent>(args.User))
             return;
 
-        var message = Loc.GetString("oracle-current-item", ("item", oracle.Comp.DesiredPrototype.Name));
+        if (!TryComp<ActorComponent>(args.User, out var actor))
+            return;
+
+        var message = Loc.GetString("oracle-current-item", ("item", component.DesiredPrototype.Name));
 
         var messageWrap = Loc.GetString("chat-manager-send-telepathic-chat-wrap-message",
             ("telepathicChannelName", Loc.GetString("chat-manager-telepathic-channel-name")), ("message", message));
 
         _chatManager.ChatMessageToOne(ChatChannel.Telepathic,
-            message, messageWrap, oracle, false, session.Channel, Color.PaleVioletRed);
+            message, messageWrap, uid, false, actor.PlayerSession.Channel, Color.PaleVioletRed);
 
-        if (oracle.Comp.LastDesiredPrototype != null)
+        if (component.LastDesiredPrototype != null)
         {
-            var message2 = Loc.GetString("oracle-previous-item", ("item", oracle.Comp.LastDesiredPrototype.Name));
+            var message2 = Loc.GetString("oracle-previous-item", ("item", component.LastDesiredPrototype.Name));
             var messageWrap2 = Loc.GetString("chat-manager-send-telepathic-chat-wrap-message",
                 ("telepathicChannelName", Loc.GetString("chat-manager-telepathic-channel-name")),
                 ("message", message2));
 
             _chatManager.ChatMessageToOne(ChatChannel.Telepathic,
-                message2, messageWrap2, oracle, false, session.Channel, Color.PaleVioletRed);
+                message2, messageWrap2, uid, false, actor.PlayerSession.Channel, Color.PaleVioletRed);
         }
     }
 
     private void AddInsertDesiredItemVerb(Entity<OracleComponent> ent, ref GetVerbsEvent<Verb> args)
     {
-        if (!args.CanAccess
-            || !args.CanInteract
-            || args.Using == null
-            || HasComp<MobStateComponent>(args.Using)
-            || !TryComp(args.Using, out MetaDataComponent? meta)
-            || HasComp<BorgChassisComponent>(args.User)
-            || meta.EntityPrototype == null)
+        if (!args.CanAccess || !args.CanInteract || args.Using == null)
+            return;
+
+        if (HasComp<MobStateComponent>(args.Using))
+            return;
+
+        if (!TryComp(args.Using, out MetaDataComponent? meta))
+            return;
+
+        if (HasComp<BorgChassisComponent>(args.User))
+            return;
+
+        if (meta.EntityPrototype == null)
             return;
 
         var argsUser = args.User;
@@ -141,10 +147,16 @@ public sealed class OracleSystem : EntitySystem
 
     private void DoOnInteractUsing(Entity<OracleComponent> oracle, EntityUid user, EntityUid used)
     {
-        if (HasComp<MobStateComponent>(used)
-            || !TryComp(used, out MetaDataComponent? meta)
-            || HasComp<BorgChassisComponent>(user)
-            || meta.EntityPrototype == null)
+        if (HasComp<MobStateComponent>(used))
+            return;
+
+        if (!TryComp(used, out MetaDataComponent? meta))
+            return;
+
+        if (HasComp<BorgChassisComponent>(user))
+            return;
+
+        if (meta.EntityPrototype == null)
             return;
 
         var validItem = CheckValidity(meta.EntityPrototype, oracle.Comp.DesiredPrototype);
@@ -184,9 +196,7 @@ public sealed class OracleSystem : EntitySystem
 
         while (i != 0)
         {
-            // Euph - chance of normality lowered 10-fold
-            var entityToSpawn = _random.Next(0, 20) == 0 ? "CrystalNormality" : "MaterialBluespace1";
-            Spawn(entityToSpawn, Transform(user).Coordinates);
+            Spawn("MaterialBluespace1", Transform(user).Coordinates);
             i--;
         }
 
@@ -211,7 +221,7 @@ public sealed class OracleSystem : EntitySystem
             return;
 
         var allReagents = _prototypeManager.EnumeratePrototypes<ReagentPrototype>()
-            .Where(x => !x.Abstract && x.ID != "Romerol") //Euphoria - We can't have Romerol be a possibility
+            .Where(x => !x.Abstract)
             .Select(x => x.ID).ToList();
 
         var amount = 20 + _random.Next(1, 30) + _glimmerSystem.Glimmer / 10f;
@@ -281,7 +291,7 @@ public sealed class OracleSystem : EntitySystem
         {
             if (
                 researchServers.Count == 0
-                || researchServers.Any(server =>
+                || researchServers.Any(server => 
                     _research.IsTechnologyUnlocked(server.database.Owner, tech, server.database.Comp)
                     || _research.IsTechnologyAvailable(server.database.Comp, tech, server.disciplineTiers)
                 )

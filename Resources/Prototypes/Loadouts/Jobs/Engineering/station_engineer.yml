@@ -43,9 +43,9 @@
 - type: loadout
   id: SeniorEngineerBeret
   startingGear: EngineeringBeret
-#  effects: # DeltaV - Remove Specific Role Timers
-#  - !type:GroupLoadoutEffect
-#    proto: SeniorEngineering
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
 
 # Jumpsuit
 - type: loadout
@@ -122,6 +122,6 @@
   id: SeniorEngineerPDA
   effects:
   - !type:GroupLoadoutEffect
-    proto: FloofSeniorEngineering # Euphoria - need the hours for the PDA to
-  equipment:                      # match our different time requirement for the role
+    proto: SeniorEngineering
+  equipment:
     id: SeniorEngineerPDA

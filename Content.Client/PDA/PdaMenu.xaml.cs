@@ -131,12 +131,6 @@ namespace Content.Client.PDA
             {
                 _clipboard.SetText(_currentDate);
             };
-
-            LinkedDevicesButton.OnPressed += _ =>
-            {
-                LinkedDeviceList.Visible = true;
-                ToProgramView(Loc.GetString("comp-pda-ui-linked-devices-title"));
-            };
             // End DeltaV additions
 
             
@@ -306,7 +300,6 @@ namespace Content.Client.PDA
             ProgramCloseButton.Visible = false;
             ProgramListButton.Visible = true;
             SettingsButton.Visible = true;
-            LinkedDeviceList.Visible = false; // DeltaV - pagers
         }
 
         /// <summary>

@@ -1,4 +1,3 @@
-using Content.Shared._Floof.HeightAdjust;
 using Content.Shared.Revenant.EntitySystems;
 using Content.Shared.Revenant.Components;
 using Content.Shared.Physics;
@@ -13,7 +12,6 @@ public sealed partial class RevealRevenantOnCollideSystem : SharedRevealRevenant
 {
     [Dependency] private readonly FixtureSystem _fixtures = default!;
     [Dependency] private readonly CollisionWakeSystem _collisionWake = default!;
-    [Dependency] private readonly FixtureHelperSystem _fixtureHelpers = default!; // Euph
 
     private const string FixtureId = "revenantReveal";
 
@@ -28,9 +26,8 @@ public sealed partial class RevealRevenantOnCollideSystem : SharedRevealRevenant
     private IPhysShape GetOrCreateShape(EntityUid uid, FixturesComponent? fixtures = null)
     {
         if (Resolve(uid, ref fixtures))
-            // Euph - changed to explicit create a copy
-            if (fixtures.Fixtures.TryGetValue("fix1", out var fix) && _fixtureHelpers.TryCopyShape(fix.Shape, out var shapeCopy))
-                return shapeCopy;
+            if (fixtures.Fixtures.TryGetValue("fix1", out var fix))
+                return fix.Shape;
 
         return new PhysShapeCircle(0.35f);
     }

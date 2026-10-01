@@ -5,7 +5,6 @@
   description: trait-scent-vanilla-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -17,7 +16,6 @@
   description: trait-scent-citrus-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -29,7 +27,6 @@
   description: trait-scent-linen-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -41,7 +38,6 @@
   description: trait-scent-sandalwood-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -53,7 +49,6 @@
   description: trait-scent-lavender-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -65,7 +60,6 @@
   description: trait-scent-greentea-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -77,7 +71,6 @@
   description: trait-scent-bergamot-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -89,7 +82,6 @@
   description: trait-scent-eucalyptus-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -101,7 +93,6 @@
   description: trait-scent-cedarwood-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -113,7 +104,6 @@
   description: trait-scent-mint-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -125,7 +115,6 @@
   description: trait-scent-rosewater-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -137,7 +126,6 @@
   description: trait-scent-jasmine-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -149,7 +137,6 @@
   description: trait-scent-lemonzest-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -161,7 +148,6 @@
   description: trait-scent-pine-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -173,7 +159,6 @@
   description: trait-scent-warmhoney-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -185,7 +170,6 @@
   description: trait-scent-rain-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -197,7 +181,6 @@
   description: trait-scent-apples-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -209,7 +192,6 @@
   description: trait-scent-cloves-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -221,7 +203,6 @@
   description: trait-scent-darkchocolate-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -233,7 +214,6 @@
   description: trait-scent-orangeblossoms-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -245,7 +225,6 @@
   description: trait-scent-leather-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -257,7 +236,6 @@
   description: trait-scent-aloe-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -269,7 +247,6 @@
   description: trait-scent-cardamom-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -281,7 +258,6 @@
   description: trait-scent-peaches-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -293,7 +269,6 @@
   description: trait-scent-basil-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -305,7 +280,6 @@
   description: trait-scent-smokedwood-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -317,7 +291,6 @@
   description: trait-scent-milkandsugar-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -329,7 +302,6 @@
   description: trait-scent-iris-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -341,7 +313,6 @@
   description: trait-scent-grapefruit-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -353,7 +324,6 @@
   description: trait-scent-frankincense-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -365,7 +335,6 @@
   description: trait-scent-pears-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -377,7 +346,6 @@
   description: trait-scent-tobacco-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -389,7 +357,6 @@
   description: trait-scent-soap-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -401,7 +368,6 @@
   description: trait-scent-chamomile-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -413,7 +379,6 @@
   description: trait-scent-fig-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -425,7 +390,6 @@
   description: trait-scent-ozone-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -437,7 +401,6 @@
   description: trait-scent-sweat-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -449,7 +412,6 @@
   description: trait-scent-oil-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -461,7 +423,6 @@
   description: trait-scent-motoroil-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -473,7 +434,6 @@
   description: trait-scent-soil-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -485,7 +445,6 @@
   description: trait-scent-almond-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -497,7 +456,6 @@
   description: trait-scent-patchouli-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -509,7 +467,6 @@
   description: trait-scent-blueberry-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -521,7 +478,6 @@
   description: trait-scent-cinnamon-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -533,7 +489,6 @@
   description: trait-scent-seasalt-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -545,7 +500,6 @@
   description: trait-scent-wildflowers-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -558,7 +512,6 @@
   description: trait-scent-musk-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -570,7 +523,6 @@
   description: trait-scent-heat-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -582,7 +534,6 @@
   description: trait-scent-latex-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -594,7 +545,6 @@
   description: trait-scent-boystink-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -606,7 +556,6 @@
   description: trait-scent-boysmell-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -618,7 +567,6 @@
   description: trait-scent-skunk-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -630,7 +578,6 @@
   description: trait-scent-girlstink-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -642,7 +589,6 @@
   description: trait-scent-girlsmell-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -654,7 +600,6 @@
   description: trait-scent-spaceweed-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -670,7 +615,6 @@
   description: trait-scent-gunmetal-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -682,7 +626,6 @@
   description: trait-scent-disinfectant-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -694,7 +637,6 @@
   description: trait-scent-ink-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -706,7 +648,6 @@
   description: trait-scent-dust-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -718,7 +659,6 @@
   description: trait-scent-metal-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -730,7 +670,6 @@
   description: trait-scent-omni-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -742,7 +681,6 @@
   description: trait-scent-gunpowder-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -754,7 +692,6 @@
   description: trait-scent-moss-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -766,7 +703,6 @@
   description: trait-scent-weldfuel-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -778,7 +714,6 @@
   description: trait-scent-jolly-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -790,7 +725,6 @@
   description: trait-scent-gingerbread-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -802,7 +736,6 @@
   description: trait-scent-hellstone-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -814,7 +747,6 @@
   description: trait-scent-rust-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -826,7 +758,6 @@
   description: trait-scent-flowers-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -838,7 +769,6 @@
   description: trait-scent-stillwater-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -850,7 +780,6 @@
   description: trait-scent-uranium-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -862,7 +791,6 @@
   description: trait-scent-blacktea-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -874,7 +802,6 @@
   description: trait-scent-seafood-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -886,7 +813,6 @@
   description: trait-scent-wetdog-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -898,7 +824,6 @@
   description: trait-scent-phoron-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -910,7 +835,6 @@
   description: trait-scent-grass-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -922,7 +846,6 @@
   description: trait-scent-bday-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -934,7 +857,6 @@
   description: trait-scent-unwashedfox-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -946,7 +868,6 @@
   description: trait-scent-iron-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -958,7 +879,6 @@
   description: trait-scent-frezon-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -970,7 +890,6 @@
   description: trait-scent-fish-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -982,7 +901,6 @@
   description: trait-scent-cheapcologne-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -994,7 +912,6 @@
   description: trait-scent-expensivecologne-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -1006,7 +923,6 @@
   description: trait-scent-alcohol-desc
   category: Scents
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -1020,7 +936,6 @@
   description: trait-scent-piss-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:
@@ -1032,7 +947,6 @@
   description: trait-scent-pomegranate-desc
   category: ScentsNSFW
   cost: 0 # Euphoria
-  usesSlots: false # Euphoria
   effects:
   - !type:AddScentTraitEffect
     scents:

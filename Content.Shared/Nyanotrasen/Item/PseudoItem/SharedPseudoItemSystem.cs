@@ -1,7 +1,9 @@
 using Content.Shared.Actions;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
 using Content.Shared.Item.PseudoItem;
@@ -122,7 +124,7 @@ public abstract partial class SharedPseudoItemSystem : EntitySystem
         // if (args.User == args.Item)
         //     return;
         //
-        // _transform.AttachToGridOrMap(uid);
+        // Transform(uid).AttachToGridOrMap();
         // args.Cancel();
     }
 

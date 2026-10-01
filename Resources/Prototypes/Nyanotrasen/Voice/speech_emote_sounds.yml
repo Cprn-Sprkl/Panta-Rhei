@@ -42,10 +42,6 @@
       collection: MaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
-    SoftTrill: # Euph
-      collection: SoftTrills
-    FelineTrill: # Euph
-      collection: FelineTrills
 
 - type: emoteSounds
   id: FemaleFelinid
@@ -90,7 +86,3 @@
       collection: FemaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
-    SoftTrill: # Euph
-      collection: SoftTrills
-    FelineTrill: # Euph
-      collection: FelineTrills

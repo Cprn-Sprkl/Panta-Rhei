@@ -8,11 +8,6 @@
     layers:
       - state: ring
         color: "#ffc833"
-  - type: Clothing  # Euphoria - Make rings show on character sprite
-    clothingVisuals:
-      gloves:
-      - state: equipped-HAND
-        color: "#ffc833"
 
 - type: entity
   parent: [ RingBase, SilverRingBase ]
@@ -23,10 +18,6 @@
   - type: Sprite
     layers:
       - state: ring
-  - type: Clothing  # Euphoria - Make rings show on character sprite
-    clothingVisuals:
-      gloves:
-      - state: equipped-HAND
 
 - type: entity
   parent: [ RingBase, GoldRingBase ]
@@ -40,11 +31,6 @@
         color: "#ffc833"
       - state: gem
         color: "#c1ffff"
-  - type: Clothing  # Euphoria - Make rings show on character sprite
-    clothingVisuals:
-      gloves:
-      - state: equipped-HAND
-        color: "#ffc833"
   - type: StaticPrice
     price: 1500
 
@@ -59,10 +45,6 @@
       - state: ring
       - state: gem
         color: "#c1ffff"
-  - type: Clothing  # Euphoria - Make rings show on character sprite
-    clothingVisuals:
-      gloves:
-      - state: equipped-HAND
   - type: StaticPrice
     price: 1400
 
@@ -78,11 +60,6 @@
         color: "#ffc833"
       - state: gem
         map: [ "gemColor" ]
-  - type: Clothing  # Euphoria - Make rings show on character sprite
-    clothingVisuals:
-      gloves:
-      - state: equipped-HAND
-        color: "#ffc833"
   - type: StaticPrice
     price: 2100
   - type: RandomSprite
@@ -102,11 +79,6 @@
       - state: ring
       - state: gem
         map: [ "gemColor" ]
-      - state:
-  - type: Clothing  # Euphoria - Make rings show on character sprite
-    clothingVisuals:
-      gloves:
-      - state: equipped-HAND
   - type: StaticPrice
     price: 2000
   - type: RandomSprite

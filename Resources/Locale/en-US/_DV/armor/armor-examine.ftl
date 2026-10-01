@@ -1,7 +1,6 @@
 armor-stamina-projectile-coefficient-value = - [color=yellow]Stamina projectile[/color] damage reduced by [color=lightblue]{$value}%[/color].
 armor-stamina-melee-coefficient-value = - [color=yellow]Stamina melee[/color] damage reduced by [color=lightblue]{$value}%[/color].
-armor-damage-type-soul = Soul
-armor-damage-type-holy = Radiant
+armor-damage-type-shadow = Shadow
 
 held-armor-examine = [color=cyan]Holding[/color] it provides the following protection:
 

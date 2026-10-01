@@ -88,6 +88,3 @@
     enabled: False
   - type: PointLight
     enabled: false
-  - type: Tag
-    tags:
-    - PatientTransportation

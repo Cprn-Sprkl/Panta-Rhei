@@ -33,11 +33,8 @@
     ClothingHeadsetCentCom: 3
     ClothingOuterCoatExpensive: 1
     CentCommImplanter: 3 # DeltaV - For trialmins
-    # Floofstation section
-    ClothingNeckCollarCC: 2
-    ClothingNeckCollarCentcomm: 2
+    ClothingNeckCollarCC: 2 # Floofstation
     CardBoxNanotrasen: 2 # Floofstation - from Frontier
-    # Floofstation section end
   contrabandInventory:
     ToyFigurineCaptain: 1
     ToyFigurineHeadOfPersonnel: 1

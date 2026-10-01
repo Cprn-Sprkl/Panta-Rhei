@@ -70,7 +70,7 @@ public sealed class LanguageMarkupTag : IMarkupTagHandler
 
             return t;
         };
-        label.TooltipDelay = 0.5f;
+        label.TooltipDelay = 0.3f;
 
         return true;
     }

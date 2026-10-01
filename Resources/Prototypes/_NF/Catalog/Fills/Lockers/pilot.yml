@@ -18,5 +18,4 @@
         - id: ClothingUniformJumpsuitPilot
         - id: ClothingHeadHatPilot
         - id: ClothingBackpackPilot
-        #- id: WeaponLaserSvalinn # Floofstation - remove this from teh locker, no clue why this is a thing
         # End DeltaV Additions

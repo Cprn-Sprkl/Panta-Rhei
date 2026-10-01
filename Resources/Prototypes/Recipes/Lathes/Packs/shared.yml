@@ -73,8 +73,6 @@
   id: SalvageSecurityWeapons
   recipes:
   - WeaponProtoKineticAccelerator
-  # Begin DeltaV removal - Made PKA upgrades unobtainable after buff to PKA
-  #- PKAUpgradeDamage
-  #- PKAUpgradeRange
-  #- PKAUpgradeFireRate
-  # End DeltaV removal
+  - PKAUpgradeDamage
+  - PKAUpgradeRange
+  #- PKAUpgradeFireRate # DeltaV - removal of fire rate upgrade for better feel

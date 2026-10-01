@@ -1,1 +1,0 @@
-borg-type-research = [color= #76417b]research cyborgs[/color]

@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 270.1.0
+  engineVersion: 262.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/01/2026 11:28:11
-  entityCount: 477
+  time: 10/11/2025 04:22:44
+  entityCount: 474
 maps: []
 grids:
 - 1
@@ -305,22 +305,51 @@ entities:
         - volume: 2500
           temperature: 293.15
           moles:
-            Oxygen: 21.824879
-            Nitrogen: 82.10312
+          - 21.824879
+          - 82.10312
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.14948
           moles:
-            Oxygen: 18.472576
-            Nitrogen: 69.49208
+          - 18.472576
+          - 69.49208
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           immutable: True
-          moles: {}
+          moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
-    - type: TileHistory
-      chunkHistory: {}
-    - type: ExplosionAirtightGrid
 - proto: AirAlarm
   entities:
   - uid: 391
@@ -349,8 +378,6 @@ entities:
       - 198
       - 207
       - 196
-    - type: Fixtures
-      fixtures: {}
 - proto: AirCanister
   entities:
   - uid: 264
@@ -386,7 +413,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -4.5,-0.5
       parent: 1
-- proto: AirlockHatchSyndicateLocked
+- proto: AirlockHatchSyndicate
   entities:
   - uid: 123
     components:
@@ -425,8 +452,6 @@ entities:
     - type: Transform
       pos: -2.5,-1.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
   - uid: 393
     components:
     - type: MetaData
@@ -434,8 +459,6 @@ entities:
     - type: Transform
       pos: 3.5,5.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: AppraisalTool
   entities:
   - uid: 461
@@ -817,12 +840,12 @@ entities:
   - uid: 368
     components:
     - type: Transform
-      pos: 1.5,2.5
+      pos: -0.5,3.5
       parent: 1
   - uid: 369
     components:
     - type: Transform
-      pos: 1.5,1.5
+      pos: 0.5,3.5
       parent: 1
   - uid: 370
     components:
@@ -902,7 +925,7 @@ entities:
   - uid: 386
     components:
     - type: Transform
-      pos: 1.5,8.5
+      pos: 2.5,6.5
       parent: 1
   - uid: 387
     components:
@@ -928,21 +951,6 @@ entities:
     components:
     - type: Transform
       pos: 3.5,-9.5
-      parent: 1
-  - uid: 475
-    components:
-    - type: Transform
-      pos: 1.5,0.5
-      parent: 1
-  - uid: 476
-    components:
-    - type: Transform
-      pos: 3.5,5.5
-      parent: 1
-  - uid: 477
-    components:
-    - type: Transform
-      pos: 1.5,7.5
       parent: 1
 - proto: CableHV
   entities:
@@ -1227,8 +1235,18 @@ entities:
         immutable: False
         temperature: 293.1462
         moles:
-          Oxygen: 1.606311
-          Nitrogen: 6.042789
+        - 1.606311
+        - 6.042789
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -1241,8 +1259,6 @@ entities:
           - 470
           - 471
           - 472
-    - type: Fixtures
-      fixtures: {}
 - proto: ClothingMaskBreath
   entities:
   - uid: 467
@@ -2319,8 +2335,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 4.5,7.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: LockableButtonSyndicate
   entities:
   - uid: 303
@@ -2338,8 +2352,6 @@ entities:
           - Toggle
         - - Pressed
           - AutoClose
-    - type: Fixtures
-      fixtures: {}
   - uid: 304
     components:
     - type: MetaData
@@ -2383,8 +2395,6 @@ entities:
         429:
         - - Pressed
           - Toggle
-    - type: Fixtures
-      fixtures: {}
 - proto: MaterialCardboard
   entities:
   - uid: 332
@@ -2412,8 +2422,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,2.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: NoticeBoard
   entities:
   - uid: 457
@@ -2422,8 +2430,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,0.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: Paper
   entities:
   - uid: 61
@@ -2572,8 +2578,6 @@ entities:
     - type: Transform
       pos: -0.5,2.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: PosterContrabandFreeSyndicateEncryptionKey
   entities:
   - uid: 419
@@ -2581,8 +2585,6 @@ entities:
     - type: Transform
       pos: 0.5,-3.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: PosterContrabandL6
   entities:
   - uid: 422
@@ -2590,8 +2592,6 @@ entities:
     - type: Transform
       pos: 2.5,-7.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: PosterContrabandRevolver
   entities:
   - uid: 423
@@ -2599,8 +2599,6 @@ entities:
     - type: Transform
       pos: 4.5,-4.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: PosterContrabandRoid
   entities:
   - uid: 420
@@ -2608,8 +2606,6 @@ entities:
     - type: Transform
       pos: 1.5,5.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: PosterContrabandSyndicatePistol
   entities:
   - uid: 421
@@ -2617,8 +2613,6 @@ entities:
     - type: Transform
       pos: -3.5,-1.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: PottedPlantRandomPlastic
   entities:
   - uid: 270
@@ -2746,15 +2740,11 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 0.5,4.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
   - uid: 453
     components:
     - type: Transform
       pos: 2.5,-1.5
       parent: 1
-    - type: Fixtures
-      fixtures: {}
 - proto: ShuttleWindow
   entities:
   - uid: 33

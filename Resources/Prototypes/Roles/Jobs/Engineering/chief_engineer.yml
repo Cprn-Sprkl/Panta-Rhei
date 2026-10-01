@@ -17,7 +17,6 @@
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true # DeltaV
-  joinNotifyCrew: true # DeltaV
   supervisors: job-supervisors-captain
   canBeAntag: false
   access:
@@ -35,8 +34,8 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-  - !type:ModifyPsionicChanceSpecial # DeltaV - Command Roles are more likely to be psionic.
-    jobBonusChance: 0.05 # Additional 5% chance.
+      - type: PsionicBonusChance # DeltaV - makes it more likely to become psionic.
+        flatBonus: 0.025
 
 - type: startingGear
   id: ChiefEngineerGear

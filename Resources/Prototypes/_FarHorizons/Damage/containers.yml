@@ -1,8 +1,0 @@
-- type: damageContainer
-  id: Robotic
-  supportedTypes:
-  - Bloodloss
-  supportedGroups:
-  - Brute
-  - Burn
-  - Toxin

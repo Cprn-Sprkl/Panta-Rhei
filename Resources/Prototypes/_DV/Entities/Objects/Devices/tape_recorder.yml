@@ -16,10 +16,6 @@
   - type: TapeRecorder
   - type: ActiveListener
     range: 4
-  - type: ChangeVoiceInContainer
-    whitelist:
-      components:
-      - SecretStash
   - type: UseDelay
     delay: 1
   - type: Speech
@@ -118,7 +114,7 @@
   id: CassetteTapeInterview
   components:
   - type: Label
-    currentLabel: cassette-tape-garry-smosh
+    currentLabel: Interview with Garry Smosh
   - type: TapeCassette
     recordedData:
       - timestamp: 2

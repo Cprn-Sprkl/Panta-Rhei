@@ -32,7 +32,7 @@
     #jumpsuit: ClothingUniformJumpsuitClerk
     #back: ClothingBackpackFilled
     #shoes: ClothingShoesBootsLaceup
-    #id: ClerkPDA # Floofstation - let loadouts handle pdas
+    id: ClerkPDA
     ears: ClothingHeadsetJustice
     #innerClothingSkirt: ClothingUniformJumpskirtClerk
     #satchel: ClothingBackpackSatchelFilled

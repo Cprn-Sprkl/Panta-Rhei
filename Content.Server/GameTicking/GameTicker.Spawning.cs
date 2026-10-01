@@ -5,7 +5,6 @@ using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
-using Content.Server.Radio.EntitySystems; // DeltaV - radio announcements
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
@@ -22,7 +21,6 @@ using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
-using Content.Shared.Station; // DeltaV - radio announcements
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -38,8 +36,6 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
         [Dependency] private readonly AdminSystem _admin = default!;
-        [Dependency] private readonly RadioSystem _radio = default!; // DeltaV - radio announcements
-        [Dependency] private readonly SharedStationSystem _station = default!; // DeltaV - radio announcements
 
         public static readonly EntProtoId ObserverPrototypeName = "MobObserver";
         public static readonly EntProtoId AdminObserverPrototypeName = "AdminObserver";
@@ -206,7 +202,7 @@ namespace Content.Server.GameTicking
                     }
 
                     speciesId = roundStart.Count == 0
-                        ? HumanoidCharacterProfile.DefaultSpecies
+                        ? SharedHumanoidAppearanceSystem.DefaultSpecies
                         : _robustRandom.Pick(roundStart);
                 }
                 else
@@ -216,7 +212,6 @@ namespace Content.Server.GameTicking
                 }
 
                 character = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
-                character.Appearance = HumanoidCharacterAppearance.EnsureValid(character.Appearance, character.Species, character.Sex);
             }
 
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)
@@ -279,24 +274,16 @@ namespace Content.Server.GameTicking
                         playDefaultSound: false,
                         colorOverride: Color.Gold);
                 }
-                // Begin DeltaV - announce these to departmental channels
-                else if ((_jobs.TryGetPrimaryDepartment(jobId, out var dept)
-                         || _jobs.TryGetDepartment(jobId, out dept))
-                        && dept.RadioChannel is { } channel
-                        && _station.GetLargestGrid(station) is { } grid)
+                else
                 {
-
-                    var arrivals = SpawnAtPosition("DVArrivalsAnnouncer", new(grid, Vector2.Zero));
-                    _radio.SendRadioMessage(arrivals,
+                    _chatSystem.DispatchStationAnnouncement(station,
                         Loc.GetString("latejoin-arrival-announcement",
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
                             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
-                        channel,
-                        arrivals);
-                    Del(arrivals);
+                        Loc.GetString("latejoin-arrival-sender"),
+                        playDefaultSound: false);
                 }
-                // End DeltaV - announce these to departmental channels
             }
 
             if (player.UserId == new Guid("{e887eb93-f503-4b65-95b6-2f282c014192}"))

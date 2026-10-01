@@ -1,5 +1,4 @@
 ﻿using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared.EntityEffects.Effects.EntitySpawning;
 
@@ -11,7 +10,6 @@ namespace Content.Shared.EntityEffects.Effects.EntitySpawning;
 public sealed partial class SpawnEntityEntityEffectSystem : EntityEffectSystem<TransformComponent, SpawnEntity>
 {
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedTransformSystem _xforms = default!;
 
     protected override void Effect(Entity<TransformComponent> entity, ref EntityEffectEvent<SpawnEntity> args)
     {
@@ -22,8 +20,7 @@ public sealed partial class SpawnEntityEntityEffectSystem : EntityEffectSystem<T
         {
             for (var i = 0; i < quantity; i++)
             {
-                //Euphoria  was: PredictedSpawnNextToOrDrop(proto, entity, entity.Comp);
-                SpawnNextToOrDropAtPosition(proto, entity, entity.Comp);
+                PredictedSpawnNextToOrDrop(proto, entity, entity.Comp);
             }
         }
         else if (_net.IsServer)
@@ -34,24 +31,6 @@ public sealed partial class SpawnEntityEntityEffectSystem : EntityEffectSystem<T
             }
         }
     }
-    // Euphoria changes start - we need to makey this spawny avoid the fishspess
-    private EntityUid SpawnNextToOrDropAtPosition(string? protoName, EntityUid target, TransformComponent? xform = null, ComponentRegistry? overrides = null)
-    {
-        xform ??= Transform(target);
-
-        if (!xform.ParentUid.IsValid())
-        {
-            Log.Error($"Tried to spawn {protoName} in nullspace.");
-                return EntityUid.Invalid;
-        }
-
-        var uid = PredictedSpawnAtPosition(protoName, xform.Coordinates, overrides);
-
-        _xforms.DropNextTo(uid, target);
-
-        return uid;
-    }
-    // Euphoria changes end
 }
 
 /// <inheritdoc cref="BaseSpawnEntityEntityEffect{T}"/>

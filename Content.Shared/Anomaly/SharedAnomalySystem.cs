@@ -24,7 +24,7 @@ using Content.Shared.Actions;
 
 namespace Content.Shared.Anomaly;
 
-public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Made Partial
+public abstract class SharedAnomalySystem : EntitySystem
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -44,8 +44,6 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
 
         SubscribeLocalEvent<AnomalyComponent, MeleeThrowOnHitStartEvent>(OnAnomalyThrowStart);
         SubscribeLocalEvent<AnomalyComponent, LandEvent>(OnLand);
-
-        InitializePsionics(); // DeltaV - Introduce Dispellable behavior to Anomalies.
     }
 
     private void OnAnomalyThrowStart(Entity<AnomalyComponent> ent, ref MeleeThrowOnHitStartEvent args)
@@ -84,7 +82,7 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
             Log.Info($"Performing anomaly pulse. Entity: {ToPrettyString(uid)}");
 
         // if we are above the growth threshold, then grow before the pulse
-        if (component.AlwaysGrow || component.Stability > component.GrowthThreshold) // DeltaV - Add AlwaysGrow
+        if (component.Stability > component.GrowthThreshold)
         {
             ChangeAnomalySeverity(uid, GetSeverityIncreaseFromGrowth(component), component);
         }
@@ -192,8 +190,7 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
     /// <param name="supercritical">Whether or not the anomaly ended via supercritical event</param>
     /// <param name="spawnCore">Create anomaly cores based on the result of completing an anomaly?</param>
     /// <param name="logged">Whether or not the anomaly decaying/going supercritical is logged</param>
-    /// <param name="forced">Whether or not the anomaly shutdown was caused by component shutdown</param> // DeltaV - Add forced
-    public void EndAnomaly(EntityUid uid, AnomalyComponent? component = null, bool supercritical = false, bool spawnCore = true, bool logged = false, bool forced = false)  // DeltaV - Add forced
+    public void EndAnomaly(EntityUid uid, AnomalyComponent? component = null, bool supercritical = false, bool spawnCore = true, bool logged = false)
     {
         if (logged)
         {
@@ -208,7 +205,7 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
         if (!Resolve(uid, ref component))
             return;
 
-        var ev = new AnomalyShutdownEvent(uid, supercritical, forced); // DeltaV - Add forced
+        var ev = new AnomalyShutdownEvent(uid, supercritical);
         RaiseLocalEvent(uid, ref ev, true);
 
         if (Terminating(uid) || _net.IsClient)
@@ -346,7 +343,7 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
 
             // if the stability is under the death threshold,
             // update it every second to start killing it slowly.
-            if (!anomaly.AlwaysGrow && anomaly.Stability < anomaly.DecayThreshold) // DeltaV - Add AlwaysGrow
+            if (anomaly.Stability < anomaly.DecayThreshold)
             {
                 ChangeAnomalyHealth(ent, anomaly.HealthChangePerSecond * frameTime, anomaly);
             }
@@ -443,8 +440,10 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
 
             if (!settings.CanSpawnOnEntities)
             {
+                // DeltaV - start of duplicate spawn fix (borrowed from upstream #37833)
                 // If it can't spawn on entities, ensure that maximum one entity will be spawned here this pulse.
                 tilerefs.Remove(tileref);
+                // DeltaV - end of duplicate spawn fix (borrowed from upstream #37833)
 
                 var valid = true;
                 foreach (var ent in _map.GetAnchoredEntities(xform.GridUid.Value, grid, tileref.GridIndices))
@@ -462,6 +461,7 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
                 }
                 if (!valid)
                 {
+                    // DeltaV - duplicate spawn fix removed: tilerefs.Remove(tileref);
                     continue;
                 }
             }
@@ -476,14 +476,6 @@ public abstract partial class SharedAnomalySystem : EntitySystem // DeltaV - Mad
         visual = null;
         if (!Resolve(ent, ref ent.Comp, logMissing: false))
             return false;
-
-        // DeltaV - Colossus Additions START
-        if (ent.Comp.AlwaysGrow)
-        {
-            visual = AnomalyStabilityVisuals.Growing;
-            return true;
-        }
-        // DeltaV - Colossus Additions END
 
         visual = AnomalyStabilityVisuals.Stable;
         if (ent.Comp.Stability <= ent.Comp.DecayThreshold)

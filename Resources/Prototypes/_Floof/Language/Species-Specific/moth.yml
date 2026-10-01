@@ -2,9 +2,7 @@
 # TODO: Replace this with a much better language.
 - type: language
   id: Moffic
-  parent: BaseLanguage
-  chatPrefix: mof # Euphoria/Starlight
-  icon: { state: moffic }
+  isVisibleLanguage: true
   speech:
     color: "#c7df2edd"
     fontId: Copperplate

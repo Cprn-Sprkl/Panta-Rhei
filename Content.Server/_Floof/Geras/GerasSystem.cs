@@ -1,14 +1,14 @@
-using Content.Server.Actions;
-using Content.Server.Body;
-using Content.Server.Goobstation.Ghostbar.Components;
 using Content.Server.Polymorph.Systems;
+using Content.Shared.Zombies;
+using Content.Server.Actions;
 using Content.Server.Popups;
 using Content.Shared._Floof.Geras;
-using Content.Shared.Body;
+using Robust.Shared.Player;
+using Content.Server.Body.Components;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Humanoid;
 using Content.Shared.Sprite;
-using Content.Shared.Zombies;
-using Robust.Shared.Player;
+using Content.Shared.Polymorph;
 
 namespace Content.Server._Floof.Geras;
 
@@ -18,7 +18,6 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly PolymorphSystem _polymorphSystem = default!;
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly VisualBodySystem _visualBody = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -47,21 +46,11 @@ public sealed class GerasSystem : EntitySystem
 
         var colors = GrabHumanoidColors(uid); // begin imp
 
-        var isGhostbarPlayer = HasComp<GhostBarPlayerComponent>(uid);
-        if (isGhostbarPlayer)
-            RemComp<GhostBarPlayerComponent>(uid);
-
         var ent = _polymorphSystem.PolymorphEntity(uid, component.GerasPolymorphId);
 
-        if (ent is null)
-            return;
-
-        if (isGhostbarPlayer)
-            EnsureComp<GhostBarPlayerComponent>(ent.Value);
-
-        if (colors is {} colorsfr) // Match Geras to Humanoid Skin color
+        if (colors != null) // Match Geras to Humanoid Skin color
         {
-            (var skinColor, var eyeColor) = (colorsfr.SkinColor, colorsfr.EyeColor);
+            (var skinColor, var eyeColor) = colors.Value;
             if (TryComp<RandomSpriteComponent>(ent, out var randomSprite)) // has to use random sprite
             {
                 foreach (var entry in randomSprite.Selected)
@@ -69,7 +58,7 @@ public sealed class GerasSystem : EntitySystem
                     var state = randomSprite.Selected[entry.Key];
                     state.Color = entry.Key switch
                     {
-                        "colorMap" => skinColor.WithAlpha(0.72f),
+                        "colorMap" => skinColor,
                         "eyesMap" => eyeColor,
                         _ => state.Color
                     };
@@ -78,6 +67,8 @@ public sealed class GerasSystem : EntitySystem
                 Dirty(ent.Value, randomSprite);
             }
         } // end imp
+
+
 
         if (!ent.HasValue)
             return;
@@ -88,24 +79,15 @@ public sealed class GerasSystem : EntitySystem
         args.Handled = true;
     }
 
-    // Original from imp, rewritten for euph
-    private OrganProfileData? GrabHumanoidColors(EntityUid entity)
+    private (Color, Color)? GrabHumanoidColors(EntityUid entity) //imp
     {
-        // Nubody
-        // it grabs the eye color, skin color, and sex from the character profile and shoves it into every marking
-        // Neither of these 3 properties are stored anywhere else
-        // I'm gonna lose my fucking shit if i spend another minute working with this code, so I'm just gonna leave this hack here
-        // We try to grab the skin and eye color from the first organ that specifies it, and if everything is default, we leave the random sprites as-is
-        // TODO free me from this nightmare
-        if (!_visualBody.TryGatherMarkingsData(entity, null, out var profiles, out _, out _))
-            return null;
-
-        foreach (var (organCategory, data) in profiles)
+        if (TryComp<HumanoidAppearanceComponent>(entity, out var humanoid)) // Get Humanoid Appearance
         {
-            if (data.SkinColor != default && data.EyeColor != default)
-                return data;
+            var skinColor = humanoid.SkinColor;
+            var eyeColor = humanoid.EyeColor;
+            return (skinColor, eyeColor);
         }
 
-        return null;
+        return null; // if a non-humanoid or someone with no bloodstream ascends, don't modify the colors
     }
 }

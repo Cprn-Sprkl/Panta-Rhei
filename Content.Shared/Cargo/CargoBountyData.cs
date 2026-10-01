@@ -28,18 +28,19 @@ public readonly partial record struct CargoBountyData
         Bounty = bounty.ID;
         Id = $"{bounty.IdPrefix}{uniqueIdentifier:D3}";
     }
-// Begin DeltaV bounty claiming
+	
+	//imp edit start - cargo bounty claiming & status
     [DataField]
     public string ClaimedBy { get; init; } = string.Empty;
 
     [DataField]
     public CargoBountyStatus Status { get; init; } = CargoBountyStatus.Undelivered;
-    }
+}
 
 public enum CargoBountyStatus
 {
     Undelivered,
     Waiting,
     OnShuttle,
-}  // End DeltaV bounty claiming
-
+}
+//imp edit end

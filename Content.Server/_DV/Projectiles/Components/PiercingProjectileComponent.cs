@@ -1,5 +1,4 @@
 using Content.Shared.Tag;
-using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._DV.Projectiles.Components;
@@ -22,14 +21,10 @@ public sealed partial class PiercingProjectileComponent : Component
     public float PierceCounter;
 
     /// <summary>
-    /// The whitelist for checking what increments the <see cref="PierceCounter"/>.
+    /// The tag that will cause the piercing bullet to increment it's <see cref="PierceCounter"/>.
     /// </summary>
-    /// <example>
-    /// If this has the tag "Wall" in it, any entity with the tag "Wall" will increment <see cref="PierceCounter"/>
-    /// upon being hit.
-    /// </example>
     [DataField]
-    public EntityWhitelist PierceCounterWhitelist;
+    public List<ProtoId<TagPrototype>> PierceBlockTag = ["Wall", "Window"];
 
     /// <summary>
     /// The number of entities it is allowed to pierce before being deleted.

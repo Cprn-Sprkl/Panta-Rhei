@@ -1,7 +1,7 @@
 - type: marking
   id: GoblinTusksSmall
   bodyPart: Snout
-# groupWhitelist: [Oni] # Euph - free markings
+  markingCategory: Snout
   coloring:
     default:
       type:
@@ -14,7 +14,7 @@
 - type: marking
   id: GoblinTusksBig
   bodyPart: Snout
-# groupWhitelist: [Oni] # Euph - free markings
+  markingCategory: Snout
   coloring:
     default:
       type:

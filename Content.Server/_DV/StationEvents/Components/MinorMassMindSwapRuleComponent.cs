@@ -1,4 +1,4 @@
-using Content.Server._DV.StationEvents.GameRules;
+using Content.Server._DV.StationEvents.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 

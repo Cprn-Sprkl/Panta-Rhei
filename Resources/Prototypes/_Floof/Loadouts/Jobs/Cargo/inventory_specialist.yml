@@ -27,9 +27,3 @@
   id: InventorySpecialistPDA
   equipment:
     id: InventorySpecialistPDA
-
-# emotional support collar
-- type: loadout
-  id: ClothingNeckCollarEmotionalLogisticsInventorySpecialist
-  equipment:
-    neck: ClothingNeckCollarEmotionalLogisticsInventorySpecialist

@@ -15,7 +15,6 @@
   - AzazibaTranslator
   - ValyrianStandardTranslator
   - AnimalTranslator
-  - SiikMaasTranslator
 
 # Includes basic translation
 - type: latheRecipePack
@@ -35,4 +34,3 @@
   - ChittinTranslatorImplanter
   - AzazibaTranslatorImplanter
   - ValyrianStandardTranslatorImplanter
-  - SiikMaasTranslatorImplanter

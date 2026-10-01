@@ -39,10 +39,10 @@
     - Cryoxadone
     - Dermaline
     - Dexalin
-    #- DexalinPlus # DeltaV - Killed DexalinPlus
+    - DexalinPlus
     - Epinephrine
     - Leporazine
-    #- Ambuzol # DeltaV - remove random ambuzol
+    - Ambuzol
     - Tricordrazine
     - Artifexium
     - Ethylredoxrazine

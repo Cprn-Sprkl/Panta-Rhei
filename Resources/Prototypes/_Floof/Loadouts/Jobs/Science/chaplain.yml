@@ -1,4 +1,8 @@
 ﻿# chaplain outfits
+- type: loadout
+  id: UniformChaplainThong
+  equipment:
+    jumpsuit: ClothingUniformChaplainThong
 
 # gloves
 - type: loadout
@@ -7,6 +11,10 @@
     gloves: ClothingHandsChaplainWarmers
 
 # shoes
+- type: loadout
+  id: ClothingUnderSocksChaplain
+  equipment:
+    shoes: ClothingUnderSocksChaplain
 
 # pdas
 - type: loadout
@@ -23,24 +31,3 @@
   id: NoostatisticianPDA
   equipment:
     id: NoostatisticianPDA
-
-# emotional support collar
-- type: loadout
-  id: ClothingNeckCollarEmotionalSupportChaplain
-  equipment:
-    neck: ClothingNeckCollarEmotionalSupportChaplain
-
-# top undergarment
-
-# bottom undergarment
-- type: loadout
-  id: UniformChaplainThong
-  equipment:
-    undergarmentBottom: ClothingUniformChaplainThong
-
-# socks
-- type: loadout
-  id: ClothingUnderSocksChaplain
-  equipment:
-    undergarmentSocks: ClothingUnderSocksChaplain
-

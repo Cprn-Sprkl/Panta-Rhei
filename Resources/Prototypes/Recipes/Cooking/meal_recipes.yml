@@ -5,7 +5,7 @@
   time: 5
   group: Breads
   solids:
-    FoodUncookedBun: 1 # one third of a standard bread dough recipe; Euphoria - use UncookedBun instead of DoughSlice
+    FoodDoughSlice: 1 # one third of a standard bread dough recipe
 
 - type: microwaveMealRecipe
   id: RecipeCottonBun
@@ -614,14 +614,14 @@
   solids:
     FoodBreadPlainSlice: 2
 
-#- type: microwaveMealRecipe # DeltaV - Moved to Deep Fryer
-#  id: RecipeOnionRings
-#  name: onion rings recipe
-#  result: FoodOnionRings
-#  time: 15
-#  group: Savory
-#  solids:
-#    FoodOnionSlice: 1
+- type: microwaveMealRecipe
+  id: RecipeOnionRings
+  name: onion rings recipe
+  result: FoodOnionRings
+  time: 15
+  group: Savory
+  solids:
+    FoodOnionSlice: 1
 
 #Pizzas TODO: contruction graph based pizza
 - type: microwaveMealRecipe
@@ -653,7 +653,7 @@
   group: Pizza
   solids:
     FoodDoughFlat: 1
-    FoodMeatCutlet: 3 # DeltaV - change from meat to meat cutlets. Was FoodMeat
+    FoodMeat: 3
     FoodCheeseSlice: 1
     FoodTomato: 1
 
@@ -837,8 +837,7 @@
   group: Savory
   solids:
     FoodRiceBoiled: 1
-    # FoodMeatCutlet: 3 # DeltaV - use bacon since it's the obtainable pork product
-    FoodMeatBacon: 1 # DeltaV
+    FoodMeatCutlet: 3
 
 - type: microwaveMealRecipe
   id: RecipeRiceGumbo
@@ -1169,10 +1168,7 @@
   group: Pie
   solids:
     FoodDoughPie: 1
-    #FoodBerries: 3 # Euphroia - swaping to other berries
-    FoodBlueberry: 1 # Euphroia
-    FoodBlackberry: 1 # Euphroia
-    FoodRaspberry: 1 # Euphroia
+    FoodBerries: 3
     FoodPlateTin: 1
 
 - type: microwaveMealRecipe
@@ -1450,8 +1446,7 @@
     Milk: 5
     Egg: 6
   solids:
-    #FoodBerries: 2 # Euphoria
-    FoodBlueberry: 3 # Euphoria switching to blueberry
+    FoodBerries: 2
 
 - type: microwaveMealRecipe
   id: RecipeWaffles
@@ -1578,8 +1573,7 @@
   solids:
     FoodCakePlain: 1
     FoodLemoon: 2
-    #FoodBerries: 1 #dark colouring # Euphroia - swapping berries
-    FoodBlackberry: 1 # Euproia - it uses dark coloring so blackberry it is
+    FoodBerries: 1 #dark colouring
 
 - type: microwaveMealRecipe
   id: RecipeOrangeCake
@@ -1599,8 +1593,7 @@
   group: Cake
   solids:
     FoodCakePlain: 1
-    #FoodBerries: 3 # Euphroia
-    FoodBlueberry: 3 # Euphroia switching to blueberry
+    FoodBerries: 3
 
 - type: microwaveMealRecipe
   id: RecipeLimeCake
@@ -1717,9 +1710,7 @@
   group: Cake
   solids:
     FoodCakeBlueberry: 1
-    #FoodBerries: 2 # Euphroia - adding the other berries
-    FoodBlackberry: 1 # Euphroia
-    FoodRaspberry: 1 # Euphroia
+    FoodBerries: 2
   reagents:
     Milk: 10
 
@@ -1908,9 +1899,9 @@
   result: FoodMealQueso
   time: 15
   group: Soup
-    #todo Add blackpepper
-    #reagents:
-  #blackpepper: 5
+  #todo Add blackpepper
+  #reagents:
+    #blackpepper: 5
   solids:
     FoodChiliPepper: 1
     FoodCheeseSlice: 2
@@ -2092,8 +2083,7 @@
   solids:
     FoodPlateMuffinTin: 1
     FoodDoughSlice: 1
-    #FoodBerries: 1 # Euphoria - switching to other berries
-    FoodBlueberry: 1 # Euphoria
+    FoodBerries: 1
   reagents:
     Sugar: 10
 
@@ -2247,14 +2237,14 @@
   reagents:
     Water: 10
 
-#- type: microwaveMealRecipe # DeltaV - Moved to Deep Fryer
-#  id: RecipeTacoShell
-#  name: taco shell recipe
-#  result: FoodTacoShell
-#  time: 5
-#  group: Breads
-#  solids:
-#    FoodDoughTortillaFlat: 1 # one third of a standard bread dough recipe
+- type: microwaveMealRecipe
+  id: RecipeTacoShell
+  name: taco shell recipe
+  result: FoodTacoShell
+  time: 5
+  group: Breads
+  solids:
+    FoodDoughTortillaFlat: 1 # one third of a standard bread dough recipe
 
 - type: microwaveMealRecipe
   id: RecipeTacoBeef

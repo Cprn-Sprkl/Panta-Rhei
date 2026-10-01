@@ -20,10 +20,10 @@
   - type: CrewMonitoringConsole
   - type: DeviceNetwork
     deviceNetId: Wireless
-    receiveFrequencyId: NTNet # DeltaV - NTNet
+    receiveFrequencyId: CrewMonitor
   - type: WirelessNetworkConnection
     range: 500
-  # - type: StationLimitedNetwork # DeltaV - don't restrict this unnecessarily
+  - type: StationLimitedNetwork
   - type: ReverseEngineering # Nyano
     difficulty: 2
     recipes:
@@ -42,8 +42,8 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: HandheldCrewMonitor
   id: HandheldCrewMonitorEmpty
+  parent: HandheldCrewMonitor
   suffix: Empty
   components:
   - type: ItemSlots

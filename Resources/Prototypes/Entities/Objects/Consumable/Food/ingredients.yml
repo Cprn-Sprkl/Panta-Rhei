@@ -64,9 +64,6 @@
     damage:
       types:
         Blunt: 0
-  - type: Tag # DeltaV - Service Borg Module
-    tags:
-    - Ingredients
 
 - type: entity
   abstract: true
@@ -87,17 +84,8 @@
   name: flour bag
   description: A big bag of flour. Good for baking!
   components:
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.OpenableVisuals.Opened:
-        enum.OpenableVisuals.Layer:
-          True: {state: "flour-big_open"} # open
-          False: {state: "flour-big"} # closed
   - type: Sprite
-    layers:
-    - state: flour-big
-      map: ["enum.OpenableVisuals.Layer"]
+    state: flour-big
   - type: SolutionContainerManager
     solutions:
       food:
@@ -128,17 +116,8 @@
   name: cornmeal bag
   description: A big bag of cornmeal. Good for cooking!
   components:
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.OpenableVisuals.Opened:
-        enum.OpenableVisuals.Layer:
-          True: {state: "cornmeal-big_open"} # open
-          False: {state: "cornmeal-big"} # closed
   - type: Sprite
-    layers:
-    - state: cornmeal-big
-      map: ["enum.OpenableVisuals.Layer"]
+    state: cornmeal-big
   - type: SolutionContainerManager
     solutions:
       food:
@@ -168,17 +147,8 @@
   name: rice bag
   description: A big bag of rice. Good for cooking!
   components:
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.OpenableVisuals.Opened:
-        enum.OpenableVisuals.Layer:
-          True: {state: "rice-big_open"} # open
-          False: {state: "rice-big"} # closed
   - type: Sprite
-    layers:
-    - state: rice-big
-      map: ["enum.OpenableVisuals.Layer"]
+    state: rice-big
   - type: SolutionContainerManager
     solutions:
       food:
@@ -208,17 +178,8 @@
   name: sugar bag
   description: A big bag of tasty spacey sugar.
   components:
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.OpenableVisuals.Opened:
-        enum.OpenableVisuals.Layer:
-          True: {state: "sugar-big_open"} # open
-          False: {state: "sugar-big"} # closed
   - type: Sprite
-    layers:
-    - state: sugar-big
-      map: ["enum.OpenableVisuals.Layer"]
+    state: sugar-big
   - type: SolutionContainerManager
     solutions:
       food:
@@ -250,17 +211,8 @@
   name: olive oil
   description: Olive oil. From space olives presumably.
   components:
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.OpenableVisuals.Opened:
-        enum.OpenableVisuals.Layer:
-          True: {state: "oliveoil_open"} # open
-          False: {state: "oliveoil"} # closed
   - type: Sprite
-    layers:
-    - state: oliveoil
-      map: ["enum.OpenableVisuals.Layer"]
+    state: oliveoil
   - type: SolutionContainerManager
     solutions:
       food:
@@ -277,17 +229,8 @@
   name: mayonnaise
   description: Bottle of mayonnaise.
   components:
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.OpenableVisuals.Opened:
-        enum.OpenableVisuals.Layer:
-          True: {state: "mayo_open"} # open
-          False: {state: "mayo"} # closed
   - type: Sprite
-    layers:
-    - state: mayo
-      map: ["enum.OpenableVisuals.Layer"]
+    state: mayo
   - type: SolutionContainerManager
     solutions:
       food:
@@ -331,9 +274,6 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 15
-  - type: Tag # DeltaV - Service Borg Module
-    tags:
-    - Ingredients
 
 - type: entity
   parent: FoodBakingBase
@@ -371,7 +311,6 @@
   - type: Tag
     tags:
     - Slice
-    - DoughSlice #Euphoria
   - type: Construction
     graph: DoughRope
     node: start
@@ -819,8 +758,6 @@
     entries:
       Taco: CheeseTaco
       Burger: CheeseBurger
-      Nachos: CheeseTaco # DeltaV
-      Hotdog: CheeseBurger # Euphoria
   - type: Item
     size: Tiny
     storedOffset: 0,-3
@@ -923,13 +860,6 @@
   name: tofu slice
   description: A slice of tofu. Ingredient of various vegetarian dishes.
   components:
-  #Euphoria start
-  - type: FoodSequenceElement
-    entries:
-      Burger: TofuSlice
-      Taco: TofuSlice
-      Hotdog: TofuSlice
-  #Euphoria end
   - type: Item
     size: Tiny
   - type: FlavorProfile
@@ -973,14 +903,6 @@
   - type: Tag
     tags:
     - Trash
-  #Euphoria changes start
-  - type: FoodSequenceElement
-    entries:
-      Burger: BurnedMess
-      Taco: BurnedMess
-      Skewer: BurnedMess
-      Hotdog: BurnedMess
-  # Euphoria changes end
 
 - type: entity
   name: cocoa beans

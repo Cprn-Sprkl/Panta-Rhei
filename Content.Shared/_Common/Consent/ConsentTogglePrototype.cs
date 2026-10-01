@@ -10,7 +10,7 @@ using Robust.Shared.Prototypes;
 /// defaulting to "off." Consent toggles defined in yaml are added to the menu
 /// automatically.
 /// </summary>
-[Prototype]
+[Prototype("consentToggle")]
 public sealed partial class ConsentTogglePrototype : IPrototype
 {
     [IdDataField]

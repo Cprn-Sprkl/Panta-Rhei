@@ -2,11 +2,11 @@
   id: BlankMediPen
   result: BlankMediPen
   completetime: 2
-  materials: # Floofstation - increased cost to make each pen since this is floof not frontier
+  materials: # increased cost to make each pen since this is floof not frontier
     Steel: 500
     Glass: 500
     Plastic: 250
-    Silver: 100
+    Silver: 400
     Gold: 50
 
 - type: latheRecipe

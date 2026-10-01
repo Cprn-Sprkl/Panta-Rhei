@@ -2,9 +2,11 @@ using Content.Server.Chat.Managers;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat;
 using Content.Shared.Dataset;
+using Content.Shared.Weather;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+
 
 namespace Content.Server._Vulp.Weather.Functions;
 
@@ -20,8 +22,9 @@ public sealed partial class WeatherDispatchAnnouncement : WeatherFunctionWithDel
 
     public override bool InvokeOnRepeatedTraversal => false;
 
-    protected override void Fire(EntityManager entMan,
-        Entity<WeatherCycleComponent> ent,
+    protected override void Fire(
+        EntityManager entMan,
+        Entity<WeatherComponent, WeatherCycleComponent> ent,
         float updateTimeSeconds)
     {
         if (!entMan.TransformQuery.TryGetComponent(ent, out var xform))

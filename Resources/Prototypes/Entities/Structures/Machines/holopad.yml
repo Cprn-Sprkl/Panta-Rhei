@@ -15,10 +15,7 @@
         mask:
         - Impassable
   - type: ApcPowerReceiver
-    powerLoad: 5
-  - type: PowerState
-    idlePowerDraw: 5
-    workingPowerDraw: 300
+    powerLoad: 300
   - type: StationAiVision
     range: 1
     needsAnchoring: true
@@ -107,16 +104,7 @@
         node: machineFrame
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  # Begin DeltaV
-  - type: DeviceNetworkRequiresPower
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: NTNet
-    transmitFrequencyId: NTNet
-  - type: PageSender
-  # End DeltaV
-  - type: TooShortForUIWhitelist #imp change
-
+ 
 - type: entity
   name: long-range holopad
   description: "A floor-mounted device for projecting holographic images to similar devices that are far away."
@@ -129,7 +117,7 @@
     - Map
     - Unlimited
     ignoreTelephonesOnSameGrid: true
-
+    
 - type: entity
   name: quantum entangling holopad
   description: "An floor-mounted device for projecting holographic images to similar devices at extreme distances."
@@ -264,7 +252,7 @@
 
 # Command
 - type: entity
-  parent: HolopadCommand # DeltaV
+  parent: Holopad
   id: HolopadCommandBridge
   suffix: Bridge
   components:
@@ -272,7 +260,7 @@
     currentLabel: holopad-command-bridge
 
 - type: entity
-  parent: HolopadCommand # DeltaV
+  parent: Holopad
   id: HolopadCommandVault
   suffix: Vault
   components:
@@ -280,7 +268,7 @@
     currentLabel: holopad-command-vault
 
 - type: entity
-  parent: HolopadCommand # DeltaV
+  parent: Holopad
   id: HolopadCommandBridgeHallway
   suffix: Bridge Hallway
   components:
@@ -288,7 +276,7 @@
     currentLabel: holopad-command-bridge-hallway
 
 - type: entity
-  parent: HolopadCommand # DeltaV
+  parent: Holopad
   id: HolopadCommandMeetingRoom
   suffix: Command Meeting
   components:
@@ -296,7 +284,7 @@
     currentLabel: holopad-command-meeting-room
 
 - type: entity
-  parent: HolopadCommand # DeltaV
+  parent: Holopad
   id: HolopadCommandLounge
   suffix: Command Lounge
   components:
@@ -310,10 +298,6 @@
   components:
   - type: Label
     currentLabel: holopad-command-captain
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Captain]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -322,10 +306,6 @@
   components:
   - type: Label
     currentLabel: holopad-command-hop
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [HeadOfPersonnel]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -334,10 +314,6 @@
   components:
   - type: Label
     currentLabel: holopad-command-cmo
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [ChiefMedicalOfficer]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -346,10 +322,6 @@
   components:
   - type: Label
     currentLabel: holopad-command-lo # DeltaV - QM > LO
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Quartermaster]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -358,10 +330,6 @@
   components:
   - type: Label
     currentLabel: holopad-command-ce
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [ChiefEngineer]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -370,10 +338,6 @@
   components:
   - type: Label
     currentLabel: holopad-command-mysta # DeltaV - RD > Mysta
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [ResearchDirector]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -382,14 +346,10 @@
   components:
   - type: Label
     currentLabel: holopad-command-hos
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [HeadOfSecurity]
-  # End DeltaV
 
 # Science
 - type: entity
-  parent: HolopadEpistemics # DeltaV
+  parent: Holopad
   id: HolopadScienceAnomaly
   suffix: Anomaly
   components:
@@ -397,7 +357,7 @@
     currentLabel: holopad-epistemics-anomaly # DeltaV - Science > Epistemics
 
 - type: entity
-  parent: HolopadEpistemics # DeltaV
+  parent: Holopad
   id: HolopadScienceArtifact
   suffix: Artifact
   components:
@@ -411,21 +371,17 @@
   components:
   - type: Label
     currentLabel: holopad-epistemics-robotics # DeltaV - Science > Epistemics
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Roboticist]
-  # End DeltaV
 
 - type: entity
-  parent: HolopadEpistemics # DeltaV
+  parent: Holopad
   id: HolopadScienceRnd
-  suffix: Epistemics # DeltaV - Science > Epistemics
+  suffix: R&D
   components:
   - type: Label
     currentLabel: holopad-epistemics-rnd # DeltaV - Science > Epistemics
 
 - type: entity
-  parent: HolopadEpistemics # DeltaV
+  parent: Holopad
   id: HolopadScienceFront
   suffix: Epi Front # DeltaV - Science > Epistemics
   components:
@@ -433,7 +389,7 @@
     currentLabel: holopad-epistemics-front # DeltaV - Science > Epistemics
 
 - type: entity
-  parent: HolopadEpistemics # DeltaV
+  parent: Holopad
   id: HolopadScienceBreakroom
   suffix: Epi Breakroom # DeltaV - Science > Epistemics
   components:
@@ -441,7 +397,7 @@
     currentLabel: holopad-epistemics-breakroom # DeltaV - Science > Epistemics
 
 - type: entity
-  parent: HolopadEpistemics # DeltaV
+  parent: Holopad
   id: HolopadScienceArtifactNorth
   suffix: Artifact North
   components:
@@ -449,7 +405,7 @@
     currentLabel: holopad-science-artifact-north
 
 - type: entity
-  parent: HolopadEpistemics # DeltaV
+  parent: Holopad
   id: HolopadScienceArtifactSouth
   suffix: Artifact South
   components:
@@ -458,7 +414,7 @@
 
 # Medical
 - type: entity
-  parent: HolopadMedical # DeltaV
+  parent: Holopad
   id: HolopadMedicalMedbay
   suffix: Medbay
   components:
@@ -472,13 +428,9 @@
   components:
   - type: Label
     currentLabel: holopad-medical-chemistry
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Chemist]
-  # End DeltaV
 
 - type: entity
-  parent: HolopadMedical # DeltaV
+  parent: Holopad
   id: HolopadMedicalCryopods
   suffix: Cryopods
   components:
@@ -486,7 +438,7 @@
     currentLabel: holopad-medical-cryopods
 
 - type: entity
-  parent: HolopadMedical # DeltaV
+  parent: Holopad
   id: HolopadMedicalMorgue
   suffix: Morgue
   components:
@@ -500,10 +452,6 @@
   components:
   - type: Label
     currentLabel: holopad-medical-surgery
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Surgeon]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -512,13 +460,9 @@
   components:
   - type: Label
     currentLabel: holopad-medical-paramedic
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Paramedic]
-  # End DeltaV
 
 - type: entity
-  parent: HolopadMedical # DeltaV
+  parent: Holopad
   id: HolopadMedicalVirology
   suffix: Virology
   components:
@@ -526,7 +470,7 @@
     currentLabel: holopad-medical-virology
 
 - type: entity
-  parent: HolopadMedical # DeltaV
+  parent: Holopad
   id: HolopadMedicalFront
   suffix: Med Front
   components:
@@ -534,7 +478,7 @@
     currentLabel: holopad-medical-front
 
 - type: entity
-  parent: HolopadMedical # DeltaV
+  parent: Holopad
   id: HolopadMedicalBreakroom
   suffix: Med Breakroom
   components:
@@ -545,7 +489,7 @@
 
 # Cargo
 - type: entity
-  parent: HolopadLogistics
+  parent: Holopad
   id: HolopadCargoFront
   suffix: Logistics Front # DeltaV - Cargo > Logistics
   components:
@@ -553,7 +497,7 @@
     currentLabel: holopad-logistics-front # DeltaV - Cargo > Logistics
 
 - type: entity
-  parent: HolopadLogistics
+  parent: Holopad
   id: HolopadCargoBay
   suffix: Cargo Bay
   components:
@@ -567,13 +511,9 @@
   components:
   - type: Label
     currentLabel: holopad-logistics-salvage-bay # DeltaV - Cargo > Logistics
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [SalvageSpecialist]
-  # End DeltaV
 
 - type: entity
-  parent: HolopadLogistics
+  parent: Holopad
   id: HolopadCargoBreakroom
   suffix: Logistics Breakroom
   components:
@@ -590,10 +530,6 @@
   components:
   - type: Label
     currentLabel: holopad-engineering-atmos-front
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [AtmosphericTechnician]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -602,10 +538,6 @@
   components:
   - type: Label
     currentLabel: holopad-engineering-atmos-main
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [AtmosphericTechnician]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -614,13 +546,9 @@
   components:
   - type: Label
     currentLabel: holopad-engineering-atmos-teg
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [AtmosphericTechnician]
-  # End DeltaV
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringStorage
   suffix: Engi Storage
   components:
@@ -628,7 +556,7 @@
     currentLabel: holopad-engineering-storage
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringBreakroom
   suffix: Engi Breakroom
   components:
@@ -636,7 +564,7 @@
     currentLabel: holopad-engineering-breakroom
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringFront
   suffix: Engi Front
   components:
@@ -644,7 +572,7 @@
     currentLabel: holopad-engineering-front
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringTelecoms
   suffix: Telecoms
   components:
@@ -652,7 +580,7 @@
     currentLabel: holopad-engineering-telecoms
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringTechVault
   suffix: Tech Vault
   components:
@@ -660,7 +588,7 @@
     currentLabel: holopad-engineering-tech-vault
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringAME
   suffix: AME
   components:
@@ -668,7 +596,7 @@
     currentLabel: holopad-engineering-ame
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringPower
   suffix: Power
   components:
@@ -676,7 +604,7 @@
     currentLabel: holopad-engineering-power
 
 - type: entity
-  parent: HolopadEngineering # DeltaV
+  parent: Holopad
   id: HolopadEngineeringMain
   suffix: Engi Main
   components:
@@ -685,7 +613,7 @@
 
 # Security
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityFront
   suffix: Sec Front
   components:
@@ -693,7 +621,7 @@
     currentLabel: holopad-security-front
 
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityBrig
   suffix: Brig
   components:
@@ -701,15 +629,15 @@
     currentLabel: holopad-security-brig
 
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityWarden
-  suffix: Warden, Security # DeltaV - Added security.
+  suffix: Warden
   components:
   - type: Label
     currentLabel: holopad-security-warden
 
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityInterrogation
   suffix: Interrogation
   components:
@@ -717,7 +645,7 @@
     currentLabel: holopad-security-interrogation
 
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityBreakroom
   suffix: Sec Breakroom
   components:
@@ -731,13 +659,9 @@
   components:
   - type: Label
     currentLabel: holopad-security-detective
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Detective]
-  # End DeltaV
 
 - type: entity
-  parent: HolopadPrison # DeltaV
+  parent: Holopad
   id: HolopadSecurityPerma
   suffix: Perma
   components:
@@ -745,15 +669,15 @@
     currentLabel: holopad-security-perma
 
 - type: entity
-  parent: HolopadJustice # DeltaV
+  parent: Holopad
   id: HolopadSecurityCourtroom
   suffix: Courtroom
   components:
   - type: Label
-    currentLabel: holopad-justice-courtroom #Euphoria: holopad-justice-courtroom<holopad-security-courtroom
+    currentLabel: holopad-security-courtroom
 
 - type: entity
-  parent: HolopadJustice # DeltaV
+  parent: Holopad
   id: HolopadSecurityLawyer
   suffix: Attorney # DeltaV - Lawyer > Attorney
   components:
@@ -761,7 +685,7 @@
     currentLabel: holopad-justice-attorney # DeltaV - Lawyer > Attorney
 
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityArmory
   suffix: Armory
   components:
@@ -772,7 +696,7 @@
 # DeltaV - Skipped brig med(redundant)
 
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityEvacCheckpoint
   suffix: Sec Evac Checkpoint
   components:
@@ -780,7 +704,7 @@
     currentLabel: holopad-security-evac-checkpoint
 
 - type: entity
-  parent: HolopadSecurity # DeltaV
+  parent: Holopad
   id: HolopadSecurityArrivalsCheckpoint
   suffix: Sec Arrivals Checkpoint
   components:
@@ -795,10 +719,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-janitor
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Janitor]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -807,10 +727,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-bar
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Bartender]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -819,10 +735,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-kitchen
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Chef]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -831,10 +743,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-botany
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Botanist]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -842,23 +750,15 @@
   suffix: Chapel
   components:
   - type: Label
-    currentLabel: holopad-epistemics-chapel # Euphoria: holopad-epistemics-chapel<holopad-science-chapel
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Chaplain]
-  # End DeltaV
+    currentLabel: holopad-service-chapel
 
 - type: entity
-  parent: HolopadEpistemics # Euphoria: HolopadEpistemics<Holopad
+  parent: Holopad
   id: HolopadServiceLibrary
   suffix: Library
   components:
   - type: Label
-    currentLabel: holopad-epistemics-library # Euphoria: holopad-epistemics-library<holopad-service-library
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Librarian]
-  # End DeltaV
+    currentLabel: holopad-service-library
 
 - type: entity
   parent: Holopad
@@ -875,10 +775,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-newsroom
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Reporter]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -887,10 +783,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-zookeeper
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Zookeeper]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -899,10 +791,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-boxer
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Boxer]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -911,10 +799,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-clown
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Clown]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -923,10 +807,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-musician
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Musician]
-  # End DeltaV
 
 - type: entity
   parent: Holopad
@@ -935,10 +815,6 @@
   components:
   - type: Label
     currentLabel: holopad-service-mime
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Mime]
-  # End DeltaV
 
 # AI
 - type: entity
@@ -999,7 +875,7 @@
     currentLabel: holopad-cargo-ats
 
 - type: entity
-  parent: [HolopadLongRange, HolopadCommand] # DeltaV
+  parent: HolopadLongRange
   id: HolopadCommandBridgeLongRange
   suffix: Station Bridge
   components:
@@ -1007,7 +883,7 @@
     currentLabel: holopad-station-bridge
 
 - type: entity
-  parent: [HolopadLongRange, HolopadLogistics] # DeltaV
+  parent: HolopadLongRange
   id: HolopadCargoBayLongRange
   suffix: Station Cargo Bay
   components:
@@ -1040,7 +916,3 @@
   components:
   - type: Label
     currentLabel: holopad-service-clown-mime
-  # Begin DeltaV
-  - type: PageSender
-    autoLinkJobs: [Clown, Mime]
-  # End DeltaV

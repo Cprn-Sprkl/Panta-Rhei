@@ -1,6 +1,6 @@
-using Content.Server._DV.StationEvents.GameRules;
+using Content.Server.StationEvents.Events;
 
-namespace Content.Server._DV.StationEvents.Components;
+namespace Content.Server.StationEvents.Components;
 
 [RegisterComponent, Access(typeof(MeteorSwarmRule))]
 public sealed partial class MeteorSwarmRuleComponent : Component

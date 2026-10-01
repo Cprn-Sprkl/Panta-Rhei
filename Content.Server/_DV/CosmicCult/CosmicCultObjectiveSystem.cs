@@ -35,12 +35,6 @@ public sealed class CosmicCultObjectiveSystem : EntitySystem
         if (args.Cancelled || !_roles.MindHasRole<CosmicColossusRoleComponent>(args.MindId))
             return;
 
-        if (RandomizeEffigyTarget(uid, comp) is null)
-            args.Cancelled = true;
-    }
-
-    public string? RandomizeEffigyTarget(EntityUid uid, CosmicEffigyConditionComponent comp, bool setDescription = false)
-    {
         var warps = new List<EntityUid>();
         var query = EntityQueryEnumerator<WarpPointComponent>();
         var effigyBlacklist = comp.Blacklist;
@@ -57,22 +51,10 @@ public sealed class CosmicCultObjectiveSystem : EntitySystem
 
         if (warps.Count <= 0)
         {
-            return null;
+            args.Cancelled = true;
+            return;
         }
-
-        var newWarp = _random.Pick(warps);
-        var warpComp = Comp<WarpPointComponent>(newWarp);
-
-        comp.EffigyTarget = newWarp;
-
-        if (setDescription)
-        {
-            _metaData.SetEntityDescription(uid,
-                warpComp.Location != null
-                    ? Loc.GetString("objective-condition-effigy", ("location", warpComp.Location))
-                    : Loc.GetString("objective-condition-effigy-no-target"));
-        }
-        return warpComp.Location;
+        comp.EffigyTarget = _random.Pick(warps);
     }
 
     private void OnEffigyAfterAssign(EntityUid uid, CosmicEffigyConditionComponent comp, ref ObjectiveAfterAssignEvent args)

@@ -12,7 +12,7 @@
   - type: Edible
     trash:
     - FoodBowlBig
-    utensil:
+    utensil: 
     - Spoon
     - Fork # Delta V - Mainly so people can eat rice dishes with a chopstick
   - type: SolutionContainerManager
@@ -566,12 +566,6 @@
   name: amanita jelly
   description: It's evil, don't touch it!
   components:
-  #Euphoria start
-  - type: FoodSequenceElement
-    entries:
-      Burger: AmanitaJelly
-      Taco: AmanitaJelly
-  #Euphoria end
   - type: Item
     size: Normal
     storedOffset: 0,-3
@@ -808,11 +802,6 @@
   id: FoodSoupChiliHot
   description: A Texan five-alarm chili!
   components:
-  #Euphoria start
-  - type: FoodSequenceElement
-    entries:
-      Hotdog: FoodSoupChiliHot
-  #Euphoria end
   - type: FlavorProfile
     flavors:
       - spicy

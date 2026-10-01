@@ -287,10 +287,7 @@
     - NanoMedPlusInventory
     - NanoMedCivilianInventory
     - NanoMedCivilianWallInventory
-    # Begin DeltaV Additions - NanoMed Civilian and Nanoblood Inventory refillable
-    - NanoMedPublicInventory
-    - NanobloodInventory
-    # End DeltaV Additions
+    - NanoMedPublicInventory # DeltaV - Make DV NanoMed Civilian Inventory refillable
   - type: Sprite
     layers:
     - state: base
@@ -346,7 +343,7 @@
     - SpaceUpInventory
     - SodaInventory
     - DrGibbInventory
-    - SmiteInventory
+    - SmiteInventory 
   - type: Sprite
     layers:
     - state: base
