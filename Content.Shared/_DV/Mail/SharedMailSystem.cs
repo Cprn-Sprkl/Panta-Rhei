@@ -192,10 +192,9 @@ public abstract class SharedMailSystem : EntitySystem
     /// </summary>
     private bool SetMailTrackerTarget(MailComponent mail, EntityUid pointer)
     {
-        var pointcomp = Comp<PinpointerComponent>(pointer);
         if (_idCard.TryFindIdCard(mail.RecipientUID, out var targetID))
         {
-            _sharedPinpointerSystem.SetTarget(pointer, targetID, pointcomp);
+            _sharedPinpointerSystem.SetTarget(pointer, targetID);
             return true;
         }
         return false;
