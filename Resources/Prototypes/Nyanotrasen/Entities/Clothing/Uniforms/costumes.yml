@@ -125,7 +125,6 @@
     #femaleMask: NoMask
 
 - type: entity
-  parent: ClothingUniformBase
   #parent: ClothingUniformBase
   parent: ClothingUndergarmentTopSwitchableBase #Euphoria | Swimsuit switchable
   id: ClothingUniformSwimsuitBlue
