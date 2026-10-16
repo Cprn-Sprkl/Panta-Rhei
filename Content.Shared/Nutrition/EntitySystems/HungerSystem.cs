@@ -5,6 +5,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Rejuvenate;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -22,6 +23,7 @@ public sealed class HungerSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly SharedJetpackSystem _jetpack = default!;
+    [Dependency] private readonly StatusEffectsSystem _effectsSystem = default!; //Euphoria | Awareness status and trait
 
     private static readonly ProtoId<SatiationIconPrototype> HungerIconOverfedId = "HungerIconOverfed";
     private static readonly ProtoId<SatiationIconPrototype> HungerIconPeckishId = "HungerIconPeckish";
@@ -154,6 +156,12 @@ public sealed class HungerSystem : EntitySystem
         {
             _alerts.ClearAlertCategory(uid, component.HungerAlertCategory);
         }
+
+        //Euphoria | To make this as merge friendly as possible I'm putting this as a separate block rather than altering the above check
+        //Checks if entity has an awareness status effect for hunger
+        if (_effectsSystem.HasStatusEffect(uid, "HungerBlindnessTraitStatusEffect") || _effectsSystem.HasStatusEffect(uid, "HungerBlindnessStatusEffect"))
+            _alerts.ClearAlertCategory(uid, component.HungerAlertCategory);
+        //Euphoria | End
 
         if (component.HungerThresholdDecayModifiers.TryGetValue(component.CurrentThreshold, out var modifier))
         {
