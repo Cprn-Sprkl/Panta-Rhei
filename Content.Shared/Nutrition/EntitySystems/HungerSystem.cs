@@ -28,6 +28,10 @@ public sealed class HungerSystem : EntitySystem
     private static readonly ProtoId<SatiationIconPrototype> HungerIconOverfedId = "HungerIconOverfed";
     private static readonly ProtoId<SatiationIconPrototype> HungerIconPeckishId = "HungerIconPeckish";
     private static readonly ProtoId<SatiationIconPrototype> HungerIconStarvingId = "HungerIconStarving";
+    //Euphoria | Thrist blindness status effects
+    private static readonly EntProtoId  HungerBlindnessTrait = "HungerBlindnessTraitStatusEffect";
+    private static readonly EntProtoId  HungerBlindness = "HungerBlindnessStatusEffect";
+    //Euphoria | End
 
     public override void Initialize()
     {
@@ -159,7 +163,7 @@ public sealed class HungerSystem : EntitySystem
 
         //Euphoria | To make this as merge friendly as possible I'm putting this as a separate block rather than altering the above check
         //Checks if entity has an awareness status effect for hunger
-        if (_effectsSystem.HasStatusEffect(uid, "HungerBlindnessTraitStatusEffect") || _effectsSystem.HasStatusEffect(uid, "HungerBlindnessStatusEffect"))
+        if (_effectsSystem.HasStatusEffect(uid, HungerBlindnessTrait) || _effectsSystem.HasStatusEffect(uid, HungerBlindness))
             _alerts.ClearAlertCategory(uid, component.HungerAlertCategory);
         //Euphoria | End
 
