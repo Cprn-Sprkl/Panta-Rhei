@@ -30,7 +30,7 @@ public sealed class ThirstSystem : EntitySystem
     private static readonly ProtoId<SatiationIconPrototype> ThirstIconParchedId = "ThirstIconParched";
     //Euphoria | Thrist blindness status effects
     private static readonly EntProtoId  ThirstBlindnessTrait = "ThirstBlindnessTraitStatusEffect";
-    private static readonly EntProtoId  ThirstBlindness = "ThirstBlindnessStatusEffect";
+    private static readonly EntProtoId  ThirstBlindness = "StatusEffectThirstBlind";
     //Euphoria | End
 
     public override void Initialize()

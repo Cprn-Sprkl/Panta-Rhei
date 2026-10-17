@@ -30,7 +30,7 @@ public sealed class HungerSystem : EntitySystem
     private static readonly ProtoId<SatiationIconPrototype> HungerIconStarvingId = "HungerIconStarving";
     //Euphoria | Thrist blindness status effects
     private static readonly EntProtoId  HungerBlindnessTrait = "HungerBlindnessTraitStatusEffect";
-    private static readonly EntProtoId  HungerBlindness = "HungerBlindnessStatusEffect";
+    private static readonly EntProtoId  HungerBlindness = "StatusEffectHungerBlind";
     //Euphoria | End
 
     public override void Initialize()
