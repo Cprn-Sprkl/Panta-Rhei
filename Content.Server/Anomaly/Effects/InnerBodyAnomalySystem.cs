@@ -4,6 +4,7 @@ using Content.Server.Chat.Managers;
 using Content.Server.Jittering;
 using Content.Server.Mind;
 using Content.Server.Stunnable;
+using Content.Shared._DV.Psionics.Components;
 using Content.Shared.Anomaly;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Anomaly.Effects;
@@ -214,7 +215,10 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
             return;
 
         if (_proto.Resolve(ent.Comp.InjectionProto, out var injectedAnom))
+        {
             EntityManager.RemoveComponents(ent, injectedAnom.Components);
+            AddComp<PsionicComponent>(ent); //Euphoria | Psions stay psionic, non-psions remain psionic after anomaly infection
+        }
 
         if (!ent.Comp.SkipStun) // imp. added this check for anomalites
             _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration));
