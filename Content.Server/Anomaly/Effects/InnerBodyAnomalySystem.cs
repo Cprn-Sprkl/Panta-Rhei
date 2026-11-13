@@ -1,4 +1,5 @@
 using Content.Server.Administration.Logs;
+using Content.Server.Bible.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Jittering;
@@ -217,7 +218,8 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
         if (_proto.Resolve(ent.Comp.InjectionProto, out var injectedAnom))
         {
             EntityManager.RemoveComponents(ent, injectedAnom.Components);
-            AddComp<PsionicComponent>(ent); //Euphoria | Psions stay psionic, non-psions remain psionic after anomaly infection
+            if (!HasComp<FamiliarComponent>(ent)) //Euphoria | Ignore anomalites
+                AddComp<PsionicComponent>(ent); //Euphoria | Psions stay psionic, non-psions remain psionic after anomaly infection
         }
 
         if (!ent.Comp.SkipStun) // imp. added this check for anomalites
